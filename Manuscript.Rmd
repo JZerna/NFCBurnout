@@ -1,0 +1,845 @@
+---
+title             : "NFC and burnout in teachers - A replication and extension study"
+shorttitle        : "NFC and burnout in teachers"
+
+author: 
+  - name          : "Josephine Zerna"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Zellescher Weg 17, 01069 Dresden, Germany"
+    email         : "josephine.zerna@tu-dresden.de"
+    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
+      - Conceptualization
+      - Methodology
+      - Formal analysis
+      - Writing - original draft preparation
+      - Writing - review & editing
+  - name          : "Nicole Engelmann"
+    affiliation   : "2"
+    role:
+      - Conceptualization
+      - Investigation
+      - Writing - review & editing
+  - name          : "Anja Strobel"
+    affiliation   : "3"
+    role:
+      - Conceptualization
+      - Supervision
+      - Methodology
+      - Writing - review & editing
+  - name          : "Alexander Strobel"
+    affiliation   : "1"
+    role:
+      - Conceptualization
+      - Supervision
+      - Methodology
+      - Writing - review & editing
+
+affiliation:
+  - id            : "1"
+    institution   : "Faculty of Psychology, Technische Universität Dresden"
+  - id            : "2"
+    institution   : "Faculty of Education, Technische Universität Dresden"
+  - id            : "3"
+    institution   : "Institute of Psychology, Chemnitz University of Technology"
+
+authornote: |
+  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+  Enter author note here.
+
+abstract: |
+  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  
+  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
+  
+  One sentence clearly stating the **general problem** being addressed by  this particular study.
+  
+  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
+  
+  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
+  
+  One or two sentences to put the results into a more **general context**.
+  
+  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
+wordcount         : "X"
+
+bibliography      : references.bib
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+
+csl               : apa.csl # this is a workaround for a current bug in the papaja/Rmd software, which fails to shorten multiple authors to "et al."
+---
+
+```{r setup, include = FALSE}
+library(papaja)
+library(bibtex)
+
+r_refs("r_references.bib") # creates bib to cite the used R packages
+
+#install.packages("here")       # easy file referencing
+#install.packages("tidyverse")  # plotting and managing data
+#install.packages("lavaan")     # for structural equation modelling
+#install.packages("psych")      # Cronbach's Alpha and such
+#install.packages("MVN")        # Mardia's test and such
+#install.packages("MBESS")      # MacDonald's Omega
+#install.packages("Hmisc")      # for correlations with p-values
+#install.packages("kableExtra") # for great tables
+#install.packages("knitr")      # for knitting documents and tables
+
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(lavaan)
+library(psych)
+library(MVN)
+library(MBESS)
+library(Hmisc)
+library(kableExtra)
+library(knitr)
+
+```
+
+```{r analysis-preferences, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Seed for random number generation
+  set.seed(13)
+  knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+  
+  # Set a number for the bootstrapping procedures
+  bootnum <- 300
+
+```
+
+# Introduction
+
+Need for Cognition (NFC) is a stable intrinsic motivation to seek out and especially to enjoy effortful cognitive activities [@Cacioppo1982].
+As it bridges the gap between cognition and motivation, NFC is considered to be an investment trait [@Stumm2013], and has come to the fore of psychological research in the last years.
+NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items [@Cacioppo1982; @Cacioppo1984].
+While many studies have found positive associations of NFC with academic performance [@Cazan2014; @Elias2002; @Grass2017; @Lavrijsen2021; @Zheng2020], recent investigations have also looked at NFC as a personal resource in academic and work contexts.
+Individuals high in NFC have more positive emotions at the end of the work day [@Rosen2020], higher work motivation, perceive their roles as less ambiguous [@Nowlin2017], are less likely to drop out of college [@Grass2017; @Klaczynski1996], and have less anxiety regarding their course work [@Karagiannopoulou2020].
+These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical [@Dragano2017; @Steptoe2013] to psychological [@Madsen2017; @Maslach2016; @Wiesner2005].
+
+One of these psychological consequences is burnout, a state of exhaustion and cynicism caused by long-term overstimulation in the workplace, which results in employees being dissatisfied, being sick more often, and performing poorly [@Schaufeli2014].
+Burnout is especially prevalent in social jobs such as healthcare or teaching because the worker is always in conflict between advocating for their client and meeting the goals set by the employer [@GrayStanley2011; @Lloyd2002].
+Lackritz [-@Lackritz2004] found that university teachers' burnout scores were higher the more students they had, the higher their teaching load was, and the more time they spent grading students' work.
+Burnout is most often assessed using the Maslach Burnout Inventory (MBI) [@Maslach1997], a self-report questionnaire with three subscales: Emotional exhaustion, depersonalisation, and reduced self-efficacy.
+
+Individuals with high burnout scores are often passive copers, high in neuroticism, low in self-esteem, and have an external locus of control [@Schaufeli2014].
+NFC on the other hand is negatively associated with those variables [@Double2016; @Fleischhauer2019; @Ghorbani2004; @Grass2018; @Osberg1987], suggesting that people high in NFC are less prone to experience burnout.
+This is supported by the findings that NFC is negatively associated with burnout scores in adults [@Fleischhauer2019], students [@Fleischhauer2019; @Naderi2018], and teacher trainees [@Grass2018].
+However, the associations of NFC with the sum score and the subscales of the MBI are not always consistent between these studies.
+This is likely not caused by inaccurate measurement, since the validity of both NCS [@Bless1994; @Osberg1987; @Tolentino1990] and MBI [@Brady 2021; @Kantas1997; @Schaufeli2001; @ValdiviaVazquez2021] has been demonstrated in multiple studies.
+What is more likely is the influence of one or more other variables, moderating or mediating the association of NFC and burnout.
+Grass et al. [-@Grass2018] investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by reappraisal, active and passive coping, but not by suppression or self-control.
+Reappraisal and suppression are two emotion regulation strategies, which refer to the cognitive reassessment of a stressor and the inhibition of emotional reactions, respectively [@Gross1998a].
+The findings by Grass et al. [-@Grass2018] suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor.
+One goal of this paper is to replicate the findings of Grass et al. [-@Grass2018] using a multiple mediation model on cross-sectional self-report data of teachers.
+We expect NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
+
+Furthermore, we would like to extend the analysis to other possible mediators.
+These mediators are motivated by our own recent survey of the literature on NFC and wellbeing, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree [@Zerna2021].
+Only a balance of resources and demands results in personal wellbeing, while an imbalance threatens wellbeing, regardless of whether this imbalance is in favour of resources or demands [@Dodge2012].
+Following the framework of Hobfoll [-@Hobfoll1989], resources can be objects with practical or status purpose, conditions like marriage or tenure, personality aspects like coping style, and energies such as time, money, or knowledge.
+In the case of NFC, resources are from the categories personality and energies: Personality, because NFC is a trait, encompassing a curious, analytic, and passionate approach to challenges, and energies, because individuals high in NFC have been coping actively all their life, which enriches their level of experience and knowledge in approaching challenges [@Cacioppo1996].
+These personal resources matter with regards to stress assessment (how the situation is appraised) and with regards to both coping and recovery [@Salanova2006].
+We would therefore like to investigate whether the association of NFC and burnout is mediated by different ratios of demands and resources; demands that are too high to be dealt with using one’s personal resources (DTH), demands that are too low for one’s personal resources (DTL), and a balanced fit of demands and resources (DRF).
+Using the same data as for the replication, we compute a structural equation model (SEM) to assess the influence of these mediators.
+Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorbani2004; @Heppner1983; @Klaczynski1996], we expect NFC to be negatively associated with DTH, positively associated with DTL, and positively associated with DRF.
+And since burnout results from constant unpleasant activation by high demands, we expect it to be positively associated with DTH and negatively associated with DRF.
+However, we have no hypothesis regarding the association of DTL and burnout, because even though DTL is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
+
+*The Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021].*
+
+# Methods
+
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study [@Simmons2012].
+Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript are available at [https://osf.io/36ep9/](https://osf.io/36ep9/).
+
+```{r import, echo=FALSE, message=FALSE, warning=FALSE}
+  # Please set your working directory using the drop down menu above
+  # Then put this file in this directory, as well as the data.Rda file
+  
+  here::i_am("Manuscript.Rmd")
+  
+  # Load the data file
+  
+  load(here("data.Rda"))
+```
+
+
+## Participants
+Teachers were recruited via social media, emails to colleagues of N.E. and to Saxon schools with the request to pass on the information.
+All teachers were eligible, no payment was issued.
+Of the $N=$ 278 participants, who started filling out the online survey, $N=$ `r nrow(data)` (`r round((table(data$gender)[1]/nrow(data))*100, digits = 1)`% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
+All of them were currently teaching at a primary, secondary, comprehensive, or vocational school.
+Data was collected between the 12th of June and the 24th of July 2020.
+At this point, schools had been switching between digital and hybrid forms of teaching for at least three months due to the Covid-19 pandemic, causing additional stress for many teachers.
+
+## Material
+All questionnaires were used in their German form. Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) [@Buessing1992], NFC was assessed using the 16-item Need for Cognition Scale (NCS) [@Bless1994], self-control was assessed using the 13-item Self-Control Scale (SCS) [@Bertrams2009a], reappraisal and suppression were assessed using the 10-item Emotion Regulation Questionnaire (ERQ) [@Abler2009], work satisfaction was assessed using the Allgemeine Arbeitszufriedenheit questionnaire (AAZ) [@Fischer2014].
+Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently have a higher workload.
+The Covid-19 items can be found in the **Supplementary Material**.
+The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.
+Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] cannot be used, so we cannot replicate the mediation of NFC and burnout by active and passive coping.
+
+## Procedure
+The questionnaires were provided online using SoSci Survey [@Leiner2019].
+Participants were informed about aims and duration of the study and data security, then they provided demographic information, answered the questionnaires, and could optionally enter their email address to be informed about the results of the analysis of N.E.'s thesis.
+
+## Data analysis
+We used `r cite_r("r_references.bib")` for all our analyses.
+### Multiple mediation model
+Items were reverse coded according to the scale manuals.
+NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
+Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
+### Structural equation model
+Items were reverse coded according to the scale manuals.
+The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. [-@Grass2019], a method that is used in SEM when only relations between but not within constructs are of interest.
+Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
+Then, the items were randomly divided into four parcels and the average item loading per parcel was computed.
+This was repeated 10,000 times to find the parcelling choice with the smallest difference in average item loadings between parcels.
+The latent factor MBI was computed using the three subscales as indicators.
+For the demand-resource-ratios, we used three items from the work satisfaction scale each, without reverse coding them.
+The latent factor DTH was indicated by items 4, 8, and 9, DTL by items 12, 26, and 27, and DRF by items 17, 22, and 24.
+### Exploratory analysis
+We preregistered two exploratory analyses.
+Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales [@Grass2018; @Naderi2018].
+And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
+
+```{r splitandrecode, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Put questionnaire data into different data frames for easy access
+  
+  mbi <- data[,10:30]             # Maslach Burnout Inventory
+  erq <- data[,31:40]             # Emotion Regulation Questionnaire
+  scs <- data[,41:53]             # Self Control Scale
+  ws <- data[,54:90]              # Work Satisfaction
+  ncs <- data[,c(91:98,100:107)]  # Need for Cognition Scale (without the dummy item)
+  covb <- data[,108:118]          # Covid Burden Items
+  dth <- ws[,c(4,8,9)]            # the Work Satisfaction items for the latent variable Demands Too High
+  dtl <- ws[,c(12,26,27)]         # the Work Satisfaction items for the latent variable Demands Too Low
+  drf <- ws[,c(17,21,24)]         # the Work Satisfaction items for the latent variable Demand-Resource-Fit
+  
+  # Create a list with keys for the questionnaire subscales/latent variables/item parcels
+  
+  keylist <- list(mbi_ee = c(5,7,10,11,14,18,19,20,21), mbi_dp = c(1,6,9,15,17), mbi_rpe = c(2,3,4,8,12,13,16),
+                  erq_supp = c(2,4,6,9), erq_reap = c(1,3,5,7,8,10),
+                  scs = c(2,3,4,5,6,7,8,10,11),
+                  ncs = c(4,6,7,8,9,10,11,12,15,16),
+                  ws = c(4,5,6,8,9,10,11,13,16,19,20,33))
+  
+  # Recode all the reverse coded items
+  
+  mbi[,keylist$mbi_rpe] <- 7 - mbi[,keylist$mbi_rpe]  # Recode from 1-6 to 6-1
+  scs[,keylist$scs] <- 6 - scs[,keylist$scs]          # Recode from 1-5 to 5-1
+  scs <- scs - 3                                      # Recode all from 1-5 to -2-+2
+  ncs[,keylist$ncs] <- 8 - ncs[,keylist$ncs]          # Recode from 1-7 to 7-1
+  ncs <- ncs - 4                                      # Recode all from 1-7 to -3-+3
+  ws[,keylist$ws] <- 6 - ws[,keylist$ws]              # Recode from 1-5 to 5-1
+  ws <- ws - 3                                        # Recode all from 1-5 to -2-+2
+  covb[,c(2,3,4,9)] <- 4 - covb[,c(2,3,4,9)]          # Recode from 1-3 to 3-1
+  covb[,8] <- 3 - covb[,8]                            # Recode from 1-2 to 2-1
+  dth <- dth - 3                                      # Recode all from 1-5 to to -2-+2
+  dtl <- 6 - dtl                                      # Recode from 1-5 to to 5-1
+  dtl <- dtl - 3                                      # Recode all from 1-5 to to -2-+2
+  drf <- drf -3                                       # Recode all from 1-5 to to -2-+2
+
+```
+
+```{r parcelling, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Parcelling preparation: Compute factor loadings on the first PCA component
+  
+  ncs_pca <- princomp(ncs, cor = FALSE, scores = TRUE)
+  ncs_load <- ncs_pca$loadings[,1]
+  
+  # Parcelling function
+  
+  parcel.gen <- function(loadings, parcels = 4,seed = 242,iterations = 10000) {
+    
+    p = parcels                   # number of parcels
+    l = length(loadings)          # number of items
+    set.seed(seed)              # seed for reproducibility
+    
+    out = parcels = NULL            # set up containers
+    for (k in 1:iterations) {
+      
+      s = sample(1:l,l,replace = F) # random item order
+      m = matrix(s,ncol = 4)        # separate into parcels
+      
+      # temporarily convert item numbers per parcel to concatenated strings
+      parcels.i = NULL
+      for (i in 1:p) {
+        parcels.i = c(parcels.i,paste0(sort(m[,i]),collapse = ","))
+      }
+      # write to container
+      parcels = rbind(parcels,parcels.i)
+      
+      # compute average item loadings per parcel
+      avg.h = colMeans(matrix(loadings[m],ncol = 4))
+      
+      # compute differences between all average item loadings
+      h.diff = NULL
+      for (i in 1:(p-1)) {
+        for (j in (i+1):p) {
+          h.diff = c(h.diff,abs(avg.h[i]-avg.h[j]))
+        }
+      }
+      
+      # sum up differences
+      h.diff.sum = sum(h.diff)
+      # write summed differences to container
+      out = c(out,h.diff.sum)
+    }
+    
+    # find minimum summed difference and generate matrix or respective items
+    final.parcels = matrix(as.numeric(unlist(strsplit(parcels[which.min(out),],','))),ncol = 4)
+    # obtain corresponding loadings per parcel
+    final.h = matrix(loadings[final.parcels],ncol = 4)
+    
+    # return result as list
+    return(list(items = final.parcels,loadings = final.h,avg.loadings = colMeans(final.h),summed.difference = min(out)))
+    
+  }
+  
+  ncs_parcels <- parcel.gen(loadings = ncs_load) # execute function
+  
+  remove(ncs_load,ncs_pca) # remove unnecessary objects
+  
+  # Add parcelling result to the key list
+  
+  keylist <- c(keylist, parcel1 = list(ncs_parcels$items[,1]), parcel2 = list(ncs_parcels$items[,2]),
+               parcel3 = list(ncs_parcels$items[,3]), parcel4 = list(ncs_parcels$items[,4]))
+```
+
+```{r scores, echo=FALSE, message=FALSE, warning=FALSE}
+
+# Create data frame to feed the values of every subject into
+  
+  score_data <- data.frame(id = c(1:180),
+                           mbi = rep(0,180),
+                           mbi_ee = rep(0,180), mbi_dp = rep(0,180), mbi_rpe = rep(0,180),
+                           erq = rep(0,180),
+                           erq_supp = rep(0,180), erq_reap = rep(0,180),
+                           scs = rep(0,180),
+                           ncs = rep(0,180),
+                           nfc1 = rep(0,180), nfc2 = rep(0,180), nfc3 = rep(0,180), nfc4 = rep(0,180),
+                           dth = rep(0,180),
+                           dth1 = rep(0,180), dth2 = rep(0,180), dth3 = rep(0,180),
+                           dtl = rep(0,180),
+                           dtl1 = rep(0,180), dtl2 = rep(0,180), dtl3 = rep(0,180),
+                           drf = rep(0,180),
+                           drf1 = rep(0,180), drf2 = rep(0,180), drf3 = rep(0,180),
+                           covb = rep(0,180))
+  
+  # Compute individual scores or (for the latent variable indicators) feed in raw values
+  
+  for (i in 1:nrow(data)) {
+    score_data[i,c(2:ncol(score_data))] <- c(rowSums(mbi[i,]),
+                                             rowSums(mbi[i,keylist$mbi_ee]), rowSums(mbi[i,keylist$mbi_dp]), rowSums(mbi[i,keylist$mbi_rpe]),
+                                             rowSums(erq[i,]),
+                                             rowSums(erq[i,keylist$erq_supp]), rowSums(erq[i,keylist$erq_reap]),
+                                             rowSums(scs[i,]),
+                                             rowSums(ncs[i,]),
+                                             rowSums(ncs[i,keylist$parcel1]), rowSums(ncs[i,keylist$parcel2]), rowSums(ncs[i,keylist$parcel3]), rowSums(ncs[i,keylist$parcel4]),
+                                             rowSums(dth[i,]),
+                                             dth[i,1], dth[i,2], dth[i,3],
+                                             rowSums(dtl[i,]),
+                                             dtl[i,1], dtl[i,2], dtl[i,3],
+                                             rowSums(drf[i,]),
+                                             drf[i,1], drf[i,2], drf[i,3],
+                                             rowSums(covb[i,]))
+  }
+```
+
+```{r descriptives, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Tests for normal distribution
+
+    # using Mardia's test for multivariate normal distribution
+    # results will be fed into the desc_met data frame in the next step
+  
+    isnorm_test <- mvn(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","covb")],
+                       mvnTest = "mardia", covariance = TRUE, desc = TRUE, univariateTest = "SW")  
+  
+  # Descriptive statistics
+  
+    # Categorical descriptives: data frame with percentages of responses per category
+    
+    desc_cat <- data.frame(answer = c(1,2,3,4,5),
+                           age = c(nrow(data[data$age == 1,])/nrow(data), nrow(data[data$age == 2,])/nrow(data), nrow(data[data$age == 3,])/nrow(data),
+                                   nrow(data[data$age == 4,])/nrow(data), nrow(data[data$age == 5,])/nrow(data)),
+                           gender = c(nrow(data[data$gender == 1,])/nrow(data), nrow(data[data$gender == 2,])/nrow(data), nrow(data[data$gender == 3,])/nrow(data),0,0),
+                           schooltype = c(nrow(data[data$schooltype == 1,])/nrow(data), nrow(data[data$schooltype == 2,])/nrow(data), nrow(data[data$schooltype == 3,])/nrow(data),
+                                          nrow(data[data$schooltype == 4,])/nrow(data), nrow(data[data$schooltype == 5,])/nrow(data)))
+    
+    # Metric descriptives: data frame with descriptive values of questionnaires
+    
+    desc_met <- data.frame(value = c("mean","sd","skewness","kurtosis","normality"),
+                           mbi = rep(0,5),
+                           mbi_ee = rep(0,5), mbi_dp = rep(0,5), mbi_rpe = rep(0,5),
+                           erq = rep(0,5),
+                           erq_supp = rep(0,5), erq_reap = rep(0,5),
+                           scs = rep(0,5),
+                           ncs = rep(0,5),
+                           covb = rep(0,5))
+    
+    desc_met[1,2:ncol(desc_met)] <- isnorm_test$Descriptives$Mean
+    desc_met[2,2:ncol(desc_met)] <- isnorm_test$Descriptives$Std.Dev
+    desc_met[3,2:ncol(desc_met)] <- isnorm_test$Descriptives$Skew
+    desc_met[4,2:ncol(desc_met)] <- isnorm_test$Descriptives$Kurtosis
+    desc_met[5,2:ncol(desc_met)] <- isnorm_test$univariateNormality$Normality
+    
+```
+
+```{r consistency, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Tests for internal consistency
+
+    # Create data frame to feed values into
+
+    consistencies <- data.frame(value = c("lower CI alpha","raw alpha","upper CI alpha",
+                                          "lower CI omega","raw omega","upper CI omega"))
+
+    # Compute Cronbach's Alpha and MacDonald's Omega for questionnaires and demand-resource-ratios
+
+    set.seed(13) # seed for reproducing the bootstrapping
+    
+    # Maslach Burnout Inventory
+    
+    cronalph <- alpha(mbi, check.keys = TRUE)
+    macomega <- ci.reliability(data=mbi, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$mbi <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # MBI emotional exhaustion
+    
+    cronalph <- alpha(subset(mbi, select = keylist$mbi_ee), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(mbi, select = keylist$mbi_ee), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$mbi_ee <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # MBI depersonalization
+    
+    cronalph <- alpha(subset(mbi, select = keylist$mbi_dp), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(mbi, select = keylist$mbi_dp), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$mbi_dp <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # MBI reduced personal efficacy
+    
+    cronalph <- alpha(subset(mbi, select = keylist$mbi_rpe), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(mbi, select = keylist$mbi_rpe), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$mbi_rpe <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # ERQ
+    
+    cronalph <- alpha(erq, check.keys = TRUE)
+    macomega <- ci.reliability(data=erq, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$erq <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                  cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                  macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # ERQ suppression
+    
+    cronalph <- alpha(subset(erq, select = keylist$erq_supp), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(erq, select = keylist$erq_supp), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$erq_supp <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                  cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                  macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # ERQ reappraisal
+    
+    cronalph <- alpha(subset(erq, select = keylist$erq_reap), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(erq, select = keylist$erq_reap), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$erq_reap <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                  cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                  macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Self Control Scale
+    
+    cronalph <- alpha(scs, check.keys = TRUE)
+    macomega <- ci.reliability(data=scs, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$scs <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Need for Cognition Scale
+    
+    cronalph <- alpha(ncs, check.keys = TRUE)
+    macomega <- ci.reliability(data=ncs, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$ncs <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Covid burden
+    
+    cronalph <- alpha(covb, check.keys = TRUE)
+    macomega <- ci.reliability(data=covb, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$covb <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Demands Too High
+    
+    cronalph <- alpha(dth, check.keys = FALSE)
+    macomega <- ci.reliability(data=dth, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$dth <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Demands Too Low
+    
+    cronalph <- alpha(dtl, check.keys = FALSE)
+    macomega <- ci.reliability(data=dtl, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$dtl <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Demand Resource Fit
+    
+    cronalph <- alpha(drf, check.keys = FALSE)
+    macomega <- ci.reliability(data=drf, type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    consistencies$drf <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    remove(cronalph,macomega) # delete the temporary variable
+    
+    # create a vector of consistencies to be used as the diagonal in a table later
+    consist_diag <- cbind(format(round(t(consistencies[2,2:11]), digits = 2), nsmall = 2), rep("(",10),
+                          format(round(t(consistencies[5,2:11]), digits = 2), nsmall = 2), rep(")",10))
+    # paste together to create the output "alpha(omega)"
+    consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
+    
+```
+
+```{r correlations, echo=FALSE, message=FALSE, warning=FALSE}
+    
+    # The following function for nicely formatted correlation output was taken from
+    # https://paulvanderlaken.com/2020/07/28/publication-ready-correlation-matrix-significance-r/
+    # on the 5th of August 2021
+
+    correlation_matrix <- function(df,
+                                   type = "pearson",
+                                   digits = 3,
+                                   decimal.mark = ".",
+                                   use = "all",
+                                   show_significance = TRUE,
+                                   replace_diagonal = FALSE,
+                                   replacement = ""){
+      # check arguments
+      stopifnot({
+        is.numeric(digits)
+        digits >= 0
+        use %in% c("all", "upper", "lower")
+        is.logical(replace_diagonal)
+        is.logical(show_significance)
+        is.character(replacement)
+      })
+      # we need the Hmisc package for this
+      require(Hmisc)
+      
+      # retain only numeric and boolean columns
+      isNumericOrBoolean = vapply(df, function(x) is.numeric(x) | is.logical(x), logical(1))
+      if (sum(!isNumericOrBoolean) > 0) {
+        cat('Dropping non-numeric/-boolean column(s):', paste(names(isNumericOrBoolean)[!isNumericOrBoolean], collapse = ', '), '\n\n')
+      }
+      df = df[isNumericOrBoolean]
+      
+      # transform input data frame to matrix
+      x <- as.matrix(df)
+      
+      # run correlation analysis using Hmisc package
+      correlation_matrix <- Hmisc::rcorr(x, type = type)
+      R <- correlation_matrix$r # Matrix of correlation coeficients
+      p <- correlation_matrix$P # Matrix of p-value 
+      
+      # transform correlations to specific character format
+      Rformatted = formatC(R, format = 'f', digits = digits, decimal.mark = decimal.mark)
+      
+      # if there are any negative numbers, we want to put a space before the positives to align all
+      if (sum(!is.na(R) & R < 0) > 0) {
+        Rformatted = ifelse(!is.na(R) & R > 0, paste0(" ", Rformatted), Rformatted)
+      }
+    
+      # add significance levels if desired
+      if (show_significance) {
+        # define notions for significance levels; spacing is important.
+        stars <- ifelse(is.na(p), "", ifelse(p < .001, "***", ifelse(p < .01, "**", ifelse(p < .05, "*", ""))))
+        Rformatted = paste0(Rformatted, stars)
+      }
+      
+      # make all character strings equally long
+      max_length = max(nchar(Rformatted))
+      Rformatted = vapply(Rformatted, function(x) {
+        current_length = nchar(x)
+        difference = max_length - current_length
+        return(paste0(x, paste(rep(" ", difference), collapse = ''), sep = ''))
+      }, FUN.VALUE = character(1))
+      
+      # build a new matrix that includes the formatted correlations and their significance stars
+      Rnew <- matrix(Rformatted, ncol = ncol(x))
+      rownames(Rnew) <- colnames(Rnew) <- colnames(x)
+      
+      # replace undesired values
+      if (use == 'upper') {
+        Rnew[lower.tri(Rnew, diag = replace_diagonal)] <- replacement
+      } else if (use == 'lower') {
+        Rnew[upper.tri(Rnew, diag = replace_diagonal)] <- replacement
+      } else if (replace_diagonal) {
+        diag(Rnew) <- replacement
+      }
+      
+      return(Rnew)
+    }
+    
+    
+    # correlate variables, including the demand resource ratios
+    corr_with_drr <- correlation_matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+                                                    "scs","ncs","dth","dtl","drf","covb")],
+                                       type = "spearman",
+                                       use = "lower",
+                                       replace_diagonal = TRUE,
+                                       replacement = "")
+    
+    # correlate variables without demand resource ratios (for table in manuscript)
+    corr_no_drr <- correlation_matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+                                                    "scs","ncs","covb")],
+                                       type = "spearman",
+                                       use = "lower",
+                                       show_significance = FALSE,
+                                       replace_diagonal = TRUE,
+                                       replacement = "")
+    
+    # add previously assembled diagonal with alpha and omega values
+    diag(corr_no_drr) <- consist_diag
+    
+    # set row and column names for better table printing
+    row.names(corr_no_drr) <- c("MBI Score","MBI EE","MBI DP","MBI RPE","ERQ","ERQ Suppression","ERQ Reappraisal","Self Control","NFC","Covid-19 Burden")
+    colnames(corr_no_drr) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","COV")
+    
+    # create array with p-values of correlation coefficients
+    corr_pvalues <- rcorr(as.matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+                                        "scs","ncs","covb")]), type = "spearman")$P
+    # replace upper triangle with NA
+    corr_pvalues[upper.tri(corr_pvalues, diag = TRUE)] <- NA
+    # replace p-values with asterisks depending on significance level
+    corr_pvalues <- ifelse(is.na(corr_pvalues), "", ifelse(corr_pvalues < .001, "***", ifelse(corr_pvalues < .01, "**", ifelse(corr_pvalues < .05, "*", ""))))
+    # create three arrays with logical indicators of the significance levels
+    corr_threestars <- corr_pvalues %>%
+      as_tibble() %>%
+      mutate(across(.cols = everything(),.fns = ~ ifelse(.x == "***", TRUE, FALSE)))
+    corr_twostars <- corr_pvalues %>%
+      as_tibble() %>%
+      mutate(across(.cols = everything(),.fns = ~ ifelse(.x == "**", TRUE, FALSE)))
+    corr_onestar <- corr_pvalues %>%
+      as_tibble() %>%
+      mutate(across(.cols = everything(),.fns = ~ ifelse(.x == "*", TRUE, FALSE)))
+    
+```
+
+# Results
+
+```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+
+  desc_table <-
+  kbl(corr_no_drr,
+      booktabs = T,
+      align = rep("r",11)) %>%
+    kable_styling(latex_options = "striped", position = "center", full_width = T, font_size = 10) %>%
+    column_spec(2, italic = corr_onestar$mbi|corr_twostars$mbi, bold = corr_threestars$mbi|corr_twostars$mbi) %>%
+    column_spec(3, italic = corr_onestar$mbi_ee|corr_twostars$mbi_ee, bold = corr_threestars$mbi_ee|corr_twostars$mbi_ee) %>%
+    column_spec(4, italic = corr_onestar$mbi_dp|corr_twostars$mbi_dp, bold = corr_threestars$mbi_dp|corr_twostars$mbi_dp) %>%
+    column_spec(5, italic = corr_onestar$mbi_rpe|corr_twostars$mbi_rpe, bold = corr_threestars$mbi_rpe|corr_twostars$mbi_rpe) %>%
+    column_spec(6, italic = corr_onestar$erq|corr_twostars$erq, bold = corr_threestars$erq|corr_twostars$erq) %>%
+    column_spec(7, italic = corr_onestar$erq_supp|corr_twostars$erq_supp, bold = corr_threestars$erq_supp|corr_twostars$erq_supp) %>%
+    column_spec(8, italic = corr_onestar$erq_reap|corr_twostars$erq_reap, bold = corr_threestars$erq_reap|corr_twostars$erq_reap) %>%
+    column_spec(9, italic = corr_onestar$scs|corr_twostars$scs, bold = corr_threestars$scs|corr_twostars$scs) %>%
+    column_spec(10, italic = corr_onestar$ncs|corr_twostars$ncs, bold = corr_threestars$ncs|corr_twostars$ncs) %>%
+    column_spec(11, italic = corr_onestar$covb|corr_twostars$covb, bold = corr_threestars$covb|corr_twostars$covb) %>%
+    column_spec(2:11, width = "1.5cm") %>%
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 180. Italics indicate \\\\textit{p} < .05, italics and bold indicate \\\\textit{p} < .01, bold indicates \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.")
+
+```
+
+
+```{r objective1, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Replication of Grass et al. (2018)
+  
+  repli_model <- '
+  # direct paths
+    scs ~ a1 * ncs
+    erq_reap ~ a2 * ncs
+    erq_supp ~ a3 * ncs
+    mbi_rpe ~ b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
+
+  # indirect effects
+    Indirect1 := a1 * b1
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3)
+
+  # Include covariance of mediators in the model
+    scs ~~ erq_reap
+    scs ~~ erq_supp
+    erq_reap ~~ erq_supp'
+  
+  # Determine the model fit
+  
+  fit <- sem(
+    model = repli_model,
+    data  = score_data,
+    se = "bootstrap",
+    bootstrap = 2000
+  )
+  
+  # Get summary
+  
+  fit_summ <- summary(fit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+```
+
+```{r objective2, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # SEM with demand-resource-ratios
+  
+  sem_model <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    MBI =~ mbi_ee + mbi_dp + mbi_rpe
+
+  # structural model
+    DTH ~ NFC
+    DTL ~ NFC
+    DRF ~ NFC
+    MBI ~ NFC + DTH + DTL + DRF'
+  
+  # Determine the model fit
+  
+  fit2 <- sem(
+    model = sem_model,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+  
+```
+
+```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Exploratory analysis I: MBI subscale instead of sum score
+  
+  explor1_model <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    RPE =~ mbi_rpe
+
+  # structural model
+    DTH ~ NFC
+    DTL ~ NFC
+    DRF ~ NFC
+    RPE ~ NFC + DTH + DTL + DRF'
+  
+  # Determine the model fit
+  
+  fit_explor1 <- sem(
+    model = explor1_model,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit_explor1_summ <- summary(fit_explor1, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+```
+
+```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Exploratory analysis II: Covid burden as a covariate
+  
+  # Correlations show that Covid burden is positively associated with MBI and
+  # and MBI_EE, and negatively associated with DTH. We will therefore include
+  # Covid burden as a mediator between DTH and MBI.
+  
+  explor2_model <- '
+  measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    MBI =~ mbi_ee + mbi_dp + mbi_rpe
+    COVB =~ covb
+
+  # structural model
+    DTH ~ NFC
+    DTL ~ NFC
+    DRF ~ NFC
+    COVB ~ DTH
+    MBI ~ NFC + DTH + DTL + DRF + COVB'
+  
+  # Determine the model fit
+  
+  fit_explor2 <- sem(
+    model = explor2_model,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit_explor2_summ <- summary(fit_explor2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+```
+
+
+# Discussion
+
+
+\newpage
+
+# References
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
