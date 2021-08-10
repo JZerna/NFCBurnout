@@ -121,7 +121,7 @@ library(knitr)
   knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
   
   # Set a number for the bootstrapping procedures
-  bootnum <- 300
+  bootnum <- 5000
 
 ```
 
@@ -179,6 +179,10 @@ Our preregistration, the data, and the R Markdown document used to analyze the d
   # Load the data file
   
   load(here("data.Rda"))
+  
+  # Load the internal consistencies (bootstrapping has been suppressed to save time on knitting)
+  load(here("consistencies.rds"))
+  
 ```
 
 
@@ -203,11 +207,13 @@ Participants were informed about aims and duration of the study and data securit
 
 ## Data analysis
 We used `r cite_r("r_references.bib")` for all our analyses.
-### Multiple mediation model
+
+### *Multiple mediation model*
 Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
 Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
-### Structural equation model
+
+### *Structural equation model*
 Items were reverse coded according to the scale manuals.
 The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. [-@Grass2019], a method that is used in SEM when only relations between but not within constructs are of interest.
 Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
@@ -216,7 +222,8 @@ This was repeated 10,000 times to find the parcelling choice with the smallest d
 The latent factor MBI was computed using the three subscales as indicators.
 For the demand-resource-ratios, we used three items from the work satisfaction scale each, without reverse coding them.
 The latent factor DTH was indicated by items 4, 8, and 9, DTL by items 12, 26, and 27, and DRF by items 17, 22, and 24.
-### Exploratory analysis
+
+### *Exploratory analysis*
 We preregistered two exploratory analyses.
 Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales [@Grass2018; @Naderi2018].
 And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
@@ -407,7 +414,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     
 ```
 
-```{r consistency, echo=FALSE, message=FALSE, warning=FALSE}
+```{r consistency, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
   # Tests for internal consistency
 
