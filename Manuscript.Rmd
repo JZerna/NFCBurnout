@@ -181,7 +181,12 @@ Our preregistration, the data, and the R Markdown document used to analyze the d
   load(here("data.Rda"))
   
   # Load the internal consistencies (bootstrapping has been suppressed to save time on knitting)
-  load(here("consistencies.rds"))
+  consistencies <- read_rds(here("consistencies.rds"))
+  # create a vector of consistencies to be used as the diagonal in a table later
+  consist_diag <- cbind(format(round(t(consistencies[2,2:11]), digits = 2), nsmall = 2), rep("(",10),
+                        format(round(t(consistencies[5,2:11]), digits = 2), nsmall = 2), rep(")",10))
+  # paste together to create the output "alpha(omega)"
+  consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
   
 ```
 
@@ -690,6 +695,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 ```
 
+`r desc_table`
 
 ```{r objective1, echo=FALSE, message=FALSE, warning=FALSE}
 
