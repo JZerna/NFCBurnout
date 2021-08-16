@@ -211,7 +211,7 @@ The questionnaires were provided online using SoSci Survey [@Leiner2019].
 Participants were informed about aims and duration of the study and data security, then they provided demographic information, answered the questionnaires, and could optionally enter their email address to be informed about the results of the analysis of N.E.'s thesis.
 
 ## Data analysis
-We used `r cite_r("r_references.bib")` for all our analyses.
+We used *R Studio* [@RCT2020; @RStudioTeam2020] with the main packages *lavaan* [@Rosseel2012] and *psych* [@Revelle2021] for all our analyses.
 
 ### *Multiple mediation model*
 Items were reverse coded according to the scale manuals.
