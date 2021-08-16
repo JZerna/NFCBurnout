@@ -89,8 +89,6 @@ csl               : apa.csl # this is a workaround for a current bug in the papa
 library(papaja)
 library(bibtex)
 
-r_refs("r_references.bib") # creates bib to cite the used R packages
-
 #install.packages("here")       # easy file referencing
 #install.packages("tidyverse")  # plotting and managing data
 #install.packages("lavaan")     # for structural equation modelling
