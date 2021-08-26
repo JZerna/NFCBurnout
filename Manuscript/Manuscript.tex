@@ -1,0 +1,1282 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  english,
+  man]{apa6}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={NFC and burnout in teachers - A replication and extension study},
+  pdfauthor={Josephine Zerna1, Nicole Engelmann2, Anja Strobel3, \& Alexander Strobel1},
+  pdflang={en-EN},
+  pdfkeywords={mediation, resources, demands, structural equation modelling, Covid-19},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+\shorttitle{NFC and burnout in teachers}
+\keywords{mediation, resources, demands, structural equation modelling, Covid-19\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\usepackage{csquotes}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[main=english]{babel}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\fi
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\title{NFC and burnout in teachers - A replication and extension study}
+\author{Josephine Zerna\textsuperscript{1}, Nicole Engelmann\textsuperscript{2}, Anja Strobel\textsuperscript{3}, \& Alexander Strobel\textsuperscript{1}}
+\date{}
+
+
+\authornote{
+
+Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+Enter author note here.
+
+The authors made the following contributions. Josephine Zerna: Conceptualization, Methodology, Formal analysis, Writing - original draft preparation, Writing - review \& editing; Nicole Engelmann: Conceptualization, Investigation, Writing - review \& editing; Anja Strobel: Conceptualization, Supervision, Methodology, Writing - review \& editing; Alexander Strobel: Conceptualization, Supervision, Methodology, Writing - review \& editing.
+
+Correspondence concerning this article should be addressed to Josephine Zerna, Zellescher Weg 17, 01069 Dresden, Germany. E-mail: \href{mailto:josephine.zerna@tu-dresden.de}{\nolinkurl{josephine.zerna@tu-dresden.de}}
+
+}
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} Faculty of Psychology, Technische Universität Dresden\\\textsuperscript{2} Faculty of Education, Technische Universität Dresden\\\textsuperscript{3} Institute of Psychology, Chemnitz University of Technology}
+
+\abstract{
+One or two sentences providing a \textbf{basic introduction} to the field, comprehensible to a scientist in any discipline.
+
+Two to three sentences of \textbf{more detailed background}, comprehensible to scientists in related disciplines.
+
+One sentence clearly stating the \textbf{general problem} being addressed by this particular study.
+
+One sentence summarizing the main result (with the words ``\textbf{here we show}'' or their equivalent).
+
+Two or three sentences explaining what the \textbf{main result} reveals in direct comparison to what was thought to be the case previously, or how the main result adds to previous knowledge.
+
+One or two sentences to put the results into a more \textbf{general context}.
+
+Two or three sentences to provide a \textbf{broader perspective}, readily comprehensible to a scientist in any discipline.
+}
+
+
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Need for Cognition (NFC) is a stable intrinsic motivation to seek out and especially to enjoy effortful cognitive activities (Cacioppo \& Petty, 1982).
+As it bridges the gap between cognition and motivation, NFC is considered to be an investment trait (Stumm \& Ackerman, 2013), and has come to the fore of psychological research in the last years.
+NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items (Cacioppo et al., 1984; Cacioppo \& Petty, 1982).
+While many studies have found positive associations of NFC with academic performance (Cazan \& Indreica, 2014; Elias \& Loomis, 2002; Grass et al., 2017; Lavrijsen et al., 2021; Zheng et al., 2020), recent investigations have also looked at NFC as a personal resource in academic and work contexts.
+Individuals high in NFC have more positive emotions at the end of the work day (Rosen et al., 2020), higher work motivation, perceive their roles as less ambiguous (Nowlin et al., 2017), are less likely to drop out of college (Grass et al., 2017; Klaczynski \& Fauth, 1996), and have less anxiety regarding their course work (Karagiannopoulou et al., 2020).
+These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical (Dragano et al., 2017; Steptoe \& Kivimäki, 2013) to psychological (Madsen et al., 2017; Maslach \& Leiter, 2016; Wiesner et al., 2005).
+
+One of these psychological consequences is burnout, a state of exhaustion and cynicism caused by long-term overstimulation in the workplace, which results in employees being dissatisfied, being sick more often, and performing poorly (Schaufeli \& Salanova, 2014).
+Burnout is especially prevalent in social jobs such as healthcare or teaching because the worker is always in conflict between advocating for their client and meeting the goals set by the employer (Gray-Stanley \& Muramatsu, 2011; Lloyd et al., 2002).
+Lackritz (2004) found that university teachers' burnout scores were higher the more students they had, the higher their teaching load was, and the more time they spent grading students' work.
+Burnout is most often assessed using the Maslach Burnout Inventory (MBI) (Maslach et al., 1997), a self-report questionnaire with three subscales: Emotional exhaustion, depersonalisation, and reduced self-efficacy.
+
+Individuals with high burnout scores are often passive copers, high in neuroticism, low in self-esteem, and have an external locus of control (Schaufeli \& Salanova, 2014).
+NFC on the other hand is negatively associated with those variables (Double \& Birney, 2016; Fleischhauer et al., 2019; Ghorbani et al., 2004; Grass et al., 2018; Osberg, 1987), suggesting that people high in NFC are less prone to experience burnout.
+This is supported by the findings that NFC is negatively associated with burnout scores in adults (Fleischhauer et al., 2019), students (Fleischhauer et al., 2019; Naderi et al., 2018), and teacher trainees (Grass et al., 2018).
+However, the associations of NFC with the sum score and the subscales of the MBI are not always consistent between these studies.
+This is likely not caused by inaccurate measurement, since the validity of both NCS (Bless et al., 1994; Osberg, 1987; Tolentino et al., 1990) and MBI (Kantas \& Vassilaki, 1997; Schaufeli et al., 2001; Valdivia Vázquez et al., 2021; \textbf{Brady?}) has been demonstrated in multiple studies.
+What is more likely is the influence of one or more other variables, moderating or mediating the association of NFC and burnout.
+Grass et al. (2018) investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by reappraisal, active and passive coping, but not by suppression or self-control.
+Reappraisal and suppression are two emotion regulation strategies, which refer to the cognitive reassessment of a stressor and the inhibition of emotional reactions, respectively (Gross, 1998).
+The findings by Grass et al. (2018) suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor.
+One goal of this paper is to replicate the findings of Grass et al. (2018) using a multiple mediation model on cross-sectional self-report data of teachers.
+We expect NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
+
+Furthermore, we would like to extend the analysis to other possible mediators.
+These mediators are motivated by our own recent survey of the literature on NFC and wellbeing, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree (Zerna et al., 2021).
+Only a balance of resources and demands results in personal wellbeing, while an imbalance threatens wellbeing, regardless of whether this imbalance is in favour of resources or demands (Dodge et al., 2012).
+Following the framework of Hobfoll (1989), resources can be objects with practical or status purpose, conditions like marriage or tenure, personality aspects like coping style, and energies such as time, money, or knowledge.
+In the case of NFC, resources are from the categories personality and energies: Personality, because NFC is a trait, encompassing a curious, analytic, and passionate approach to challenges, and energies, because individuals high in NFC have been coping actively all their life, which enriches their level of experience and knowledge in approaching challenges (Cacioppo et al., 1996).
+These personal resources matter with regards to stress assessment (how the situation is appraised) and with regards to both coping and recovery (Salanova et al., 2006).
+We would therefore like to investigate whether the association of NFC and burnout is mediated by different ratios of demands and resources; demands that are too high to be dealt with using one's personal resources (DTH), demands that are too low for one's personal resources (DTL), and a balanced fit of demands and resources (DRF).
+Using the same data as for the replication, we compute a structural equation model (SEM) to assess the influence of these mediators.
+Since individuals high in NFC are confident in their abilities (Bye \& Pushkar, 2009; Ghorbani et al., 2004; Heppner et al., 1983; Klaczynski \& Fauth, 1996), we expect NFC to be negatively associated with DTH, positively associated with DTL, and positively associated with DRF.
+And since burnout results from constant unpleasant activation by high demands, we expect it to be positively associated with DTH and negatively associated with DRF.
+However, we have no hypothesis regarding the association of DTL and burnout, because even though DTL is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom (Schaufeli \& Salanova, 2014).
+
+\emph{The Covid-19 pandemic has exacerbated the rising prevalence of burnout (Fröbe \& Franco, 2021).}
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study (Simmons et al., 2012).
+Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript are available at \url{https://osf.io/36ep9/}.
+
+\hypertarget{participants}{%
+\subsection{Participants}\label{participants}}
+
+Teachers were recruited via social media, emails to colleagues of N.E. and to Saxon schools with the request to pass on the information.
+All teachers were eligible, no payment was issued.
+Of the \(N=\) 278 participants, who started filling out the online survey, \(N=\) 180 (72.20\% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
+All of them were currently teaching at a primary, secondary, comprehensive, or vocational school.
+Data was collected between the 12th of June and the 24th of July 2020.
+At this point, schools had been switching between digital and hybrid forms of teaching for at least three months due to the Covid-19 pandemic, causing additional stress for many teachers.
+
+\hypertarget{material}{%
+\subsection{Material}\label{material}}
+
+All questionnaires were used in their German form. Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) (Büssing \& Perrar, 1992), NFC was assessed using the 16-item Need for Cognition Scale (NCS) (Bless et al., 1994), self-control was assessed using the 13-item Self-Control Scale (SCS) (Bertrams \& Dickhäuser, 2009), reappraisal and suppression were assessed using the 10-item Emotion Regulation Questionnaire (ERQ) (Abler \& Kessler, 2009), work satisfaction was assessed using the Allgemeine Arbeitszufriedenheit questionnaire (AAZ) (Fischer \& Lück, 2014).
+Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently have a higher workload.
+The Covid-19 items can be found in the \textbf{Supplementary Material}.
+The survey also included the Subjective Wellbeing Index of the World Health Organization (Brähler et al., 2007), which we will not analyze.
+Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar (Böhm-Kasper et al., 2001) cannot be used, so we cannot replicate the mediation of NFC and burnout by active and passive coping.
+
+\hypertarget{procedure}{%
+\subsection{Procedure}\label{procedure}}
+
+The questionnaires were provided online using SoSci Survey (Leiner, 2019).
+Participants were informed about aims and duration of the study and data security, then they provided demographic information, answered the questionnaires, and could optionally enter their email address to be informed about the results of the analysis of N.E.'s thesis.
+
+\hypertarget{data-analysis}{%
+\subsection{Data analysis}\label{data-analysis}}
+
+We used \emph{R Studio} (R Core Team, 2020; RStudio Team, 2020) with the main packages \emph{lavaan} (Rosseel, 2012) and \emph{psych} (Revelle, 2021) for all our analyses.
+
+\hypertarget{multiple-mediation-model}{%
+\subsubsection{\texorpdfstring{\emph{Multiple mediation model}}{Multiple mediation model}}\label{multiple-mediation-model}}
+
+Items were reverse coded according to the scale manuals.
+NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
+Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
+
+\hypertarget{structural-equation-model}{%
+\subsubsection{\texorpdfstring{\emph{Structural equation model}}{Structural equation model}}\label{structural-equation-model}}
+
+Items were reverse coded according to the scale manuals.
+The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. (2019), a method that is used in SEM when only relations between but not within constructs are of interest.
+Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
+Then, the items were randomly divided into four parcels and the average item loading per parcel was computed.
+This was repeated 10,000 times to find the parcelling choice with the smallest difference in average item loadings between parcels.
+The latent factor MBI was computed using the three subscales as indicators.
+For the demand-resource-ratios, we used three items from the work satisfaction scale each, without reverse coding them.
+The latent factor DTH was indicated by items 4, 8, and 9, DTL by items 12, 26, and 27, and DRF by items 17, 22, and 24.
+
+\hypertarget{exploratory-analysis}{%
+\subsubsection{\texorpdfstring{\emph{Exploratory analysis}}{Exploratory analysis}}\label{exploratory-analysis}}
+
+We preregistered two exploratory analyses.
+Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales (Grass et al., 2018; Naderi et al., 2018).
+And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}}
+\toprule
+  & MBI & MBI EE & MBI DP & MBI RPE & ERQ & ERQ S & ERQ R & SCS & NFC & COV\\
+\midrule
+\cellcolor{gray!6}{MBI Score} & \cellcolor{gray!6}{0.90(0.91)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+MBI EE & \textbf{0.925} & 0.91(0.92) &  &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{MBI DP} & \textbf{\cellcolor{gray!6}{0.748}} & \textbf{\cellcolor{gray!6}{0.535}} & \cellcolor{gray!6}{0.68(0.69)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+MBI RPE & \textbf{0.669} & \textbf{0.434} & \textbf{0.480} & 0.79(0.79) &  &  &  &  &  & \\
+\cellcolor{gray!6}{ERQ} & \cellcolor{gray!6}{-0.058} & \cellcolor{gray!6}{-0.059} & \cellcolor{gray!6}{0.043} & \cellcolor{gray!6}{-0.099} & \cellcolor{gray!6}{0.73(0.62)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\addlinespace
+ERQ Suppression & 0.053 & -0.000 & \em{0.166} & 0.076 & \textbf{0.592} & 0.75(0.79) &  &  &  & \\
+\cellcolor{gray!6}{ERQ Reappraisal} & \cellcolor{gray!6}{-0.101} & \cellcolor{gray!6}{-0.058} & \cellcolor{gray!6}{-0.061} & \em{\textbf{\cellcolor{gray!6}{-0.197}}} & \textbf{\cellcolor{gray!6}{0.715}} & \cellcolor{gray!6}{-0.075} & \cellcolor{gray!6}{0.84(0.84)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+Self Control & \textbf{-0.342} & \textbf{-0.283} & \textbf{-0.368} & \em{-0.185} & -0.034 & -0.121 & 0.050 & 0.85(0.86) &  & \\
+\cellcolor{gray!6}{NFC} & \textbf{\cellcolor{gray!6}{-0.248}} & \em{\textbf{\cellcolor{gray!6}{-0.196}}} & \em{\textbf{\cellcolor{gray!6}{-0.219}}} & \em{\textbf{\cellcolor{gray!6}{-0.213}}} & \cellcolor{gray!6}{-0.008} & \em{\cellcolor{gray!6}{-0.176}} & \em{\cellcolor{gray!6}{0.158}} & \em{\textbf{\cellcolor{gray!6}{0.216}}} & \cellcolor{gray!6}{0.89(0.89)} & \cellcolor{gray!6}{}\\
+Covid-19 Burden & \em{\textbf{0.241}} & \textbf{0.324} & 0.083 & 0.016 & -0.028 & 0.019 & -0.065 & -0.040 & 0.125 & 0.77(0.81)\\
+\bottomrule
+\multicolumn{11}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{11}{l}{\rule{0pt}{1em}MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \textbackslash{}\textbackslash{}textit\{N\} = 180. Italics indicate \textbackslash{}\textbackslash{}textit\{p\} < .05, italics and bold indicate \textbackslash{}\textbackslash{}textit\{p\} < .01, bold indicates \textbackslash{}\textbackslash{}textit\{p\} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.}\\
+\end{tabu}
+\endgroup{}
+
+\begin{verbatim}
+## lavaan 0.6-9 ended normally after 60 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        14
+##                                                       
+##   Number of observations                           180
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                                49.640
+##   Degrees of freedom                                10
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -2215.454
+##   Loglikelihood unrestricted model (H1)      -2215.454
+##                                                       
+##   Akaike (AIC)                                4458.908
+##   Bayesian (BIC)                              4503.609
+##   Sample-size adjusted Bayesian (BIC)         4459.271
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.000
+##   P-value RMSEA <= 0.05                             NA
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.000
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                            Bootstrap
+##   Number of requested bootstrap draws             2000
+##   Number of successful bootstrap draws            2000
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   scs ~                                                                 
+##     ncs       (a1)    0.162    0.051    3.154    0.002    0.055    0.258
+##   erq_reap ~                                                            
+##     ncs       (a2)    0.055    0.034    1.619    0.105   -0.011    0.120
+##   erq_supp ~                                                            
+##     ncs       (a3)   -0.063    0.025   -2.524    0.012   -0.113   -0.017
+##   mbi_rpe ~                                                             
+##     scs       (b1)   -0.069    0.030   -2.318    0.020   -0.126   -0.009
+##     erq_reap  (b2)   -0.094    0.036   -2.652    0.008   -0.159   -0.023
+##     erq_supp  (b3)    0.002    0.051    0.043    0.966   -0.094    0.106
+##     ncs        (c)   -0.051    0.021   -2.473    0.013   -0.089   -0.008
+##    Std.lv  Std.all
+##                   
+##     0.162    0.271
+##                   
+##     0.055    0.123
+##                   
+##    -0.063   -0.182
+##                   
+##    -0.069   -0.169
+##    -0.094   -0.173
+##     0.002    0.003
+##    -0.051   -0.208
+## 
+## Covariances:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##  .scs ~~                                                                
+##    .erq_reap          1.393    3.526    0.395    0.693   -5.236    8.427
+##    .erq_supp         -3.166    2.802   -1.130    0.258   -8.806    2.383
+##  .erq_reap ~~                                                           
+##    .erq_supp         -0.257    2.351   -0.109    0.913   -4.838    4.416
+##    Std.lv  Std.all
+##                   
+##     1.393    0.028
+##    -3.166   -0.082
+##                   
+##    -0.257   -0.009
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##    .scs              65.382    6.206   10.536    0.000   52.369   76.607
+##    .erq_reap         38.748    4.220    9.182    0.000   30.312   47.219
+##    .erq_supp         22.604    1.897   11.914    0.000   18.685   26.236
+##    .mbi_rpe          10.143    1.297    7.821    0.000    7.457   12.428
+##    Std.lv  Std.all
+##    65.382    0.927
+##    38.748    0.985
+##    22.604    0.967
+##    10.143    0.866
+## 
+## R-Square:
+##                    Estimate
+##     scs               0.073
+##     erq_reap          0.015
+##     erq_supp          0.033
+##     mbi_rpe           0.134
+## 
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##     Indirect1        -0.011    0.007   -1.695    0.090   -0.026   -0.001
+##     Indirect2        -0.005    0.004   -1.429    0.153   -0.013    0.001
+##     Indirect3        -0.000    0.004   -0.039    0.969   -0.008    0.006
+##     Contrast         -0.006    0.009   -0.653    0.514   -0.024    0.011
+##     Total            -0.067    0.023   -2.957    0.003   -0.111   -0.021
+##    Std.lv  Std.all
+##    -0.011   -0.046
+##    -0.005   -0.021
+##    -0.000   -0.001
+##    -0.006   -0.024
+##    -0.067   -0.276
+\end{verbatim}
+
+\begin{verbatim}
+## lavaan 0.6-9 ended normally after 100 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        39
+##                                                       
+##   Number of observations                           180
+##                                                       
+## Model Test User Model:
+##                                                Standard      Robust
+##   Test Statistic                                395.419     399.077
+##   Degrees of freedom                                 97          97
+##   P-value (Chi-square)                            0.000       0.000
+##   Scaling correction factor                                   0.991
+##        Yuan-Bentler correction (Mplus variant)                     
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              1504.484    1461.750
+##   Degrees of freedom                               120         120
+##   P-value                                        0.000       0.000
+##   Scaling correction factor                                  1.029
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.784       0.775
+##   Tucker-Lewis Index (TLI)                       0.733       0.721
+##                                                                   
+##   Robust Comparative Fit Index (CFI)                         0.783
+##   Robust Tucker-Lewis Index (TLI)                            0.732
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -5189.293   -5189.293
+##   Scaling correction factor                                  1.231
+##       for the MLR correction                                      
+##   Loglikelihood unrestricted model (H1)      -4991.583   -4991.583
+##   Scaling correction factor                                  1.060
+##       for the MLR correction                                      
+##                                                                   
+##   Akaike (AIC)                               10456.585   10456.585
+##   Bayesian (BIC)                             10581.111   10581.111
+##   Sample-size adjusted Bayesian (BIC)        10457.597   10457.597
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.131       0.132
+##   90 Percent confidence interval - lower         0.117       0.118
+##   90 Percent confidence interval - upper         0.144       0.145
+##   P-value RMSEA <= 0.05                          0.000       0.000
+##                                                                   
+##   Robust RMSEA                                               0.131
+##   90 Percent confidence interval - lower                     0.118
+##   90 Percent confidence interval - upper                     0.144
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.173       0.173
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Sandwich
+##   Information bread                           Observed
+##   Observed information based on                Hessian
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   NFC =~                                                                
+##     nfc1              1.000                               1.000    1.000
+##     nfc2              1.002    0.112    8.931    0.000    0.782    1.222
+##     nfc3              1.059    0.087   12.235    0.000    0.889    1.228
+##     nfc4              1.035    0.103   10.004    0.000    0.833    1.238
+##   DTH =~                                                                
+##     dth1              1.000                               1.000    1.000
+##     dth2              0.916    0.119    7.672    0.000    0.682    1.150
+##     dth3              1.668    0.280    5.967    0.000    1.120    2.216
+##   DTL =~                                                                
+##     dtl1              1.000                               1.000    1.000
+##     dtl2              1.755    0.318    5.525    0.000    1.132    2.377
+##     dtl3              1.987    0.425    4.672    0.000    1.154    2.821
+##   DRF =~                                                                
+##     drf1              1.000                               1.000    1.000
+##     drf2              0.886    0.144    6.151    0.000    0.604    1.168
+##     drf3              0.790    0.130    6.061    0.000    0.534    1.045
+##   MBI =~                                                                
+##     mbi_ee            1.000                               1.000    1.000
+##     mbi_dp            0.231    0.042    5.516    0.000    0.149    0.314
+##     mbi_rpe           0.249    0.049    5.047    0.000    0.152    0.345
+##    Std.lv  Std.all
+##                   
+##     3.213    0.759
+##     3.220    0.771
+##     3.402    0.869
+##     3.327    0.838
+##                   
+##     0.598    0.541
+##     0.548    0.553
+##     0.998    0.848
+##                   
+##     0.409    0.483
+##     0.717    0.711
+##     0.813    0.883
+##                   
+##     0.586    0.791
+##     0.519    0.820
+##     0.463    0.597
+##                   
+##     7.122    0.873
+##     1.648    0.523
+##     1.771    0.534
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   DTH ~                                                                 
+##     NFC               0.042    0.020    2.154    0.031    0.004    0.081
+##   DTL ~                                                                 
+##     NFC               0.023    0.015    1.522    0.128   -0.007    0.052
+##   DRF ~                                                                 
+##     NFC              -0.070    0.020   -3.488    0.000   -0.110   -0.031
+##   MBI ~                                                                 
+##     NFC               0.002    0.144    0.014    0.989   -0.281    0.285
+##     DTH             -10.624    2.229   -4.767    0.000  -14.991   -6.256
+##     DTL              -1.838    1.428   -1.287    0.198   -4.637    0.960
+##     DRF               4.036    1.080    3.736    0.000    1.918    6.153
+##    Std.lv  Std.all
+##                   
+##     0.228    0.228
+##                   
+##     0.180    0.180
+##                   
+##    -0.386   -0.386
+##                   
+##     0.001    0.001
+##    -0.892   -0.892
+##    -0.106   -0.106
+##     0.332    0.332
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##    .nfc1              7.596    1.125    6.753    0.000    5.391    9.801
+##    .nfc2              7.079    0.940    7.530    0.000    5.237    8.922
+##    .nfc3              3.748    0.729    5.139    0.000    2.319    5.178
+##    .nfc4              4.674    0.967    4.834    0.000    2.779    6.569
+##    .dth1              0.866    0.107    8.079    0.000    0.656    1.077
+##    .dth2              0.681    0.092    7.425    0.000    0.501    0.860
+##    .dth3              0.390    0.089    4.365    0.000    0.215    0.565
+##    .dtl1              0.549    0.093    5.884    0.000    0.366    0.732
+##    .dtl2              0.504    0.087    5.820    0.000    0.334    0.674
+##    .dtl3              0.186    0.097    1.911    0.056   -0.005    0.377
+##    .drf1              0.206    0.048    4.276    0.000    0.112    0.300
+##    .drf2              0.132    0.036    3.649    0.000    0.061    0.203
+##    .drf3              0.387    0.057    6.835    0.000    0.276    0.498
+##    .mbi_ee           15.839    5.619    2.819    0.005    4.826   26.852
+##    .mbi_dp            7.207    0.920    7.835    0.000    5.404    9.010
+##    .mbi_rpe           7.851    1.017    7.722    0.000    5.858    9.843
+##     NFC              10.323    2.212    4.666    0.000    5.987   14.659
+##    .DTH               0.339    0.100    3.397    0.001    0.143    0.535
+##    .DTL               0.162    0.058    2.779    0.005    0.048    0.276
+##    .DRF               0.293    0.083    3.522    0.000    0.130    0.455
+##    .MBI               0.949    4.185    0.227    0.821   -7.253    9.152
+##    Std.lv  Std.all
+##     7.596    0.424
+##     7.079    0.406
+##     3.748    0.245
+##     4.674    0.297
+##     0.866    0.708
+##     0.681    0.694
+##     0.390    0.281
+##     0.549    0.767
+##     0.504    0.495
+##     0.186    0.220
+##     0.206    0.375
+##     0.132    0.328
+##     0.387    0.643
+##    15.839    0.238
+##     7.207    0.726
+##     7.851    0.715
+##     1.000    1.000
+##     0.948    0.948
+##     0.968    0.968
+##     0.851    0.851
+##     0.019    0.019
+## 
+## R-Square:
+##                    Estimate
+##     nfc1              0.576
+##     nfc2              0.594
+##     nfc3              0.755
+##     nfc4              0.703
+##     dth1              0.292
+##     dth2              0.306
+##     dth3              0.719
+##     dtl1              0.233
+##     dtl2              0.505
+##     dtl3              0.780
+##     drf1              0.625
+##     drf2              0.672
+##     drf3              0.357
+##     mbi_ee            0.762
+##     mbi_dp            0.274
+##     mbi_rpe           0.285
+##     DTH               0.052
+##     DTL               0.032
+##     DRF               0.149
+##     MBI               0.981
+\end{verbatim}
+
+\begin{verbatim}
+## lavaan 0.6-9 ended normally after 125 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        34
+##                                                       
+##   Number of observations                           180
+##                                                       
+## Model Test User Model:
+##                                                Standard      Robust
+##   Test Statistic                                250.937     247.820
+##   Degrees of freedom                                 71          71
+##   P-value (Chi-square)                            0.000       0.000
+##   Scaling correction factor                                   1.013
+##        Yuan-Bentler correction (Mplus variant)                     
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              1161.800    1112.062
+##   Degrees of freedom                                91          91
+##   P-value                                        0.000       0.000
+##   Scaling correction factor                                  1.045
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.832       0.827
+##   Tucker-Lewis Index (TLI)                       0.785       0.778
+##                                                                   
+##   Robust Comparative Fit Index (CFI)                         0.832
+##   Robust Tucker-Lewis Index (TLI)                            0.785
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -4173.205   -4173.205
+##   Scaling correction factor                                  1.224
+##       for the MLR correction                                      
+##   Loglikelihood unrestricted model (H1)      -4047.737   -4047.737
+##   Scaling correction factor                                  1.081
+##       for the MLR correction                                      
+##                                                                   
+##   Akaike (AIC)                                8414.410    8414.410
+##   Bayesian (BIC)                              8522.971    8522.971
+##   Sample-size adjusted Bayesian (BIC)         8415.293    8415.293
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.119       0.118
+##   90 Percent confidence interval - lower         0.103       0.102
+##   90 Percent confidence interval - upper         0.135       0.134
+##   P-value RMSEA <= 0.05                          0.000       0.000
+##                                                                   
+##   Robust RMSEA                                               0.118
+##   90 Percent confidence interval - lower                     0.103
+##   90 Percent confidence interval - upper                     0.135
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.165       0.165
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Sandwich
+##   Information bread                           Observed
+##   Observed information based on                Hessian
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   NFC =~                                                                
+##     nfc1              1.000                               1.000    1.000
+##     nfc2              1.013    0.112    9.043    0.000    0.793    1.232
+##     nfc3              1.062    0.087   12.179    0.000    0.891    1.232
+##     nfc4              1.045    0.104   10.045    0.000    0.841    1.249
+##   DTH =~                                                                
+##     dth1              1.000                               1.000    1.000
+##     dth2              1.016    0.159    6.405    0.000    0.705    1.326
+##     dth3              0.857    0.132    6.511    0.000    0.599    1.115
+##   DTL =~                                                                
+##     dtl1              1.000                               1.000    1.000
+##     dtl2              1.759    0.327    5.377    0.000    1.118    2.401
+##     dtl3              1.836    0.333    5.514    0.000    1.183    2.488
+##   DRF =~                                                                
+##     drf1              1.000                               1.000    1.000
+##     drf2              0.878    0.126    6.987    0.000    0.632    1.124
+##     drf3              0.776    0.124    6.243    0.000    0.532    1.020
+##   RPE =~                                                                
+##     mbi_rpe           1.000                               1.000    1.000
+##    Std.lv  Std.all
+##                   
+##     3.195    0.755
+##     3.236    0.775
+##     3.392    0.867
+##     3.338    0.841
+##                   
+##     0.785    0.709
+##     0.797    0.805
+##     0.672    0.571
+##                   
+##     0.424    0.500
+##     0.745    0.738
+##     0.778    0.845
+##                   
+##     0.590    0.796
+##     0.518    0.817
+##     0.458    0.591
+##                   
+##     3.297    1.000
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   DTH ~                                                                 
+##     NFC               0.054    0.024    2.245    0.025    0.007    0.101
+##   DTL ~                                                                 
+##     NFC               0.025    0.015    1.637    0.102   -0.005    0.055
+##   DRF ~                                                                 
+##     NFC              -0.071    0.020   -3.564    0.000   -0.110   -0.032
+##   RPE ~                                                                 
+##     NFC              -0.051    0.085   -0.597    0.551   -0.218    0.116
+##     DTH              -0.497    0.366   -1.357    0.175   -1.214    0.221
+##     DTL              -0.845    0.653   -1.293    0.196   -2.125    0.436
+##     DRF               3.161    0.439    7.196    0.000    2.300    4.022
+##    Std.lv  Std.all
+##                   
+##     0.220    0.220
+##                   
+##     0.189    0.189
+##                   
+##    -0.385   -0.385
+##                   
+##    -0.049   -0.049
+##    -0.118   -0.118
+##    -0.109   -0.109
+##     0.566    0.566
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##    .nfc1              7.709    1.135    6.793    0.000    5.485    9.934
+##    .nfc2              6.974    0.930    7.498    0.000    5.151    8.797
+##    .nfc3              3.815    0.741    5.148    0.000    2.363    5.268
+##    .nfc4              4.597    0.973    4.723    0.000    2.689    6.504
+##    .dth1              0.608    0.113    5.374    0.000    0.386    0.830
+##    .dth2              0.345    0.105    3.289    0.001    0.140    0.551
+##    .dth3              0.933    0.123    7.613    0.000    0.693    1.174
+##    .dtl1              0.537    0.092    5.845    0.000    0.357    0.717
+##    .dtl2              0.464    0.077    5.990    0.000    0.312    0.615
+##    .dtl3              0.242    0.075    3.241    0.001    0.096    0.388
+##    .drf1              0.201    0.040    5.021    0.000    0.123    0.280
+##    .drf2              0.133    0.032    4.209    0.000    0.071    0.195
+##    .drf3              0.391    0.059    6.605    0.000    0.275    0.508
+##    .mbi_rpe           0.000                               0.000    0.000
+##     NFC              10.210    2.189    4.665    0.000    5.920   14.500
+##    .DTH               0.586    0.128    4.583    0.000    0.336    0.837
+##    .DTL               0.173    0.058    2.998    0.003    0.060    0.286
+##    .DRF               0.297    0.077    3.868    0.000    0.146    0.447
+##    .RPE               6.568    0.876    7.498    0.000    4.852    8.285
+##    Std.lv  Std.all
+##     7.709    0.430
+##     6.974    0.400
+##     3.815    0.249
+##     4.597    0.292
+##     0.608    0.497
+##     0.345    0.352
+##     0.933    0.674
+##     0.537    0.750
+##     0.464    0.455
+##     0.242    0.286
+##     0.201    0.366
+##     0.133    0.332
+##     0.391    0.651
+##     0.000    0.000
+##     1.000    1.000
+##     0.952    0.952
+##     0.964    0.964
+##     0.852    0.852
+##     0.604    0.604
+## 
+## R-Square:
+##                    Estimate
+##     nfc1              0.570
+##     nfc2              0.600
+##     nfc3              0.751
+##     nfc4              0.708
+##     dth1              0.503
+##     dth2              0.648
+##     dth3              0.326
+##     dtl1              0.250
+##     dtl2              0.545
+##     dtl3              0.714
+##     drf1              0.634
+##     drf2              0.668
+##     drf3              0.349
+##     mbi_rpe           1.000
+##     DTH               0.048
+##     DTL               0.036
+##     DRF               0.148
+##     RPE               0.396
+\end{verbatim}
+
+\begin{verbatim}
+## lavaan 0.6-9 ended normally after 154 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        42
+##                                                       
+##   Number of observations                           180
+##                                                       
+## Model Test User Model:
+##                                                Standard      Robust
+##   Test Statistic                                430.369     430.449
+##   Degrees of freedom                                111         111
+##   P-value (Chi-square)                            0.000       0.000
+##   Scaling correction factor                                   1.000
+##        Yuan-Bentler correction (Mplus variant)                     
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              1568.311    1513.167
+##   Degrees of freedom                               136         136
+##   P-value                                        0.000       0.000
+##   Scaling correction factor                                  1.036
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.777       0.768
+##   Tucker-Lewis Index (TLI)                       0.727       0.716
+##                                                                   
+##   Robust Comparative Fit Index (CFI)                         0.776
+##   Robust Tucker-Lewis Index (TLI)                            0.726
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -5691.634   -5691.634
+##   Scaling correction factor                                  1.220
+##       for the MLR correction                                      
+##   Loglikelihood unrestricted model (H1)      -5476.449   -5476.449
+##   Scaling correction factor                                  1.060
+##       for the MLR correction                                      
+##                                                                   
+##   Akaike (AIC)                               11467.268   11467.268
+##   Bayesian (BIC)                             11601.372   11601.372
+##   Sample-size adjusted Bayesian (BIC)        11468.358   11468.358
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.126       0.126
+##   90 Percent confidence interval - lower         0.114       0.114
+##   90 Percent confidence interval - upper         0.139       0.139
+##   P-value RMSEA <= 0.05                          0.000       0.000
+##                                                                   
+##   Robust RMSEA                                               0.126
+##   90 Percent confidence interval - lower                     0.114
+##   90 Percent confidence interval - upper                     0.139
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.170       0.170
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Sandwich
+##   Information bread                           Observed
+##   Observed information based on                Hessian
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   NFC =~                                                                
+##     nfc1              1.000                               1.000    1.000
+##     nfc2              1.003    0.113    8.909    0.000    0.783    1.224
+##     nfc3              1.060    0.087   12.195    0.000    0.889    1.230
+##     nfc4              1.036    0.104    9.982    0.000    0.833    1.239
+##   DTH =~                                                                
+##     dth1              1.000                               1.000    1.000
+##     dth2              0.886    0.108    8.217    0.000    0.675    1.097
+##     dth3              1.500    0.254    5.909    0.000    1.003    1.998
+##   DTL =~                                                                
+##     dtl1              1.000                               1.000    1.000
+##     dtl2              1.756    0.318    5.521    0.000    1.133    2.380
+##     dtl3              1.980    0.421    4.700    0.000    1.154    2.806
+##   DRF =~                                                                
+##     drf1              1.000                               1.000    1.000
+##     drf2              0.882    0.143    6.170    0.000    0.602    1.162
+##     drf3              0.785    0.131    5.983    0.000    0.528    1.042
+##   MBI =~                                                                
+##     mbi_ee            1.000                               1.000    1.000
+##     mbi_dp            0.237    0.046    5.115    0.000    0.146    0.328
+##     mbi_rpe           0.255    0.054    4.728    0.000    0.149    0.361
+##   COVB =~                                                               
+##     covb              1.000                               1.000    1.000
+##    Std.lv  Std.all
+##                   
+##     3.211    0.759
+##     3.222    0.771
+##     3.403    0.870
+##     3.327    0.839
+##                   
+##     0.643    0.582
+##     0.570    0.576
+##     0.965    0.820
+##                   
+##     0.409    0.484
+##     0.719    0.712
+##     0.811    0.881
+##                   
+##     0.588    0.793
+##     0.519    0.818
+##     0.462    0.595
+##                   
+##     6.987    0.860
+##     1.656    0.527
+##     1.781    0.539
+##                   
+##     4.272    1.000
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   DTH ~                                                                 
+##     NFC               0.037    0.022    1.729    0.084   -0.005    0.080
+##   DTL ~                                                                 
+##     NFC               0.023    0.015    1.515    0.130   -0.007    0.052
+##   DRF ~                                                                 
+##     NFC              -0.070    0.020   -3.479    0.001   -0.110   -0.031
+##   COVB ~                                                                
+##     DTH              -3.001    0.544   -5.518    0.000   -4.067   -1.935
+##   MBI ~                                                                 
+##     NFC              -0.009    0.149   -0.058    0.954   -0.301    0.284
+##     DTH             -10.345    2.372   -4.362    0.000  -14.994   -5.696
+##     DTL              -1.733    1.436   -1.206    0.228   -4.547    1.082
+##     DRF               4.266    1.160    3.678    0.000    1.992    6.539
+##     COVB             -0.224    0.130   -1.727    0.084   -0.478    0.030
+##    Std.lv  Std.all
+##                   
+##     0.187    0.187
+##                   
+##     0.179    0.179
+##                   
+##    -0.384   -0.384
+##                   
+##    -0.452   -0.452
+##                   
+##    -0.004   -0.004
+##    -0.953   -0.953
+##    -0.102   -0.102
+##     0.359    0.359
+##    -0.137   -0.137
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##    .nfc1              7.608    1.127    6.751    0.000    5.399    9.816
+##    .nfc2              7.066    0.943    7.494    0.000    5.218    8.915
+##    .nfc3              3.738    0.729    5.125    0.000    2.308    5.167
+##    .nfc4              4.673    0.966    4.835    0.000    2.779    6.567
+##    .dth1              0.810    0.103    7.839    0.000    0.608    1.013
+##    .dth2              0.656    0.094    7.005    0.000    0.472    0.839
+##    .dth3              0.454    0.103    4.421    0.000    0.252    0.655
+##    .dtl1              0.549    0.093    5.892    0.000    0.366    0.731
+##    .dtl2              0.502    0.086    5.825    0.000    0.333    0.671
+##    .dtl3              0.189    0.096    1.961    0.050    0.000    0.378
+##    .drf1              0.204    0.048    4.231    0.000    0.109    0.298
+##    .drf2              0.133    0.036    3.686    0.000    0.062    0.204
+##    .drf3              0.388    0.057    6.825    0.000    0.277    0.500
+##    .mbi_ee           17.173    6.430    2.671    0.008    4.570   29.776
+##    .mbi_dp            7.119    0.925    7.697    0.000    5.306    8.932
+##    .mbi_rpe           7.740    1.033    7.494    0.000    5.716    9.764
+##    .covb              0.000                               0.000    0.000
+##     NFC              10.312    2.212    4.661    0.000    5.975   14.648
+##    .DTH               0.400    0.111    3.584    0.000    0.181    0.618
+##    .DTL               0.162    0.058    2.784    0.005    0.048    0.276
+##    .DRF               0.295    0.084    3.508    0.000    0.130    0.460
+##    .MBI              -0.334    4.157   -0.080    0.936   -8.481    7.813
+##    .COVB             14.522    1.668    8.706    0.000   11.252   17.791
+##    Std.lv  Std.all
+##     7.608    0.425
+##     7.066    0.405
+##     3.738    0.244
+##     4.673    0.297
+##     0.810    0.662
+##     0.656    0.669
+##     0.454    0.327
+##     0.549    0.766
+##     0.502    0.493
+##     0.189    0.224
+##     0.204    0.371
+##     0.133    0.331
+##     0.388    0.645
+##    17.173    0.260
+##     7.119    0.722
+##     7.740    0.709
+##     0.000    0.000
+##     1.000    1.000
+##     0.965    0.965
+##     0.968    0.968
+##     0.853    0.853
+##    -0.007   -0.007
+##     0.796    0.796
+## 
+## R-Square:
+##                    Estimate
+##     nfc1              0.575
+##     nfc2              0.595
+##     nfc3              0.756
+##     nfc4              0.703
+##     dth1              0.338
+##     dth2              0.331
+##     dth3              0.673
+##     dtl1              0.234
+##     dtl2              0.507
+##     dtl3              0.776
+##     drf1              0.629
+##     drf2              0.669
+##     drf3              0.355
+##     mbi_ee            0.740
+##     mbi_dp            0.278
+##     mbi_rpe           0.291
+##     covb              1.000
+##     DTH               0.035
+##     DTL               0.032
+##     DRF               0.147
+##     MBI                  NA
+##     COVB              0.204
+\end{verbatim}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-Abler2009}{}%
+Abler, B., \& Kessler, H. (2009). Emotion {Regulation} {Questionnaire} -- {Eine} deutschsprachige {Fassung} des {ERQ} von {Gross} und {John}. \emph{Diagnostica}, \emph{55}(3), 144--152. \url{https://doi.org/10.1026/0012-1924.55.3.144}
+
+\leavevmode\hypertarget{ref-Bertrams2009a}{}%
+Bertrams, A., \& Dickhäuser, O. (2009). Messung dispositioneller {Selbstkontroll}-{Kapazität}. \emph{Diagnostica}, \emph{55}(1), 2--10. \url{https://doi.org/10.1026/0012-1924.55.1.2}
+
+\leavevmode\hypertarget{ref-Bless1994}{}%
+Bless, H., Wänke, M., Bohner, G., Fellhauer, R. F., \& Schwarz, N. (1994). Need for {Cognition}: {Eine} {Skala} zur {Erfassung} von {Engagement} und {Freude} bei {Denkaufgaben}. \emph{Zeitschrift für Sozialpsychologie}, \emph{25}. \url{https://doi.org/1779110}
+
+\leavevmode\hypertarget{ref-BoehmKasper2001}{}%
+Böhm-Kasper, O., Bos, O., Körner, S. C., \& Weishaupt, H. (2001). {EBI}. {Das} {Erfurter} {Belastungsinventar} zur {Erfassung} von {Belastung} und {Beanspruchung} von {Lehrern} und {Schülern} am {Gymnasium}. \emph{Schulforschung Und Schulentwicklung. Aktuelle Forschungsbeiträge}, \emph{14}, 35--66. \url{https://pub.uni-bielefeld.de/record/1858836}
+
+\leavevmode\hypertarget{ref-Braehler2007}{}%
+Brähler, E., Mühlan, H., Albani, C., \& Schmidt, S. (2007). Teststatistische {Prüfung} und {Normierung} der deutschen {Versionen} des {EUROHIS}-{QOL} {Lebensqualität}-{Index} und des {WHO}-5 {Wohlbefindens}-{Index}. \emph{Diagnostica}, \emph{53}(2), 83--96. \url{https://doi.org/10.1026/0012-1924.53.2.83}
+
+\leavevmode\hypertarget{ref-Buessing1992}{}%
+Büssing, A., \& Perrar, K.-M. (1992). Die {Messung} von {Burnout}. {Untersuchung} einer deutschen {Fassung} des {Maslach} {Burnout} {Inventory} ({MBI}-{D}). {[}{Measuring} burnout: {A} study of a {German} version of the {Maslach} {Burnout} {Inventory} ({MBI}-{D}).{]}. \emph{Diagnostica}, \emph{38}(4), 328--353.
+
+\leavevmode\hypertarget{ref-Bye2009}{}%
+Bye, D., \& Pushkar, D. (2009). How need for cognition and perceived control are differentially linked to emotional outcomes in the transition to retirement. \emph{Motivation and Emotion}, \emph{33}(3), 320--332. \url{https://doi.org/10.1007/s11031-009-9135-3}
+
+\leavevmode\hypertarget{ref-Cacioppo1982}{}%
+Cacioppo, J. T., \& Petty, R. E. (1982). The {Need} for {Cognition}. \emph{Journal of Personality and Social Psychology}, \emph{42}(1), 116--131. \url{https://doi.org/10.1037//0022-3514.42.1.116}
+
+\leavevmode\hypertarget{ref-Cacioppo1996}{}%
+Cacioppo, J. T., Petty, R. E., Feinstein, J. A., \& Jarvis, W. B. G. (1996). Dispositional differences in cognitive motivation: {The} life and times of individuals varying in need for cognition. \emph{Psychological Bulletin}, \emph{119}(2), 197--253. \url{https://doi.org/10.1037/0033-2909.119.2.197}
+
+\leavevmode\hypertarget{ref-Cacioppo1984}{}%
+Cacioppo, J. T., Petty, R. E., \& Kao, C. F. (1984). The {Efficient} {Assessment} of {Need} for {Cognition}. \emph{Journal of Personality Assessment}, \emph{48}(3), 306--307. \url{https://doi.org/10.1207/s15327752jpa4803_13}
+
+\leavevmode\hypertarget{ref-Cazan2014}{}%
+Cazan, A.-M., \& Indreica, S. E. (2014). Need for {Cognition} and {Approaches} to {Learning} among {University} {Students}. \emph{Procedia - Social and Behavioral Sciences}, \emph{127}, 134--138. \url{https://doi.org/10.1016/j.sbspro.2014.03.227}
+
+\leavevmode\hypertarget{ref-Dodge2012}{}%
+Dodge, R., Daly, A. P., Huyton, J., \& Sanders, L. D. (2012). The challenge of defining wellbeing. \emph{International Journal of Wellbeing}, \emph{2}(3). \url{https://www.internationaljournalofwellbeing.org/index.php/ijow/article/view/89}
+
+\leavevmode\hypertarget{ref-Double2016}{}%
+Double, K. S., \& Birney, D. P. (2016). The effects of personality and metacognitive beliefs on cognitive training adherence and performance. \emph{Personality and Individual Differences}, \emph{102}, 7--12. \url{https://doi.org/10.1016/j.paid.2016.04.101}
+
+\leavevmode\hypertarget{ref-Dragano2017}{}%
+Dragano, N., Siegrist, J., Nyberg, S. T., Lunau, T., Fransson, E. I., Alfredsson, L., Bjorner, J. B., Borritz, M., Burr, H., Erbel, R., Fahlén, G., Goldberg, M., Hamer, M., Heikkilä, K., Jöckel, K.-H., Knutsson, A., Madsen, I. E. H., Nielsen, M. L., Nordin, M., \ldots{} Kivimäki, M. (2017). Effort{{}}reward imbalance at work and incident coronary heart disease. \emph{Epidemiology}, \emph{28}(4), 619--626. \url{https://doi.org/10.1097/ede.0000000000000666}
+
+\leavevmode\hypertarget{ref-Elias2002}{}%
+Elias, S. M., \& Loomis, R. J. (2002). Utilizing {Need} for {Cognition} and {Perceived} {Self}-{Efficacy} to {Predict} {Academic} {Performance1}. \emph{Journal of Applied Social Psychology}, \emph{32}(8), 1687--1702. \url{https://doi.org/10.1111/j.1559-1816.2002.tb02770.x}
+
+\leavevmode\hypertarget{ref-Fischer2014}{}%
+Fischer, L., \& Lück, H. E. (2014). Allgemeine {Arbeitszufriedenheit}. \emph{Zusammenstellung Sozialwissenschaftlicher Items Und Skalen (ZIS)}. \url{https://doi.org/10.6102/ZIS1}
+
+\leavevmode\hypertarget{ref-Fleischhauer2019}{}%
+Fleischhauer, M., Miller, R., Wekenborg, M. K., Penz, M., Kirschbaum, C., \& Enge, S. (2019). Thinking against burnout? {An} individual's tendency to engage in and enjoy thinking as a potential resilience factor of burnout symptoms and burnout-related impairment in executive functioning. \emph{Frontiers in Psychology}, \emph{10}, 420. \url{https://doi.org/10.3389/fpsyg.2019.00420}
+
+\leavevmode\hypertarget{ref-Froebe2021}{}%
+Fröbe, A., \& Franco, P. (2021). Burnout among health care professionals in {COVID19} pandemic. \emph{Libri Oncologici}, 40--42. \url{https://pesquisa.bvsalud.org/global-literature-on-novel-coronavirus-2019-ncov/resource/pt/covidwho-1282947?lang=en}
+
+\leavevmode\hypertarget{ref-Ghorbani2004}{}%
+Ghorbani, N., Davison, H. K., Bing, M. N., Watson, P. J., \& Krauss, S. W. (2004). Private {Self}-{Consciousness} factors: {Relationships} {With} {Need} for {Cognition}, locus of control, and obsessive thinking in {Iran} and the {United} {States}. \emph{Journal of Social Psychology}, \emph{144}(4), 359--372. \url{http://search.ebscohost.com/login.aspx?direct=true\&db=a9h\&AN=14015824\&site=ehost-live}
+
+\leavevmode\hypertarget{ref-Grass2018}{}%
+Grass, J., John, N., \& Strobel, A. (2018). The joy of thinking as the key to success? {The} importance of {Need} for {Cognition} for subjective experience and achievement in academic studies. \emph{Zeitschrift Fur Padagogische Psychologie}, \emph{32}(3), 145--154. \url{https://doi.org/10.1024/1010-0652/a000222}
+
+\leavevmode\hypertarget{ref-Grass2019}{}%
+Grass, J., Krieger, F., Paulus, P., Greiff, S., Strobel, A., \& Strobel, A. (2019). Thinking in action: {Need} for {Cognition} predicts {Self}-{Control} together with {Action} {Orientation}. \emph{PLOS ONE}, \emph{14}(8), e0220282. \url{https://doi.org/10.1371/journal.pone.0220282}
+
+\leavevmode\hypertarget{ref-Grass2017}{}%
+Grass, J., Strobel, A., \& Strobel, A. (2017). Cognitive investments in academic success: {The} role of {Need} for {Cognition} at university. \emph{Frontiers in Psychology}, \emph{8}. \url{https://doi.org/10.3389/fpsyg.2017.00790}
+
+\leavevmode\hypertarget{ref-GrayStanley2011}{}%
+Gray-Stanley, J. A., \& Muramatsu, N. (2011). Work stress, burnout, and social and personal resources among direct care workers. \emph{Research in Developmental Disabilities}, \emph{32}(3), 1065--1074. \url{https://doi.org/10.1016/j.ridd.2011.01.025}
+
+\leavevmode\hypertarget{ref-Gross1998a}{}%
+Gross, J. J. (1998). Antecedent- and response-focused emotion regulation: {Divergent} consequences for experience, expression, and physiology. \emph{Journal of Personality and Social Psychology}, \emph{74}(1), 224--237. \url{https://doi.org/10.1037//0022-3514.74.1.224}
+
+\leavevmode\hypertarget{ref-Heppner1983}{}%
+Heppner, P. P., Reeder, B. L., \& Larson, L. M. (1983). Cognitive variables associated with personal problem-solving appraisal: {Implications} for counseling. \emph{Journal of Counseling Psychology}, \emph{30}(4), 537--545. \url{https://doi.org/10.1037/0022-0167.30.4.537}
+
+\leavevmode\hypertarget{ref-Hobfoll1989}{}%
+Hobfoll, S. E. (1989). Conservation of resources: {A} new attempt at conceptualizing stress. \emph{American Psychologist}, \emph{44}(3), 513--524. \url{https://doi.org/10.1037/0003-066X.44.3.513}
+
+\leavevmode\hypertarget{ref-Kantas1997}{}%
+Kantas, A., \& Vassilaki, E. (1997). Burnout in {Greek} teachers: {Main} findings and validity of the {Maslach} {Burnout} {Inventory}. \emph{Work \& Stress}, \emph{11}(1), 94--100. \url{https://doi.org/10.1080/02678379708256826}
+
+\leavevmode\hypertarget{ref-Karagiannopoulou2020}{}%
+Karagiannopoulou, E., Milienos, F. S., \& Rentzios, C. (2020). Grouping learning approaches and emotional factors to predict students' academic progress. \emph{International Journal of School \& Educational Psychology}, \emph{0}(0), 1--18. \url{https://doi.org/10.1080/21683603.2020.1832941}
+
+\leavevmode\hypertarget{ref-Klaczynski1996}{}%
+Klaczynski, P. A., \& Fauth, J. M. (1996). Intellectual ability, rationality, and intuitiveness as predictors of warranted and unwarranted optimism for future life events. \emph{Journal of Youth and Adolescence}, \emph{25}(6), 755--773. \url{https://doi.org/10.1007/BF01537452}
+
+\leavevmode\hypertarget{ref-Lackritz2004}{}%
+Lackritz, J. R. (2004). Exploring burnout among university faculty: Incidence, performance, and demographic issues. \emph{Teaching and Teacher Education}, \emph{20}(7), 713--729. \url{https://doi.org/10.1016/j.tate.2004.07.002}
+
+\leavevmode\hypertarget{ref-Lavrijsen2021}{}%
+Lavrijsen, J., Preckel, F., Verachtert, P., Vansteenkiste, M., \& Verschueren, K. (2021). Are motivational benefits of adequately challenging schoolwork related to students' need for cognition, cognitive ability, or both? \emph{Personality and Individual Differences}, \emph{171}, 110558. \url{https://doi.org/10.1016/j.paid.2020.110558}
+
+\leavevmode\hypertarget{ref-Leiner2019}{}%
+Leiner, D. J. (2019). \emph{{SoSci} {Survey}}. \url{https://www.soscisurvey.de}
+
+\leavevmode\hypertarget{ref-Lloyd2002}{}%
+Lloyd, C., King, R., \& Chenoweth, L. (2002). Social work, stress and burnout: A review. \emph{Journal of Mental Health}, \emph{11}(3), 255--265. \url{https://doi.org/10.1080/09638230020023642}
+
+\leavevmode\hypertarget{ref-Madsen2017}{}%
+Madsen, I. E. H., Nyberg, S. T., Hanson, L. L. M., Ferrie, J. E., Ahola, K., Alfredsson, L., Batty, G. D., Bjorner, J. B., Borritz, M., Burr, H., Chastang, J.-F., Graaf, R. de, Dragano, N., Hamer, M., Jokela, M., Knutsson, A., Koskenvuo, M., Koskinen, A., Leineweber, C., \ldots{} Kivimäki, M. (2017). Job strain as a risk factor for clinical depression: Systematic review and meta-analysis with additional individual participant data. \emph{Psychological Medicine}, \emph{47}(8), 1342--1356. \url{https://doi.org/10.1017/s003329171600355x}
+
+\leavevmode\hypertarget{ref-Maslach1997}{}%
+Maslach, C., Jackson, S. E., \& Leiter, M. P. (1997). Maslach {Burnout} {Inventory}: {Third} edition. In C. P. Zalaquett \& R. J. Wood (Eds.), \emph{Evaluating stress: A book of resources} (pp. 191--218). Scarecrow Education.
+
+\leavevmode\hypertarget{ref-Maslach2016}{}%
+Maslach, C., \& Leiter, M. (2016). Burnout. In \emph{Stress: Concepts, cognition, emotion, and behavior} (pp. 351--357). Elsevier. \url{https://doi.org/10.1016/b978-0-12-800951-2.00044-3}
+
+\leavevmode\hypertarget{ref-Naderi2018}{}%
+Naderi, Z., Bakhtiari, S., Momennasab, M., Abootalebi, M., \& Mirzaei, T. (2018). Prediction of academic burnout and academic performance based on the need for cognition and general self-efficacy: {A} cross-sectional analytical study. \emph{Latinoamericana de Hipertensión}, \emph{13}(6). \url{http://saber.ucv.ve/ojs/index.php/rev_lh/article/view/15958}
+
+\leavevmode\hypertarget{ref-Nowlin2017}{}%
+Nowlin, E., Walker, D., Deeter-Schmelz, D. R., \& Haas, A. (2017). Emotion in sales performance: Affective orientation and {Need} for {Cognition} and the mediating role of motivation to work. \emph{Journal of Business \& Industrial Marketing}, \emph{33}(1), 107--116. \url{https://doi.org/10.1108/JBIM-06-2016-0136}
+
+\leavevmode\hypertarget{ref-Osberg1987}{}%
+Osberg, T. M. (1987). The convergent and discriminant validity of the {Need} for {Cognition} {Scale}. \emph{Journal of Personality Assessment}, \emph{51}(3), 441--450. \url{https://doi.org/10.1207/s15327752jpa5103_11}
+
+\leavevmode\hypertarget{ref-RCT2020}{}%
+R Core Team. (2020). \emph{R: {A} language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.R-project.org/}
+
+\leavevmode\hypertarget{ref-Revelle2021}{}%
+Revelle, W. (2021). \emph{Psych: {P}rocedures for psychological, psychometric, and personality research}. Northwestern University. \url{https://CRAN.R-project.org/package=psych}
+
+\leavevmode\hypertarget{ref-Rosen2020}{}%
+Rosen, C. C., Gabriel, A. S., Lee, H. W., Koopman, J., \& Johnson, R. E. (2020). When lending an ear turns into mistreatment: {An} episodic examination of leader mistreatment in response to venting at work. \emph{Personnel Psychology}, 1--21. \url{https://doi.org/10.1111/peps.12418}
+
+\leavevmode\hypertarget{ref-Rosseel2012}{}%
+Rosseel, Y. (2012). {lavaan}: {A}n {R} package for structural equation modeling. \emph{Journal of Statistical Software}, \emph{48}(2), 1--36. \url{https://www.jstatsoft.org/v48/i02/}
+
+\leavevmode\hypertarget{ref-RStudioTeam2020}{}%
+RStudio Team. (2020). \emph{{RStudio}: {Integrated} development for {R}}. RStudio, PBC. \url{http://www.rstudio.com}
+
+\leavevmode\hypertarget{ref-Salanova2006}{}%
+Salanova, M., Bakker, A. B., \& Llorens, S. (2006). Flow at {Work}: {Evidence} for an {Upward} {Spiral} of {Personal} and {Organizational} {Resources}*. \emph{Journal of Happiness Studies}, \emph{7}(1), 1--22. \url{https://doi.org/10.1007/s10902-005-8854-8}
+
+\leavevmode\hypertarget{ref-Schaufeli2001}{}%
+Schaufeli, W., Bakker, A. B., Hoogduin, K., Schaap, C., \& Kladler, A. (2001). On the clinical validity of the {Maslach} {Burnout} {Inventory} and the burnout measure. \emph{Psychology \& Health}, \emph{16}(5), 565--582. \url{https://doi.org/10.1080/08870440108405527}
+
+\leavevmode\hypertarget{ref-Schaufeli2014}{}%
+Schaufeli, W., \& Salanova, M. (2014). Burnout, boredom and engagement at the workplace. In M. Peeters, J. de Jonge, \& T. Taris (Eds.), \emph{People at work: {An} {Introduction} to {Contemporary} {Work} {Psychology}} (pp. 293--320). Wiley Blackwell; Chichester. \url{https://lirias.kuleuven.be/retrieve/307889}
+
+\leavevmode\hypertarget{ref-Simmons2012}{}%
+Simmons, J. P., Nelson, L. D., \& Simonsohn, U. (2012). \emph{A 21 word solution} (\{SSRN\} \{Scholarly\} \{Paper\} ID 2160588). Social Science Research Network. \url{https://doi.org/10.2139/ssrn.2160588}
+
+\leavevmode\hypertarget{ref-Steptoe2013}{}%
+Steptoe, A., \& Kivimäki, M. (2013). Stress and cardiovascular disease: An update on current knowledge. \emph{Annual Review of Public Health}, \emph{34}(1), 337--354. \url{https://doi.org/10.1146/annurev-publhealth-031912-114452}
+
+\leavevmode\hypertarget{ref-Stumm2013}{}%
+Stumm, S. von, \& Ackerman, P. L. (2013). Investment and intellect: A review and meta-analysis. \emph{Psychological Bulletin}, \emph{139}(4), 841--869. \url{https://doi.org/10.1037/a0030746}
+
+\leavevmode\hypertarget{ref-Tolentino1990}{}%
+Tolentino, E., Curry, L., \& Leak, G. (1990). Further validation of the short form of the {Need} for {Cognition} {Scale}. \emph{Psychological Reports}, \emph{66}(1), 321--322. \url{https://doi.org/10.2466/pr0.1990.66.1.321}
+
+\leavevmode\hypertarget{ref-ValdiviaVazquez2021}{}%
+Valdivia Vázquez, J. A., Hernández Castillo, G. D., \& Maiz García, S. I. (2021). Burnout in {Police} {Officers} from {Northern} {Mexico}: {A} validity study of the {Maslach} {Burnout} {Inventory}. \emph{Journal of Police and Criminal Psychology}. \url{https://doi.org/10.1007/s11896-021-09452-z}
+
+\leavevmode\hypertarget{ref-Wiesner2005}{}%
+Wiesner, M., Windle, M., \& Freeman, A. (2005). Work stress, substance use, and depression among young adult workers: An examination of main and moderator effect model. \emph{Journal of Occupational Health Psychology}, \emph{10}(2), 83--96. \url{https://doi.org/10.1037/1076-8998.10.2.83}
+
+\leavevmode\hypertarget{ref-Zerna2021}{}%
+Zerna, J., Strobel, A., \& Strobel, A. (2021). \emph{The role of {Need} for {Cognition} in wellbeing -- {A} review of associations and potential underlying mechanisms}. \url{https://doi.org/10.31234/osf.io/p6gwh}
+
+\leavevmode\hypertarget{ref-Zheng2020}{}%
+Zheng, A., Briley, D., Jacobucci, R., Harden, K. P., \& Tucker-Drob, E. (2020). \emph{Incremental {Validity} of {Character} {Measures} {Over} the {Big} {Five} and {Fluid} intelligence in {Predicting} {Academic} {Achievement}}. \url{https://doi.org/10.31234/osf.io/652qz}
+
+\end{CSLReferences}
+
+\endgroup
+
+
+\end{document}

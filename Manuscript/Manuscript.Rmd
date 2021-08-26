@@ -169,17 +169,17 @@ We report how we determined our sample size, all data exclusions (if any), all m
 Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript are available at [https://osf.io/36ep9/](https://osf.io/36ep9/).
 
 ```{r import, echo=FALSE, message=FALSE, warning=FALSE}
-  # Please set your working directory using the drop down menu above
-  # Then put this file in this directory, as well as the data.Rda file
+  # Define the top level as the one where this file lies
+  # If the rest of the files follow the structure of the Github project, everything will work
   
-  here::i_am("Manuscript.Rmd")
+  here::i_am("flag_top_level_NFCBurnout.txt")
   
   # Load the data file
   
-  load(here("data.Rda"))
+  load(here("Data", "data.Rda"))
   
   # Load the internal consistencies (bootstrapping has been suppressed to save time on knitting)
-  consistencies <- read_rds(here("consistencies.rds"))
+  consistencies <- read_rds(here("Data", "consistencies.rds"))
   # create a vector of consistencies to be used as the diagonal in a table later
   consist_diag <- cbind(format(round(t(consistencies[2,2:11]), digits = 2), nsmall = 2), rep("(",10),
                         format(round(t(consistencies[5,2:11]), digits = 2), nsmall = 2), rep(")",10))
