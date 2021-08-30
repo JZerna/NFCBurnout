@@ -109,6 +109,7 @@ library(MBESS)
 library(Hmisc)
 library(kableExtra)
 library(knitr)
+library(GGally)                 # from ggplot2, for multi-correlation plots
 
 ```
 
@@ -768,6 +769,21 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
   
+```
+```{r objective2_troubleshooting, echo=FALSE, message=FALSE, warning=FALSE}
+
+# This function was taken from an answer on a Stackoverflow question on August 30th 2021
+# https://stackoverflow.com/questions/35085261/how-to-use-loess-method-in-ggallyggpairs-using-wrap-function/35088740
+
+  my_fn <- function(data, mapping, pts=list(), smt=list(), ...){
+    ggplot(data = data, mapping = mapping, ...) +
+      do.call(geom_point, pts) +
+      do.call(geom_smooth, smt)
+  }
+  
+# Plot a big correlational matrix to check for non-linear associations that might have caused the bad model fit
+  ggpairs(score_data[,c(2,3,4,5,9,10,15,19,23,27)], lower = list(continuous = my_fn))
+
 ```
 
 ```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE}
