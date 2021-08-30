@@ -83,6 +83,8 @@ classoption       : "man"
 output            : papaja::apa6_pdf
 
 csl               : apa.csl # this is a workaround for a current bug in the papaja/Rmd software, which fails to shorten multiple authors to "et al."
+
+header-includes   : \usepackage{tabu}
 ---
 
 ```{r setup, include = FALSE}
@@ -738,7 +740,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective2, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
   # SEM with demand-resource-ratios
   
@@ -782,13 +784,43 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   }
   
   # Plot a big correlational matrix to check for non-linear associations that might have caused the bad model fit
-  ggpairs(score_data[,c(2,3,4,5,9,10,15,19,23,27)], lower = list(continuous = my_fn))
+  multicorrplot <- ggpairs(score_data[,c(2,3,4,5,9,10,15,19,23,27)], lower = list(continuous = my_fn))
   
   # Remove the outlier
   score_data <- score_data[score_data$id != 161, ]
+  
+            # SEM with demand-resource-ratios
+            
+            sem_model <- '
+            # measurement model
+              NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+              DTH =~ dth1 + dth2 + dth3
+              DTL =~ dtl1 + dtl2 + dtl3
+              DRF =~ drf1 + drf2 + drf3
+              MBI =~ mbi_ee + mbi_dp + mbi_rpe
+          
+            # structural model
+              DTH ~ NFC
+              DTL ~ NFC
+              DRF ~ NFC
+              MBI ~ NFC + DTH + DTL + DRF'
+            
+            # Determine the model fit
+            
+            fit2 <- sem(
+              model = sem_model,
+              data  = score_data,
+              estimator = "MLR"
+            )
+            
+            # Get summary
+            
+            fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                    estimates = TRUE, ci = TRUE)
+  
 ```
 
-```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
   # Exploratory analysis I: MBI subscale instead of sum score
   
@@ -820,7 +852,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
   # Exploratory analysis II: Covid burden as a covariate
   
