@@ -128,6 +128,7 @@ library(kableExtra)
 library(knitr)
 library(GGally)                 # from ggplot2, for multi-correlation plots
 library(semPlot)
+library(qgraph)
 
 ```
 
@@ -780,8 +781,10 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   # (This is just okay, it is not the final version, e.g. there is no path from NCS to MBI yet)
 
   fit_plot <- semPaths(fit, what="par", # display the parameters on the arrows
+                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Burnout", "Need for Cognition"),
                        layout = matrix(data = c(0,0,0,1,-1,0.5,0,-0.5,0,0), nrow = 5, ncol = 2), # manually set the node locations
-                       sizeMan = 7, edge.label.cex = 0.8, # size specifications
+                       sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
+                       edge.label.cex = 0.8, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
                        theme = "colorblind" # select appropriate colour scheme
                        )
