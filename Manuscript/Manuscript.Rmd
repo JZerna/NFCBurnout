@@ -112,7 +112,7 @@ library(bibtex)
 #install.packages("MVN")        # Mardia's test and such
 #install.packages("MBESS")      # MacDonald's Omega
 #install.packages("Hmisc")      # for correlations with p-values
-#install.packages("kableExtra") # for great tables
+#install.packages("kableExtra") # for great tables (see haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
 #install.packages("knitr")      # for knitting documents and tables
 
 library(here)
@@ -392,6 +392,22 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
                                              drf[i,1], drf[i,2], drf[i,3],
                                              rowSums(covb[i,]))
   }
+
+  # This function was taken from an answer on a Stackoverflow question on August 30th 2021
+  # https://stackoverflow.com/questions/35085261/how-to-use-loess-method-in-ggallyggpairs-using-wrap-function/35088740
+
+  my_fn <- function(data, mapping, pts=list(), smt=list(), ...){
+    ggplot(data = data, mapping = mapping, ...) +
+      do.call(geom_point, pts) +
+      do.call(geom_smooth, smt)
+  }
+  
+  # Plot a big correlational matrix to check for non-linear associations and unexpected outliers
+  multicorrplot <- ggpairs(score_data[,c(2,3,4,5,9,10,15,19,23,27)], lower = list(continuous = my_fn))
+
+  # Remove the outlier
+  score_data <- score_data[score_data$mbi < 100, ]
+  
 ```
 
 ```{r descriptives, echo=FALSE, message=FALSE, warning=FALSE}
@@ -663,7 +679,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     diag(corr_no_drr) <- consist_diag
     
     # set row and column names for better table printing
-    row.names(corr_no_drr) <- c("MBI Score","MBI EE","MBI DP","MBI RPE","ERQ","ERQ Suppression","ERQ Reappraisal","Self Control","NFC","Covid-19 Burden")
+    row.names(corr_no_drr) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","COV")
     colnames(corr_no_drr) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","COV")
     
     # create array with p-values of correlation coefficients
@@ -688,13 +704,14 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 # Results
 
-```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE}
 
   desc_table <-
   kbl(corr_no_drr,
-      booktabs = T,
-      align = rep("r",11)) %>%
-    kable_styling(latex_options = "striped", position = "center", full_width = T, font_size = 10) %>%
+      booktabs = T, # no vertical lines
+      escape = F, # correctly print special characters
+      align = rep("r",11)) %>% # right aligns the text in every column except for the first
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
     column_spec(2, italic = corr_onestar$mbi|corr_twostars$mbi, bold = corr_threestars$mbi|corr_twostars$mbi) %>%
     column_spec(3, italic = corr_onestar$mbi_ee|corr_twostars$mbi_ee, bold = corr_threestars$mbi_ee|corr_twostars$mbi_ee) %>%
     column_spec(4, italic = corr_onestar$mbi_dp|corr_twostars$mbi_dp, bold = corr_threestars$mbi_dp|corr_twostars$mbi_dp) %>%
@@ -705,14 +722,15 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     column_spec(9, italic = corr_onestar$scs|corr_twostars$scs, bold = corr_threestars$scs|corr_twostars$scs) %>%
     column_spec(10, italic = corr_onestar$ncs|corr_twostars$ncs, bold = corr_threestars$ncs|corr_twostars$ncs) %>%
     column_spec(11, italic = corr_onestar$covb|corr_twostars$covb, bold = corr_threestars$covb|corr_twostars$covb) %>%
-    column_spec(2:11, width = "1.5cm") %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 180. Italics indicate \\\\textit{p} < .05, italics and bold indicate \\\\textit{p} < .01, bold indicates \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.")
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 179. Italics indicate \\\\textit{p} < .05, italics and bold indicate \\\\textit{p} < .01, bold indicates \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+             escape = F, # correctly print special characters
+             threeparttable = T) # line breaks in the footnote
 
 ```
 
 `r desc_table`
 
-```{r objective1, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
   # Replication of Grass et al. (2018)
   
@@ -754,7 +772,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
   # SEM with demand-resource-ratios
   
@@ -786,53 +804,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
           estimates = TRUE, ci = TRUE)
   
 ```
-```{r objective2_troubleshooting, echo=FALSE, message=FALSE, warning=FALSE}
 
-  # This function was taken from an answer on a Stackoverflow question on August 30th 2021
-  # https://stackoverflow.com/questions/35085261/how-to-use-loess-method-in-ggallyggpairs-using-wrap-function/35088740
-
-  my_fn <- function(data, mapping, pts=list(), smt=list(), ...){
-    ggplot(data = data, mapping = mapping, ...) +
-      do.call(geom_point, pts) +
-      do.call(geom_smooth, smt)
-  }
-  
-  # Plot a big correlational matrix to check for non-linear associations that might have caused the bad model fit
-  multicorrplot <- ggpairs(score_data[,c(2,3,4,5,9,10,15,19,23,27)], lower = list(continuous = my_fn))
-  
-  # Remove the outlier
-  score_data <- score_data[score_data$id != 161, ]
-  
-            # SEM with demand-resource-ratios
-            
-            sem_model <- '
-            # measurement model
-              NFC =~ nfc1 + nfc2 + nfc3 + nfc4
-              DTH =~ dth1 + dth2 + dth3
-              DTL =~ dtl1 + dtl2 + dtl3
-              DRF =~ drf1 + drf2 + drf3
-              MBI =~ mbi_ee + mbi_dp + mbi_rpe
-          
-            # structural model
-              DTH ~ NFC
-              DTL ~ NFC
-              DRF ~ NFC
-              MBI ~ NFC + DTH + DTL + DRF'
-            
-            # Determine the model fit
-            
-            fit2 <- sem(
-              model = sem_model,
-              data  = score_data,
-              estimator = "MLR"
-            )
-            
-            # Get summary
-            
-            fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
-                    estimates = TRUE, ci = TRUE)
-  
-```
 
 ```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
