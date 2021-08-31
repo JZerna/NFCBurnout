@@ -114,6 +114,7 @@ library(bibtex)
 #install.packages("Hmisc")      # for correlations with p-values
 #install.packages("kableExtra") # for great tables (see haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
 #install.packages("knitr")      # for knitting documents and tables
+#install.packages("semPlot")    # plotting path models
 
 library(here)
 library(tidyverse)
@@ -126,6 +127,7 @@ library(Hmisc)
 library(kableExtra)
 library(knitr)
 library(GGally)                 # from ggplot2, for multi-correlation plots
+library(semPlot)
 
 ```
 
@@ -770,6 +772,19 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   
   fit_summ <- summary(fit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
+```
+
+```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Make a path diagram to visualize the results
+  # (This is just okay, it is not the final version, e.g. there is no path from NCS to MBI yet)
+
+  fit_plot <- semPaths(fit, what="par", # display the parameters on the arrows
+                       layout = matrix(data = c(0,0,0,1,-1,0.5,0,-0.5,0,0), nrow = 5, ncol = 2), # manually set the node locations
+                       sizeMan = 7, edge.label.cex = 0.8, # size specifications
+                       fade = FALSE, # do not make insignificant associations invisible
+                       theme = "colorblind" # select appropriate colour scheme
+                       )
 ```
 
 ```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
