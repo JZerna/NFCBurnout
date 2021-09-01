@@ -824,7 +824,8 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   # Plot
   
   fit2_plot <- semPaths(fit2, what = "par",
-                        layout = matrix(data = c(-1,-0.7,-0.4,-0.1,-1,-0.8,-0.6,-0.2,0,0.2,0.6,0.8,1,0.6,0.8,1,-0.8,-0.8,0,0.8,0.8,
+                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","ee","dp","rpe","NFC","DTH","DTL","DRF","MBI"),
+                        layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-1,-0.8,-0.6,-0.2,0,0.2,0.6,0.8,1,0.6,0.8,1,-0.8,-0.8,0,0.8,0.8,
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
                                         nrow = 21, ncol = 2))
   
