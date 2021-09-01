@@ -821,6 +821,13 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
   
+  # Plot
+  
+  fit2_plot <- semPaths(fit2, what = "par",
+                        layout = matrix(data = c(-1,-0.7,-0.4,-0.1,-1,-0.8,-0.6,-0.2,0,0.2,0.6,0.8,1,0.6,0.8,1,-0.8,-0.8,0,0.8,0.8,
+                                                 -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
+                                        nrow = 21, ncol = 2))
+  
 ```
 
 
