@@ -821,14 +821,22 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
   
-  # Plot
+```
+
+```{r objective2_plot, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Visualize the results
   
   fit2_plot <- semPaths(fit2, what = "par",
                         nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","ee","dp","rpe","NFC","DTH","DTL","DRF","MBI"),
-                        layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-1,-0.8,-0.6,-0.2,0,0.2,0.6,0.8,1,0.6,0.8,1,-0.8,-0.8,0,0.8,0.8,
+                        layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,0.6,0.8,1,-0.8,-0.6,0,0.6,0.8,
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
-                                        nrow = 21, ncol = 2))
-  
+                                        nrow = 21, ncol = 2),
+                        residuals = FALSE, fade = FALSE,
+                        edge.label.cex = 0.81, # size of the parameters
+                        edge.label.color = "black", edge.label.bg = FALSE, # color and background of the parameters
+                        posCol = "#f0a543", negCol = "#5a99d1" # color of arrows
+  )
 ```
 
 
