@@ -781,13 +781,14 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   # (This is just okay, it is not the final version, e.g. there is no path from NCS to MBI yet)
 
   fit_plot <- semPaths(fit, what="par", # display the parameters on the arrows
-                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Burnout", "Need for Cognition"),
+                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
                        layout = matrix(data = c(0,0,0,1,-1,0.5,0,-0.5,0,0), nrow = 5, ncol = 2), # manually set the node locations
                        sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
-                       edge.label.cex = 0.8, # size specifications
+                       edge.label.cex = 1, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
-                       theme = "colorblind" # select appropriate colour scheme
-                       )
+                       residuals = FALSE, # do not plot residuals
+                       edge.label.color = "black", posCol = "#f0a543", negCol = "#5a99d1"
+)
 ```
 
 ```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
@@ -833,7 +834,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
                                         nrow = 21, ncol = 2),
                         residuals = FALSE, fade = FALSE,
-                        edge.label.cex = 0.81, # size of the parameters
+                        edge.label.cex = 1, # size of the parameters
                         edge.label.color = "black", edge.label.bg = FALSE, # color and background of the parameters
                         posCol = "#f0a543", negCol = "#5a99d1" # color of arrows
   )
