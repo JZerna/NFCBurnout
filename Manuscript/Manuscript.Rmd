@@ -411,10 +411,10 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   multicorrplot <- ggpairs(score_data[,c(2,3,4,5,6,10,11,16,20,24,28)], lower = list(continuous = my_fn))
 
   # It looked like there was an outlier in the data, especially visible in the MBI data
-  # Check for the outlier in particular
+  # Check for the outlier in particular, using the data involved in the mediation
+  outlierplot <- outlier(score_data[ ,c(6,8:11)], plot = TRUE)
   
-  
-  # Remove the outlier
+  # Remove participant 161
   score_data <- score_data[score_data$mbi < 100, ]
   
 ```
@@ -745,11 +745,11 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   
   repli_model <- '
   # direct paths
-    scs ~ a1 * ncs
-    erq_reap ~ a2 * ncs
-    erq_supp ~ a3 * ncs
-    mbi_rpe ~ b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
-
+    scs       ~   a1 * ncs + years
+    erq_reap  ~   a2 * ncs
+    erq_supp  ~   a3 * ncs
+    mbi_rpe   ~   b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
+    
   # indirect effects
     Indirect1 := a1 * b1
     Indirect2 := a2 * b2
@@ -782,13 +782,14 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   # Make a path diagram to visualize the results
   # (This is just okay, it is not the final version, e.g. there is no path from NCS to MBI yet)
 
-  fit_plot <- semPaths(fit, what="par", # display the parameters on the arrows
-                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
-                       layout = matrix(data = c(0,0,0,1,-1,0.5,0,-0.5,0,0), nrow = 5, ncol = 2), # manually set the node locations
+  fit_plot <- semPaths(fit, what="std", # display the parameters on the arrows
+                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition", "Years spent\nteaching"),
+                       layout = matrix(data = c(0,0,0,1,-1,-1,0.5,-0.1,-0.4,0.2,0.2,0.5), nrow = 6, ncol = 2), # manually set the node locations
                        sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
                        edge.label.cex = 1, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
                        residuals = FALSE, # do not plot residuals
+                       exoCov = FALSE, # do not plot covariance between exogenous variables
                        edge.label.color = "black", posCol = "#f0a543", negCol = "#5a99d1"
 )
 ```
