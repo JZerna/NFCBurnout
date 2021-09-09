@@ -363,6 +363,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 # Create data frame to feed the values of every subject into
   
   score_data <- data.frame(id = c(1:180),
+                           years = data$yearsteaching,
                            mbi = rep(0,180),
                            mbi_ee = rep(0,180), mbi_dp = rep(0,180), mbi_rpe = rep(0,180),
                            erq = rep(0,180),
@@ -381,7 +382,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   # Compute individual scores or (for the latent variable indicators) feed in raw values
   
   for (i in 1:nrow(data)) {
-    score_data[i,c(2:ncol(score_data))] <- c(rowSums(mbi[i,]),
+    score_data[i,c(3:ncol(score_data))] <- c(rowSums(mbi[i,]),
                                              rowSums(mbi[i,keylist$mbi_ee]), rowSums(mbi[i,keylist$mbi_dp]), rowSums(mbi[i,keylist$mbi_rpe]),
                                              rowSums(erq[i,]),
                                              rowSums(erq[i,keylist$erq_supp]), rowSums(erq[i,keylist$erq_reap]),
@@ -407,8 +408,12 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   }
   
   # Plot a big correlational matrix to check for non-linear associations and unexpected outliers
-  multicorrplot <- ggpairs(score_data[,c(2,3,4,5,9,10,15,19,23,27)], lower = list(continuous = my_fn))
+  multicorrplot <- ggpairs(score_data[,c(2,3,4,5,6,10,11,16,20,24,28)], lower = list(continuous = my_fn))
 
+  # It looked like there was an outlier in the data, especially visible in the MBI data
+  # Check for the outlier in particular
+  
+  
   # Remove the outlier
   score_data <- score_data[score_data$mbi < 100, ]
   
