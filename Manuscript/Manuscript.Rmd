@@ -255,15 +255,16 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
   # Put questionnaire data into different data frames for easy access
   
-  mbi <- data[,10:30]             # Maslach Burnout Inventory grep(‚ncs‘, colnames(data))
-  erq <- data[,31:40]             # Emotion Regulation Questionnaire
-  scs <- data[,41:53]             # Self Control Scale
-  ws <- data[,54:90]              # Work Satisfaction
-  ncs <- data[,c(91:98,100:107)]  # Need for Cognition Scale (without the dummy item)
-  covb <- data[,108:118]          # Covid Burden Items
-  dth <- ws[,c(4,8,9)]            # the Work Satisfaction items for the latent variable Demands Too High
-  dtl <- ws[,c(12,26,27)]         # the Work Satisfaction items for the latent variable Demands Too Low
-  drf <- ws[,c(17,21,24)]         # the Work Satisfaction items for the latent variable Demand-Resource-Fit
+  mbi <- data[,grep("MBI", colnames(data))]   # Maslach Burnout Inventory
+  erq <- data[,grep("ERQ", colnames(data))]   # Emotion Regulation Questionnaire
+  scs <- data[,grep("SCS", colnames(data))]   # Self Control Scale
+  ws <- data[,grep("WS", colnames(data))]     # Work Satisfaction
+  ncs <- data[,grep("NCS", colnames(data))]   # Need for Cognition Scale
+  ncs <- ncs[,-9]                             # remove the dummy item
+  covb <- data[,grep("COV", colnames(data))]  # Covid Burden Items
+  dth <- ws[,c(4,8,9)]                        # the Work Satisfaction items for the latent variable Demands Too High
+  dtl <- ws[,c(12,26,27)]                     # the Work Satisfaction items for the latent variable Demands Too Low
+  drf <- ws[,c(17,21,24)]                     # the Work Satisfaction items for the latent variable Demand-Resource-Fit
   
   # Create a list with keys for the questionnaire subscales/latent variables/item parcels
   
@@ -593,7 +594,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     # on the 5th of August 2021
 
     correlation_matrix <- function(df,
-                                   type = "pearson",
+                                   type = "spearman",
                                    digits = 3,
                                    decimal.mark = ".",
                                    use = "all",
@@ -745,7 +746,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   
   repli_model <- '
   # direct paths
-    scs       ~   a1 * ncs + years
+    scs       ~   a1 * ncs
     erq_reap  ~   a2 * ncs
     erq_supp  ~   a3 * ncs
     mbi_rpe   ~   b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
@@ -780,11 +781,64 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 ```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Make a path diagram to visualize the results
-  # (This is just okay, it is not the final version, e.g. there is no path from NCS to MBI yet)
 
   fit_plot <- semPaths(fit, what="std", # display the parameters on the arrows
+                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
+                       layout = matrix(data = c(0,0,0,1,-1,1,-0.3,-1,0.3,0.3), nrow = 5, ncol = 2), # manually set the node locations
+                       sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
+                       edge.label.cex = 1, # size specifications
+                       fade = FALSE, # do not make insignificant associations invisible
+                       residuals = FALSE, # do not plot residuals
+                       edge.label.color = "black", posCol = "#f0a543", negCol = "#5a99d1"
+)
+```
+
+```{r objective1years, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+  # Replication of Grass et al. (2018) using years spent teaching as a variable influencing self-control
+  # (as indicated by the correlation of it with SCS but not with the other variables)
+  
+  repli_model_years <- '
+  # direct paths
+    scs       ~   a1 * ncs + y * years
+    erq_reap  ~   a2 * ncs
+    erq_supp  ~   a3 * ncs
+    mbi_rpe   ~   b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
+    
+  # indirect effects
+    Indirect1 := (a1 * b1) + (y * b1)
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3) + (y * b1)
+'
+  
+  # Determine the model fit
+  
+  fityears <- sem(
+    model = repli_model_years,
+    data  = score_data,
+    se = "bootstrap",
+    bootstrap = 2000
+  )
+  
+  # Get summary
+  
+  fityears_summ <- summary(fityears, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+```
+
+```{r objective1years_plot, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Make a path diagram to visualize the results
+
+  fityears_plot <- semPaths(fityears, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition", "Years spent\nteaching"),
-                       layout = matrix(data = c(0,0,0,1,-1,-1,0.5,-0.1,-0.4,0.2,0.2,0.5), nrow = 6, ncol = 2), # manually set the node locations
+                       layout = matrix(data = c(0,0,0,1,-1,-1,1,-0.3,-1,0.3,0.3,1), nrow = 6, ncol = 2), # manually set the node locations
                        sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
                        edge.label.cex = 1, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
