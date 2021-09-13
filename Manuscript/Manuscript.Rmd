@@ -754,7 +754,7 @@ Only the ERQ sum score and its Reappraisal subscale followed a multivariate norm
 ```
 
 Correlations and internal consistencies are displayed in **Table 2**.
-Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha values of the three demand-resource-ratios can be considered *acceptable*.
+Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha of the three demand-resource-ratios can be considered *acceptable*.
 Even though these cut-offs have been criticized for being both arbitrary and insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the more robust MacDonald's Omega [@Dunn2014] actually indicates *acceptable* to *good* internal consistency.
 
 `r desc_table`
