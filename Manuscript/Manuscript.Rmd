@@ -702,18 +702,17 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
                                         "scs","ncs","covb")]), type = "spearman")$P
     # replace upper triangle with NA
     corr_pvalues[upper.tri(corr_pvalues, diag = TRUE)] <- NA
+    
     # replace p-values with asterisks depending on significance level
     corr_pvalues <- ifelse(is.na(corr_pvalues), "", ifelse(corr_pvalues < .001, "***", ifelse(corr_pvalues < .01, "**", ifelse(corr_pvalues < .05, "*", ""))))
-    # create three arrays with logical indicators of the significance levels
-    corr_threestars <- corr_pvalues %>%
-      as_tibble() %>%
-      mutate(across(.cols = everything(),.fns = ~ ifelse(.x == "***", TRUE, FALSE)))
-    corr_twostars <- corr_pvalues %>%
-      as_tibble() %>%
-      mutate(across(.cols = everything(),.fns = ~ ifelse(.x == "**", TRUE, FALSE)))
-    corr_onestar <- corr_pvalues %>%
-      as_tibble() %>%
-      mutate(across(.cols = everything(),.fns = ~ ifelse(.x == "*", TRUE, FALSE)))
+    
+    # convert to matrix for the paste()-function
+    corr_no_drr <- as.matrix(corr_no_drr)
+    corr_pvalues <- as.matrix(corr_pvalues)
+    
+    # paste correlations and asterisks together
+    correlations <- matrix(paste(corr_no_drr, corr_pvalues, sep = ""),
+                           nrow = nrow(corr_no_drr), dimnames = dimnames(corr_no_drr))
     
 ```
 
@@ -722,22 +721,12 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 ```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE}
 
   desc_table <-
-  kbl(corr_no_drr,
+  kbl(correlations,
       booktabs = T, # no vertical lines
       escape = F, # correctly print special characters
-      align = rep("r",11)) %>% # right aligns the text in every column except for the first
+      align = rep("l",11)) %>% # right aligns the text in every column except for the first
     kable_styling(latex_options = c("striped", "scale_down")) %>%
-    column_spec(2, italic = corr_onestar$mbi|corr_twostars$mbi, bold = corr_threestars$mbi|corr_twostars$mbi) %>%
-    column_spec(3, italic = corr_onestar$mbi_ee|corr_twostars$mbi_ee, bold = corr_threestars$mbi_ee|corr_twostars$mbi_ee) %>%
-    column_spec(4, italic = corr_onestar$mbi_dp|corr_twostars$mbi_dp, bold = corr_threestars$mbi_dp|corr_twostars$mbi_dp) %>%
-    column_spec(5, italic = corr_onestar$mbi_rpe|corr_twostars$mbi_rpe, bold = corr_threestars$mbi_rpe|corr_twostars$mbi_rpe) %>%
-    column_spec(6, italic = corr_onestar$erq|corr_twostars$erq, bold = corr_threestars$erq|corr_twostars$erq) %>%
-    column_spec(7, italic = corr_onestar$erq_supp|corr_twostars$erq_supp, bold = corr_threestars$erq_supp|corr_twostars$erq_supp) %>%
-    column_spec(8, italic = corr_onestar$erq_reap|corr_twostars$erq_reap, bold = corr_threestars$erq_reap|corr_twostars$erq_reap) %>%
-    column_spec(9, italic = corr_onestar$scs|corr_twostars$scs, bold = corr_threestars$scs|corr_twostars$scs) %>%
-    column_spec(10, italic = corr_onestar$ncs|corr_twostars$ncs, bold = corr_threestars$ncs|corr_twostars$ncs) %>%
-    column_spec(11, italic = corr_onestar$covb|corr_twostars$covb, bold = corr_threestars$covb|corr_twostars$covb) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 179. Italics indicate \\\\textit{p} < .05, italics and bold indicate \\\\textit{p} < .01, bold indicates \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 179. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
              escape = F, # correctly print special characters
              threeparttable = T) # line breaks in the footnote
 
