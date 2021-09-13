@@ -432,7 +432,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     # using Mardia's test for multivariate normal distribution
     # results will be fed into the desc_met data frame in the next step
   
-    isnorm_test <- mvn(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","covb")],
+    isnorm_test <- mvn(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","dth","dtl","drf","covb")],
                        mvnTest = "mardia", covariance = TRUE, desc = TRUE, univariateTest = "SW")  
   
   # Descriptive statistics
@@ -448,21 +448,39 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     
     # Metric descriptives: data frame with descriptive values of questionnaires
     
-    desc_met <- data.frame(value = c("mean","sd","skewness","kurtosis","normality"),
-                           mbi = rep(0,5),
-                           mbi_ee = rep(0,5), mbi_dp = rep(0,5), mbi_rpe = rep(0,5),
-                           erq = rep(0,5),
-                           erq_supp = rep(0,5), erq_reap = rep(0,5),
-                           scs = rep(0,5),
-                           ncs = rep(0,5),
-                           covb = rep(0,5))
+    desc_met <- data.frame(Variable = c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","DTH","DTL","DRF","COV"),
+                           Minimum = sapply(score_data[,c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","dth","dtl","drf","covb")], min),
+                           Maximum = sapply(score_data[,c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","dth","dtl","drf","covb")], max),
+                           Mean = isnorm_test$Descriptives$Mean,
+                           SD = isnorm_test$Descriptives$Std.Dev,
+                           Normality = isnorm_test$univariateNormality$Normality,
+                           Skewness = isnorm_test$Descriptives$Skew,
+                           Kurtosis = isnorm_test$Descriptives$Kurtosis)
+    # Drop the row names
     
-    desc_met[1,2:ncol(desc_met)] <- isnorm_test$Descriptives$Mean
-    desc_met[2,2:ncol(desc_met)] <- isnorm_test$Descriptives$Std.Dev
-    desc_met[3,2:ncol(desc_met)] <- isnorm_test$Descriptives$Skew
-    desc_met[4,2:ncol(desc_met)] <- isnorm_test$Descriptives$Kurtosis
-    desc_met[5,2:ncol(desc_met)] <- isnorm_test$univariateNormality$Normality
+    rownames(desc_met) <- NULL
     
+    # Replace the capital YESes and NOs with small ones
+    
+    desc_met$Normality[grep("NO", desc_met$Normality)] <- "No"
+    desc_met$Normality[grep("YES", desc_met$Normality)] <- "Yes"
+    
+    # Round the values
+    
+    desc_met[ ,c("Mean","SD","Skewness","Kurtosis")] <- round(desc_met[ ,c("Mean","SD","Skewness","Kurtosis")], digits = 2)
+    
+    # Put the information in a table
+    
+    met_table <-
+      kbl(desc_met,
+      booktabs = T, # no vertical lines
+      escape = F, # correctly print special characters
+      align = rep("r",8)) %>% # right aligns the text in every column except for the first
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
+             escape = F, # correctly print special characters
+             threeparttable = T) # line breaks in the footnote
+
 ```
 
 ```{r consistency, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
@@ -718,20 +736,23 @@ During visual inspection of correlation plots we noticed an unexpected outlier w
 A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
 To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
 
+
 ```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE}
 
   desc_table <-
   kbl(correlations,
       booktabs = T, # no vertical lines
       escape = F, # correctly print special characters
-      align = rep("l",11)) %>% # right aligns the text in every column except for the first
+      align = rep("l",14)) %>% # right aligns the text in every column except for the first
     kable_styling(latex_options = c("striped", "scale_down")) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 180. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 180. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
              escape = F, # correctly print special characters
-             threeparttable = T) # line breaks in the footnote
+             threeparttable = T) %>% # line breaks in the footnote
+  kableExtra::landscape() # make the table horizontal 
 
 ```
 
+Correlations and internal consistencies are displayed in **Table 1**.
 `r desc_table`
 
 ```{r objective1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
