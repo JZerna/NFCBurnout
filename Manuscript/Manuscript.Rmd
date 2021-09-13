@@ -475,7 +475,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
       kbl(desc_met,
       booktabs = T, # no vertical lines
       escape = F, # correctly print special characters
-      align = rep("r",8)) %>% # right aligns the text in every column except for the first
+      align = c("l",rep("r",7))) %>% # right aligns the text in every column except for the first
     kable_styling(latex_options = c("striped", "scale_down")) %>%
     footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
              escape = F, # correctly print special characters
@@ -735,7 +735,8 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 During visual inspection of correlation plots we noticed an unexpected outlier with very high MBI scores and very low NFC scores.
 A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
 To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
-
+Basic metric descriptives of the questionnaire scores and subscales are listed in **Table 1**.
+Only the ERQ sum score and its Reappraisal subscale followed a multivariate normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics [@Roesseel2012].
 
 ```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -752,7 +753,10 @@ To adhere to the preregistration, we report the results containing the outlier i
 
 ```
 
-Correlations and internal consistencies are displayed in **Table 1**.
+Correlations and internal consistencies are displayed in **Table 2**.
+Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha values of the three demand-resource-ratios can be considered *acceptable*.
+Even though these cut-offs have been criticized for being both arbitrary and insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the more robust MacDonald's Omega [@Dunn2014] actually indicates *acceptable* to *good* internal consistency.
+
 `r desc_table`
 
 ```{r objective1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
