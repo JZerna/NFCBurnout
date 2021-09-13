@@ -584,12 +584,6 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     
     remove(cronalph,macomega) # delete the temporary variable
     
-    # create a vector of consistencies to be used as the diagonal in a table later
-    consist_diag <- cbind(format(round(t(consistencies[2,2:11]), digits = 2), nsmall = 2), rep("(",10),
-                          format(round(t(consistencies[5,2:11]), digits = 2), nsmall = 2), rep(")",10))
-    # paste together to create the output "alpha(omega)"
-    consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
-    
 ```
 
 ```{r correlations, echo=FALSE, message=FALSE, warning=FALSE}
@@ -673,33 +667,35 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     }
     
     
-    # correlate variables, including the demand resource ratios
-    corr_with_drr <- correlation_matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+    # correlate variables
+    correlations <- correlation_matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
                                                     "scs","ncs","dth","dtl","drf","covb")],
-                                       type = "spearman",
-                                       use = "lower",
-                                       replace_diagonal = TRUE,
-                                       replacement = "")
-    
-    # correlate variables without demand resource ratios (for table in manuscript)
-    corr_no_drr <- correlation_matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
-                                                    "scs","ncs","covb")],
                                        type = "spearman",
                                        use = "lower",
                                        show_significance = FALSE,
                                        replace_diagonal = TRUE,
                                        replacement = "")
     
+    # reorder the columns of the consistencies data frame to match the correlation columns
+    consist_diag <- consistencies[c(colnames(correlations))]
+    
+    # create a vector of consistencies to be used as the diagonal in a table later
+    consist_diag <- cbind(format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+                          format(round(t(consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
+    
+    # paste together to create the output "alpha(omega)"
+    consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
+    
     # add previously assembled diagonal with alpha and omega values
-    diag(corr_no_drr) <- consist_diag
+    diag(correlations) <- consist_diag
     
     # set row and column names for better table printing
-    row.names(corr_no_drr) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","COV")
-    colnames(corr_no_drr) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","COV")
+    row.names(correlations) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","DTH","DTL","DRF","COV")
+    colnames(correlations) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","DTH","DTL","DRF","COV")
     
     # create array with p-values of correlation coefficients
     corr_pvalues <- rcorr(as.matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
-                                        "scs","ncs","covb")]), type = "spearman")$P
+                                                 "scs","ncs","dth","dtl","drf","covb")]), type = "spearman")$P
     # replace upper triangle with NA
     corr_pvalues[upper.tri(corr_pvalues, diag = TRUE)] <- NA
     
@@ -707,16 +703,20 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     corr_pvalues <- ifelse(is.na(corr_pvalues), "", ifelse(corr_pvalues < .001, "***", ifelse(corr_pvalues < .01, "**", ifelse(corr_pvalues < .05, "*", ""))))
     
     # convert to matrix for the paste()-function
-    corr_no_drr <- as.matrix(corr_no_drr)
+    correlations <- as.matrix(correlations)
     corr_pvalues <- as.matrix(corr_pvalues)
     
     # paste correlations and asterisks together
-    correlations <- matrix(paste(corr_no_drr, corr_pvalues, sep = ""),
-                           nrow = nrow(corr_no_drr), dimnames = dimnames(corr_no_drr))
+    correlations <- matrix(paste(correlations, corr_pvalues, sep = ""),
+                           nrow = nrow(correlations), dimnames = dimnames(correlations))
     
 ```
 
 # Results
+
+During visual inspection of correlation plots we noticed an unexpected outlier with very high MBI scores and very low NFC scores.
+A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
+To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
 
 ```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -726,7 +726,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
       escape = F, # correctly print special characters
       align = rep("l",11)) %>% # right aligns the text in every column except for the first
     kable_styling(latex_options = c("striped", "scale_down")) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 179. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \\\\textit{N} = 180. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
              escape = F, # correctly print special characters
              threeparttable = T) # line breaks in the footnote
 
