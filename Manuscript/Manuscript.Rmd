@@ -779,11 +779,11 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   fit_plot <- semPaths(fit, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
                        layout = matrix(data = c(0,0,0,1,-1,1,-0.3,-1,0.3,0.3), nrow = 5, ncol = 2), # manually set the node locations
-                       sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
-                       edge.label.cex = 1, # size specifications
+                       sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
+                       edge.label.cex = 1, esize = 2, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
                        residuals = FALSE, # do not plot residuals
-                       edge.label.color = "black", posCol = "#f0a543", negCol = "#5a99d1"
+                       edge.label.color = "black", posCol = "black", negCol = "black"
 )
 ```
 
@@ -833,12 +833,12 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   fityears_plot <- semPaths(fityears, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition", "Years spent\nteaching"),
                        layout = matrix(data = c(0,0,0,1,-1,-1,1,-0.3,-1,0.3,0.3,1), nrow = 6, ncol = 2), # manually set the node locations
-                       sizeMan = 20, sizeMan2 = 7, shapeMan = "rectangle", label.norm = TRUE, # specify node properties
-                       edge.label.cex = 1, # size specifications
+                       sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
+                       edge.label.cex = 1, esize = 2, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
                        residuals = FALSE, # do not plot residuals
                        exoCov = FALSE, # do not plot covariance between exogenous variables
-                       edge.label.color = "black", posCol = "#f0a543", negCol = "#5a99d1"
+                       edge.label.color = "black", posCol = "black", negCol = "black"
 )
 ```
 
