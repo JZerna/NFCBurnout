@@ -774,12 +774,26 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 ```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
+  # create an array of standardized parameters and an array of significances
+  
+  fit_param <- fit_summ$PE$std.all[1:7]
+  fit_sign <- fit_summ$PE$pvalue[1:7]
+
+  # replace p-values with asterisks depending on significance level
+  
+  fit_sign <- ifelse(fit_sign < .001, "***", ifelse(fit_sign < .01, "**", ifelse(fit_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fit_param <- paste(format(round(fit_param, digits = 2), nsmall = 2), fit_sign, sep = "")
+  
   # Make a path diagram to visualize the results
 
   fit_plot <- semPaths(fit, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
                        layout = matrix(data = c(0,0,0,1,-1,1,-0.3,-1,0.3,0.3), nrow = 5, ncol = 2), # manually set the node locations
                        sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
+                       edgeLabels = fit_param, # specify the edge labels with the asterisks as previously created
                        edge.label.cex = 1, esize = 2, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
                        residuals = FALSE, # do not plot residuals
@@ -828,6 +842,19 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 ```{r objective1years_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
+  # create an array of standardized parameters and an array of significances
+  
+  fityears_param <- fityears_summ$PE$std.all[1:8]
+  fityears_sign <- fityears_summ$PE$pvalue[1:8]
+
+  # replace p-values with asterisks depending on significance level
+  
+  fityears_sign <- ifelse(fityears_sign < .001, "***", ifelse(fityears_sign < .01, "**", ifelse(fityears_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fityears_param <- paste(format(round(fityears_param, digits = 2), nsmall = 2), fityears_sign, sep = "")
+  
   # Make a path diagram to visualize the results
 
   fityears_plot <- semPaths(fityears, what="std", # display the parameters on the arrows
@@ -835,6 +862,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
                        layout = matrix(data = c(0,0,0,1,-1,-1,1,-0.3,-1,0.3,0.3,1), nrow = 6, ncol = 2), # manually set the node locations
                        sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
                        edge.label.cex = 1, esize = 2, # size specifications
+                       edgeLabels = fityears_param, # specify the edge labels with the asterisks as previously created
                        fade = FALSE, # do not make insignificant associations invisible
                        residuals = FALSE, # do not plot residuals
                        exoCov = FALSE, # do not plot covariance between exogenous variables
@@ -888,6 +916,19 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 ```{r objective2_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
+  # create an array of standardized parameters and an array of significances
+  
+  fit2_param <- fit2_summ$PE$std.all[1:23]
+  fit2_sign <- c(rep(1,16), fit2_summ$PE$pvalue[17:23])
+
+  # replace p-values with asterisks depending on significance level
+  
+  fit2_sign <- ifelse(fit2_sign < .001, "***", ifelse(fit2_sign < .01, "**", ifelse(fit2_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fit2_param <- paste(format(round(fit2_param, digits = 2), nsmall = 2), fit2_sign, sep = "")  
+
   # Visualize the results
   
   fit2_plot <- semPaths(fit2, what = "std",
@@ -896,6 +937,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
                                         nrow = 21, ncol = 2),
                         residuals = FALSE, fade = FALSE,
+                        edgeLabels = fit2_param, # specify the edge labels with the asterisks as previously created
                         edge.label.cex = 1, esize = 2, # size of the parameters
                         edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
                         posCol = "black", negCol = "black" # color of arrows
