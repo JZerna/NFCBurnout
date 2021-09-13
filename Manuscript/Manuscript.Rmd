@@ -896,9 +896,9 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
                                         nrow = 21, ncol = 2),
                         residuals = FALSE, fade = FALSE,
-                        edge.label.cex = 1, # size of the parameters
-                        edge.label.color = "black", edge.label.bg = FALSE, # color and background of the parameters
-                        posCol = "#f0a543", negCol = "#5a99d1" # color of arrows
+                        edge.label.cex = 1, esize = 2, # size of the parameters
+                        edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
+                        posCol = "black", negCol = "black" # color of arrows
   )
 ```
 
