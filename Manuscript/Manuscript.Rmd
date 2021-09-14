@@ -115,6 +115,7 @@ library(bibtex)
 #install.packages("kableExtra") # for great tables (see haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
 #install.packages("knitr")      # for knitting documents and tables
 #install.packages("semPlot")    # plotting path models
+#install.packages("remotes")    # for APA output (remotes::install_github("dgromer/apa"))
 
 library(here)
 library(tidyverse)
@@ -129,6 +130,7 @@ library(knitr)
 library(GGally)                 # from ggplot2, for multi-correlation plots
 library(semPlot)
 library(qgraph)
+library(apa)                    # from the remotes package
 
 ```
 
@@ -232,11 +234,18 @@ Participants were informed about aims and duration of the study and data securit
 
 ## Data analysis
 We used *R Studio* [@RCT2020; @RStudioTeam2020] with the main packages *lavaan* [@Rosseel2012] and *psych* [@Revelle2021] for all our analyses.
+Data were checked for multivariate normality using Mardia's coefficient.
+To account for non-linear relationships, correlations were computed using Spearman's rank coefficient rather than Pearson's product moment correlation.
+Internal consistencies were assessed with Cronbach's Alpha and MacDonald's Omega.
+Since Cronbach's Alpha has been criticized for being insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the additional computation of MacDonald's Omega has the purpose of ensuring a more reliable estimation.
 
 ### *Multiple mediation model*
 Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
 Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
+NFC was entered as the independent variable, having a direct and multiple indirect effects on MBI via self-control, reappraisal, and suppression as mediators.
+Following Grass et al. [-@Grass2018], the results of the model were appraised by using $N$ = 2,000 bootstrap samples for confidence intervals.
+Multiple indices were used to evaluate model fit as recommended by Hu and Bentler [-@Hu1999]: the Chi-square test statistic, which measures the fit compared to a saturated model, the Comparative Fit Index (CFI), which compares the fit to the baseline model, the Standardized Root Mean Square Residual (SRMR), which compares the residuals of the observed and predicted covariance matrix, and the Root Mean Square Error of Approximation (RMSEA), which does the same as the latter but takes degrees of freedom and model complexity into account.
 
 ### *Structural equation model*
 Items were reverse coded according to the scale manuals.
@@ -356,8 +365,6 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   
   ncs_parcels <- parcel.gen(loadings = ncs_load) # execute function
   
-  remove(ncs_load,ncs_pca) # remove unnecessary objects
-  
   # Add parcelling result to the key list
   
   keylist <- c(keylist, parcel1 = list(ncs_parcels$items[,1]), parcel2 = list(ncs_parcels$items[,2]),
@@ -414,7 +421,8 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
   }
   
   # Plot a big correlational matrix to check for non-linear associations and unexpected outliers
-  multicorrplot <- ggpairs(score_data[,c(2,3,4,5,6,10,11,16,20,24,28)], lower = list(continuous = my_fn))
+  multicorrplot <- ggpairs(score_data[,c("years","mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+                                         "scs","ncs","dth","dtl","drf","covb")], lower = list(continuous = my_fn))
 
   # It looked like there was an outlier in the data, especially visible in the MBI data
   # Check for the outlier in particular, using the data involved in the mediation
@@ -708,8 +716,9 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     diag(correlations) <- consist_diag
     
     # set row and column names for better table printing
-    row.names(correlations) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","DTH","DTL","DRF","COV")
-    colnames(correlations) <- c("MBI","MBI EE","MBI DP","MBI RPE","ERQ","ERQ S","ERQ R","SCS","NFC","DTH","DTL","DRF","COV")
+    row.names(correlations) <- c("1. MBI","2. MBI EE","3. MBI DP","4. MBI RPE","5. ERQ","6. ERQ S","7. ERQ R",
+                                 "8. SCS","9. NFC","10. DTH","11. DTL","12. DRF","13. COV")
+    colnames(correlations) <- c("1","2","3","4","5","6","7","8","9","10","11","12","13")
     
     # create array with p-values of correlation coefficients
     corr_pvalues <- rcorr(as.matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
@@ -735,8 +744,6 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 During visual inspection of correlation plots we noticed an unexpected outlier with very high MBI scores and very low NFC scores.
 A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
 To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
-Basic metric descriptives of the questionnaire scores and subscales are listed in **Table 1**.
-Only the ERQ sum score and its Reappraisal subscale followed a multivariate normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics [@Roesseel2012].
 
 ```{r desc_table, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -753,9 +760,17 @@ Only the ERQ sum score and its Reappraisal subscale followed a multivariate norm
 
 ```
 
+## Descriptive statistics
+
+Basic metric descriptives of the questionnaire scores and subscales are listed in **Table 1**.
+Only the ERQ sum score and its Reappraisal subscale followed a multivariate normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics [@Roesseel2012].
 Correlations and internal consistencies are displayed in **Table 2**.
+For this descriptive analysis, the variables DTH, DTL, and DRF were computed as a sum of their item scores, not weighted as in the structural equation model.
 Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha of the three demand-resource-ratios can be considered *acceptable*.
-Even though these cut-offs have been criticized for being both arbitrary and insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the more robust MacDonald's Omega [@Dunn2014] actually indicates *acceptable* to *good* internal consistency.
+The more robust MacDonald's Omega [@Dunn2014] does not deviate much from Cronbach's Alpha and indicates *acceptable* to *good* internal consistency.
+As expected, the MBI score was positively correlated with DTH (`r cor_apa(cor.test(score_data$mbi, score_data$dth, method = "spearman"), format = "rmarkdown")`) and negatively with DRF (`r cor_apa(cor.test(score_data$mbi, score_data$drf, method = "spearman"), format = "rmarkdown")`), large associations according the classification scheme by Gignac and Szodorai [-@Gignac2016].
+Surprisingly, the correlation between the MBI score and DTL was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman"), format = "rmarkdown")`).
+The NFC score correlated negatively with the MBI sum score and about equally with all subscales, contrary to some previous observations in other studies.
 
 `r desc_table`
 
@@ -826,6 +841,10 @@ Even though these cut-offs have been criticized for being both arbitrary and ins
 )
 ```
 
+## Replication of Grass et al. (2018)
+
+[Describe mediation results here.]
+
 ```{r objective1years, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
   # Replication of Grass et al. (2018) using years spent teaching as a variable influencing self-control
@@ -894,6 +913,8 @@ Even though these cut-offs have been criticized for being both arbitrary and ins
                        edge.label.color = "black", posCol = "black", negCol = "black"
 )
 ```
+
+[Describe mediation with years-teaching-variable here]
 
 ```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
@@ -969,6 +990,13 @@ Even though these cut-offs have been criticized for being both arbitrary and ins
   )
 ```
 
+## Demand-Resource Model
+
+Next we looked at how different ratios of subjective demands and resources affect the association of NFC and burnout in a strictly confirmatory approach.
+The parcelling procedure for the indicators of the latent factor NFC resulted in four parcels with a summed difference in average loadings of `r round(ncs_parcels$summed.difference, digits = 3)`.
+The first parcel contained item `r ncs_parcels$items[1,1]`, `r ncs_parcels$items[2,1]`, `r ncs_parcels$items[3,1]`, and `r ncs_parcels$items[4,1]`, the second parcel item `r ncs_parcels$items[1,2]`, `r ncs_parcels$items[2,2]`, `r ncs_parcels$items[3,2]`, and `r ncs_parcels$items[4,2]`, the third parcel item `r ncs_parcels$items[1,3]`, `r ncs_parcels$items[2,3]`, `r ncs_parcels$items[3,3]`, and `r ncs_parcels$items[4,3]`, and the fourth parcel item `r ncs_parcels$items[1,4]`, `r ncs_parcels$items[2,4]`, `r ncs_parcels$items[3,4]`, and `r ncs_parcels$items[4,4]`.
+Standardized path coefficients of the demand-resource model are illustrated in **Figure 3**.
+Even though all variables were correlated
 
 ```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
