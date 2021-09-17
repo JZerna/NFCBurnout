@@ -248,7 +248,7 @@ Following Grass et al. [-@Grass2018], the results of the model were appraised by
 Multiple indices were used to evaluate model fit as recommended by Hu and Bentler [-@Hu1999]: the Chi-square test statistic, which measures the fit compared to a saturated model, the Comparative Fit Index (CFI), which compares the fit to the baseline model, the Standardized Root Mean Square Residual (SRMR), which compares the residuals of the observed and predicted covariance matrix, and the Root Mean Square Error of Approximation (RMSEA), which does the same as the latter but takes degrees of freedom and model complexity into account.
 
 ### *Structural equation model*
-All items, apart for those making up the demand-resource-ratios, were reverse coded according to the scale manuals.
+All items, apart from those making up the demand-resource-ratios, were reverse coded according to the scale manuals.
 The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. [-@Grass2019], a method that is used in SEM when only relations between but not within constructs are of interest.
 Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
 Then, the items were randomly divided into four parcels and the average item loading per parcel was computed.
