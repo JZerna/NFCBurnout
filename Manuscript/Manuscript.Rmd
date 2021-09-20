@@ -998,7 +998,10 @@ Next we looked at how different ratios of subjective demands and resources affec
 The parcelling procedure for the indicators of the latent factor NFC resulted in four parcels with a summed difference in average loadings of `r round(ncs_parcels$summed.difference, digits = 3)`.
 The first parcel contained item `r ncs_parcels$items[1,1]`, `r ncs_parcels$items[2,1]`, `r ncs_parcels$items[3,1]`, and `r ncs_parcels$items[4,1]`, the second parcel item `r ncs_parcels$items[1,2]`, `r ncs_parcels$items[2,2]`, `r ncs_parcels$items[3,2]`, and `r ncs_parcels$items[4,2]`, the third parcel item `r ncs_parcels$items[1,3]`, `r ncs_parcels$items[2,3]`, `r ncs_parcels$items[3,3]`, and `r ncs_parcels$items[4,3]`, and the fourth parcel item `r ncs_parcels$items[1,4]`, `r ncs_parcels$items[2,4]`, `r ncs_parcels$items[3,4]`, and `r ncs_parcels$items[4,4]`.
 Standardized path coefficients of the demand-resource model are illustrated in **Figure 3**.
-Even though all variables were correlated
+The robust Chi-square statistic of $\chi^2 = $`r round(fit2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$) does not indicate good model fit.
+However, since it is in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)`$*df < \chi^2 < $`r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)+1`$*df$ the lack of good fit might be due to the underlying assumption of multivariate normality [@Hu1999; @Schumacker2010], which is violated here.
+This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% CI [`r round(fit2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]
+
 
 ```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
