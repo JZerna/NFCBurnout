@@ -116,6 +116,7 @@ library(bibtex)
 #install.packages("knitr")      # for knitting documents and tables
 #install.packages("semPlot")    # plotting path models
 #install.packages("remotes")    # for APA output (remotes::install_github("dgromer/apa"))
+#install.packages("ppcor")      # for partial correlations
 
 library(here)
 library(tidyverse)
@@ -131,6 +132,7 @@ library(GGally)                 # from ggplot2, for multi-correlation plots
 library(semPlot)
 library(qgraph)
 library(apa)                    # from the remotes package
+library(ppcor)
 
 ```
 
@@ -1003,6 +1005,37 @@ However, since it is in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$
 This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% CI [`r round(fit2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]
 
 
+```{r exploring_badfit, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Use function from http://www.sthda.com/english/wiki/correlation-matrix-a-
+  # quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-
+  # using-r-software#a-simple-function-to-format-the-correlation-matrix
+  # accessed on September 23rd 2021
+
+  flattenCorrMatrix <- function(cormat, pmat) {
+    ut <- upper.tri(cormat)
+    data.frame(
+      row = rownames(cormat)[row(cormat)[ut]],
+      column = rownames(cormat)[col(cormat)[ut]],
+      cor  =(cormat)[ut],
+      p = pmat[ut]
+      )
+  }
+
+  # Compute data frame of partial correlations
+
+  partialcorr <- flattenCorrMatrix(pcor(score_data[c("years","mbi","mbi_ee","mbi_dp","mbi_rpe",
+                                                     "erq","erq_supp","erq_reap","scs","ncs",
+                                                     "dth","dtl","drf","covb")], method = "spearman")$estimate,
+                                  pcor(score_data[c("years","mbi","mbi_ee","mbi_dp","mbi_rpe",
+                                                    "erq","erq_supp","erq_reap","scs","ncs",
+                                                    "dth","dtl","drf","covb")], method = "spearman")$p.value)
+  # Add easy-to-read significance column
+  
+  partialcorr$sign <- ifelse(partialcorr$p < 0.05, "sign", "ns")
+
+```
+
 ```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
   # Exploratory analysis I: MBI subscale instead of sum score
@@ -1058,17 +1091,21 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
   measurement model
     NFC =~ nfc1 + nfc2 + nfc3 + nfc4
     DTH =~ dth1 + dth2 + dth3
-    DTL =~ dtl1 + dtl2 + dtl3
     DRF =~ drf1 + drf2 + drf3
-    MBI =~ mbi_ee + mbi_dp + mbi_rpe
+    MBI_EE =~ mbi_ee
+    MBI_RPE =~ mbi_rpe
+    SCS =~ scs
     COVB =~ covb
+    YEARS =~ years
 
   # structural model
-    DTH ~ NFC
-    DTL ~ NFC
-    DRF ~ NFC
-    COVB ~ DTH
-    MBI ~ NFC + DTH + DTL + DRF + COVB'
+    COVB ~ YEARS
+    SCS ~ YEARS
+    NFC ~ SCS
+    DTH ~ COVB + DRF
+    DRF ~ SCS + NFC
+    MBI_EE ~ DTH
+    MBI_RPE ~ DRF'
   
   # Determine the model fit
   
