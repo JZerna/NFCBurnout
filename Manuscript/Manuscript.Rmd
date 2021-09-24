@@ -1083,10 +1083,6 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
 
   # Exploratory analysis II: Covid burden as a covariate
   
-  # Correlations show that Covid burden is positively associated with MBI and
-  # and MBI_EE, and negatively associated with DTH. We will therefore include
-  # Covid burden as a mediator between DTH and MBI.
-  
   explor2_model <- '
   measurement model
     NFC =~ nfc1 + nfc2 + nfc3 + nfc4
@@ -1101,11 +1097,22 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
   # structural model
     COVB ~ YEARS
     SCS ~ YEARS
-    NFC ~ SCS
-    DTH ~ COVB + DRF
+    NFC ~~ SCS
+    NFC ~~ COVB
+    DTH ~ COVB + SCS + NFC
     DRF ~ SCS + NFC
-    MBI_EE ~ DTH
-    MBI_RPE ~ DRF'
+    DTH ~~ DRF
+    MBI_EE ~ DTH + COVB
+    MBI_RPE ~ DRF
+
+    dth1 ~~ dth2
+    dth1 ~~ dth3
+    dth2 ~~ dth3
+
+    drf1 ~~ drf2
+    drf1 ~~ drf3
+    drf2 ~~ drf3
+'
   
   # Determine the model fit
   
@@ -1119,6 +1126,56 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
   
   fit_explor2_summ <- summary(fit_explor2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
+```
+```{r explor2_plot, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # create an array of standardized parameters and an array of significances
+  
+  fit_explor2_param <- fit_explor2_summ$PE$std.all[c(1:10,16:32)]
+  fit_explor2_sign <- c(rep(1,10), fit_explor2_summ$PE$pvalue[16:32])
+
+  # replace p-values with asterisks depending on significance level
+  
+  fit_explor2_sign <- ifelse(fit_explor2_sign < .001, "***", ifelse(fit_explor2_sign < .01, "**", ifelse(fit_explor2_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fit_explor2_param <- paste(format(round(fit_explor2_param, digits = 2), nsmall = 2), fit_explor2_sign, sep = "")  
+
+  # Visualize the results
+  
+  fit_explor2_plot <- semPaths(fit_explor2, what = "std",
+                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4",
+                                       "dth1","dth2","dth3","drf1","drf2","drf3",
+                                       "YEARS",
+                                       "SCS",
+                                       "COVB",
+                                       "NFC",
+                                       "DRF","DTH",
+                                       "MBI_EE","MBI_RPE"),
+                        layout = matrix(data = c(-0.7,-0.56,-0.44,-0.3,
+                                                 0.3,0.5,0.7,0.3,0.5,0.7,
+                                                 -1,
+                                                 -0.4,
+                                                 -0.4,
+                                                 -0.4,
+                                                 0.4,0.4,
+                                                 1,1,
+                                                 1,1,1,1,
+                                                 1,1,1,-1,-1,-1,
+                                                 -0.3,
+                                                 -1,
+                                                 -0.3,
+                                                 0.5,
+                                                 0.5,-0.5,
+                                                 0.5,-0.5),
+                                        nrow = 18, ncol = 2),
+                        residuals = FALSE, fade = FALSE,
+                        edgeLabels = fit_explor2_param, # specify the edge labels with the asterisks as previously created
+                        edge.label.cex = 1, esize = 2, # size of the parameters
+                        edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
+                        posCol = "black", negCol = "black" # color of arrows
+  )
 ```
 
 
