@@ -495,7 +495,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 ```
 
-```{r consistency, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r consistency, eval=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Tests for internal consistency
 
@@ -755,7 +755,7 @@ To adhere to the preregistration, we report the results containing the outlier i
   kbl(correlations,
       booktabs = T, # no vertical lines
       escape = F, # correctly print special characters
-      align = rep("l",14)) %>% # right aligns the text in every column except for the first
+      align = rep("l",14)) %>% # left aligns the text in every column
     kable_styling(latex_options = c("striped", "scale_down")) %>%
     footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 180. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
              escape = F, # correctly print special characters
@@ -816,6 +816,43 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
           estimates = TRUE, ci = TRUE)
 ```
 
+```{r objective1_table, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  fit_table <- data.frame("Path" = c("NFC $\\rightarrow$ Self Control", "NFC $\\rightarrow$ Reappraisal", "NFC $\\rightarrow$ Suppression",
+                                   "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
+                                   "NFC $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
+                                   "Total Effect"),
+                          "Effect" = c(fit_summ$PE$est[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "SE" = c(fit_summ$PE$se[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "z-value" = c(fit_summ$PE$z[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "p-value" = c(fit_summ$PE$pvalue[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(fit_summ$PE$ci.lower[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(fit_summ$PE$ci.upper[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  fit_table[2:ncol(fit_table)] <- format(round(fit_table[2:ncol(fit_table)], digits = 3), nsmall = 2)
+
+  replication_table <-
+    kbl(fit_table,
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters)
+        align = c("l",rep("r",6))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped")) %>%
+    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 8, 10) %>%
+    pack_rows("Total Effect", 11, 11) %>%
+    footnote(general = "RPE = Reduced personal efficacy subscale of the Maslach Burnout Inventory.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
+  
+```
+
 ```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
   # create an array of standardized parameters and an array of significances
@@ -847,7 +884,8 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 
 ## Replication of Grass et al. (2018)
 
-[Describe mediation results here.]
+In order to replicate findings by Grass et al. [-@Grass2018] we computed a multiple mediation model to investigate whether the association of NFC and reduced personal efficacy was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
+
 
 ```{r objective1years, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
