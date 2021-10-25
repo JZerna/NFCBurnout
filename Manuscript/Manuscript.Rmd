@@ -217,7 +217,7 @@ Our preregistration, the data, and the R Markdown document used to analyze the d
 ## Participants
 Teachers were recruited via social media, emails to colleagues of N.E. and to Saxon schools with the request to pass on the information.
 All teachers were eligible, no payment was issued.
-Of the $N=$ 278 participants, who started filling out the online survey, $N=$ `r nrow(data)` (`r round((table(data$gender)[1]/nrow(data))*100, digits = 1)`% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
+Of the $N=$ 278 participants, who started filling out the online survey, $N =$ `r nrow(data)` (`r round((table(data$gender)[1]/nrow(data))*100, digits = 1)`% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
 All of them were currently teaching at a primary, secondary, comprehensive, or vocational school.
 Data was collected between the 12th of June and the 24th of July 2020.
 At this point, schools had been switching between digital and hybrid forms of teaching for at least three months due to the Covid-19 pandemic, causing additional stress for many teachers.
@@ -847,7 +847,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "RPE = Reduced personal efficacy subscale of the Maslach Burnout Inventory.",
+    footnote(general = "CI = confidence interval, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, SE = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
   
@@ -885,6 +885,9 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 ## Replication of Grass et al. (2018)
 
 In order to replicate findings by Grass et al. [-@Grass2018] we computed a multiple mediation model to investigate whether the association of NFC and reduced personal efficacy was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
+The baseline model did not fit the data ($\chi$^2^(`r round(fit_summ$FIT[["baseline.df"]], digits = 0)`, $N = $`r nrow(data)`) = `r round(fit_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$).
+Applying the cutoffs by Hu and Bentler [-@Hu1999] to the fit indices of $CFI = $`r round(fit_summ$FIT[["cfi"]], digits = 2)`, $TLI = $`r round(fit_summ$FIT[["tli"]], digits = 2)`, $SRMR = $`r round(fit_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA = $`r format(round(fit_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)` ($p = $`r round(fit_summ$FIT[["rmsea.pvalue"]], digits = 2)`,), suggests good fit of the proposed model throughout all indices.
+standardized estimates are displayed in **Figure**, total, direct, and indirect effects are listed in **Table**.
 
 
 ```{r objective1years, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
