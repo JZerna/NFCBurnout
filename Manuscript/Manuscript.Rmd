@@ -1217,6 +1217,8 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
   fit_explor2_summ <- summary(fit_explor2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
 ```
+
+
 ```{r explor2_plot, echo=FALSE, message=FALSE, warning=FALSE}
 
   # create an array of standardized parameters and an array of significances
