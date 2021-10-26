@@ -261,7 +261,7 @@ The latent factor DTH was indicated by items 4, 8, and 9, DTL by the recoded ite
 Model parameters were estimated using the maximum likelihood method with robust standard errors.
 Model fit was evaluated by looking at the Chi-square test statistic, CFI, SRMR, and RMSEA.
 
-### *Exploratory analysis*
+### *Exploratory analyses*
 We preregistered two exploratory analyses.
 Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales [@Grass2018; @Naderi2018].
 And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
@@ -888,11 +888,11 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 In order to replicate findings by Grass et al. [-@Grass2018] we computed a multiple mediation model to investigate whether the association of NFC and reduced personal efficacy was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
 The baseline model did not fit the data ($\chi$^2^(`r round(fit_summ$FIT[["baseline.df"]], digits = 0)`, $N = $`r nrow(data)`) = `r round(fit_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$).
 Applying the cutoffs by Hu and Bentler [-@Hu1999] to the fit indices of $CFI = $`r round(fit_summ$FIT[["cfi"]], digits = 2)`, $TLI = $`r round(fit_summ$FIT[["tli"]], digits = 2)`, $SRMR = $`r round(fit_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA = $`r format(round(fit_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)` ($p = $`r round(fit_summ$FIT[["rmsea.pvalue"]], digits = 2)`,), suggests good fit of the proposed model throughout all indices.
-standardized estimates are displayed in **Figure**, total, direct, and indirect effects are listed in **Table**.
-We could replicate a positive association of NFC and self control ($\beta = $`r round(fit_summ$PE$est[fit_summ$PE$label == "a1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a1"], digits = 3)`), and a negative association of habitual reappraisal and reduced personal efficacy ($\beta = $`r round(fit_summ$PE$est[fit_summ$PE$label == "b2"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b2"], digits = 3)`).
-However, we could neither replicate the effect of NFC on reappraisal ($\beta = $`r round(fit_summ$PE$est[fit_summ$PE$label == "b1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b1"], digits = 3)`), nor the indirect effect of NFC on reduced personal efficacy via reappraisal ($\beta = $`r round(fit_summ$PE$est[fit_summ$PE$label == "Indirect2"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect2"], digits = 3)`).
-Instead, we found a significant indirect effect of NFC on reduced personal efficacy via self control ($\beta = $`r round(fit_summ$PE$est[fit_summ$PE$label == "Indirect1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect1"], digits = 3)`).
-Additionally, NFC was negative associated with habitual use of suppression ($\beta = $`r round(fit_summ$PE$est[fit_summ$PE$label == "c1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "c1"], digits = 3)`), which was not the case in the study by Grass et al. [-@Grass2018].
+Standardized estimates are displayed in **Figure**, total, direct, and indirect effects are listed in **Table**.
+We could replicate a positive association of NFC and self control ($\beta = $`r round(fit_summ$PE$std.all[fit_summ$PE$label == "a1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a1"], digits = 3)`), and a negative association of habitual reappraisal and reduced personal efficacy ($\beta = $`r round(fit_summ$PE$std.all[fit_summ$PE$label == "b2"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b2"], digits = 3)`).
+However, we could neither replicate the effect of NFC on reappraisal ($\beta = $`r round(fit_summ$PE$std.all[fit_summ$PE$label == "b1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b1"], digits = 3)`), nor the indirect effect of NFC on reduced personal efficacy via reappraisal ($\beta = $`r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect2"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect2"], digits = 3)`).
+Instead, we found a significant indirect effect of NFC on reduced personal efficacy via self control ($\beta = $`r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect1"], digits = 3)`).
+Additionally, NFC was negative associated with habitual use of suppression ($\beta = $`r round(fit_summ$PE$std.all[fit_summ$PE$label == "c1"], digits = 2)`, $p = $`r round(fit_summ$PE$pvalue[fit_summ$PE$label == "c1"], digits = 3)`), which was not the case in the study by Grass et al. [-@Grass2018].
 
 
 ```{r objective1years, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
@@ -942,7 +942,7 @@ Additionally, NFC was negative associated with habitual use of suppression ($\be
 
   fityears_table <- data.frame("Path" = c("NFC $\\rightarrow$ Self Control", "Years spent teaching $\\rightarrow$ Self Control", "NFC $\\rightarrow$ Reappraisal", "NFC $\\rightarrow$ Suppression",
                                    "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
-                                   "NFC $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
+                                   "NFC and years spent teaching $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
                                    "Total Effect"),
                           "$B$" = c(fityears_summ$PE$est[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fityears_summ$PE$se[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
@@ -1001,7 +1001,14 @@ Additionally, NFC was negative associated with habitual use of suppression ($\be
 )
 ```
 
-[Describe mediation with years-teaching-variable here]
+Grass et al. [-@Grass2018] controlled for age and a-level grade in their analysis, which we did not consider when preregistering this analysis.
+Since grade was not assessed in this sample, and age was assessed as a categorical variable, we will instead incorporate how many years each participant had spent teaching at the point of assessment.
+As it was not preregistered, this is an exploratory analysis.
+Again, the baseline model did not fit the data ($\chi$^2^(`r round(fityears_summ$FIT[["baseline.df"]], digits = 0)`, $N = $`r nrow(data)`) = `r round(fityears_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$), and the fit indices of $CFI = $`r round(fityears_summ$FIT[["cfi"]], digits = 2)`, $TLI = $`r round(fityears_summ$FIT[["tli"]], digits = 2)`, $SRMR = $`r round(fityears_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA = $`r format(round(fityears_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)` ($p = $`r round(fityears_summ$FIT[["rmsea.pvalue"]], digits = 2)`,) suggest good fit of the proposed model throughout all indices.
+Standardized estimates are displayed in **Figure**, total, direct, and indirect effects are listed in **Table**.
+The associations between NFC, self control, reappraisal, suppression, and reduced personal efficacy were almost identical to the model first model.
+However, because of the positive association of years spent teaching and self control ($\beta = $`r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "y"], digits = 2)`, $p < .001$), the indirect path leading from NFC and years spent teaching via self control to reduced personal efficacy reached significance in this model ($\beta = $`r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "Indirect1"], digits = 2)`, $p = $`r round(fityears_summ$PE$pvalue[fityears_summ$PE$label == "Indirect1"], digits = 3)`).
+Therefore, the total effect also increased slightly, compared to the first model ($\beta = $`r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "Total"], digits = 2)`, $p = $`r round(fityears_summ$PE$pvalue[fityears_summ$PE$label == "Total"], digits = 3)`).
 
 ```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
