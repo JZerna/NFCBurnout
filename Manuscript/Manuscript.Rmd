@@ -826,12 +826,13 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
                                    "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
                                    "NFC $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
                                    "Total Effect"),
-                          "Effect" = c(fit_summ$PE$est[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "B" = c(fit_summ$PE$est[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "SE" = c(fit_summ$PE$se[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "z-value" = c(fit_summ$PE$z[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "p-value" = c(fit_summ$PE$pvalue[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "CI Lower" = c(fit_summ$PE$ci.lower[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "CI Upper" = c(fit_summ$PE$ci.upper[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                          "\beta" = c(fit_summ$PE$std.all[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           check.names = FALSE)
 
   # format the numbers to three digits after the decimal point
@@ -842,12 +843,12 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
     kbl(fit_table,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
-        align = c("l",rep("r",6))) %>% # right aligns the text in every numerical column
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
     kable_styling(latex_options = c("striped")) %>%
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "CI = confidence interval, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, SE = standard error.",
+    footnote(general = "B = unstandardized regression coefficient, \beta = standardized regression coefficient, CI = confidence interval, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, SE = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
   
