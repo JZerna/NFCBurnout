@@ -1169,6 +1169,10 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
           estimates = TRUE, ci = TRUE)
 ```
 
+## Exploratory analyses
+
+The first exploratory analysis concerned a modification of the demand-resource-model in which the subscale reduced personal efficacy would be used in place of the MBI sum score.
+
 ```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
   # Exploratory analysis II: Covid burden as a covariate
@@ -1246,7 +1250,7 @@ This also holds true for the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust
                                        "scs", "covb", "years",
                                        "NFC",
                                        "DTH","DRF",
-                                       "MBI_EE","MBI_RPE",
+                                       "MBI EE","MBI RPE",
                                        "SCS",
                                        "COVB",
                                        "YEARS"),
