@@ -848,7 +848,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
   
@@ -966,7 +966,7 @@ Additionally, NFC was negative associated with habitual use of suppression ($\be
     pack_rows("Direct Effects", 1, 8) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 9, 11) %>%
     pack_rows("Total Effect", 12, 12) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
@@ -1082,6 +1082,42 @@ Therefore, the total effect also increased slightly, compared to the first model
                         edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
                         posCol = "black", negCol = "black" # color of arrows
   )
+```
+```{r fit2_table, echo=FALSE, message=FALSE, warning=FALSE}
+  
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  fit2_table <- data.frame("Path" = c("NFC $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTL", "NFC $\\rightarrow$ DRF", "NFC $\\rightarrow$ MBI",
+                                      "DTH $\\rightarrow$ MBI", "DTL $\\rightarrow$ MBI", "DRF $\\rightarrow$ MBI",
+                                      "NFC $\\rightarrow$ MBI via DTH", "NFC $\\rightarrow$ MBI via DTL", "NFC $\\rightarrow$ MBI via DRF",
+                                      "Total Effect"),
+                          "$B$" = c(fit2_summ$PE$est[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$SE$" = c(fit2_summ$PE$se[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$z$-value" = c(fit2_summ$PE$z[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$p$-value" = c(fit2_summ$PE$pvalue[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(fit2_summ$PE$ci.lower[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(fit2_summ$PE$ci.upper[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$\\beta$" = c(fit2_summ$PE$std.all[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  fit2_table[2:ncol(fit2_table)] <- format(round(fit2_table[2:ncol(fit2_table)], digits = 3), nsmall = 2)
+
+  drrmodel_table <-
+    kbl(fit2_table,
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters)
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped")) %>%
+    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 8, 10) %>%
+    pack_rows("Total Effect", 11, 11) %>%
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
 ```
 
 ## Demand-Resource Model
