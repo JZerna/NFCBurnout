@@ -1096,6 +1096,7 @@ This also held true for the CFI of `r round(fit2_summ[["FIT"]][["cfi.robust"]], 
 Overall, the fit indices did not support the proposed model, and not all proposed paths were significant.
 NFC showed no direct association with the MBI score ($\beta = $`r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "c"], digits = 2)`, $p = $`r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "c"], digits = 3)`), even though it was negatively correlated with the sum score and all subscales.
 Instead, NFC showed indirect negative associations with the MBI score via lower scores in the latent variable DTH ($\beta = $`r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect1"], digits = 2)`, $p = $`r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect1"], digits = 3)`) and via higher scores in the latent variable DRF ($\beta = $`r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect3"], digits = 2)`, $p = $`r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect3"], digits = 3)`).
+The latent variable DTL was neither related to NFC ($\beta = $`r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "a2"], digits = 2)`, $p = $`r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta = $`r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "b2"], digits = 2)`, $p = $`r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "b2"], digits = 3)`).
 
 
 ```{r exploring_badfit, echo=FALSE, message=FALSE, warning=FALSE}
