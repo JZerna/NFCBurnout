@@ -1234,15 +1234,15 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explo
     YEARS =~ years
 
   # structural model
-    COVB ~ YEARS
-    SCS ~ YEARS
+    COVB ~ yc * YEARS
+    SCS ~ ys * YEARS
     NFC ~~ SCS
     NFC ~~ COVB
-    DTH ~ COVB + SCS + NFC
-    DRF ~ SCS + NFC
+    DTH ~ cdth * COVB + sdth * SCS + ndth* NFC
+    DRF ~ sdrf * SCS + ndrf * NFC
     DTH ~~ DRF
-    MBI_EE ~ DTH + COVB
-    MBI_RPE ~ DRF
+    MBI_EE ~ dthe * DTH + ce * COVB
+    MBI_RPE ~ drfr * DRF
     
     MBI_EE ~~ MBI_RPE
     NFC ~~ YEARS
@@ -1254,6 +1254,16 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explo
     drf1 ~~ drf2
     drf1 ~~ drf3
     drf2 ~~ drf3
+    
+  # Indirect effects
+    Indirect1 := (ndrf * drfr) + (ys * sdrf * drfr)
+    Indirect2 := (ndth * dthe) + (ys * sdth * dthe) + (yc * cdth * dthe)
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2
+         
+  # total effect
+    Total := (ndrf * drfr) + (ys * sdrf * drfr) + (ndth * dthe) + (ys * sdth * dthe) + (yc * cdth * dthe)
 '
   
   # Determine the model fit
@@ -1328,6 +1338,17 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explo
   )
 ```
 
+The second exploratory analysis concerned the incorporation of the Covid burden score into the model.
+We based the development of this model on the partial correlations of all variables, which provide an indication of how closely or remotely related variables might be in a path model.
+Then we modified the structure of the model in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
+The final model is illustrated in **Figure**, the total, direct, and indirect effects are listed in **Supplementary Table**.
+All fit indices suggest that the proposed model has good fit while the baseline model does not ($\chi^2=$`r round(fit_explor2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$), $CFI=$`r round(fit_explor2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, $RMSEA=$`r round(fit_explor2_summ[["FIT"]][["rmsea.robust"]], digits = 2)` (95% $CI$ [`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]), $SRMR=$`r round(fit_explor2_summ[["FIT"]][["srmr"]], digits = 2)`).
+Neither the ERQ sum score, nor its subscales, nor the depersonalisation subscale of the MBI contributed significantly to the explained variance and were therefore not included in the final model.
+Years spent teaching was associated with higher self control ($\beta = $`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ys"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ys"], digits = 3)`) and higher Covid burden ($\beta = $`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "yc"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "yc"], digits = 3)`) but not with NFC.
+NFC covaried with self control ($\sigma_{NFC,SCS}=$`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "SCS"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "SCS"], digits = 3)`) and Covid burden ($\sigma_{NFC,COVB}=$`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "COVB"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "COVB"], digits = 3)`), but not with years spent teaching ($p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "YEARS"], digits = 3)`).
+In turn, NFC was associated with higher DRF scores ($\beta = $`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ndrf"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ndrf"], digits = 3)`) and lower DTH scores ($\beta = $`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ndth"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ndth"], digits = 3)`) but not directly with any of the two MBI subscales.
+DRF scores fully mediated the negative association of NFC and self control with reduced personal efficacy (indirect effect $\beta = $`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "Indirect1"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "Indirect1"], digits = 3)`), which was also true for DTH scores and emotional exhaustion, but DTH also partially mediated between Covid burden and emotional exhaustion (indirect effect $\beta = $`r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "Indirect2"], digits = 2)`, $p = $`r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "Indirect2"], digits = 3)`).
+Covid burden was not associated with DRF or reduced personal efficacy.
 
 # Discussion
 
