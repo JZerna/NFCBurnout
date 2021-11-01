@@ -258,6 +258,7 @@ This was repeated 10,000 times to find the parcelling choice with the smallest d
 The latent factor MBI was computed using the three subscales as indicators.
 For the demand-resource-ratios, we used three items from the work satisfaction scale each.
 The latent factor DTH was indicated by items 4, 8, and 9, DTL by the recoded items 12, 26, and 27, and DRF by items 17, 22, and 24.
+The items can be translated as follows: 4) "There is too much pressure on me.", 8) "There is often too much being demanded of us at work.", 9) "I often feel tired and weary because of my work.", 12) "I can realize my ideas here.", 17) "I take pleasure in my work.", 22) "Does your place of work give you the opportunity to do what you do best?", 24) "Does your place of work give you enough opportunities to use your skills?", 26) "Are you happy with your promotion prospects?", and 27) "Are you happy with your position when comparing it to your skills?".
 Model parameters were estimated using the maximum likelihood method with robust standard errors.
 Model fit was evaluated by looking at the Chi-square test statistic, CFI, SRMR, and RMSEA.
 
@@ -1227,7 +1228,7 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit2_summ
   # Visualize the results
   
   fit_explor1_plot <- semPaths(fit_explor1, what = "std",
-                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","rpe","NFC","DTH","DTL","DRF","MBI"),
+                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","rpe","NFC","DTH","DTL","DRF","RPE"),
                         layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,-0.8,-0.6,0,0.6,0.8,
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-0.5,0.5,0.5,0.5,-0.5),
                                         nrow = 19, ncol = 2),
