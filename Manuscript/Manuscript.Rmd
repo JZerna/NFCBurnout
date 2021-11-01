@@ -1003,6 +1003,7 @@ Additionally, NFC was negative associated with habitual use of suppression ($\be
 
 Grass et al. [-@Grass2018] controlled for age and a-level grade in their analysis, which we did not consider when preregistering this analysis.
 Since grade was not assessed in this sample, and age was assessed as a categorical variable, we instead incorporated how many years each participant had spent teaching at the point of assessment.
+We placed this variable as an independent variable influencing self control, as the latter was the only variable in the model that showed a partial correlation with years spent teaching.
 As it was not preregistered, this was an exploratory analysis.
 Again, the baseline model did not fit the data ($\chi$^2^(`r round(fityears_summ$FIT[["baseline.df"]], digits = 0)`, $N = $`r nrow(data)`) = `r round(fityears_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$), and the fit indices of $CFI = $`r round(fityears_summ$FIT[["cfi"]], digits = 2)`, $TLI = $`r round(fityears_summ$FIT[["tli"]], digits = 2)`, $SRMR = $`r round(fityears_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA = $`r format(round(fityears_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)`, 95% $CI$ [`r round(fityears_summ[["FIT"]][["rmsea.ci.lower"]], digits = 2)`,`r round(fityears_summ[["FIT"]][["rmsea.ci.upper"]], digits = 2)`], suggested good fit of the proposed model throughout all indices.
 Standardized estimates are displayed in **Figure**, total, direct, and indirect effects are listed in **Table**.
