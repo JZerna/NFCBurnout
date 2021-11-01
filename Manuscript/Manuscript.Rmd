@@ -1258,25 +1258,20 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explo
     NFC =~ nfc1 + nfc2 + nfc3 + nfc4
     DTH =~ dth1 + dth2 + dth3
     DRF =~ drf1 + drf2 + drf3
-    MBI_EE =~ mbi_ee
-    MBI_RPE =~ mbi_rpe
-    SCS =~ scs
-    COVB =~ covb
-    YEARS =~ years
 
   # structural model
-    COVB ~ yc * YEARS
-    SCS ~ ys * YEARS
-    NFC ~~ SCS
-    NFC ~~ COVB
-    DTH ~ cdth * COVB + sdth * SCS + ndth* NFC
-    DRF ~ sdrf * SCS + ndrf * NFC
+    covb ~ yc * years
+    scs ~ ys * years
+    NFC ~~ scs
+    NFC ~~ covb
+    DTH ~ cdth * covb + sdth * scs + ndth* NFC
+    DRF ~ sdrf * scs + ndrf * NFC
     DTH ~~ DRF
-    MBI_EE ~ dthe * DTH + ce * COVB
-    MBI_RPE ~ drfr * DRF
+    mbi_ee ~ dthe * DTH + ce * covb
+    mbi_rpe ~ drfr * DRF
     
-    MBI_EE ~~ MBI_RPE
-    NFC ~~ YEARS
+    mbi_ee ~~ mbi_rpe
+    NFC ~~ years
 
     dth1 ~~ dth2
     dth1 ~~ dth3
@@ -1316,8 +1311,8 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explo
 
   # create an array of standardized parameters and an array of significances
   
-  fit_explor2_param <- fit_explor2_summ$PE$std.all[c(1:30)]
-  fit_explor2_sign <- c(rep(1,15), fit_explor2_summ$PE$pvalue[16:30])
+  fit_explor2_param <- fit_explor2_summ$PE$std.all[c(1:25)]
+  fit_explor2_sign <- c(rep(1,10), fit_explor2_summ$PE$pvalue[11:25])
 
   # replace p-values with asterisks depending on significance level
   
@@ -1330,37 +1325,34 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explo
   # Visualize the results
   
   fit_explor2_plot <- semPaths(fit_explor2, what = "std",
-                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4",
-                                       "dth1","dth2","dth3","drf1","drf2","drf3",
-                                       "mbi_ee", "mbi_rpe",
-                                       "scs", "covb", "years",
-                                       "NFC",
-                                       "DTH","DRF",
-                                       "MBI EE","MBI RPE",
-                                       "SCS",
-                                       "COVB",
-                                       "YEARS"),
+                               nodeLabels = c("nfc1","nfc2","nfc3","nfc4",
+                                              "COVB", "SCS",
+                                              "dth1","dth2","dth3",
+                                              "EE",
+                                              "drf1","drf2","drf3",
+                                              "RPE",
+                                              "YEARS",
+                                              "NFC",
+                                              "DTH","DRF"),
                         layout = matrix(data = c(-0.6,-0.4,-0.2,0,
-                                                 0.3,0.5,0.7,0.3,0.5,0.7,
-                                                 1,1,
-                                                 -0.5,-0.2,-1,
+                                                 -0.2,-0.5,
+                                                 0.3,0.5,0.7,
+                                                 1,
+                                                 0.3,0.5,0.7,
+                                                 1,
+                                                 -1,
                                                  -0.2,
                                                  0.5,0.5,
-                                                 1,1,
-                                                 -0.5,
-                                                 -0.2,
-                                                 -1,
                                                  1,1,1,1,
-                                                 -1,-1,-1,1,1,1,
-                                                 -1,1,
+                                                 -0.4,0.1,
                                                  -1,-1,-1,
+                                                 0,
+                                                 1,1,1,
                                                  0.5,
-                                                 -0.5,0.5,
-                                                 0,0.5,
                                                  0.1,
-                                                 -0.4,
-                                                 0.1),
-                                        nrow = 23, ncol = 2),
+                                                 0.5,
+                                                 -0.5,0.5),
+                                        nrow = 18, ncol = 2),
                         residuals = FALSE, fade = FALSE,
                         edgeLabels = fit_explor2_param, # specify the edge labels with the asterisks as previously created
                         edge.label.cex = 1, esize = 2, # size of the parameters
