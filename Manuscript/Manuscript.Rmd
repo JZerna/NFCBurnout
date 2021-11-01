@@ -159,7 +159,7 @@ These findings suggest that individuals high in NFC might be less prone to exper
 One of these psychological consequences is burnout, a state of exhaustion and cynicism caused by long-term overstimulation in the workplace, which results in employees being dissatisfied, being sick more often, and performing poorly [@Schaufeli2014].
 Burnout is especially prevalent in social jobs such as healthcare or teaching because the worker is always in conflict between advocating for their client and meeting the goals set by the employer [@GrayStanley2011; @Lloyd2002].
 Lackritz [-@Lackritz2004] found that university teachers' burnout scores were higher the more students they had, the higher their teaching load was, and the more time they spent grading students' work.
-Burnout is most often assessed using the Maslach Burnout Inventory (MBI) [@Maslach1997], a self-report questionnaire with three subscales: Emotional exhaustion, depersonalisation, and reduced self-efficacy.
+Burnout is most often assessed using the Maslach Burnout Inventory (MBI) [@Maslach1997], a self-report questionnaire with three subscales: Emotional exhaustion, depersonalisation, and reduced personal efficacy.
 
 Individuals with high burnout scores are often passive copers, high in neuroticism, low in self-esteem, and have an external locus of control [@Schaufeli2014].
 NFC on the other hand is negatively associated with those variables [@Double2016; @Fleischhauer2019; @Ghorbani2004; @Grass2018; @Osberg1987], suggesting that people high in NFC are less prone to experience burnout.
@@ -170,20 +170,20 @@ What is more likely is the influence of one or more other variables, moderating 
 Grass et al. [-@Grass2018] investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by reappraisal, active and passive coping, but not by suppression or self-control.
 Reappraisal and suppression are two emotion regulation strategies, which refer to the cognitive reassessment of a stressor and the inhibition of emotional reactions, respectively [@Gross1998a].
 The findings by Grass et al. [-@Grass2018] suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor.
-One goal of this paper is to replicate the findings of Grass et al. [-@Grass2018] using a multiple mediation model on cross-sectional self-report data of teachers.
-We expect NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
+One goal of this paper was to replicate the findings of Grass et al. [-@Grass2018] using a multiple mediation model on cross-sectional self-report data of teachers.
+We expected NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
 
-Furthermore, we would like to extend the analysis to other possible mediators.
-These mediators are motivated by our own recent survey of the literature on NFC and wellbeing, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree [@Zerna2021].
+Furthermore, we extended the analysis to other possible mediators.
+These mediators were motivated by our own recent survey of the literature on NFC and wellbeing, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree [@Zerna2021].
 Only a balance of resources and demands results in personal wellbeing, while an imbalance threatens wellbeing, regardless of whether this imbalance is in favour of resources or demands [@Dodge2012].
 Following the framework of Hobfoll [-@Hobfoll1989], resources can be objects with practical or status purpose, conditions like marriage or tenure, personality aspects like coping style, and energies such as time, money, or knowledge.
 In the case of NFC, resources are from the categories personality and energies: Personality, because NFC is a trait, encompassing a curious, analytic, and passionate approach to challenges, and energies, because individuals high in NFC have been coping actively all their life, which enriches their level of experience and knowledge in approaching challenges [@Cacioppo1996].
 These personal resources matter with regards to stress assessment (how the situation is appraised) and with regards to both coping and recovery [@Salanova2006].
-We would therefore like to investigate whether the association of NFC and burnout is mediated by different ratios of demands and resources; demands that are too high to be dealt with using one’s personal resources (DTH), demands that are too low for one’s personal resources (DTL), and a balanced fit of demands and resources (DRF).
-Using the same data as for the replication, we compute a structural equation model (SEM) to assess the influence of these mediators.
-Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorbani2004; @Heppner1983; @Klaczynski1996], we expect NFC to be negatively associated with DTH, positively associated with DTL, and positively associated with DRF.
-And since burnout results from constant unpleasant activation by high demands, we expect it to be positively associated with DTH and negatively associated with DRF.
-However, we have no hypothesis regarding the association of DTL and burnout, because even though DTL is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
+We therefore investigated whether the association of NFC and burnout was mediated by different ratios of demands and resources; demands that are too high to be dealt with using one’s personal resources (DTH), demands that are too low for one’s personal resources (DTL), and a balanced fit of demands and resources (DRF).
+Using the same data as for the replication, we computed a structural equation model (SEM) to assess the influence of these mediators.
+Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorbani2004; @Heppner1983; @Klaczynski1996], we expected NFC to be negatively associated with DTH, positively associated with DTL, and positively associated with DRF.
+And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with DTH and negatively associated with DRF.
+However, we had no hypothesis regarding the association of DTL and burnout, because even though DTL is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
 
 *The Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021].*
 
