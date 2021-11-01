@@ -1208,6 +1208,35 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit2_summ
   fit_explor1_summ <- summary(fit_explor1, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
           estimates = TRUE, ci = TRUE)
 ```
+```{r exploratory1_plot, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # create an array of standardized parameters and an array of significances
+  
+  fit_explor1_param <- fit_explor1_summ$PE$std.all[1:21]
+  fit_explor1_sign <- c(rep(1,14), fit_explor1_summ$PE$pvalue[17:21])
+
+  # replace p-values with asterisks depending on significance level
+  
+  fit_explor1_sign <- ifelse(fit_explor1_sign < .001, "***", ifelse(fit_explor1_sign < .01, "**", ifelse(fit_explor1_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fit_explor1_param <- paste(format(round(fit_explor1_param, digits = 2), nsmall = 2), fit_explor1_sign, sep = "")  
+
+  # Visualize the results
+  
+  fit_explor1_plot <- semPaths(fit_explor1, what = "std",
+                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","rpe","NFC","DTH","DTL","DRF","MBI"),
+                        layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,-0.8,-0.6,0,0.6,0.8,
+                                                 -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-0.5,0.5,0.5,0.5,-0.5),
+                                        nrow = 19, ncol = 2),
+                        residuals = FALSE, fade = FALSE,
+                        edgeLabels = fit_explor1_param, # specify the edge labels with the asterisks as previously created
+                        edge.label.cex = 1, esize = 2, # size of the parameters
+                        edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
+                        posCol = "black", negCol = "black" # color of arrows
+  )
+```
 
 ## Exploratory analyses
 
