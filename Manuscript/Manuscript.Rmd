@@ -184,8 +184,7 @@ Using the same data as for the replication, we computed a structural equation mo
 Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorbani2004; @Heppner1983; @Klaczynski1996], we expected NFC to be negatively associated with DTH, positively associated with DTL, and positively associated with DRF.
 And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with DTH and negatively associated with DRF.
 However, we had no hypothesis regarding the association of DTL and burnout, because even though DTL is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
-
-*The Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021].*
+It has already been shown that the Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021], so we incorporated the degree of feeling burdened by the pandemic in an exploratory approach.
 
 # Methods
 
@@ -1375,6 +1374,12 @@ Covid burden was not associated with DRF or reduced personal efficacy.
 
 # Discussion
 
+The present study aimed to replicate findings of mediators between Need for Cognition and burnout in teachers, as well as to extend the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
+In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
+The questionnaire data had been acquired in the scope of a thesis on burnout in teachers.
+We could replicate a negative association of NFC and the burnout subscale reduced personal efficacy, but this relationship was mediated by self control, not by habitual reappraisal.
+Furthermore, the negative relationship between NFC and burnout was fully mediated by less excessive demands and a better fit of demands and resources, but this model did not have good fit.
+The exploratory model showed the same relationship, but *...*
 
 \newpage
 
