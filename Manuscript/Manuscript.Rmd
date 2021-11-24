@@ -1167,7 +1167,7 @@ The latent variable DTL was neither related to NFC ($\beta = $`r round(fit2_summ
 
 ```
 
-```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Exploratory analysis I: MBI subscale instead of sum score
   
@@ -1248,7 +1248,7 @@ NFC showed no direct association with reduced personal efficacy ($\beta = $`r ro
 And again, NFC was associated with lower scores in the latent variable DTH ($\beta = $`r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "a1"], digits = 2)`, $p = $`r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "a1"], digits = 3)`), but the latter did not mediate the relationship between NFC and reduced personal efficacy ($\beta = $`r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "Indirect1"], digits = 2)`, $p = $`r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "Indirect1"], digits = 3)`) as it did with the MBI score in the previous model.
 The latent variable DTL was neither related to NFC ($\beta = $`r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "a2"], digits = 2)`, $p = $`r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta = $`r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "b2"], digits = 2)`, $p = $`r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "b2"], digits = 3)`).
 
-```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Exploratory analysis II: Covid burden as a covariate
   
