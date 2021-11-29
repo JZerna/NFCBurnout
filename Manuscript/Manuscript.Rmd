@@ -854,7 +854,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
 ```
 
-```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -972,7 +972,7 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
              threeparttable = T)# line breaks in the footnote
 ```
 
-```{r objective1years_plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1years_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1058,7 +1058,7 @@ Therefore, the total effect also increased slightly, compared to the first model
   
 ```
 
-```{r objective2_plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective2_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
 
   # create an array of standardized parameters and an array of significances
   
