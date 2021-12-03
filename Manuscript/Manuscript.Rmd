@@ -46,6 +46,14 @@ affiliation:
 
 
 abstract: |
+  The prevalence of burnout has been rising for years, not just due to the increasing demands during the Covid-19 pandemic.
+  While it is known that burnout primarily affects employees in social jobs, less is known about the personality traits that promote or protect against burnout.
+  One of these traits is Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
+  In the present study, we analyzed questionnaire data of teachers that had been collected in spring of 2020.
+  Firstly, we aimed to replicate results by Grass et al. (2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
+  With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
+  Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources.
+  
   One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
   
   Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
