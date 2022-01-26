@@ -53,22 +53,9 @@ abstract: |
   Firstly, we aimed to replicate results by Grass et al. (2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
   With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
   Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources.
+  The hypothesized model did not have good fit, but indicated that individuals high in NFC have lower burnout scores due to demands that either fit their resources or do not exceed them.
   
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
   
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  
-  One or two sentences to put the results into a more **general context**.
-  
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
-  <!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
 wordcount         : "X"
@@ -847,7 +834,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
   Table3[2:ncol(Table3)] <- format(round(Table3[2:ncol(Table3)], digits = 3), nsmall = 2)
 
-  replication_table <-
+  Table3 <-
     kbl(Table3,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
@@ -1470,9 +1457,14 @@ Covid burden was not associated with DRF or reduced personal efficacy.
 The present study aimed to replicate findings of mediators between Need for Cognition and burnout in teachers, as well as to extend the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
 The questionnaire data had been acquired in the scope of a thesis on burnout in teachers.
-We could replicate a negative association of NFC and the burnout subscale reduced personal efficacy, but this relationship was mediated by self control, not by habitual reappraisal.
-Furthermore, the negative relationship between NFC and burnout was fully mediated by less excessive demands and a better fit of demands and resources, but this model did not have good fit.
-The exploratory model showed the same relationship, but *...*
+
+While the mediation model, which replicated the findings of Grass et al. [-@Grass2018], had good fit, not all patterns were similar to the original study.
+NFC was negatively associated with the burnout subscale reduced personal efficacy, but this relationship was not mediated by any other variable.
+Only when the amount of teaching experience was included as a predictor of self-control next to NFC, an indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower reduced personal efficacy.
+The higher self-control that comes with more teaching experience is not in line with findings of stable self-control over time [@Hay2006], but in line with other findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Olivia2019].
+The participants in the study by Grass et al. [-@Grass2018] were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
+Therefore, it is likely that not only the teaching experience itself but also higher age might be associated with higher self-control.
+
 
 \newpage
 
