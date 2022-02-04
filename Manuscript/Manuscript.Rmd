@@ -232,7 +232,7 @@ To account for non-linear relationships, correlations were computed using Spearm
 Internal consistencies were assessed with Cronbach's Alpha and MacDonald's Omega.
 Since Cronbach's Alpha has been criticized for being insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the additional computation of MacDonald's Omega has the purpose of ensuring a more reliable estimation.
 
-### *Multiple mediation model*
+### Replication of Grass et al. (2018)
 Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
 Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
@@ -240,7 +240,7 @@ NFC was entered as the independent variable, having a direct and multiple indire
 Following Grass et al. [-@Grass2018], the results of the model were appraised by using $N$ = 2,000 bootstrap samples for confidence intervals.
 Multiple indices were used to evaluate model fit as recommended by Hu and Bentler [-@Hu1999]: the Chi-square test statistic, which measures the fit compared to a saturated model, the Comparative Fit Index (CFI), which compares the fit to the baseline model, the Standardized Root Mean Square Residual (SRMR), which compares the residuals of the observed and predicted covariance matrix, and the Root Mean Square Error of Approximation (RMSEA), which does the same as the latter but takes degrees of freedom and model complexity into account.
 
-### *Structural equation model*
+### Demand-resource-ratio model
 All items, apart from those making up the demand-resource-ratios, were reverse coded according to the scale manuals.
 The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. [-@Grass2019], a method that is used in SEM when only relations between but not within constructs are of interest.
 Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
@@ -253,7 +253,7 @@ The items can be translated as follows: 4) "There is too much pressure on me.", 
 Model parameters were estimated using the maximum likelihood method with robust standard errors.
 Model fit was evaluated by looking at the Chi-square test statistic, CFI, SRMR, and RMSEA.
 
-### *Exploratory analyses*
+### Exploratory analyses
 We preregistered two exploratory analyses.
 Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales [@Grass2018; @Naderi2018].
 And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
@@ -1458,8 +1458,13 @@ The present study aimed to replicate findings of mediators between Need for Cogn
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
 The questionnaire data had been acquired in the scope of a thesis on burnout in teachers.
 
+## Replication of Grass et al. (2018)
+
 While the mediation model, which replicated the findings of Grass et al. [-@Grass2018], had good fit, not all patterns were similar to the original study.
-NFC was negatively associated with the burnout subscale reduced personal efficacy, but this relationship was not mediated by any other variable.
+NFC and self-control were positively associated, and reappraisal and reduced personal efficacy were negatively related, but there was no association between NFC and reappraisal.
+There was, however, a positive association between self-control and reduced personal efficacy, and a negative one between NFC and suppression.
+
+NFC had a direct and negative effect on reduced personal efficacy, but this relationship was not mediated by any other variable.
 Only when the amount of teaching experience was included as a predictor of self-control next to NFC, an indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower reduced personal efficacy.
 The higher self-control that comes with more teaching experience is not in line with findings of stable self-control over time [@Hay2006], but in line with other findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Olivia2019].
 The participants in the study by Grass et al. [-@Grass2018] were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
