@@ -136,7 +136,9 @@ Whether and to what extent a circumstance is perceived as a challenge or hindran
 Self-efficacy and self-control are closely entwined [@Przepiorka2019;@Vera2004;@Yang2019] and both are positively associated with NFC [@Xu2021;@Bertrams2012;@Naderi2018;@Holch2020].
 Cacioppo et al. [@Cacioppo1996] even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
 These associations would imply that individuals with high levels of NFC report lower levels of burnout because their higher (desire for) self-control motivates them to appraise demands as a chance for personal growth, thereby meeting their passion for thinking and problem-solving.
-
+Nevertheless, appraisal is no universal remedy for circumstances that threaten well-being, as there certainly are circumstances that one cannot get any benefit out of.
+It remains an open question whether a high desire for control and high NFC might cloud one's judgement in this case, by encouraging to invest one's own insufficient resources in order to meet these high external demands.
+Such behavioural tendencies would threaten personal well-being in the long term, as the demands cannot be met, self-efficacy declines, and stress increases.
 
 
 ## Exploratory analyses
