@@ -127,14 +127,16 @@ Specifically, individuals with higher NFC had lower burnout scores through perce
 Interestingly, the correlation between NFC and burnout, which can be classified as medium according to Gignac and Szodorai [-@Gignac2016], disappeared in the context of the demand-resource-ratios as mediators.
 The mediator that did not reach significance was the perception of own resources exceeding the job demands.
 As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. [-@Reijseger2013.].
+The fact that the items that make up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
+This individual appraisal has been emphasized as the cause for the ambiguous impact of demands on psychological well-being before, in the form of challenge demands and hindrance demands [@Lepine2005;@Podsakoff2007;@Lazarus1984].
+Challenge demands such as time pressure, responsibility, and workload [@Podsakoff2007] are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping [@Lepine2005].
+In contrast, hindrance demands such as inadequate resources, role conflict, and organisational politics [@Podsakoff2007] are perceived as negative because they harm personal growth, trigger negative emotions, and increase passive coping [@Lepine2005].
+Ventura et al. [-@Ventura2014] found that hindrance but not challenge demands were positively related to burnout in teachers, and teachers who reported high challenge and low hindrance demands also reported higher engagement.
+Whether and to what extent a circumstance is perceived as a challenge or hindrance demand is highly influenced by a person's level of self-efficacy [@Bandura1997], so much so that a reduction in self-efficacy is considered to be a precurser of burnout, not necessarily a symptom [@Cherniss1993;@Vera2012].
+Self-efficacy and self-control are closely entwined [@Przepiorka2019;@Vera2004;@Yang2019] and both are positively associated with NFC [@Xu2021;@Bertrams2012;@Naderi2018;@Holch2020].
+Cacioppo et al. [@Cacioppo1996] even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
+These associations would imply that individuals with high levels of NFC report lower levels of burnout because their higher (desire for) self-control motivates them to appraise demands as a chance for personal growth, thereby meeting their passion for thinking and problem-solving.
 
-
-
-* demands have ambiguous impact on psychological well-being -> challenge vs hindrance demands as proposed by [@Lepine2005;@Podsakoff2007;@Lazarus1984]
-* challenge demands are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping [@Lepine2005], e.g. time pressure, responsibility, workload, and mental overload [@Podsakoff2007]
-* hindrance demands are perceived as negative because they harm personal growth, trigger negative emotions, and increase passive coping [@Lepine2005], e.g. inadequate resources, role conflict, role ambiguity, organisational politics, and uncertain job security [@Podsakoff2007]
-* a reduction in self-efficacy is considered to be a precurser of burnout, not necessarily a symptom [@Cherniss1993;@Vera2012]
-* hindrance but not challenge demands were positively related to burnout in teachers, and challenge demands were positively and hindrance demands negatively related to engagement [@Ventura2014]
 
 
 ## Exploratory analyses
