@@ -60,7 +60,7 @@ abstract: |
 keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
 wordcount         : "X"
 
-bibliography      : references.bib
+bibliography      : NFC_Burnout.bib
 
 floatsintext      : no
 figurelist        : no
@@ -1456,19 +1456,81 @@ Covid burden was not associated with DRF or reduced personal efficacy.
 
 The present study aimed to replicate findings of mediators between Need for Cognition and burnout in teachers, as well as to extend the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
-The questionnaire data had been acquired in the scope of a thesis on burnout in teachers.
+Previous studies have indicated a protective effect of NFC against burnout, but the associations with the burnout subscales were inconsistent, suggesting that there are more variables influencing this relationship.
 
 ## Replication of Grass et al. (2018)
 
-While the mediation model, which replicated the findings of Grass et al. [-@Grass2018], had good fit, not all patterns were similar to the original study.
-NFC and self-control were positively associated, and reappraisal and reduced personal efficacy were negatively related, but there was no association between NFC and reappraisal.
+While the mediation model had good fit, not all patterns were similar to the original study: NFC and self-control were positively associated, and reappraisal and reduced personal efficacy were negatively related, but there was no association between NFC and reappraisal.
 There was, however, a positive association between self-control and reduced personal efficacy, and a negative one between NFC and suppression.
 
 NFC had a direct and negative effect on reduced personal efficacy, but this relationship was not mediated by any other variable.
 Only when the amount of teaching experience was included as a predictor of self-control next to NFC, an indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower reduced personal efficacy.
-The higher self-control that comes with more teaching experience is not in line with findings of stable self-control over time [@Hay2006], but in line with other findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Olivia2019].
+The higher self-control that comes with more teaching experience is in line with findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Oliva2019].
 The participants in the study by Grass et al. [-@Grass2018] were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
 Therefore, it is likely that not only the teaching experience itself but also higher age might be associated with higher self-control.
+However, one could argue that more experience provides the teacher with a bigger repertoire of coping strategies to enable an efficient exertion of self-control, especially for teachers high in NFC who are intrinsically motivated to find and apply such strategies.
+
+We could replicate the relation between the two emotion regulation strategies reappraisal and suppression with reduced personal efficacy, but not their association with NFC.
+There is ample evidence that reappraisal is associated with positive outcomes for students [@Levine2012;@Schmidt2010;@Haga2007] and teachers alike [@Moe2020;@Tsouloupas2010;@Jiang2016], so it is suprising that reappraisal did not mediate between NFC and reduced personal efficacy.
+Reappraisal did correlate with NFC, as it should appease the preference for cognitive effort in individuals with high NFC, but it was not a mediator in this model.
+One possible explanation could be that the ways by which reappraisal can be achieved, such as taking the role of an uninvolved observer, are less feasible for teachers in retaining their sense of efficacy in the classroom than the self-control needed to structurally manage students and situations.
+Hence, the mediation of NFC and reduced personal efficacy by self-control when taking the years spent teaching into account.
+
+## Demand-resource-ratio model
+
+Despite not having good fit indices, the model suggested a complete mediation of NFC and burnout via DTH and DRF but not DTL.
+Specifically, individuals with higher NFC had lower burnout scores through perceiving demands as fitting to and not exceeding their own resources.
+Interestingly, the correlation between NFC and burnout, which can be classified as medium according to Gignac and Szodorai [-@Gignac2016], disappeared in the context of the demand-resource-ratios as mediators.
+The mediator that did not reach significance was the perception of own resources exceeding the job demands.
+As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. [-@Reijseger2013.].
+The fact that the items that make up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
+This individual appraisal has been emphasized as the cause for the ambiguous impact of demands on psychological well-being before, in the form of challenge demands and hindrance demands [@Lepine2005;@Podsakoff2007;@Lazarus1984].
+Challenge demands such as time pressure, responsibility, and workload [@Podsakoff2007] are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping [@Lepine2005].
+In contrast, hindrance demands such as inadequate resources, role conflict, and organisational politics [@Podsakoff2007] are perceived as negative because they harm personal growth, trigger negative emotions, and increase passive coping [@Lepine2005].
+Ventura et al. [-@Ventura2015] found that hindrance but not challenge demands were positively related to burnout in teachers, and teachers who reported high challenge and low hindrance demands also reported higher engagement.
+Whether and to what extent a circumstance is perceived as a challenge or hindrance demand is highly influenced by a person's level of self-efficacy [@Bandura1997], so much so that a reduction in self-efficacy is considered to be a precurser of burnout, not necessarily a symptom [@Cherniss1993;@Vera2012].
+Self-efficacy and self-control are closely entwined [@Przepiorka2019;@Vera2004;@Yang2019] and both are positively associated with NFC [@Xu2021;@Bertrams2012;@Naderi2018;@Holch2020].
+Cacioppo et al. [@Cacioppo1996] even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
+These associations would imply that teachers with high levels of NFC report lower levels of burnout because their higher (desire for) self-control motivates them to appraise demands as a chance for personal growth, thereby meeting their passion for thinking and problem-solving.
+Nevertheless, appraisal is no universal remedy for circumstances that threaten well-being, as there certainly are circumstances that one cannot get any benefit out of.
+It remains an open question whether a high desire for control and high NFC might cloud one's judgement in this case, by encouraging to invest one's own insufficient resources in order to meet these high external demands.
+Such behavioural tendencies would threaten personal well-being in the long term, as the demands cannot be met, self-efficacy declines, and stress increases.
+
+## Exploratory analyses
+### Demand-resource-ratio model with subscale
+
+The demand-resource-ratio model with the subscale reduced personal efficacy in place of the MBI score did not have good fit indices.
+Compared to the confirmatory demand-resource-ratio model, the mediation of NFC and reduced personal efficacy via DTH did not reach significance, but both the mediation via DRF and the total effect remained significant.
+Overall, this pattern does not resemble those from previous studies in which NFC had the strongest relation with this subscale of the MBI [@Grass2018;@Naderi2018].
+Teachers with high NFC appear to retain their sense of personal efficacy to a higher degree, because they experience a fit of demands and resources, which allows them to complete tasks and reinforce their self-efficacy in return.
+However, while this association was similar in the confirmatory and the exploratory demand-resource-ratio model, the mediation via DTH was not significant with this subscale, suggesting that the large association of DTH and MBI in the confirmatory model was driven by a different subscale.
+To explore this, we built a second exploratory model, based on partial correlations and suggestions to improve fit indices by the *lavaan* package.
+
+### Structural equation model with Covid burden
+
+Due to the complete freedom in setting up the structure of this model, it had good fit indices.
+Interestingly, the third MBI subscale depersonalisation and the latent variable DTL did not explain any variance in the model, so they were removed.
+Once again, NFC and self-control were positively related, but NFC was also positively related to Covid burden.
+One possible explanation is that teachers with higher NFC show higher consideration of the consequences and progression of the pandemic, thereby anticipating that it will take a long time until normal teaching can resume, which heightens their feeling of being burdened.
+Although NFC has been shown to be related to more reflective thinking and unrelated to rumination, which are considered healthy and unhealthy thinking styles, respectively [@Vannucci2018;@Nishiguchi2018], a higher perceived Covid burden itself cannot indicate whether it stems from a realistic view on the pandemic or a feeling of being overwhelmed.
+Teachers with more years of experience also reported higher Covid burden, presumably because older people are less comfortable with technology [@Hauk2018] and therefore stressed by the prospect of online teaching.
+Teachers with higher self-control and higher NFC reported a stronger fit of demands and resources, which was associated with a strong decrease in reduced personal efficacy.
+Higher self-control, higher NFC, and lower Covid burden was in turn associated with a lower DTH score, so teachers with those characteristics felt less overwhelmed and consequently less emotionally exhausted.
+The degree of association between DTH and emotional exhaustion indeed suggested a congruence between the two, indicating that emotional exhaustion in burnout is caused by excessive demands that cannot be met with one's resources, while reduced personal efficacy in burnout is caused by a lack of opportunities to utilize one's resources at work.
+Curiously, higher Covid burden also showed a small negative association with emotional exhaustion.
+It could be that for some teachers, remote teaching was experienced as a relief from the strain of dealing with a group of over twenty students each day, who are more likely to misbehave in a classroom setting than when they are home alone.
+So while those teachers did feel the pandemic burden, they also felt less emotionally exhausted.
+
+## Limitations and future implications
+
+The data used in this study had been collected for another purpose, so there were several aspects that would have improved the investigation of our research questions but were not feasible.
+Firstly, collecting coping style data would have enabled a full replication of the mediation model of Grass et al. [-@Grass2018].
+Secondly, longitudinal data would have facilitated more definitive conclusions about causal relations, as well as about inter-individual differences in the perception of demands and resources as the pandemic progresses.
+Furthermore, the latent variables for the demand-resource-ratios were item groups chosen from the work satisfaction questionnaire and had not been validated for this use before.
+However, as two of them showed meaningful relations with self-control, NFC, and two of the three MBI subscales, pursuing this concept further seems promising.
+Especially because we worked with pre-existing data, we preregistered all analyses and clearly differentiated between confirmatory and exploratory models in order to make the results as reliable as possible.
+Applied to real-life teaching practise, our results suggest that a healthy work environment should offer ample opportunities to make use of one's abilities, without creating demands that are too high.
+As a consequence, experiences and sense of self-efficacy will increase, which in turn heightens confidence in one's skills to deal with future demands that are higher, preventing loss of personal efficacy and burnout in the long term.
 
 
 \newpage
