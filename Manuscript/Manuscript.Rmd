@@ -49,7 +49,7 @@ abstract: |
   The prevalence of burnout has been rising for years, not just due to the increasing demands during the Covid-19 pandemic.
   While it is known that burnout primarily affects employees in social jobs, less is known about the personality traits that promote or protect against burnout.
   One of these traits is Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
-  In the present study, we analyzed questionnaire data of N\ =\ 180 teachers that had been collected in spring of 2020.
+  In the present study, we analyzed questionnaire data of N = 180 teachers that had been collected in spring of 2020.
   Firstly, we aimed to replicate results by Grass et al. (2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
   With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
   Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources, and included other variables in an exploratory approach.
@@ -186,6 +186,8 @@ Our preregistration, the data, and the R Markdown document used to analyze the d
   
   # Load the internal consistencies (bootstrapping has been suppressed to save time on knitting)
   consistencies <- read_rds(here("Data", "consistencies.rds"))
+  outlierconsistencies <- read_rds(here("Data", "outlierconsistencies.rds"))
+  
   # create a vector of consistencies to be used as the diagonal in a table later
   consist_diag <- cbind(format(round(t(consistencies[2,2:11]), digits = 2), nsmall = 2), rep("(",10),
                         format(round(t(consistencies[5,2:11]), digits = 2), nsmall = 2), rep(")",10))
@@ -196,7 +198,7 @@ Our preregistration, the data, and the R Markdown document used to analyze the d
 
 
 ## Participants
-Teachers were recruited via social media, emails to colleagues of N.E. and to Saxon schools with the request to pass on the information.
+Teachers were recruited via social media, emails to colleagues of N.E., and to Saxon schools with the request to pass on the information.
 All teachers were eligible, no payment was issued.
 Of the $N=$ 278 participants, who started filling out the online survey, $N =$ `r nrow(data)` (`r round((table(data$gender)[1]/nrow(data))*100, digits = 1)`% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
 All of them were currently teaching at a primary, secondary, comprehensive, or vocational school.
@@ -205,9 +207,9 @@ At this point, schools had been switching between digital and hybrid forms of te
 
 ## Material
 All questionnaires were used in their German form.
-Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) [@Buessing1992], NFC using the 16-item Need for Cognition Scale (NCS) [@Bless1994], self-control using the 13-item Self-Control Scale (SCS) [@Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire (ERQ) [@Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire (AAZ) [@Fischer2014].
+Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) [@Buessing1992], NFC using the 16-item Need for Cognition Scale (NCS) [@Bless1994], self-control using the 13-item Self-Control Scale (SCS) [@Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire (ERQ) [@Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire [@Fischer2014].
 Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently had a higher workload.
-The Covid-19 items can be found in the **Supplementary Material**.
+The Covid-19 items can be found in the *Supplementary Material S1*.
 The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.
 Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] cannot be used, so we cannot replicate the mediation of NFC and burnout by active and passive coping.
 
@@ -465,7 +467,7 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     
     # Put the information in a table
     
-    Table1 <-
+    desc_table <-
       kbl(desc_met,
       booktabs = T, # no vertical lines
       escape = F, # correctly print special characters
@@ -729,11 +731,11 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
 
 During visual inspection of correlation plots we noticed an unexpected outlier with very high MBI scores and very low NFC scores.
 A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
-To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
+To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the *Supplementary Material S2*.
 
 ```{r correlationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
 
-  Table2 <-
+  corr_table <-
   kbl(correlations,
       booktabs = TRUE, # no vertical lines
       escape = FALSE, # correctly print special characters
@@ -751,7 +753,7 @@ To adhere to the preregistration, we report the results containing the outlier i
 Basic metric descriptives of the questionnaire scores and subscales are listed in Table 1.
 Only the ERQ sum score and its Reappraisal subscale followed a multivariate normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics [@Rosseel2012].
 
-`r Table1`
+`r desc_table`
 
 Correlations and internal consistencies are displayed in Table 2.
 For this descriptive analysis, the variables DTH, DTL, and DRF were computed as a sum of their item scores, not weighted as in the structural equation model.
@@ -761,7 +763,7 @@ As expected, the MBI score was positively correlated with DTH (`r cor_apa(cor.te
 Surprisingly, the correlation between the MBI score and DTL was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman"), format = "rmarkdown")`).
 The NFC score correlated negatively with the MBI sum score and about equally with all subscales, contrary to some previous observations in other studies.
 
-`r Table2`
+`r corr_table`
 
 ```{r objective1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
@@ -807,7 +809,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 
   # put data into data frame
 
-  Table3 <- data.frame("Path" = c("NFC on Self Control", "NFC on Reappraisal", "NFC on Suppression",
+  replic_table <- data.frame("Path" = c("NFC on Self Control", "NFC on Reappraisal", "NFC on Suppression",
                                    "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
                                    "NFC on RPE via Self Control", "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
                                    "Total Effect"),
@@ -822,10 +824,10 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 
   # format the numbers to three digits after the decimal point
   
-  Table3[2:ncol(Table3)] <- format(round(Table3[2:ncol(Table3)], digits = 3), nsmall = 2)
+  replic_table[2:ncol(replic_table)] <- format(round(replic_table[2:ncol(replic_table)], digits = 3), nsmall = 2)
 
-  Table3 <-
-    kbl(Table3,
+  replic_table <-
+    kbl(replic_table,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
@@ -856,7 +858,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
   # Make a path diagram to visualize the results
 
-  Figure1 <- semPaths(fit, what="std", # display the parameters on the arrows
+  replic_figure <- semPaths(fit, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
                        layout = matrix(data = c(0,0,0,1,-1,1,-0.3,-1,0.3,0.3), nrow = 5, ncol = 2), # manually set the node locations
                        sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
@@ -879,7 +881,7 @@ However, we could neither replicate the effect of NFC on reappraisal ($\beta=$ `
 Furthermore, even though NFC and self control and reduced personal efficacy and self control were associated, the indirect effect of NFC on reduced personal efficacy via self control did not reach significance ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect1"], digits = 3)`).
 Additionally, NFC was negatively associated with habitual use of suppression ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a3"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a3"], digits = 3)`), which was not the case in the study by Grass et al. [-@Grass2018].
 
-`r Table3`
+`r replic_table`
 
 ```{r objective1years, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
@@ -926,7 +928,7 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
 
   # put data into data frame
 
-  Table4 <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
+  replic_years_table <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
                                   "NFC on Reappraisal", "NFC on Suppression",
                                   "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
                                   "NFC and years spent teaching on RPE via Self Control",
@@ -943,10 +945,10 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
 
   # format the numbers to three digits after the decimal point
   
-  Table4[2:ncol(Table4)] <- format(round(Table4[2:ncol(Table4)], digits = 3), nsmall = 2)
+  replic_years_table[2:ncol(replic_years_table)] <- format(round(replic_years_table[2:ncol(replic_years_table)], digits = 3), nsmall = 2)
 
-  replicationyears_table <-
-    kbl(Table4,
+  replic_years_table <-
+    kbl(replic_years_table,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
@@ -959,47 +961,15 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
              threeparttable = T)# line breaks in the footnote
 ```
 
-```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
-
-  # create an array of standardized parameters and an array of significances
-  
-  fityears_param <- fityears_summ$PE$std.all[1:8]
-  fityears_sign <- fityears_summ$PE$pvalue[1:8]
-
-  # replace p-values with asterisks depending on significance level
-  
-  fityears_sign <- ifelse(fityears_sign < .001, "***", ifelse(fityears_sign < .01, "**", ifelse(fityears_sign < .05, "*", "")))
-  
-  # paste correlations and asterisks together
-  
-  fityears_param <- paste(format(round(fityears_param, digits = 2), nsmall = 2), fityears_sign, sep = "")
-  
-  # Make a path diagram to visualize the results
-
-  Figure2 <- semPaths(fityears, what="std", # display the parameters on the arrows
-                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition", "Years spent\nteaching"),
-                       layout = matrix(data = c(0,0,0,1,-1,-1,1,-0.3,-1,0.3,0.3,1), nrow = 6, ncol = 2), # manually set the node locations
-                       sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
-                       edge.label.cex = 1, esize = 2, # size specifications
-                       edgeLabels = fityears_param, # specify the edge labels with the asterisks as previously created
-                       fade = FALSE, # do not make insignificant associations invisible
-                       residuals = FALSE, # do not plot residuals
-                       exoCov = FALSE, # do not plot covariance between exogenous variables
-                       edge.label.color = "black", posCol = "black", negCol = "black"
-)
-```
-
 Grass et al. [-@Grass2018] controlled for age and a-level grade in their analysis, which we did not consider when preregistering this analysis.
 Since grade was not assessed in this sample, and age was assessed as a categorical variable, we instead incorporated how many years each participant had spent teaching at the point of assessment.
 We placed this variable as an independent variable influencing self control, as the latter was the only variable in the model that showed a partial correlation with years spent teaching.
 As it was not preregistered, this was an exploratory analysis.
 Again, the baseline model did not fit the data ($\chi$^2^(`r round(fityears_summ$FIT[["baseline.df"]], digits = 0)`, $N=$ `r nrow(data)`) = `r round(fityears_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$), and the fit indices of $CFI=$ `r round(fityears_summ$FIT[["cfi"]], digits = 2)`, $TLI=$ `r round(fityears_summ$FIT[["tli"]], digits = 2)`, $SRMR=$ `r round(fityears_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA=$ `r format(round(fityears_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)`, 95% $CI$ [`r round(fityears_summ[["FIT"]][["rmsea.ci.lower"]], digits = 2)`,`r round(fityears_summ[["FIT"]][["rmsea.ci.upper"]], digits = 2)`], suggested good fit of the proposed model throughout all indices.
-Standardized estimates are displayed in Figure 2, total, direct, and indirect effects are listed in Table 4.
+Standardized estimates, total, direct, and indirect effects are displayed and listed in *Supplementary Material S3*.
 The associations between NFC, self control, reappraisal, suppression, and reduced personal efficacy were almost identical to the model first model.
 However, because of the positive association of years spent teaching and self control ($\beta=$ `r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "y"], digits = 2)`, $p < .001$), the indirect path leading from NFC and years spent teaching via self control to reduced personal efficacy reached significance in this model ($\beta=$ `r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fityears_summ$PE$pvalue[fityears_summ$PE$label == "Indirect1"], digits = 3)`).
 Therefore, the total effect also increased slightly, compared to the first model ($\beta=$ `r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "Total"], digits = 2)`, $p=$ `r round(fityears_summ$PE$pvalue[fityears_summ$PE$label == "Total"], digits = 3)`).
-
-`r Table4`
 
 ```{r objective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
@@ -1062,7 +1032,7 @@ Therefore, the total effect also increased slightly, compared to the first model
 
   # Visualize the results
   
-  Figure3 <- semPaths(fit2, what = "std",
+  drr_figure <- semPaths(fit2, what = "std",
                         nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","ee","dp","rpe","NFC","DTH","DTL","DRF","MBI"),
                         layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,0.6,0.8,1,-0.8,-0.6,0,0.6,0.8,
                                                  -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-0.5,0.5,0.5,0.5,-0.5),
@@ -1082,7 +1052,7 @@ Therefore, the total effect also increased slightly, compared to the first model
 
   # put data into data frame
 
-  Table5 <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
+  drr_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
                                       "DTH on MBI", "DTL on MBI", "DRF on MBI",
                                       "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
                                       "Total Effect"),
@@ -1097,10 +1067,10 @@ Therefore, the total effect also increased slightly, compared to the first model
 
   # format the numbers to three digits after the decimal point
   
-  Table5[2:ncol(Table5)] <- format(round(Table5[2:ncol(Table5)], digits = 3), nsmall = 2)
+  drr_table[2:ncol(drr_table)] <- format(round(drr_table[2:ncol(drr_table)], digits = 3), nsmall = 2)
 
   drrmodel_table <-
-    kbl(Table5,
+    kbl(drr_table,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
@@ -1118,7 +1088,7 @@ Therefore, the total effect also increased slightly, compared to the first model
 Next we looked at how different ratios of subjective demands and resources affect the association of NFC and burnout.
 The parcelling procedure for the indicators of the latent factor NFC resulted in four parcels with a summed difference in average loadings of `r round(ncs_parcels$summed.difference, digits = 3)`.
 The first parcel contained item `r ncs_parcels$items[1,1]`, `r ncs_parcels$items[2,1]`, `r ncs_parcels$items[3,1]`, and `r ncs_parcels$items[4,1]`, the second parcel item `r ncs_parcels$items[1,2]`, `r ncs_parcels$items[2,2]`, `r ncs_parcels$items[3,2]`, and `r ncs_parcels$items[4,2]`, the third parcel item `r ncs_parcels$items[1,3]`, `r ncs_parcels$items[2,3]`, `r ncs_parcels$items[3,3]`, and `r ncs_parcels$items[4,3]`, and the fourth parcel item `r ncs_parcels$items[1,4]`, `r ncs_parcels$items[2,4]`, `r ncs_parcels$items[3,4]`, and `r ncs_parcels$items[4,4]`.
-Standardized path coefficients of the demand-resource model are illustrated in Figure 3, total, direct, and indirect effects are listed in Table 5.
+Standardized path coefficients of the demand-resource model are illustrated in Figure 2, total, direct, and indirect effects are listed in Table 4.
 The robust Chi-square statistic of $\chi^2=$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$) did not indicate good model fit.
 However, since it was in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)` $*df<\chi^2<$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)+1` $*df$ the lack of good fit might have been due to the underlying assumption of multivariate normality [@Hu1999; @Schumacker2012], which was violated here.
 This also held true for the CFI of `r round(fit2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, the SRMR of `r round(fit2_summ[["FIT"]][["srmr"]], digits = 2)`, and the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% $CI$ [`r round(fit2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`].
@@ -1127,7 +1097,7 @@ NFC showed no direct association with the MBI score ($\beta=$ `r round(fit2_summ
 Instead, NFC showed indirect negative associations with the MBI score via lower scores in the latent variable DTH ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect1"], digits = 3)`) and via higher scores in the latent variable DRF ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect3"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect3"], digits = 3)`).
 The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "a2"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "b2"], digits = 3)`).
 
-`r Table5`
+`r drr_table`
 
 ```{r exploringbadfit, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -1160,7 +1130,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
 
 ```
 
-```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
   # Exploratory analysis I: MBI subscale instead of sum score
   
@@ -1203,44 +1173,13 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
-
-  # create an array of standardized parameters and an array of significances
-  
-  fit_explor1_param <- fit_explor1_summ$PE$std.all[1:21]
-  fit_explor1_sign <- c(rep(1,14), fit_explor1_summ$PE$pvalue[17:21])
-
-  # replace p-values with asterisks depending on significance level
-  
-  fit_explor1_sign <- ifelse(fit_explor1_sign < .001, "***", ifelse(fit_explor1_sign < .01, "**", ifelse(fit_explor1_sign < .05, "*", "")))
-  
-  # paste correlations and asterisks together
-  
-  fit_explor1_param <- paste(format(round(fit_explor1_param, digits = 2), nsmall = 2), fit_explor1_sign, sep = "")  
-
-  # Visualize the results
-  
-  FigureS1 <- semPaths(fit_explor1, what = "std",
-                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","rpe","NFC","DTH","DTL","DRF","RPE"),
-                        layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,-0.8,-0.6,0,0.6,0.8,
-                                                 -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-0.5,0.5,0.5,0.5,-0.5),
-                                        nrow = 19, ncol = 2),
-                        residuals = FALSE, fade = FALSE,
-                        edgeLabels = fit_explor1_param, # specify the edge labels with the asterisks as previously created
-                        edge.label.cex = 1, esize = 2, # size of the parameters
-                        edge.label.position = c(0.6,0.3,0.6,0.3,0.3,0.6,0.3,0.3,0.6,0.3,0.3,0.6,0.3,0.5,0.5,0.55,0.4,0.5,0.6,0.45,0.5),
-                        edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
-                        posCol = "black", negCol = "black" # color of arrows
-  )
-```
-
 ```{r exploratory1table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  TableS1 <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on RPE",
+  drr_rpe_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on RPE",
                                       "DTH on RPE", "DTL on RPE", "DRF on RPE",
                                       "NFC on RPE via DTH", "NFC on RPE via DTL", "NFC on RPE via DRF",
                                       "Total Effect"),
@@ -1255,10 +1194,10 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
 
   # format the numbers to three digits after the decimal point
   
-  TableS1[2:ncol(TableS1)] <- format(round(TableS1[2:ncol(TableS1)], digits = 3), nsmall = 2)
+  drr_rpe_table[2:ncol(drr_rpe_table)] <- format(round(drr_rpe_table[2:ncol(drr_rpe_table)], digits = 3), nsmall = 2)
 
-  TableS1 <-
-    kbl(TableS1,
+  drr_rpe_table <-
+    kbl(drr_rpe_table,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
@@ -1270,16 +1209,17 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
+
 ## Exploratory analyses
 
 The first exploratory analysis concerned a modification of the demand-resource-model in which the subscale reduced personal efficacy would be used in place of the MBI sum score.
-The path coefficients are illustrated in Supplementary Figure S1, total, direct, and indirect effects are listed in **Supplementary Table**.
+Path coefficients, total, direct, and indirect effects are displayed and listed in *Supplementary Material S4*.
 Similar to the previous model, this model's indices did not indicate good fit, with a Chi-square statistic of $\chi^2=$ `r round(fit_explor1@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$), a CFI of `r round(fit_explor1_summ[["FIT"]][["cfi.robust"]], digits = 2)`, a SRMR of `r round(fit_explor1_summ[["FIT"]][["srmr"]], digits = 2)`, and a RMSEA of `r round(fit_explor1_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% $CI$ [`r round(fit_explor1_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit_explor1_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`].
 NFC showed no direct association with reduced personal efficacy ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "c"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "c"], digits = 3)`), but an indirect one via higher scores in the latent variable DRF ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "Indirect3"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "Indirect3"], digits = 3)`).
 And again, NFC was associated with lower scores in the latent variable DTH ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "a1"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "a1"], digits = 3)`), but the latter did not mediate the relationship between NFC and reduced personal efficacy ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "Indirect1"], digits = 3)`) as it did with the MBI score in the previous model.
 The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "a2"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "b2"], digits = 3)`).
 
-```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
   # Exploratory analysis II: Covid burden as a covariate
   
@@ -1354,7 +1294,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
 
   # Visualize the results
   
-  FigureS2 <- semPaths(fit_explor2, what = "std",
+  explor2_fig <- semPaths(fit_explor2, what = "std",
                                nodeLabels = c("nfc1","nfc2","nfc3","nfc4",
                                               "COVB", "SCS",
                                               "dth1","dth2","dth3",
@@ -1398,7 +1338,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
 
   # put data into data frame
 
-  TableS2 <- data.frame("Path" = c("Years on COVB", "Years on SCS",
+  explor2_table <- data.frame("Path" = c("Years on COVB", "Years on SCS",
                                    "COVB on DTH", "SCS on DTH", "NFC on DTH",
                                    "SCS on DRF", "NFC on DRF",
                                    "DTH on EE", "COVB on EE", "DRF on RPE",
@@ -1416,10 +1356,10 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
 
   # format the numbers to three digits after the decimal point
   
-  TableS2[2:ncol(TableS2)] <- format(round(TableS2[2:ncol(TableS2)], digits = 3), nsmall = 2)
+  explor2_table[2:ncol(explor2_table)] <- format(round(explor2_table[2:ncol(explor2_table)], digits = 3), nsmall = 2)
 
-  TableS2 <-
-    kbl(TableS2,
+  explor2_table <-
+    kbl(explor2_table,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
@@ -1435,7 +1375,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
 The second exploratory analysis concerned the incorporation of the Covid burden score into the model.
 We based the development of this model on the partial correlations of all variables, which provide an indication of how closely or remotely related variables might be in a path model.
 Then we modified the structure of the model in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
-The final model is illustrated in Supplementary Figure S2, the total, direct, and indirect effects are listed in **Supplementary Table**.
+The final model is illustrated in Figure 3, the total, direct, and indirect effects are listed in *Supplementary Material S5*.
 All fit indices suggest that the proposed model has good fit while the baseline model does not ($\chi^2=$ `r round(fit_explor2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$), $CFI=$ `r round(fit_explor2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, $RMSEA=$ `r round(fit_explor2_summ[["FIT"]][["rmsea.robust"]], digits = 2)` (95% $CI$ [`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]), $SRMR=$ `r round(fit_explor2_summ[["FIT"]][["srmr"]], digits = 2)`).
 Neither the ERQ sum score, nor its subscales, nor the depersonalisation subscale of the MBI contributed significantly to the explained variance and were therefore not included in the final model.
 Years spent teaching was associated with higher self control ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ys"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ys"], digits = 3)`) and higher Covid burden ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "yc"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "yc"], digits = 3)`) but not with NFC.
@@ -1535,3 +1475,450 @@ As a consequence, experiences and sense of self-efficacy will increase, which in
 
 <div id="refs" custom-style="Bibliography"></div>
 \endgroup
+
+\newpage
+
+# Supplementary Material
+
+## S1: Items used to assess Covid burden
+
+1. How burdened do you currently feel by the measures associated with Covid-19?
+
+2. Are you in a Covid-19 risk group?
+
+3. Do you have or have you had a Covid-19 infection?
+
+4. Are or were family members or other people close to you infected with Covid-19?
+
+5. Do you feel more burdened at work?
+
+6. Are your worried more?
+
+7. Do you feel restricted in your current day-to-day life?
+
+8. Do you currently have additional responsibilities?
+
+9. How much time do you currently spend on leisure activities?
+
+10. Do you currently spend more/less time on work-related activities (e.g. preparing lessons, reading literature, attending trainings for digital teaching)?
+
+11. Did the current demands within your job change?
+
+For each response scale, please refer to Excel file with the full list of items and response types on OSF [https://osf.io/36ep9/](https://osf.io/36ep9/).
+
+\newpage
+
+## S2: Results when excluding the outlier with very high MBI scores and very low NFC scores
+
+```{r outlierconsistency, eval=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # Tests for internal consistency
+
+    # Create data frame to feed values into
+
+    outlierconsistencies <- data.frame(value = c("lower CI alpha","raw alpha","upper CI alpha",
+                                          "lower CI omega","raw omega","upper CI omega"))
+
+    # Compute Cronbach's Alpha and MacDonald's Omega for questionnaires and demand-resource-ratios
+
+    set.seed(13) # seed for reproducing the bootstrapping
+    
+    # Maslach Burnout Inventory
+    
+    cronalph <- alpha(mbi, check.keys = TRUE)
+    macomega <- ci.reliability(data=mbi[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$mbi <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # MBI emotional exhaustion
+    
+    cronalph <- alpha(subset(mbi, select = keylist$mbi_ee), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(mbi[-161,], select = keylist$mbi_ee), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$mbi_ee <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # MBI depersonalization
+    
+    cronalph <- alpha(subset(mbi, select = keylist$mbi_dp), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(mbi[-161,], select = keylist$mbi_dp), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$mbi_dp <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # MBI reduced personal efficacy
+    
+    cronalph <- alpha(subset(mbi, select = keylist$mbi_rpe), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(mbi[-161,], select = keylist$mbi_rpe), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$mbi_rpe <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                 cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                 macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # ERQ
+    
+    cronalph <- alpha(erq, check.keys = TRUE)
+    macomega <- ci.reliability(data=erq[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$erq <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                  cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                  macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # ERQ suppression
+    
+    cronalph <- alpha(subset(erq, select = keylist$erq_supp), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(erq[-161,], select = keylist$erq_supp), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$erq_supp <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                  cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                  macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # ERQ reappraisal
+    
+    cronalph <- alpha(subset(erq, select = keylist$erq_reap), check.keys = TRUE)
+    macomega <- ci.reliability(data=subset(erq[-161,], select = keylist$erq_reap), type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$erq_reap <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                                  cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                                  macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Self Control Scale
+    
+    cronalph <- alpha(scs, check.keys = TRUE)
+    macomega <- ci.reliability(data=scs[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$scs <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Need for Cognition Scale
+    
+    cronalph <- alpha(ncs, check.keys = TRUE)
+    macomega <- ci.reliability(data=ncs[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$ncs <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Covid burden
+    
+    cronalph <- alpha(covb, check.keys = TRUE)
+    macomega <- ci.reliability(data=covb[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$covb <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Demands Too High
+    
+    cronalph <- alpha(dth, check.keys = FALSE)
+    macomega <- ci.reliability(data=dth[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$dth <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Demands Too Low
+    
+    cronalph <- alpha(dtl, check.keys = FALSE)
+    macomega <- ci.reliability(data=dtl[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$dtl <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    # Demand Resource Fit
+    
+    cronalph <- alpha(drf, check.keys = FALSE)
+    macomega <- ci.reliability(data=drf[-161,], type="omega", conf.level = 0.95, interval.type="bca", B=bootnum)
+    outlierconsistencies$drf <- round(c(cronalph$total$raw_alpha - 1.96 * cronalph$total$ase, cronalph$total$raw_alpha,
+                             cronalph$total$raw_alpha + 1.96 * cronalph$total$ase,
+                             macomega$ci.lower, macomega$est, macomega$ci.upper), digits = 2)
+    
+    remove(cronalph,macomega) # delete the temporary variable
+    
+```
+
+```{r outliercorrelations, echo=FALSE, message=FALSE, warning=FALSE}
+    
+    # correlate variables
+    outliercorrelations <- correlation_matrix(score_data_no_outlier[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+                                                    "scs","ncs","dth","dtl","drf","covb")],
+                                       type = "spearman",
+                                       use = "lower",
+                                       show_significance = FALSE,
+                                       replace_diagonal = TRUE,
+                                       replacement = "")
+    
+    # reorder the columns of the consistencies data frame to match the correlation columns
+    outlierconsist_diag <- outlierconsistencies[c(colnames(outliercorrelations))]
+    
+    # create a vector of consistencies to be used as the diagonal in a table later
+    outlierconsist_diag <- cbind(format(round(t(outlierconsist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+                          format(round(t(outlierconsist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
+    
+    # paste together to create the output "alpha(omega)"
+    outlierconsist_diag <- apply(outlierconsist_diag[,c(1:4)], 1 ,paste, collapse = "")
+    
+    # add previously assembled diagonal with alpha and omega values
+    diag(outliercorrelations) <- outlierconsist_diag
+    
+    # set row and column names for better table printing
+    row.names(outliercorrelations) <- c("1. MBI","2. MBI EE","3. MBI DP","4. MBI RPE","5. ERQ","6. ERQ S","7. ERQ R",
+                                 "8. SCS","9. NFC","10. DTH","11. DTL","12. DRF","13. COV")
+    colnames(outliercorrelations) <- c("1","2","3","4","5","6","7","8","9","10","11","12","13")
+    
+    # create array with p-values of correlation coefficients
+    outliercorr_pvalues <- rcorr(as.matrix(score_data_no_outlier[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+                                                 "scs","ncs","dth","dtl","drf","covb")]), type = "spearman")$P
+    # replace upper triangle with NA
+    outliercorr_pvalues[upper.tri(outliercorr_pvalues, diag = TRUE)] <- NA
+    
+    # replace p-values with asterisks depending on significance level
+    outliercorr_pvalues <- ifelse(is.na(outliercorr_pvalues), "",
+                                  ifelse(outliercorr_pvalues < .001, "***", ifelse(outliercorr_pvalues < .01, "**", ifelse(outliercorr_pvalues < .05, "*", ""))))
+    
+    # convert to matrix for the paste()-function
+    outliercorrelations <- as.matrix(outliercorrelations)
+    outliercorr_pvalues <- as.matrix(outliercorr_pvalues)
+    
+    # paste correlations and asterisks together
+    outliercorrelations <- matrix(paste(outliercorrelations, outliercorr_pvalues, sep = ""),
+                           nrow = nrow(outliercorrelations), dimnames = dimnames(outliercorrelations))
+    
+```
+
+```{r outliercorrelationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
+
+  outliercorr_table <-
+  kbl(outliercorrelations,
+      booktabs = TRUE, # no vertical lines
+      escape = FALSE, # correctly print special characters
+      align = rep("l",14)) %>% # left aligns the text in every column
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
+    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 179. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+             escape = FALSE, # correctly print special characters
+             threeparttable = TRUE) %>% # line breaks in the footnote
+  kableExtra::landscape() # make the table horizontal 
+
+```
+
+```{r outlierobjective1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+  # Replication of Grass et al. (2018)
+  
+  outlierrepli_model <- '
+  # direct paths
+    scs       ~   a1 * ncs
+    erq_reap  ~   a2 * ncs
+    erq_supp  ~   a3 * ncs
+    mbi_rpe   ~   b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
+    
+  # indirect effects
+    Indirect1 := a1 * b1
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3)
+'
+  
+  # Determine the model fit
+  
+  outlierfit <- sem(
+    model = outlierrepli_model,
+    data  = score_data_no_outlier,
+    se = "bootstrap",
+    bootstrap = 2000
+  )
+  
+  # Get summary
+  
+  outlierfit_summ <- summary(outlierfit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+```
+
+```{r outlierobjective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
+
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  outlierreplic_table <- data.frame("Path" = c("NFC on Self Control", "NFC on Reappraisal", "NFC on Suppression",
+                                   "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
+                                   "NFC on RPE via Self Control", "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
+                                   "Total Effect"),
+                          "$B$" = c(outlierfit_summ$PE$est[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          "$SE$" = c(outlierfit_summ$PE$se[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          "$z$-value" = c(outlierfit_summ$PE$z[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          "$p$-value" = c(outlierfit_summ$PE$pvalue[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(outlierfit_summ$PE$ci.lower[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(outlierfit_summ$PE$ci.upper[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          "$\\beta$" = c(outlierfit_summ$PE$std.all[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  outlierreplic_table[2:ncol(outlierreplic_table)] <- format(round(outlierreplic_table[2:ncol(outlierreplic_table)], digits = 3), nsmall = 2)
+
+  outlierreplic_table <-
+    kbl(outlierreplic_table,
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters)
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped")) %>%
+    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 8, 10) %>%
+    pack_rows("Total Effect", 11, 11) %>%
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=179$.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
+  
+```
+
+```{r outlierobjective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+  # SEM with demand-resource-ratios
+  
+  outliersem_model <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    MBI =~ mbi_ee + mbi_dp + mbi_rpe
+
+  # structural model
+    DTH ~ a1 * NFC
+    DTL ~ a2 * NFC
+    DRF ~ a3 * NFC
+    MBI ~ c * NFC + b1 * DTH + b2 * DTL + b3 * DRF
+
+  # indirect effects
+    Indirect1 := a1 * b1
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3)'
+  
+  # Determine the model fit
+  
+  outlierfit2 <- sem(
+    model = outliersem_model,
+    data  = score_data_no_outlier,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  outlierfit2_summ <- summary(outlierfit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+          estimates = TRUE, ci = TRUE)
+  
+```
+
+```{r outlierobjective2table, echo=FALSE, message=FALSE, warning=FALSE}
+  
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  outlierdrr_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
+                                      "DTH on MBI", "DTL on MBI", "DRF on MBI",
+                                      "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
+                                      "Total Effect"),
+                          "$B$" = c(outlierfit2_summ$PE$est[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          "$SE$" = c(outlierfit2_summ$PE$se[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          "$z$-value" = c(outlierfit2_summ$PE$z[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          "$p$-value" = c(outlierfit2_summ$PE$pvalue[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(outlierfit2_summ$PE$ci.lower[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(outlierfit2_summ$PE$ci.upper[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          "$\\beta$" = c(outlierfit2_summ$PE$std.all[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  outlierdrr_table[2:ncol(outlierdrr_table)] <- format(round(outlierdrr_table[2:ncol(outlierdrr_table)], digits = 3), nsmall = 2)
+
+  outlierdrrmodel_table <-
+    kbl(outlierdrr_table,
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters)
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped")) %>%
+    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 8, 10) %>%
+    pack_rows("Total Effect", 11, 11) %>%
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error, $N=179$.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
+```
+
+## S3: Replication of Grass et al. (2018) when including years spent teaching
+
+```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Replication of Grass et al. (2018) when including years spent teaching"}
+
+  # create an array of standardized parameters and an array of significances
+  
+  fityears_param <- fityears_summ$PE$std.all[1:8]
+  fityears_sign <- fityears_summ$PE$pvalue[1:8]
+
+  # replace p-values with asterisks depending on significance level
+  
+  fityears_sign <- ifelse(fityears_sign < .001, "***", ifelse(fityears_sign < .01, "**", ifelse(fityears_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fityears_param <- paste(format(round(fityears_param, digits = 2), nsmall = 2), fityears_sign, sep = "")
+  
+  # Make a path diagram to visualize the results
+
+  replic_years_figure <- semPaths(fityears, what="std", # display the parameters on the arrows
+                       nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition", "Years spent\nteaching"),
+                       layout = matrix(data = c(0,0,0,1,-1,-1,1,-0.3,-1,0.3,0.3,1), nrow = 6, ncol = 2), # manually set the node locations
+                       sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
+                       edge.label.cex = 1, esize = 2, # size specifications
+                       edgeLabels = fityears_param, # specify the edge labels with the asterisks as previously created
+                       fade = FALSE, # do not make insignificant associations invisible
+                       residuals = FALSE, # do not plot residuals
+                       exoCov = FALSE, # do not plot covariance between exogenous variables
+                       edge.label.color = "black", posCol = "black", negCol = "black"
+)
+```
+
+`r replic_years_table`
+
+## S4: Demand-resource-ratio model with the MBI subscale reduced personal efficacy
+
+```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Demand-resource-ratio model with the MBI subscale reduced personal efficacy"}
+
+  # create an array of standardized parameters and an array of significances
+  
+  fit_explor1_param <- fit_explor1_summ$PE$std.all[1:21]
+  fit_explor1_sign <- c(rep(1,14), fit_explor1_summ$PE$pvalue[17:21])
+
+  # replace p-values with asterisks depending on significance level
+  
+  fit_explor1_sign <- ifelse(fit_explor1_sign < .001, "***", ifelse(fit_explor1_sign < .01, "**", ifelse(fit_explor1_sign < .05, "*", "")))
+  
+  # paste correlations and asterisks together
+  
+  fit_explor1_param <- paste(format(round(fit_explor1_param, digits = 2), nsmall = 2), fit_explor1_sign, sep = "")  
+
+  # Visualize the results
+  
+  drr_rpe_plot <- semPaths(fit_explor1, what = "std",
+                        nodeLabels = c("nfc1","nfc2","nfc3","nfc4","dth1","dth2","dth3","dtl1","dtl2","dtl3","drf1","drf2","drf3","rpe","NFC","DTH","DTL","DRF","RPE"),
+                        layout = matrix(data = c(-1,-0.8,-0.6,-0.4,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,-0.8,-0.6,0,0.6,0.8,
+                                                 -1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-0.5,0.5,0.5,0.5,-0.5),
+                                        nrow = 19, ncol = 2),
+                        residuals = FALSE, fade = FALSE,
+                        edgeLabels = fit_explor1_param, # specify the edge labels with the asterisks as previously created
+                        edge.label.cex = 1, esize = 2, # size of the parameters
+                        edge.label.position = c(0.6,0.3,0.6,0.3,0.3,0.6,0.3,0.3,0.6,0.3,0.3,0.6,0.3,0.5,0.5,0.55,0.4,0.5,0.6,0.45,0.5),
+                        edge.label.color = "black", edge.label.bg = TRUE, # color and background of the parameters
+                        posCol = "black", negCol = "black" # color of arrows
+  )
+```
+
+## S5: Exploratory model with all relevant variables
+
+`r explor2_fig`
