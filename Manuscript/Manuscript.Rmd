@@ -1,10 +1,10 @@
 ---
 title             : "NFC and burnout in teachers - A replication and extension study"
 shorttitle        : "NFC and burnout in teachers"
-
 author: 
   - name          : "Josephine Zerna"
     affiliation   : "1"
+    orcid         : "0000-0003-2892-884X"
     corresponding : yes    # Define only one corresponding author
     address       : "Zellescher Weg 17, 01069 Dresden, Germany"
     email         : "josephine.zerna@tu-dresden.de"
@@ -22,6 +22,7 @@ author:
       - Writing - review & editing
   - name          : "Anja Strobel"
     affiliation   : "3"
+    orcid         : "0000-0002-0313-0615"
     role:
       - Conceptualization
       - Supervision
@@ -29,6 +30,7 @@ author:
       - Writing - review & editing
   - name          : "Alexander Strobel"
     affiliation   : "1"
+    orcid         : "0000-0002-9426-5397"
     role:
       - Conceptualization
       - Supervision
@@ -43,52 +45,31 @@ affiliation:
   - id            : "3"
     institution   : "Institute of Psychology, Chemnitz University of Technology"
 
-
-
 abstract: |
   The prevalence of burnout has been rising for years, not just due to the increasing demands during the Covid-19 pandemic.
   While it is known that burnout primarily affects employees in social jobs, less is known about the personality traits that promote or protect against burnout.
   One of these traits is Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
-  In the present study, we analyzed questionnaire data of teachers that had been collected in spring of 2020.
+  In the present study, we analyzed questionnaire data of N\ =\ 180 teachers that had been collected in spring of 2020.
   Firstly, we aimed to replicate results by Grass et al. (2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
   With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
-  Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources.
-  
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
-  
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  
-  One or two sentences to put the results into a more **general context**.
-  
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
-  <!-- https://tinyurl.com/ybremelq -->
+  Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources, and included other variables in an exploratory approach.
+  The results indicated that teachers with higher NFC and more self-control have lower burnout because they experience their resources as fitting to the demands.
   
 keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
 wordcount         : "X"
-
-bibliography      : references.bib
-
-floatsintext      : no
+bibliography      : NFC_Burnout.bib
+floatsintext      : yes
+figsintext        : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
 linenumbers       : yes
 mask              : no
 draft             : no
-
 documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
-
-csl               : apa.csl # this is a workaround for a current bug in the papaja/Rmd software, which fails to shorten multiple authors to "et al."
-
+csl               : apa.csl
 header-includes   :
     - \usepackage{booktabs}
     - \usepackage{longtable}
@@ -104,44 +85,40 @@ header-includes   :
     - \usepackage[normalem]{ulem}
     - \usepackage{makecell}
     - \usepackage{xcolor}
+    - \usepackage{setspace}\doublespacing
+    - \usepackage{chngcntr}
 ---
+\renewcommand\thesection{\Alph{section}}
+\counterwithout{figure}{section}
+\setcounter{figure}{0}
 
 ```{r setup, include = FALSE}
-library(papaja)
-library(bibtex)
 
-#install.packages("here")       # easy file referencing
-#install.packages("tidyverse")  # plotting and managing data
-#install.packages("lavaan")     # for structural equation modelling
-#install.packages("psych")      # Cronbach's Alpha and such
-#install.packages("MVN")        # Mardia's test and such
-#install.packages("MBESS")      # MacDonald's Omega
-#install.packages("Hmisc")      # for correlations with p-values
-#install.packages("kableExtra") # for great tables (see haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
-#install.packages("knitr")      # for knitting documents and tables
-#install.packages("semPlot")    # plotting path models
-#install.packages("remotes")    # for APA output (remotes::install_github("dgromer/apa"))
-#install.packages("ppcor")      # for partial correlations
+  # set the output for figures and tables to the width of the text throughout the entire script
 
-library(here)
-library(tidyverse)
-library(ggplot2)
-library(lavaan)
-library(psych)
-library(MVN)
-library(MBESS)
-library(Hmisc)
-library(kableExtra)
-library(knitr)
-library(GGally)                 # from ggplot2, for multi-correlation plots
-library(semPlot)
-library(qgraph)
-library(apa)                    # from the remotes package
-library(ppcor)
+  knitr::opts_chunk$set(out.width = "\\textwidth")
+
+  # define required packages
+
+  packages = c("bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
+               "kableExtra", "Hmisc", "semPlot", "ggplot2", "knitr", "qgraph", "ppcor")
+
+  # check whether each package is installed and install and/or load library
+  
+  installed_packages <- packages %in% rownames(installed.packages())
+  if (any(installed_packages == FALSE)) {
+    install.packages(packages[!installed_packages])
+  }
+  invisible(lapply(packages, library, character.only = TRUE))
+  
+  # those two libraries come from packages with different names, so we load them individually
+  
+  library(GGally)                 # from ggplot2, for multi-correlation plots
+  library(apa)                    # from the remotes package
 
 ```
 
-```{r analysis-preferences, echo=FALSE, message=FALSE, warning=FALSE}
+```{r analysispreferences, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Seed for random number generation
   set.seed(13)
@@ -245,7 +222,7 @@ To account for non-linear relationships, correlations were computed using Spearm
 Internal consistencies were assessed with Cronbach's Alpha and MacDonald's Omega.
 Since Cronbach's Alpha has been criticized for being insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the additional computation of MacDonald's Omega has the purpose of ensuring a more reliable estimation.
 
-### *Multiple mediation model*
+### Replication of Grass et al. (2018)
 Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
 Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
@@ -253,7 +230,7 @@ NFC was entered as the independent variable, having a direct and multiple indire
 Following Grass et al. [-@Grass2018], the results of the model were appraised by using $N$ = 2,000 bootstrap samples for confidence intervals.
 Multiple indices were used to evaluate model fit as recommended by Hu and Bentler [-@Hu1999]: the Chi-square test statistic, which measures the fit compared to a saturated model, the Comparative Fit Index (CFI), which compares the fit to the baseline model, the Standardized Root Mean Square Residual (SRMR), which compares the residuals of the observed and predicted covariance matrix, and the Root Mean Square Error of Approximation (RMSEA), which does the same as the latter but takes degrees of freedom and model complexity into account.
 
-### *Structural equation model*
+### Demand-resource-ratio model
 All items, apart from those making up the demand-resource-ratios, were reverse coded according to the scale manuals.
 The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. [-@Grass2019], a method that is used in SEM when only relations between but not within constructs are of interest.
 Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
@@ -266,7 +243,7 @@ The items can be translated as follows: 4) "There is too much pressure on me.", 
 Model parameters were estimated using the maximum likelihood method with robust standard errors.
 Model fit was evaluated by looking at the Chi-square test statistic, CFI, SRMR, and RMSEA.
 
-### *Exploratory analyses*
+### Exploratory analyses
 We preregistered two exploratory analyses.
 Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales [@Grass2018; @Naderi2018].
 And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
@@ -754,7 +731,7 @@ During visual inspection of correlation plots we noticed an unexpected outlier w
 A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
 To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
 
-```{r correlations_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r correlationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
 
   Table2 <-
   kbl(correlations,
@@ -824,15 +801,15 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective1_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
 
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  Table3 <- data.frame("Path" = c("NFC $\\rightarrow$ Self Control", "NFC $\\rightarrow$ Reappraisal", "NFC $\\rightarrow$ Suppression",
-                                   "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
-                                   "NFC $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
+  Table3 <- data.frame("Path" = c("NFC on Self Control", "NFC on Reappraisal", "NFC on Suppression",
+                                   "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
+                                   "NFC on RPE via Self Control", "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
                                    "Total Effect"),
                           "$B$" = c(fit_summ$PE$est[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit_summ$PE$se[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
@@ -847,7 +824,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
   Table3[2:ncol(Table3)] <- format(round(Table3[2:ncol(Table3)], digits = 3), nsmall = 2)
 
-  replication_table <-
+  Table3 <-
     kbl(Table3,
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
@@ -862,7 +839,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
 ```
 
-```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+```{r objective1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Replication of Grass et al. (2018)"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -943,16 +920,18 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective1years_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1yearstable, echo=FALSE, message=FALSE, warning=FALSE}
 
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  Table4 <- data.frame("Path" = c("NFC $\\rightarrow$ Self Control", "Years spent teaching $\\rightarrow$ Self Control", "NFC $\\rightarrow$ Reappraisal", "NFC $\\rightarrow$ Suppression",
-                                   "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
-                                   "NFC and years spent teaching $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
-                                   "Total Effect"),
+  Table4 <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
+                                  "NFC on Reappraisal", "NFC on Suppression",
+                                  "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
+                                  "NFC and years spent teaching on RPE via Self Control",
+                                  "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
+                                  "Total Effect"),
                           "$B$" = c(fityears_summ$PE$est[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fityears_summ$PE$se[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
                           "$z$-value" = c(fityears_summ$PE$z[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
@@ -980,7 +959,7 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
              threeparttable = T)# line breaks in the footnote
 ```
 
-```{r objective1years_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1066,7 +1045,7 @@ Therefore, the total effect also increased slightly, compared to the first model
   
 ```
 
-```{r objective2_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+```{r objective2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Mediation of NFC and burnout by demand-resource-ratios"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1097,15 +1076,15 @@ Therefore, the total effect also increased slightly, compared to the first model
   )
 ```
 
-```{r objective2_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective2table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  Table5 <- data.frame("Path" = c("NFC $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTL", "NFC $\\rightarrow$ DRF", "NFC $\\rightarrow$ MBI",
-                                      "DTH $\\rightarrow$ MBI", "DTL $\\rightarrow$ MBI", "DRF $\\rightarrow$ MBI",
-                                      "NFC $\\rightarrow$ MBI via DTH", "NFC $\\rightarrow$ MBI via DTL", "NFC $\\rightarrow$ MBI via DRF",
+  Table5 <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
+                                      "DTH on MBI", "DTL on MBI", "DRF on MBI",
+                                      "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
                                       "Total Effect"),
                           "$B$" = c(fit2_summ$PE$est[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit2_summ$PE$se[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
@@ -1150,7 +1129,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
 
 `r Table5`
 
-```{r exploring_badfit, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploringbadfit, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Use function from http://www.sthda.com/english/wiki/correlation-matrix-a-
   # quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-
@@ -1224,7 +1203,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r exploratory1_plot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
+```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1255,15 +1234,15 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
   )
 ```
 
-```{r exploratory1_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploratory1table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  TableS1 <- data.frame("Path" = c("NFC $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTL", "NFC $\\rightarrow$ DRF", "NFC $\\rightarrow$ RPE",
-                                      "DTH $\\rightarrow$ RPE", "DTL $\\rightarrow$ RPE", "DRF $\\rightarrow$ RPE",
-                                      "NFC $\\rightarrow$ RPE via DTH", "NFC $\\rightarrow$ RPE via DTL", "NFC $\\rightarrow$ RPE via DRF",
+  TableS1 <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on RPE",
+                                      "DTH on RPE", "DTL on RPE", "DRF on RPE",
+                                      "NFC on RPE via DTH", "NFC on RPE via DTL", "NFC on RPE via DRF",
                                       "Total Effect"),
                           "$B$" = c(fit_explor1_summ$PE$est[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit_explor1_summ$PE$se[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
@@ -1305,7 +1284,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
   # Exploratory analysis II: Covid burden as a covariate
   
   explor2_model <- '
-  measurement model
+  # measurement model
     NFC =~ nfc1 + nfc2 + nfc3 + nfc4
     DTH =~ dth1 + dth2 + dth3
     DRF =~ drf1 + drf2 + drf3
@@ -1358,7 +1337,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
 ```
 
 
-```{r explor2_plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r explor2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Exploratory analysis of variable relations"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1413,18 +1392,18 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
   )
 ```
 
-```{r explor2_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r explor2table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  TableS2 <- data.frame("Path" = c("Years $\\rightarrow$ COVB", "Years $\\rightarrow$ SCS",
-                                   "COVB $\\rightarrow$ DTH", "SCS $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTH",
-                                   "SCS $\\rightarrow$ DRF", "NFC $\\rightarrow$ DRF",
-                                   "DTH $\\rightarrow$ EE", "COVB $\\rightarrow$ EE", "DRF $\\rightarrow$ RPE",
-                                   "NFC and Years $\\rightarrow$ RPE via SCS and DRF",
-                                   "NFC and Years $\\rightarrow$ EE via SCS, COVB, and DTH",
+  TableS2 <- data.frame("Path" = c("Years on COVB", "Years on SCS",
+                                   "COVB on DTH", "SCS on DTH", "NFC on DTH",
+                                   "SCS on DRF", "NFC on DRF",
+                                   "DTH on EE", "COVB on EE", "DRF on RPE",
+                                   "NFC and Years on RPE via SCS and DRF",
+                                   "NFC and Years on EE via SCS, COVB, and DTH",
                                    "Total Effect"),
                           "$B$" = c(fit_explor2_summ$PE$est[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit_explor2_summ$PE$se[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
@@ -1469,10 +1448,82 @@ Covid burden was not associated with DRF or reduced personal efficacy.
 
 The present study aimed to replicate findings of mediators between Need for Cognition and burnout in teachers, as well as to extend the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
-The questionnaire data had been acquired in the scope of a thesis on burnout in teachers.
-We could replicate a negative association of NFC and the burnout subscale reduced personal efficacy, but this relationship was mediated by self control, not by habitual reappraisal.
-Furthermore, the negative relationship between NFC and burnout was fully mediated by less excessive demands and a better fit of demands and resources, but this model did not have good fit.
-The exploratory model showed the same relationship, but *...*
+Previous studies have indicated a protective effect of NFC against burnout, but the associations with the burnout subscales were inconsistent, suggesting that there are more variables influencing this relationship.
+
+## Replication of Grass et al. (2018)
+
+While the mediation model had good fit, not all patterns were similar to the original study: NFC and self-control were positively associated, and reappraisal and reduced personal efficacy were negatively related, but there was no association between NFC and reappraisal.
+There was, however, a positive association between self-control and reduced personal efficacy, and a negative one between NFC and suppression.
+
+NFC had a direct and negative effect on reduced personal efficacy, but this relationship was not mediated by any other variable.
+Only when the amount of teaching experience was included as a predictor of self-control next to NFC, an indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower reduced personal efficacy.
+The higher self-control that comes with more teaching experience is in line with findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Oliva2019].
+The participants in the study by Grass et al. [-@Grass2018] were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
+Therefore, it is likely that not only the teaching experience itself but also higher age might be associated with higher self-control.
+However, one could argue that more experience provides the teacher with a bigger repertoire of coping strategies to enable an efficient exertion of self-control, especially for teachers high in NFC who are intrinsically motivated to find and apply such strategies.
+
+We could replicate the relation between the two emotion regulation strategies reappraisal and suppression with reduced personal efficacy, but not their association with NFC.
+There is ample evidence that reappraisal is associated with positive outcomes for students [@Levine2012;@Schmidt2010;@Haga2007] and teachers alike [@Moe2020;@Tsouloupas2010;@Jiang2016], so it is suprising that reappraisal did not mediate between NFC and reduced personal efficacy.
+Reappraisal did correlate with NFC, as it should appease the preference for cognitive effort in individuals with high NFC, but it was not a mediator in this model.
+One possible explanation could be that the ways by which reappraisal can be achieved, such as taking the role of an uninvolved observer, are less feasible for teachers in retaining their sense of efficacy in the classroom than the self-control needed to structurally manage students and situations.
+Hence, the mediation of NFC and reduced personal efficacy by self-control when taking the years spent teaching into account.
+
+## Demand-resource-ratio model
+
+Despite not having good fit indices, the model suggested a complete mediation of NFC and burnout via DTH and DRF but not DTL.
+Specifically, individuals with higher NFC had lower burnout scores through perceiving demands as fitting to and not exceeding their own resources.
+Interestingly, the correlation between NFC and burnout, which can be classified as medium according to Gignac and Szodorai [-@Gignac2016], disappeared in the context of the demand-resource-ratios as mediators.
+The mediator that did not reach significance was the perception of own resources exceeding the job demands.
+As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. [-@Reijseger2013.].
+The fact that the items that make up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
+This individual appraisal has been emphasized as the cause for the ambiguous impact of demands on psychological well-being before, in the form of challenge demands and hindrance demands [@Lepine2005;@Podsakoff2007;@Lazarus1984].
+Challenge demands such as time pressure, responsibility, and workload [@Podsakoff2007] are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping [@Lepine2005].
+In contrast, hindrance demands such as inadequate resources, role conflict, and organisational politics [@Podsakoff2007] are perceived as negative because they harm personal growth, trigger negative emotions, and increase passive coping [@Lepine2005].
+Ventura et al. [-@Ventura2015] found that hindrance but not challenge demands were positively related to burnout in teachers, and teachers who reported high challenge and low hindrance demands also reported higher engagement.
+Whether and to what extent a circumstance is perceived as a challenge or hindrance demand is highly influenced by a person's level of self-efficacy [@Bandura1997], so much so that a reduction in self-efficacy is considered to be a precurser of burnout, not necessarily a symptom [@Cherniss1993;@Vera2012].
+Self-efficacy and self-control are closely entwined [@Przepiorka2019;@Vera2004;@Yang2019] and both are positively associated with NFC [@Xu2021;@Bertrams2012;@Naderi2018;@Holch2020].
+Cacioppo et al. [@Cacioppo1996] even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
+These associations would imply that teachers with high levels of NFC report lower levels of burnout because their higher (desire for) self-control motivates them to appraise demands as a chance for personal growth, thereby meeting their passion for thinking and problem-solving.
+Nevertheless, appraisal is no universal remedy for circumstances that threaten well-being, as there certainly are circumstances that one cannot get any benefit out of.
+It remains an open question whether a high desire for control and high NFC might cloud one's judgement in this case, by encouraging to invest one's own insufficient resources in order to meet these high external demands.
+Such behavioural tendencies would threaten personal well-being in the long term, as the demands cannot be met, self-efficacy declines, and stress increases.
+
+## Exploratory analyses
+### Demand-resource-ratio model with subscale
+
+The demand-resource-ratio model with the subscale reduced personal efficacy in place of the MBI score did not have good fit indices.
+Compared to the confirmatory demand-resource-ratio model, the mediation of NFC and reduced personal efficacy via DTH did not reach significance, but both the mediation via DRF and the total effect remained significant.
+Overall, this pattern does not resemble those from previous studies in which NFC had the strongest relation with this subscale of the MBI [@Grass2018;@Naderi2018].
+Teachers with high NFC appear to retain their sense of personal efficacy to a higher degree, because they experience a fit of demands and resources, which allows them to complete tasks and reinforce their self-efficacy in return.
+However, while this association was similar in the confirmatory and the exploratory demand-resource-ratio model, the mediation via DTH was not significant with this subscale, suggesting that the large association of DTH and MBI in the confirmatory model was driven by a different subscale.
+To explore this, we built a second exploratory model, based on partial correlations and suggestions to improve fit indices by the *lavaan* package.
+
+### Structural equation model with Covid burden
+
+Due to the complete freedom in setting up the structure of this model, it had good fit indices.
+Interestingly, the third MBI subscale depersonalisation and the latent variable DTL did not explain any variance in the model, so they were removed.
+Once again, NFC and self-control were positively related, but NFC was also positively related to Covid burden.
+One possible explanation is that teachers with higher NFC show higher consideration of the consequences and progression of the pandemic, thereby anticipating that it will take a long time until normal teaching can resume, which heightens their feeling of being burdened.
+Although NFC has been shown to be related to more reflective thinking and unrelated to rumination, which are considered healthy and unhealthy thinking styles, respectively [@Vannucci2018;@Nishiguchi2018], a higher perceived Covid burden itself cannot indicate whether it stems from a realistic view on the pandemic or a feeling of being overwhelmed.
+Teachers with more years of experience also reported higher Covid burden, presumably because older people are less comfortable with technology [@Hauk2018] and therefore stressed by the prospect of online teaching.
+Teachers with higher self-control and higher NFC reported a stronger fit of demands and resources, which was associated with a strong decrease in reduced personal efficacy.
+Higher self-control, higher NFC, and lower Covid burden was in turn associated with a lower DTH score, so teachers with those characteristics felt less overwhelmed and consequently less emotionally exhausted.
+The degree of association between DTH and emotional exhaustion indeed suggested a congruence between the two, indicating that emotional exhaustion in burnout is caused by excessive demands that cannot be met with one's resources, while reduced personal efficacy in burnout is caused by a lack of opportunities to utilize one's resources at work.
+Curiously, higher Covid burden also showed a small negative association with emotional exhaustion.
+It could be that for some teachers, remote teaching was experienced as a relief from the strain of dealing with a group of over twenty students each day, who are more likely to misbehave in a classroom setting than when they are home alone.
+So while those teachers did feel the pandemic burden, they also felt less emotionally exhausted.
+
+## Limitations and future implications
+
+The data used in this study had been collected for another purpose, so there were several aspects that would have improved the investigation of our research questions but were not feasible.
+Firstly, collecting coping style data would have enabled a full replication of the mediation model of Grass et al. [-@Grass2018].
+Secondly, longitudinal data would have facilitated more definitive conclusions about causal relations, as well as about inter-individual differences in the perception of demands and resources as the pandemic progresses.
+Furthermore, the latent variables for the demand-resource-ratios were item groups chosen from the work satisfaction questionnaire and had not been validated for this use before.
+However, as two of them showed meaningful relations with self-control, NFC, and two of the three MBI subscales, pursuing this concept further seems promising.
+Especially because we worked with pre-existing data, we preregistered all analyses and clearly differentiated between confirmatory and exploratory models in order to make the results as reliable as possible.
+Applied to real-life teaching practise, our results suggest that a healthy work environment should offer ample opportunities to make use of one's abilities, without creating demands that are too high.
+As a consequence, experiences and sense of self-efficacy will increase, which in turn heightens confidence in one's skills to deal with future demands that are higher, preventing loss of personal efficacy and burnout in the long term.
+
 
 \newpage
 
