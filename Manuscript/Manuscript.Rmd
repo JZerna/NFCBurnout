@@ -1,10 +1,10 @@
 ---
 title             : "NFC and burnout in teachers - A replication and extension study"
 shorttitle        : "NFC and burnout in teachers"
-
 author: 
   - name          : "Josephine Zerna"
     affiliation   : "1"
+    orcid         : "0000-0003-2892-884X"
     corresponding : yes    # Define only one corresponding author
     address       : "Zellescher Weg 17, 01069 Dresden, Germany"
     email         : "josephine.zerna@tu-dresden.de"
@@ -22,6 +22,7 @@ author:
       - Writing - review & editing
   - name          : "Anja Strobel"
     affiliation   : "3"
+    orcid         : "0000-0002-0313-0615"
     role:
       - Conceptualization
       - Supervision
@@ -29,6 +30,7 @@ author:
       - Writing - review & editing
   - name          : "Alexander Strobel"
     affiliation   : "1"
+    orcid         : "0000-0002-9426-5397"
     role:
       - Conceptualization
       - Supervision
@@ -43,39 +45,31 @@ affiliation:
   - id            : "3"
     institution   : "Institute of Psychology, Chemnitz University of Technology"
 
-
-
 abstract: |
   The prevalence of burnout has been rising for years, not just due to the increasing demands during the Covid-19 pandemic.
   While it is known that burnout primarily affects employees in social jobs, less is known about the personality traits that promote or protect against burnout.
   One of these traits is Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
-  In the present study, we analyzed questionnaire data of teachers that had been collected in spring of 2020.
+  In the present study, we analyzed questionnaire data of N\ =\ 180 teachers that had been collected in spring of 2020.
   Firstly, we aimed to replicate results by Grass et al. (2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
   With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
-  Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources.
-  The hypothesized model did not have good fit, but indicated that individuals high in NFC have lower burnout scores due to demands that either fit their resources or do not exceed them.
-  
-  
+  Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources, and included other variables in an exploratory approach.
+  The results indicated that teachers with higher NFC and more self-control have lower burnout because they experience their resources as fitting to the demands.
   
 keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
 wordcount         : "X"
-
 bibliography      : NFC_Burnout.bib
-
-floatsintext      : no
+floatsintext      : yes
+figsintext        : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
 linenumbers       : yes
 mask              : no
 draft             : no
-
 documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
-
-csl               : apa.csl # this is a workaround for a current bug in the papaja/Rmd software, which fails to shorten multiple authors to "et al."
-
+csl               : apa.csl
 header-includes   :
     - \usepackage{booktabs}
     - \usepackage{longtable}
@@ -91,44 +85,40 @@ header-includes   :
     - \usepackage[normalem]{ulem}
     - \usepackage{makecell}
     - \usepackage{xcolor}
+    - \usepackage{setspace}\doublespacing
+    - \usepackage{chngcntr}
 ---
+\renewcommand\thesection{\Alph{section}}
+\counterwithout{figure}{section}
+\setcounter{figure}{0}
 
 ```{r setup, include = FALSE}
-library(papaja)
-library(bibtex)
 
-#install.packages("here")       # easy file referencing
-#install.packages("tidyverse")  # plotting and managing data
-#install.packages("lavaan")     # for structural equation modelling
-#install.packages("psych")      # Cronbach's Alpha and such
-#install.packages("MVN")        # Mardia's test and such
-#install.packages("MBESS")      # MacDonald's Omega
-#install.packages("Hmisc")      # for correlations with p-values
-#install.packages("kableExtra") # for great tables (see haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
-#install.packages("knitr")      # for knitting documents and tables
-#install.packages("semPlot")    # plotting path models
-#install.packages("remotes")    # for APA output (remotes::install_github("dgromer/apa"))
-#install.packages("ppcor")      # for partial correlations
+  # set the output for figures and tables to the width of the text throughout the entire script
 
-library(here)
-library(tidyverse)
-library(ggplot2)
-library(lavaan)
-library(psych)
-library(MVN)
-library(MBESS)
-library(Hmisc)
-library(kableExtra)
-library(knitr)
-library(GGally)                 # from ggplot2, for multi-correlation plots
-library(semPlot)
-library(qgraph)
-library(apa)                    # from the remotes package
-library(ppcor)
+  knitr::opts_chunk$set(out.width = "\\textwidth")
+
+  # define required packages
+
+  packages = c("bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
+               "kableExtra", "Hmisc", "semPlot", "ggplot2", "knitr", "qgraph", "ppcor")
+
+  # check whether each package is installed and install and/or load library
+  
+  installed_packages <- packages %in% rownames(installed.packages())
+  if (any(installed_packages == FALSE)) {
+    install.packages(packages[!installed_packages])
+  }
+  invisible(lapply(packages, library, character.only = TRUE))
+  
+  # those two libraries come from packages with different names, so we load them individually
+  
+  library(GGally)                 # from ggplot2, for multi-correlation plots
+  library(apa)                    # from the remotes package
 
 ```
 
-```{r analysis-preferences, echo=FALSE, message=FALSE, warning=FALSE}
+```{r analysispreferences, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Seed for random number generation
   set.seed(13)
@@ -741,7 +731,7 @@ During visual inspection of correlation plots we noticed an unexpected outlier w
 A Q-Q-plot contrasting Mahalanobis *D^2^* against expected Chi Square values confirmed the outlier.
 To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the **Supplementary Material**.
 
-```{r correlations_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r correlationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
 
   Table2 <-
   kbl(correlations,
@@ -811,15 +801,15 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective1_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
 
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  Table3 <- data.frame("Path" = c("NFC $\\rightarrow$ Self Control", "NFC $\\rightarrow$ Reappraisal", "NFC $\\rightarrow$ Suppression",
-                                   "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
-                                   "NFC $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
+  Table3 <- data.frame("Path" = c("NFC on Self Control", "NFC on Reappraisal", "NFC on Suppression",
+                                   "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
+                                   "NFC on RPE via Self Control", "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
                                    "Total Effect"),
                           "$B$" = c(fit_summ$PE$est[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit_summ$PE$se[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
@@ -849,7 +839,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
 ```
 
-```{r objective1_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+```{r objective1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Replication of Grass et al. (2018)"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -930,16 +920,18 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective1years_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective1yearstable, echo=FALSE, message=FALSE, warning=FALSE}
 
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  Table4 <- data.frame("Path" = c("NFC $\\rightarrow$ Self Control", "Years spent teaching $\\rightarrow$ Self Control", "NFC $\\rightarrow$ Reappraisal", "NFC $\\rightarrow$ Suppression",
-                                   "Self Control $\\rightarrow$ RPE", "Reappraisal $\\rightarrow$ RPE", "Suppression $\\rightarrow$ RPE", "NFC $\\rightarrow$ RPE",
-                                   "NFC and years spent teaching $\\rightarrow$ RPE via Self Control", "NFC $\\rightarrow$ RPE via Reappraisal", "NFC $\\rightarrow$ RPE via Suppression",
-                                   "Total Effect"),
+  Table4 <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
+                                  "NFC on Reappraisal", "NFC on Suppression",
+                                  "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
+                                  "NFC and years spent teaching on RPE via Self Control",
+                                  "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
+                                  "Total Effect"),
                           "$B$" = c(fityears_summ$PE$est[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fityears_summ$PE$se[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
                           "$z$-value" = c(fityears_summ$PE$z[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
@@ -967,7 +959,7 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
              threeparttable = T)# line breaks in the footnote
 ```
 
-```{r objective1years_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1053,7 +1045,7 @@ Therefore, the total effect also increased slightly, compared to the first model
   
 ```
 
-```{r objective2_plot, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+```{r objective2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Mediation of NFC and burnout by demand-resource-ratios"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1084,15 +1076,15 @@ Therefore, the total effect also increased slightly, compared to the first model
   )
 ```
 
-```{r objective2_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r objective2table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  Table5 <- data.frame("Path" = c("NFC $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTL", "NFC $\\rightarrow$ DRF", "NFC $\\rightarrow$ MBI",
-                                      "DTH $\\rightarrow$ MBI", "DTL $\\rightarrow$ MBI", "DRF $\\rightarrow$ MBI",
-                                      "NFC $\\rightarrow$ MBI via DTH", "NFC $\\rightarrow$ MBI via DTL", "NFC $\\rightarrow$ MBI via DRF",
+  Table5 <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
+                                      "DTH on MBI", "DTL on MBI", "DRF on MBI",
+                                      "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
                                       "Total Effect"),
                           "$B$" = c(fit2_summ$PE$est[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit2_summ$PE$se[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
@@ -1137,7 +1129,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
 
 `r Table5`
 
-```{r exploring_badfit, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploringbadfit, echo=FALSE, message=FALSE, warning=FALSE}
 
   # Use function from http://www.sthda.com/english/wiki/correlation-matrix-a-
   # quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-
@@ -1211,7 +1203,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r exploratory1_plot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
+```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.show='hide'}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1242,15 +1234,15 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
   )
 ```
 
-```{r exploratory1_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r exploratory1table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  TableS1 <- data.frame("Path" = c("NFC $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTL", "NFC $\\rightarrow$ DRF", "NFC $\\rightarrow$ RPE",
-                                      "DTH $\\rightarrow$ RPE", "DTL $\\rightarrow$ RPE", "DRF $\\rightarrow$ RPE",
-                                      "NFC $\\rightarrow$ RPE via DTH", "NFC $\\rightarrow$ RPE via DTL", "NFC $\\rightarrow$ RPE via DRF",
+  TableS1 <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on RPE",
+                                      "DTH on RPE", "DTL on RPE", "DRF on RPE",
+                                      "NFC on RPE via DTH", "NFC on RPE via DTL", "NFC on RPE via DRF",
                                       "Total Effect"),
                           "$B$" = c(fit_explor1_summ$PE$est[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit_explor1_summ$PE$se[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
@@ -1292,7 +1284,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
   # Exploratory analysis II: Covid burden as a covariate
   
   explor2_model <- '
-  measurement model
+  # measurement model
     NFC =~ nfc1 + nfc2 + nfc3 + nfc4
     DTH =~ dth1 + dth2 + dth3
     DRF =~ drf1 + drf2 + drf3
@@ -1345,7 +1337,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
 ```
 
 
-```{r explor2_plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r explor2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Exploratory analysis of variable relations"}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1400,18 +1392,18 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
   )
 ```
 
-```{r explor2_table, echo=FALSE, message=FALSE, warning=FALSE}
+```{r explor2table, echo=FALSE, message=FALSE, warning=FALSE}
   
   # put relevant data from the mediation into a table for reporting
 
   # put data into data frame
 
-  TableS2 <- data.frame("Path" = c("Years $\\rightarrow$ COVB", "Years $\\rightarrow$ SCS",
-                                   "COVB $\\rightarrow$ DTH", "SCS $\\rightarrow$ DTH", "NFC $\\rightarrow$ DTH",
-                                   "SCS $\\rightarrow$ DRF", "NFC $\\rightarrow$ DRF",
-                                   "DTH $\\rightarrow$ EE", "COVB $\\rightarrow$ EE", "DRF $\\rightarrow$ RPE",
-                                   "NFC and Years $\\rightarrow$ RPE via SCS and DRF",
-                                   "NFC and Years $\\rightarrow$ EE via SCS, COVB, and DTH",
+  TableS2 <- data.frame("Path" = c("Years on COVB", "Years on SCS",
+                                   "COVB on DTH", "SCS on DTH", "NFC on DTH",
+                                   "SCS on DRF", "NFC on DRF",
+                                   "DTH on EE", "COVB on EE", "DRF on RPE",
+                                   "NFC and Years on RPE via SCS and DRF",
+                                   "NFC and Years on EE via SCS, COVB, and DTH",
                                    "Total Effect"),
                           "$B$" = c(fit_explor2_summ$PE$est[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
                           "$SE$" = c(fit_explor2_summ$PE$se[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
