@@ -758,8 +758,8 @@ Correlations and internal consistencies are displayed in Table 2.
 For this descriptive analysis, the variables DTH, DTL, and DRF were computed as a sum of their item scores, not weighted as in the structural equation model.
 Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha of the three demand-resource-ratios can be considered *acceptable*.
 The more robust MacDonald's Omega [@Dunn2014] did not deviate much from Cronbach's Alpha and indicated *acceptable* to *good* internal consistency.
-As expected, the MBI score was positively correlated with DTH (`r cor_apa(cor.test(score_data$mbi, score_data$dth, method = "spearman", exact = FALSE), format = "rmarkdown")`) and negatively with DRF (`r cor_apa(cor.test(score_data$mbi, score_data$drf, method = "spearman", exact = FALSE), format = "rmarkdown")`), large associations according the classification scheme by Gignac and Szodorai [-@Gignac2016].
-Surprisingly, the correlation between the MBI score and DTL was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman", exact = FALSE), format = "rmarkdown")`).
+As expected, the MBI score was positively correlated with DTH (`r cor_apa(cor.test(score_data$mbi, score_data$dth, method = "spearman", exact = FALSE), format = "rmarkdown", print = FALSE)`) and negatively with DRF (`r cor_apa(cor.test(score_data$mbi, score_data$drf, method = "spearman", exact = FALSE), format = "rmarkdown", print = FALSE)`), large associations according the classification scheme by Gignac and Szodorai [-@Gignac2016].
+Surprisingly, the correlation between the MBI score and DTL was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman", exact = FALSE), format = "rmarkdown", print = FALSE)`).
 The NFC score correlated negatively with the MBI sum score and about equally with all subscales, contrary to some previous observations in other studies.
 
 `r corr_table`
