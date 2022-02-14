@@ -56,7 +56,7 @@ abstract: |
   The results indicated that teachers with higher NFC and more self-control have lower burnout because they experience their resources as fitting to the demands.
   
 keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
-wordcount         : "X"
+wordcount         : "~ 5600"
 bibliography      : NFC_Burnout.bib
 floatsintext      : yes
 figsintext        : yes
@@ -90,7 +90,9 @@ header-includes   :
 ---
 \renewcommand\thesection{\Alph{section}}
 \counterwithout{figure}{section}
+\counterwithout{table}{section}
 \setcounter{figure}{0}
+\setcounter{table}{0}
 
 ```{r setup, include = FALSE}
 
@@ -101,7 +103,7 @@ header-includes   :
   # define required packages
 
   packages = c("bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
-               "kableExtra", "Hmisc", "semPlot", "ggplot2", "knitr", "qgraph", "ppcor")
+               "kableExtra", "Hmisc", "semPlot", "ggplot2", "knitr", "qgraph", "ppcor", "stats", "apa", "GGally")
 
   # check whether each package is installed and install and/or load library
   
@@ -110,11 +112,6 @@ header-includes   :
     install.packages(packages[!installed_packages])
   }
   invisible(lapply(packages, library, character.only = TRUE))
-  
-  # those two libraries come from packages with different names, so we load them individually
-  
-  library(GGally)                 # from ggplot2, for multi-correlation plots
-  library(apa)                    # from the remotes package
 
 ```
 
@@ -145,19 +142,19 @@ Burnout is most often assessed using the Maslach Burnout Inventory (MBI) [@Masla
 
 Individuals with high burnout scores are often passive copers, high in neuroticism, low in self-esteem, and have an external locus of control [@Schaufeli2014].
 NFC on the other hand is negatively associated with those variables [@Double2016; @Fleischhauer2019; @Ghorbani2004; @Grass2018; @Osberg1987], suggesting that people high in NFC are less prone to experience burnout.
-This is supported by the findings that NFC is negatively associated with burnout scores in adults [@Fleischhauer2019], students [@Fleischhauer2019; @Naderi2018], and teacher trainees [@Grass2018].
+This is supported by findings that NFC is negatively associated with burnout scores in adults [@Fleischhauer2019], students [@Fleischhauer2019; @Naderi2018], and teacher trainees [@Grass2018].
 However, the associations of NFC with the sum score and the subscales of the MBI are not always consistent between these studies.
 This is likely not caused by inaccurate measurement, since the validity of both NCS [@Bless1994; @Osberg1987; @Tolentino1990] and MBI [@Brady2021; @Kantas1997; @Schaufeli2001; @ValdiviaVazquez2021] has been demonstrated in multiple studies.
 What is more likely is the influence of one or more other variables, moderating or mediating the association of NFC and burnout.
-Grass et al. [-@Grass2018] investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by reappraisal, active and passive coping, but not by suppression or self-control.
+Grass et al. [-@Grass2018] investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by reappraisal, active coping, and passive coping, but not by suppression or self-control.
 Reappraisal and suppression are two emotion regulation strategies, which refer to the cognitive reassessment of a stressor and the inhibition of emotional reactions, respectively [@Gross1998a].
 The findings by Grass et al. [-@Grass2018] suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor.
 One goal of this paper was to replicate the findings of Grass et al. [-@Grass2018] using a multiple mediation model on cross-sectional self-report data of teachers.
 We expected NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
 
 Furthermore, we extended the analysis to other possible mediators.
-These mediators were motivated by our own recent survey of the literature on NFC and wellbeing, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree [@Zerna2021].
-Only a balance of resources and demands results in personal wellbeing, while an imbalance threatens wellbeing, regardless of whether this imbalance is in favour of resources or demands [@Dodge2012].
+These mediators were motivated by our own recent survey of the literature on NFC and well-being, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree [@Zerna2021].
+Only a balance of resources and demands results in personal well-being, while an imbalance threatens well-being, regardless of whether this imbalance is in favour of resources or demands [@Dodge2012].
 Following the framework of Hobfoll [-@Hobfoll1989], resources can be objects with practical or status purpose, conditions like marriage or tenure, personality aspects like coping style, and energies such as time, money, or knowledge.
 In the case of NFC, resources are from the categories personality and energies: Personality, because NFC is a trait, encompassing a curious, analytic, and passionate approach to challenges, and energies, because individuals high in NFC have been coping actively all their life, which enriches their level of experience and knowledge in approaching challenges [@Cacioppo1996].
 These personal resources matter with regards to stress assessment (how the situation is appraised) and with regards to both coping and recovery [@Salanova2006].
@@ -209,13 +206,13 @@ At this point, schools had been switching between digital and hybrid forms of te
 All questionnaires were used in their German form.
 Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) [@Buessing1992], NFC using the 16-item Need for Cognition Scale (NCS) [@Bless1994], self-control using the 13-item Self-Control Scale (SCS) [@Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire (ERQ) [@Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire [@Fischer2014].
 Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently had a higher workload.
-The Covid-19 items can be found in the *Supplementary Material S1*.
+The translated Covid-19 items can be found in the *Supplementary Material S1*.
 The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.
-Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] cannot be used, so we cannot replicate the mediation of NFC and burnout by active and passive coping.
+Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] could not be used, so we could not replicate the mediation of NFC and burnout by active and passive coping.
 
 ## Procedure
 The questionnaires were provided online using SoSci Survey [@Leiner2019].
-Participants were informed about aims and duration of the study and data security, then they provided demographic information, answered the questionnaires, and could optionally enter their email address to be informed about the results of the analysis of N.E.'s thesis.
+Participants were informed about aims and duration of the study and data security, provided demographic information, answered the questionnaires, and could optionally enter their email address to be informed about the results of the analysis of N.E.'s thesis.
 
 ## Data analysis
 We used *R Studio* [@RCT2020; @RStudioTeam2020] with the main packages *lavaan* [@Rosseel2012] and *psych* [@Revelle2021] for all our analyses.
@@ -469,13 +466,14 @@ And secondly, we included a Covid-19 burden score into the SEM, computed as the 
     
     desc_table <-
       kbl(desc_met,
-      booktabs = T, # no vertical lines
-      escape = F, # correctly print special characters
-      align = c("l",rep("r",7))) %>% # right aligns the text in every column except for the first
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
-             escape = F, # correctly print special characters
-             threeparttable = T) # line breaks in the footnote
+          caption = "Descriptive statistics of the questionnaire scores.",
+          booktabs = T, # no vertical lines
+          escape = F, # correctly print special characters
+          align = c("l",rep("r",7))) %>% # right aligns the text in every column except for the first
+      kable_styling(latex_options = c("striped", "scale_down")) %>%
+      footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
+               escape = F, # correctly print special characters
+               threeparttable = T) # line breaks in the footnote
 
 ```
 
@@ -737,6 +735,7 @@ To adhere to the preregistration, we report the results containing the outlier i
 
   corr_table <-
   kbl(correlations,
+      caption = "Spearman correlations and internal consistencies of the questionnaire scores.",
       booktabs = TRUE, # no vertical lines
       escape = FALSE, # correctly print special characters
       align = rep("l",14)) %>% # left aligns the text in every column
@@ -751,7 +750,7 @@ To adhere to the preregistration, we report the results containing the outlier i
 ## Descriptive statistics
 
 Basic metric descriptives of the questionnaire scores and subscales are listed in Table 1.
-Only the ERQ sum score and its Reappraisal subscale followed a multivariate normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics [@Rosseel2012].
+Only the ERQ sum score and its reappraisal subscale followed a multivariate normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics [@Rosseel2012].
 
 `r desc_table`
 
@@ -759,8 +758,8 @@ Correlations and internal consistencies are displayed in Table 2.
 For this descriptive analysis, the variables DTH, DTL, and DRF were computed as a sum of their item scores, not weighted as in the structural equation model.
 Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha of the three demand-resource-ratios can be considered *acceptable*.
 The more robust MacDonald's Omega [@Dunn2014] did not deviate much from Cronbach's Alpha and indicated *acceptable* to *good* internal consistency.
-As expected, the MBI score was positively correlated with DTH (`r cor_apa(cor.test(score_data$mbi, score_data$dth, method = "spearman"), format = "rmarkdown")`) and negatively with DRF (`r cor_apa(cor.test(score_data$mbi, score_data$drf, method = "spearman"), format = "rmarkdown")`), large associations according the classification scheme by Gignac and Szodorai [-@Gignac2016].
-Surprisingly, the correlation between the MBI score and DTL was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman"), format = "rmarkdown")`).
+As expected, the MBI score was positively correlated with DTH (`r cor_apa(cor.test(score_data$mbi, score_data$dth, method = "spearman", exact = FALSE), format = "rmarkdown")`) and negatively with DRF (`r cor_apa(cor.test(score_data$mbi, score_data$drf, method = "spearman", exact = FALSE), format = "rmarkdown")`), large associations according the classification scheme by Gignac and Szodorai [-@Gignac2016].
+Surprisingly, the correlation between the MBI score and DTL was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman", exact = FALSE), format = "rmarkdown")`).
 The NFC score correlated negatively with the MBI sum score and about equally with all subscales, contrary to some previous observations in other studies.
 
 `r corr_table`
@@ -828,20 +827,32 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 
   replic_table <-
     kbl(replic_table,
+        caption = "Results of the replication of Grass et al. (2018).",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
+    footnote(general = "$B$ = unstandardized regression coefficient, \\beta = standardized regression coefficient, $CI$ = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
   
 ```
 
-```{r objective1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Replication of Grass et al. (2018)"}
+## Replication of Grass et al. (2018)
+
+In order to replicate findings by Grass et al. [-@Grass2018] we computed a multiple mediation model to investigate whether the association of NFC and reduced personal efficacy was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
+The baseline model did not fit the data ($\chi$^2^(`r round(fit_summ$FIT[["baseline.df"]], digits = 0)`, $N=$ `r nrow(data)`) = `r round(fit_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$).
+Applying the cutoffs by Hu and Bentler [-@Hu1999] to the fit indices of $CFI=$ `r round(fit_summ$FIT[["cfi"]], digits = 2)`, $TLI=$ `r round(fit_summ$FIT[["tli"]], digits = 2)`, $SRMR=$ `r round(fit_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA=$ `r format(round(fit_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)`, 95% $CI$ [`r round(fit_summ[["FIT"]][["rmsea.ci.lower"]], digits = 2)`,`r round(fit_summ[["FIT"]][["rmsea.ci.upper"]], digits = 2)`], suggested good fit of the proposed model throughout all indices.
+Standardized estimates are displayed in Figure 1, total, direct, and indirect effects are listed in Table 3.
+We could replicate a positive association of NFC and self control ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a1"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a1"], digits = 3)`), and a negative association of habitual reappraisal and reduced personal efficacy ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b2"], digits = 3)`).
+However, we could neither replicate the effect of NFC on reappraisal ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a2"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a2"], digits = 3)`), nor the indirect effect of NFC on reduced personal efficacy via reappraisal ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect2"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect2"], digits = 3)`).
+Furthermore, even though NFC and reduced personal efficacy were both associated with self-control, the indirect effect of NFC on reduced personal efficacy via self control did not reach significance ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect1"], digits = 3)`).
+Additionally, NFC was negatively associated with habitual use of suppression ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a3"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a3"], digits = 3)`), which was not the case in the study by Grass et al. [-@Grass2018].
+
+```{r objective1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018). * $p<.05$, ** $p<.01$."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -861,7 +872,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   replic_figure <- semPaths(fit, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition"),
                        layout = matrix(data = c(0,0,0,1,-1,1,-0.3,-1,0.3,0.3), nrow = 5, ncol = 2), # manually set the node locations
-                       sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
+                       sizeMan = 26, sizeMan2 = 8, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
                        edgeLabels = fit_param, # specify the edge labels with the asterisks as previously created
                        edge.label.cex = 1, esize = 2, # size specifications
                        fade = FALSE, # do not make insignificant associations invisible
@@ -869,17 +880,6 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
                        edge.label.color = "black", posCol = "black", negCol = "black"
 )
 ```
-
-## Replication of Grass et al. (2018)
-
-In order to replicate findings by Grass et al. [-@Grass2018] we computed a multiple mediation model to investigate whether the association of NFC and reduced personal efficacy was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
-The baseline model did not fit the data ($\chi$^2^(`r round(fit_summ$FIT[["baseline.df"]], digits = 0)`, $N=$ `r nrow(data)`) = `r round(fit_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$).
-Applying the cutoffs by Hu and Bentler [-@Hu1999] to the fit indices of $CFI=$ `r round(fit_summ$FIT[["cfi"]], digits = 2)`, $TLI=$ `r round(fit_summ$FIT[["tli"]], digits = 2)`, $SRMR=$ `r round(fit_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA=$ `r format(round(fit_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)`, 95% $CI$ [`r round(fit_summ[["FIT"]][["rmsea.ci.lower"]], digits = 2)`,`r round(fit_summ[["FIT"]][["rmsea.ci.upper"]], digits = 2)`], suggested good fit of the proposed model throughout all indices.
-Standardized estimates are displayed in Figure 1, total, direct, and indirect effects are listed in Table 3.
-We could replicate a positive association of NFC and self control ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a1"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a1"], digits = 3)`), and a negative association of habitual reappraisal and reduced personal efficacy ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b2"], digits = 3)`).
-However, we could neither replicate the effect of NFC on reappraisal ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "b1"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "b1"], digits = 3)`), nor the indirect effect of NFC on reduced personal efficacy via reappraisal ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect2"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect2"], digits = 3)`).
-Furthermore, even though NFC and self control and reduced personal efficacy and self control were associated, the indirect effect of NFC on reduced personal efficacy via self control did not reach significance ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect1"], digits = 3)`).
-Additionally, NFC was negatively associated with habitual use of suppression ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a3"], digits = 2)`, $p=$ `r round(fit_summ$PE$pvalue[fit_summ$PE$label == "a3"], digits = 3)`), which was not the case in the study by Grass et al. [-@Grass2018].
 
 `r replic_table`
 
@@ -922,52 +922,13 @@ Additionally, NFC was negatively associated with habitual use of suppression ($\
           estimates = TRUE, ci = TRUE)
 ```
 
-```{r objective1yearstable, echo=FALSE, message=FALSE, warning=FALSE}
-
-  # put relevant data from the mediation into a table for reporting
-
-  # put data into data frame
-
-  replic_years_table <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
-                                  "NFC on Reappraisal", "NFC on Suppression",
-                                  "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
-                                  "NFC and years spent teaching on RPE via Self Control",
-                                  "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
-                                  "Total Effect"),
-                          "$B$" = c(fityears_summ$PE$est[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          "$SE$" = c(fityears_summ$PE$se[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          "$z$-value" = c(fityears_summ$PE$z[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          "$p$-value" = c(fityears_summ$PE$pvalue[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          "CI Lower" = c(fityears_summ$PE$ci.lower[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          "CI Upper" = c(fityears_summ$PE$ci.upper[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          "$\\beta$" = c(fityears_summ$PE$std.all[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                          check.names = FALSE)
-
-  # format the numbers to three digits after the decimal point
-  
-  replic_years_table[2:ncol(replic_years_table)] <- format(round(replic_years_table[2:ncol(replic_years_table)], digits = 3), nsmall = 2)
-
-  replic_years_table <-
-    kbl(replic_years_table,
-        booktabs = T, # no vertical lines
-        escape = F, # correctly print special characters)
-        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
-    pack_rows("Direct Effects", 1, 8) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 9, 11) %>%
-    pack_rows("Total Effect", 12, 12) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
-             escape = F, # correctly print special characters
-             threeparttable = T)# line breaks in the footnote
-```
-
 Grass et al. [-@Grass2018] controlled for age and a-level grade in their analysis, which we did not consider when preregistering this analysis.
 Since grade was not assessed in this sample, and age was assessed as a categorical variable, we instead incorporated how many years each participant had spent teaching at the point of assessment.
 We placed this variable as an independent variable influencing self control, as the latter was the only variable in the model that showed a partial correlation with years spent teaching.
 As it was not preregistered, this was an exploratory analysis.
 Again, the baseline model did not fit the data ($\chi$^2^(`r round(fityears_summ$FIT[["baseline.df"]], digits = 0)`, $N=$ `r nrow(data)`) = `r round(fityears_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$), and the fit indices of $CFI=$ `r round(fityears_summ$FIT[["cfi"]], digits = 2)`, $TLI=$ `r round(fityears_summ$FIT[["tli"]], digits = 2)`, $SRMR=$ `r round(fityears_summ$FIT[["srmr"]], digits = 2)`, and $RMSEA=$ `r format(round(fityears_summ$FIT[["rmsea"]], digits = 2), nsmall = 2)`, 95% $CI$ [`r round(fityears_summ[["FIT"]][["rmsea.ci.lower"]], digits = 2)`,`r round(fityears_summ[["FIT"]][["rmsea.ci.upper"]], digits = 2)`], suggested good fit of the proposed model throughout all indices.
 Standardized estimates, total, direct, and indirect effects are displayed and listed in *Supplementary Material S3*.
-The associations between NFC, self control, reappraisal, suppression, and reduced personal efficacy were almost identical to the model first model.
+The associations between NFC, self control, reappraisal, suppression, and reduced personal efficacy were almost identical to the first model.
 However, because of the positive association of years spent teaching and self control ($\beta=$ `r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "y"], digits = 2)`, $p < .001$), the indirect path leading from NFC and years spent teaching via self control to reduced personal efficacy reached significance in this model ($\beta=$ `r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fityears_summ$PE$pvalue[fityears_summ$PE$label == "Indirect1"], digits = 3)`).
 Therefore, the total effect also increased slightly, compared to the first model ($\beta=$ `r round(fityears_summ$PE$std.all[fityears_summ$PE$label == "Total"], digits = 2)`, $p=$ `r round(fityears_summ$PE$pvalue[fityears_summ$PE$label == "Total"], digits = 3)`).
 
@@ -1015,7 +976,60 @@ Therefore, the total effect also increased slightly, compared to the first model
   
 ```
 
-```{r objective2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Mediation of NFC and burnout by demand-resource-ratios"}
+
+```{r objective2table, echo=FALSE, message=FALSE, warning=FALSE}
+  
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  drr_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
+                                      "DTH on MBI", "DTL on MBI", "DRF on MBI",
+                                      "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
+                                      "Total Effect"),
+                          "$B$" = c(fit2_summ$PE$est[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$SE$" = c(fit2_summ$PE$se[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$z$-value" = c(fit2_summ$PE$z[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$p$-value" = c(fit2_summ$PE$pvalue[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(fit2_summ$PE$ci.lower[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(fit2_summ$PE$ci.upper[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$\\beta$" = c(fit2_summ$PE$std.all[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  drr_table[2:ncol(drr_table)] <- format(round(drr_table[2:ncol(drr_table)], digits = 3), nsmall = 2)
+
+  drrmodel_table <-
+    kbl(drr_table,
+        caption = "Results of the demand-resource-ratio model.",
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters)
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
+    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 8, 10) %>%
+    pack_rows("Total Effect", 11, 11) %>%
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
+```
+
+## Demand-Resource Model
+
+Next we looked at how different ratios of subjective demands and resources affect the association of NFC and burnout.
+The parcelling procedure for the indicators of the latent factor NFC resulted in four parcels with a summed difference in average loadings of `r round(ncs_parcels$summed.difference, digits = 3)`.
+The first parcel contained item `r ncs_parcels$items[1,1]`, `r ncs_parcels$items[2,1]`, `r ncs_parcels$items[3,1]`, and `r ncs_parcels$items[4,1]`, the second parcel item `r ncs_parcels$items[1,2]`, `r ncs_parcels$items[2,2]`, `r ncs_parcels$items[3,2]`, and `r ncs_parcels$items[4,2]`, the third parcel item `r ncs_parcels$items[1,3]`, `r ncs_parcels$items[2,3]`, `r ncs_parcels$items[3,3]`, and `r ncs_parcels$items[4,3]`, and the fourth parcel item `r ncs_parcels$items[1,4]`, `r ncs_parcels$items[2,4]`, `r ncs_parcels$items[3,4]`, and `r ncs_parcels$items[4,4]`.
+Standardized path coefficients of the demand-resource model are illustrated in Figure 2, total, direct, and indirect effects are listed in Table 4.
+The robust Chi-square statistic of $\chi^2=$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$) did not indicate good model fit.
+However, since it was in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)` $*df<\chi^2<$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)+1` $*df$ the lack of good fit might have been due to the underlying assumption of multivariate normality [@Hu1999; @Schumacker2012], which was violated here.
+This also held true for the CFI of `r round(fit2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, the SRMR of `r round(fit2_summ[["FIT"]][["srmr"]], digits = 2)`, and the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% $CI$ [`r round(fit2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`].
+Overall, the fit indices did not support the proposed model, and not all proposed paths were significant.
+NFC showed no direct association with the MBI score ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "c"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "c"], digits = 3)`), even though it was negatively correlated with the sum score and all subscales.
+Instead, NFC showed indirect negative associations with the MBI score via lower scores in the latent variable DTH ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect1"], digits = 3)`) and via higher scores in the latent variable DRF ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect3"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect3"], digits = 3)`).
+The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "a2"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "b2"], digits = 3)`).
+
+```{r objective2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized path coefficients in the mediation of NFC and burnout by demand-resource-ratios. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, MBI = Maslach Burnout Inventory, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, ee = emotional exhaustion, dp = depersonalisation, rpe = reduced personal efficacy."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1046,58 +1060,7 @@ Therefore, the total effect also increased slightly, compared to the first model
   )
 ```
 
-```{r objective2table, echo=FALSE, message=FALSE, warning=FALSE}
-  
-  # put relevant data from the mediation into a table for reporting
-
-  # put data into data frame
-
-  drr_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on MBI",
-                                      "DTH on MBI", "DTL on MBI", "DRF on MBI",
-                                      "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
-                                      "Total Effect"),
-                          "$B$" = c(fit2_summ$PE$est[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$SE$" = c(fit2_summ$PE$se[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$z$-value" = c(fit2_summ$PE$z[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$p$-value" = c(fit2_summ$PE$pvalue[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "CI Lower" = c(fit2_summ$PE$ci.lower[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "CI Upper" = c(fit2_summ$PE$ci.upper[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$\\beta$" = c(fit2_summ$PE$std.all[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          check.names = FALSE)
-
-  # format the numbers to three digits after the decimal point
-  
-  drr_table[2:ncol(drr_table)] <- format(round(drr_table[2:ncol(drr_table)], digits = 3), nsmall = 2)
-
-  drrmodel_table <-
-    kbl(drr_table,
-        booktabs = T, # no vertical lines
-        escape = F, # correctly print special characters)
-        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
-    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 8, 10) %>%
-    pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
-             escape = F, # correctly print special characters
-             threeparttable = T)# line breaks in the footnote
-```
-
-## Demand-Resource Model
-
-Next we looked at how different ratios of subjective demands and resources affect the association of NFC and burnout.
-The parcelling procedure for the indicators of the latent factor NFC resulted in four parcels with a summed difference in average loadings of `r round(ncs_parcels$summed.difference, digits = 3)`.
-The first parcel contained item `r ncs_parcels$items[1,1]`, `r ncs_parcels$items[2,1]`, `r ncs_parcels$items[3,1]`, and `r ncs_parcels$items[4,1]`, the second parcel item `r ncs_parcels$items[1,2]`, `r ncs_parcels$items[2,2]`, `r ncs_parcels$items[3,2]`, and `r ncs_parcels$items[4,2]`, the third parcel item `r ncs_parcels$items[1,3]`, `r ncs_parcels$items[2,3]`, `r ncs_parcels$items[3,3]`, and `r ncs_parcels$items[4,3]`, and the fourth parcel item `r ncs_parcels$items[1,4]`, `r ncs_parcels$items[2,4]`, `r ncs_parcels$items[3,4]`, and `r ncs_parcels$items[4,4]`.
-Standardized path coefficients of the demand-resource model are illustrated in Figure 2, total, direct, and indirect effects are listed in Table 4.
-The robust Chi-square statistic of $\chi^2=$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$) did not indicate good model fit.
-However, since it was in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)` $*df<\chi^2<$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)+1` $*df$ the lack of good fit might have been due to the underlying assumption of multivariate normality [@Hu1999; @Schumacker2012], which was violated here.
-This also held true for the CFI of `r round(fit2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, the SRMR of `r round(fit2_summ[["FIT"]][["srmr"]], digits = 2)`, and the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% $CI$ [`r round(fit2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`].
-Overall, the fit indices did not support the proposed model, and not all proposed paths were significant.
-NFC showed no direct association with the MBI score ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "c"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "c"], digits = 3)`), even though it was negatively correlated with the sum score and all subscales.
-Instead, NFC showed indirect negative associations with the MBI score via lower scores in the latent variable DTH ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect1"], digits = 3)`) and via higher scores in the latent variable DRF ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "Indirect3"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "Indirect3"], digits = 3)`).
-The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "a2"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "b2"], digits = 3)`).
-
-`r drr_table`
+`r drrmodel_table`
 
 ```{r exploringbadfit, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -1130,7 +1093,7 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
 
 ```
 
-```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+```{r exploratory1, echo=FALSE, message=FALSE, warning=FALSE, results="hide"}
 
   # Exploratory analysis I: MBI subscale instead of sum score
   
@@ -1198,10 +1161,11 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit2_summ$
 
   drr_rpe_table <-
     kbl(drr_rpe_table,
+        caption = "Results of the demand-resource-ratio model with reduced personal efficacy in place of the MBI score.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
@@ -1219,7 +1183,7 @@ NFC showed no direct association with reduced personal efficacy ($\beta=$ `r rou
 And again, NFC was associated with lower scores in the latent variable DTH ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "a1"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "a1"], digits = 3)`), but the latter did not mediate the relationship between NFC and reduced personal efficacy ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "Indirect1"], digits = 3)`) as it did with the MBI score in the previous model.
 The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "a2"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "a2"], digits = 3)`) nor to the MBI score ($\beta=$ `r round(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label == "b2"], digits = 2)`, $p=$ `r round(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label == "b2"], digits = 3)`).
 
-```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+```{r exploratory2, echo=FALSE, message=FALSE, warning=FALSE, results="hide"}
 
   # Exploratory analysis II: Covid burden as a covariate
   
@@ -1276,8 +1240,19 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
           estimates = TRUE, ci = TRUE)
 ```
 
+The second exploratory analysis concerned the incorporation of the Covid burden score into the model.
+We based the development of this model on the partial correlations of all variables, which provide an indication of how closely or remotely related variables might be in a path model.
+Then we modified the structure of the model using the *modincides()*-function in *lavaan* in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
+The final model is illustrated in Figure 3, the total, direct, and indirect effects are listed in *Supplementary Material S5*.
+All fit indices suggested that the proposed model had good fit while the baseline model did not ($\chi^2=$ `r round(fit_explor2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$), $CFI=$ `r round(fit_explor2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, $RMSEA=$ `r round(fit_explor2_summ[["FIT"]][["rmsea.robust"]], digits = 2)` (95% $CI$ [`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]), $SRMR=$ `r round(fit_explor2_summ[["FIT"]][["srmr"]], digits = 2)`).
+Neither the ERQ sum score, nor its subscales, nor the depersonalisation subscale of the MBI contributed significantly to the explained variance and were therefore not included in the final model.
+Years spent teaching was associated with higher self control ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ys"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ys"], digits = 3)`) and higher Covid burden ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "yc"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "yc"], digits = 3)`) but not with NFC.
+NFC covaried with self control ($\sigma_{NFC,scs}=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "scs"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "scs"], digits = 3)`) and Covid burden ($\sigma_{NFC,covb}=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "covb"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "covb"], digits = 3)`), but not with years spent teaching ($p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "years"], digits = 3)`).
+In turn, NFC was associated with higher DRF scores ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ndrf"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ndrf"], digits = 3)`) and lower DTH scores ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ndth"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ndth"], digits = 3)`) but not directly with any of the two MBI subscales.
+DRF scores fully mediated the negative association of NFC and self control with reduced personal efficacy (indirect effect $\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "Indirect1"], digits = 3)`), which was also true for DTH scores and emotional exhaustion, but DTH also partially mediated between Covid burden and emotional exhaustion (indirect effect $\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "Indirect2"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "Indirect2"], digits = 3)`).
+Covid burden was not associated with DRF or reduced personal efficacy.
 
-```{r explor2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Exploratory analysis of variable relations"}
+```{r explor2plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized path coefficients in the exploratory analysis of variable relations. * $p<.05$, ** $p<.01$, *** $p<.001$. Years = years spent teaching, SCS = Self-Control Scale, COVB = Covid burden, NFC = Need for Cognition, DTH = demands too high, DRF = demand resource fit, nfc1-4 = item parcels, dth/drf1-3 = item indicators, EE = emotional exhaustion, RPE = reduced personal efficacy."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1332,58 +1307,6 @@ The latent variable DTL was neither related to NFC ($\beta=$ `r round(fit_explor
   )
 ```
 
-```{r explor2table, echo=FALSE, message=FALSE, warning=FALSE}
-  
-  # put relevant data from the mediation into a table for reporting
-
-  # put data into data frame
-
-  explor2_table <- data.frame("Path" = c("Years on COVB", "Years on SCS",
-                                   "COVB on DTH", "SCS on DTH", "NFC on DTH",
-                                   "SCS on DRF", "NFC on DRF",
-                                   "DTH on EE", "COVB on EE", "DRF on RPE",
-                                   "NFC and Years on RPE via SCS and DRF",
-                                   "NFC and Years on EE via SCS, COVB, and DTH",
-                                   "Total Effect"),
-                          "$B$" = c(fit_explor2_summ$PE$est[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          "$SE$" = c(fit_explor2_summ$PE$se[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          "$z$-value" = c(fit_explor2_summ$PE$z[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          "$p$-value" = c(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          "CI Lower" = c(fit_explor2_summ$PE$ci.lower[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          "CI Upper" = c(fit_explor2_summ$PE$ci.upper[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          "$\\beta$" = c(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                          check.names = FALSE)
-
-  # format the numbers to three digits after the decimal point
-  
-  explor2_table[2:ncol(explor2_table)] <- format(round(explor2_table[2:ncol(explor2_table)], digits = 3), nsmall = 2)
-
-  explor2_table <-
-    kbl(explor2_table,
-        booktabs = T, # no vertical lines
-        escape = F, # correctly print special characters)
-        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
-    pack_rows("Direct Effects", 1, 10) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 11, 12) %>%
-    pack_rows("Total Effect", 13, 13) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching.",
-             escape = F, # correctly print special characters
-             threeparttable = T)# line breaks in the footnote
-```
-
-The second exploratory analysis concerned the incorporation of the Covid burden score into the model.
-We based the development of this model on the partial correlations of all variables, which provide an indication of how closely or remotely related variables might be in a path model.
-Then we modified the structure of the model in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
-The final model is illustrated in Figure 3, the total, direct, and indirect effects are listed in *Supplementary Material S5*.
-All fit indices suggest that the proposed model has good fit while the baseline model does not ($\chi^2=$ `r round(fit_explor2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$), $CFI=$ `r round(fit_explor2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, $RMSEA=$ `r round(fit_explor2_summ[["FIT"]][["rmsea.robust"]], digits = 2)` (95% $CI$ [`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]), $SRMR=$ `r round(fit_explor2_summ[["FIT"]][["srmr"]], digits = 2)`).
-Neither the ERQ sum score, nor its subscales, nor the depersonalisation subscale of the MBI contributed significantly to the explained variance and were therefore not included in the final model.
-Years spent teaching was associated with higher self control ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ys"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ys"], digits = 3)`) and higher Covid burden ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "yc"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "yc"], digits = 3)`) but not with NFC.
-NFC covaried with self control ($\sigma_{NFC,scs}=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "scs"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "scs"], digits = 3)`) and Covid burden ($\sigma_{NFC,covb}=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "covb"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "covb"], digits = 3)`), but not with years spent teaching ($p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$lhs == "NFC" & fit_explor2_summ$PE$op == "~~" & fit_explor2_summ$PE$rhs == "years"], digits = 3)`).
-In turn, NFC was associated with higher DRF scores ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ndrf"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ndrf"], digits = 3)`) and lower DTH scores ($\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "ndth"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "ndth"], digits = 3)`) but not directly with any of the two MBI subscales.
-DRF scores fully mediated the negative association of NFC and self control with reduced personal efficacy (indirect effect $\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "Indirect1"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "Indirect1"], digits = 3)`), which was also true for DTH scores and emotional exhaustion, but DTH also partially mediated between Covid burden and emotional exhaustion (indirect effect $\beta=$ `r round(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label == "Indirect2"], digits = 2)`, $p=$ `r round(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label == "Indirect2"], digits = 3)`).
-Covid burden was not associated with DRF or reduced personal efficacy.
-
 # Discussion
 
 The present study aimed to replicate findings of mediators between Need for Cognition and burnout in teachers, as well as to extend the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
@@ -1415,14 +1338,14 @@ Specifically, individuals with higher NFC had lower burnout scores through perce
 Interestingly, the correlation between NFC and burnout, which can be classified as medium according to Gignac and Szodorai [-@Gignac2016], disappeared in the context of the demand-resource-ratios as mediators.
 The mediator that did not reach significance was the perception of own resources exceeding the job demands.
 As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. [-@Reijseger2013.].
-The fact that the items that make up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
+The fact that the items that made up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
 This individual appraisal has been emphasized as the cause for the ambiguous impact of demands on psychological well-being before, in the form of challenge demands and hindrance demands [@Lepine2005;@Podsakoff2007;@Lazarus1984].
 Challenge demands such as time pressure, responsibility, and workload [@Podsakoff2007] are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping [@Lepine2005].
 In contrast, hindrance demands such as inadequate resources, role conflict, and organisational politics [@Podsakoff2007] are perceived as negative because they harm personal growth, trigger negative emotions, and increase passive coping [@Lepine2005].
 Ventura et al. [-@Ventura2015] found that hindrance but not challenge demands were positively related to burnout in teachers, and teachers who reported high challenge and low hindrance demands also reported higher engagement.
 Whether and to what extent a circumstance is perceived as a challenge or hindrance demand is highly influenced by a person's level of self-efficacy [@Bandura1997], so much so that a reduction in self-efficacy is considered to be a precurser of burnout, not necessarily a symptom [@Cherniss1993;@Vera2012].
 Self-efficacy and self-control are closely entwined [@Przepiorka2019;@Vera2004;@Yang2019] and both are positively associated with NFC [@Xu2021;@Bertrams2012;@Naderi2018;@Holch2020].
-Cacioppo et al. [@Cacioppo1996] even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
+Cacioppo et al. [-@Cacioppo1996] even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
 These associations would imply that teachers with high levels of NFC report lower levels of burnout because their higher (desire for) self-control motivates them to appraise demands as a chance for personal growth, thereby meeting their passion for thinking and problem-solving.
 Nevertheless, appraisal is no universal remedy for circumstances that threaten well-being, as there certainly are circumstances that one cannot get any benefit out of.
 It remains an open question whether a high desire for control and high NFC might cloud one's judgement in this case, by encouraging to invest one's own insufficient resources in order to meet these high external demands.
@@ -1433,12 +1356,12 @@ Such behavioural tendencies would threaten personal well-being in the long term,
 
 The demand-resource-ratio model with the subscale reduced personal efficacy in place of the MBI score did not have good fit indices.
 Compared to the confirmatory demand-resource-ratio model, the mediation of NFC and reduced personal efficacy via DTH did not reach significance, but both the mediation via DRF and the total effect remained significant.
-Overall, this pattern does not resemble those from previous studies in which NFC had the strongest relation with this subscale of the MBI [@Grass2018;@Naderi2018].
+Overall, this pattern did not resemble those from previous studies in which NFC had the strongest relation with this subscale of the MBI [@Grass2018;@Naderi2018].
 Teachers with high NFC appear to retain their sense of personal efficacy to a higher degree, because they experience a fit of demands and resources, which allows them to complete tasks and reinforce their self-efficacy in return.
 However, while this association was similar in the confirmatory and the exploratory demand-resource-ratio model, the mediation via DTH was not significant with this subscale, suggesting that the large association of DTH and MBI in the confirmatory model was driven by a different subscale.
-To explore this, we built a second exploratory model, based on partial correlations and suggestions to improve fit indices by the *lavaan* package.
+To explore this, we built a second exploratory model.
 
-### Structural equation model with Covid burden
+### Exploratory model with Covid burden
 
 Due to the complete freedom in setting up the structure of this model, it had good fit indices.
 Interestingly, the third MBI subscale depersonalisation and the latent variable DTL did not explain any variance in the model, so they were removed.
@@ -1450,7 +1373,7 @@ Teachers with higher self-control and higher NFC reported a stronger fit of dema
 Higher self-control, higher NFC, and lower Covid burden was in turn associated with a lower DTH score, so teachers with those characteristics felt less overwhelmed and consequently less emotionally exhausted.
 The degree of association between DTH and emotional exhaustion indeed suggested a congruence between the two, indicating that emotional exhaustion in burnout is caused by excessive demands that cannot be met with one's resources, while reduced personal efficacy in burnout is caused by a lack of opportunities to utilize one's resources at work.
 Curiously, higher Covid burden also showed a small negative association with emotional exhaustion.
-It could be that for some teachers, remote teaching was experienced as a relief from the strain of dealing with a group of over twenty students each day, who are more likely to misbehave in a classroom setting than when they are home alone.
+It could be that for some teachers, remote teaching was experienced as a relief from the strain of dealing with a group of over twenty students each day, who are more likely to misbehave in a classroom setting than when they are studying at home.
 So while those teachers did feel the pandemic burden, they also felt less emotionally exhausted.
 
 ## Limitations and future implications
@@ -1507,6 +1430,11 @@ As a consequence, experiences and sense of self-efficacy will increase, which in
 For each response scale, please refer to Excel file with the full list of items and response types on OSF [https://osf.io/36ep9/](https://osf.io/36ep9/).
 
 \newpage
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\setcounter{section}{19}
+\setcounter{figure}{0}
+\setcounter{table}{0}
 
 ## S2: Results when excluding the outlier with very high MBI scores and very low NFC scores
 
@@ -1684,6 +1612,7 @@ For each response scale, please refer to Excel file with the full list of items 
 
   outliercorr_table <-
   kbl(outliercorrelations,
+      caption = "Spearman correlations and internal consistencies of the questionnaire scores.",
       booktabs = TRUE, # no vertical lines
       escape = FALSE, # correctly print special characters
       align = rep("l",14)) %>% # left aligns the text in every column
@@ -1694,6 +1623,8 @@ For each response scale, please refer to Excel file with the full list of items 
   kableExtra::landscape() # make the table horizontal 
 
 ```
+
+`r outliercorr_table`
 
 ```{r outlierobjective1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
@@ -1758,10 +1689,11 @@ For each response scale, please refer to Excel file with the full list of items 
 
   outlierreplic_table <-
     kbl(outlierreplic_table,
+        caption = "Results of the replication of Grass et al. (2018).",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
@@ -1770,6 +1702,8 @@ For each response scale, please refer to Excel file with the full list of items 
              threeparttable = T)# line breaks in the footnote
   
 ```
+
+`r outlierreplic_table`
 
 ```{r outlierobjective2, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
@@ -1840,10 +1774,11 @@ For each response scale, please refer to Excel file with the full list of items 
 
   outlierdrrmodel_table <-
     kbl(outlierdrr_table,
+        caption = "Results of the demand-resource-ratio model.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped")) %>%
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
     pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
     pack_rows("Indirect Effects", 8, 10) %>%
     pack_rows("Total Effect", 11, 11) %>%
@@ -1852,9 +1787,13 @@ For each response scale, please refer to Excel file with the full list of items 
              threeparttable = T)# line breaks in the footnote
 ```
 
+`r outlierdrrmodel_table`
+
+\newpage
+
 ## S3: Replication of Grass et al. (2018) when including years spent teaching
 
-```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Replication of Grass et al. (2018) when including years spent teaching"}
+```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018) when including years spent teaching. * $p<.05$, ** $p<.01$."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1874,7 +1813,7 @@ For each response scale, please refer to Excel file with the full list of items 
   replic_years_figure <- semPaths(fityears, what="std", # display the parameters on the arrows
                        nodeLabels = c("Self-Control", "Reappraisal", "Suppression", "Reduced\nPersonal Efficacy", "Need for Cognition", "Years spent\nteaching"),
                        layout = matrix(data = c(0,0,0,1,-1,-1,1,-0.3,-1,0.3,0.3,1), nrow = 6, ncol = 2), # manually set the node locations
-                       sizeMan = 24, sizeMan2 = 7, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
+                       sizeMan = 26, sizeMan2 = 8, shapeMan = "rectangle", label.scale = FALSE, # specify node properties
                        edge.label.cex = 1, esize = 2, # size specifications
                        edgeLabels = fityears_param, # specify the edge labels with the asterisks as previously created
                        fade = FALSE, # do not make insignificant associations invisible
@@ -1884,11 +1823,54 @@ For each response scale, please refer to Excel file with the full list of items 
 )
 ```
 
+```{r objective1yearstable, echo=FALSE, message=FALSE, warning=FALSE}
+
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  replic_years_table <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
+                                  "NFC on Reappraisal", "NFC on Suppression",
+                                  "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
+                                  "NFC and years spent teaching on RPE via Self Control",
+                                  "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
+                                  "Total Effect"),
+                          "$B$" = c(fityears_summ$PE$est[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          "$SE$" = c(fityears_summ$PE$se[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          "$z$-value" = c(fityears_summ$PE$z[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          "$p$-value" = c(fityears_summ$PE$pvalue[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(fityears_summ$PE$ci.lower[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(fityears_summ$PE$ci.upper[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          "$\\beta$" = c(fityears_summ$PE$std.all[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  replic_years_table[2:ncol(replic_years_table)] <- format(round(replic_years_table[2:ncol(replic_years_table)], digits = 3), nsmall = 2)
+
+  replic_years_table <-
+    kbl(replic_years_table,
+        caption = "Results of the replication of Grass et al. (2018) when including years spent teaching.",
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
+    pack_rows("Direct Effects", 1, 8) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 9, 11) %>%
+    pack_rows("Total Effect", 12, 12) %>%
+    column_spec(1, width = "5cm") %>%
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
+```
+
 `r replic_years_table`
+
+\newpage
 
 ## S4: Demand-resource-ratio model with the MBI subscale reduced personal efficacy
 
-```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Demand-resource-ratio model with the MBI subscale reduced personal efficacy"}
+```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized path coefficients of the demand-resource-ratio model with the MBI subscale reduced personal efficacy. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, RPE = reduced personal efficacy."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -1919,6 +1901,50 @@ For each response scale, please refer to Excel file with the full list of items 
   )
 ```
 
+\newpage
+
 ## S5: Exploratory model with all relevant variables
 
-`r explor2_fig`
+```{r explor2table, echo=FALSE, message=FALSE, warning=FALSE}
+  
+  # put relevant data from the mediation into a table for reporting
+
+  # put data into data frame
+
+  explor2_table <- data.frame("Path" = c("Years on COVB", "Years on SCS",
+                                   "COVB on DTH", "SCS on DTH", "NFC on DTH",
+                                   "SCS on DRF", "NFC on DRF",
+                                   "DTH on EE", "COVB on EE", "DRF on RPE",
+                                   "NFC and Years on RPE via SCS and DRF",
+                                   "NFC and Years on EE via SCS, COVB, and DTH",
+                                   "Total Effect"),
+                          "$B$" = c(fit_explor2_summ$PE$est[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          "$SE$" = c(fit_explor2_summ$PE$se[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          "$z$-value" = c(fit_explor2_summ$PE$z[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          "$p$-value" = c(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          "CI Lower" = c(fit_explor2_summ$PE$ci.lower[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          "CI Upper" = c(fit_explor2_summ$PE$ci.upper[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          "$\\beta$" = c(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                          check.names = FALSE)
+
+  # format the numbers to three digits after the decimal point
+  
+  explor2_table[2:ncol(explor2_table)] <- format(round(explor2_table[2:ncol(explor2_table)], digits = 3), nsmall = 2)
+
+  explor2_table <-
+    kbl(explor2_table,
+        caption = "Results of the exploratory model with Covid burden.",
+        booktabs = T, # no vertical lines
+        escape = F, # correctly print special characters)
+        align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
+    kable_styling(latex_options = c("striped", "scale_down"), font_size = 11) %>%
+    pack_rows("Direct Effects", 1, 10) %>% # group the rows and add a header in between
+    pack_rows("Indirect Effects", 11, 12) %>%
+    pack_rows("Total Effect", 13, 13) %>%
+    column_spec(1, width = "5cm") %>%
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching.",
+             escape = F, # correctly print special characters
+             threeparttable = T)# line breaks in the footnote
+```
+
+`r explor2_table`
