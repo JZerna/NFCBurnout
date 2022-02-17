@@ -130,10 +130,10 @@ header-includes   :
 
 Need for Cognition (NFC) is a stable intrinsic motivation to seek out and especially to enjoy effortful cognitive activities [@Cacioppo1982].
 As it bridges the gap between cognition and motivation, NFC is considered to be an investment trait [@Stumm2013], and has come to the fore of psychological research in the last years.
-NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items [@Cacioppo1982; @Cacioppo1984].
-While many studies have found positive associations of NFC with academic performance [@Cazan2014; @Elias2002; @Grass2017; @Lavrijsen2021; @Zheng2020], recent investigations have also looked at NFC as a personal resource in academic and work contexts.
+NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items [@Cacioppo1982; @Cacioppo1984]. <!-- den Satz würde ich entweder weglassen oder noch die deutsche NFC Skala mit referenzieren -->
+While many studies have found positive associations of NFC with academic performance [@Cazan2014; @Elias2002; @Grass2017; @Lavrijsen2021; @Zheng2020]<!-- von Stumm & Ackerman, 2013 als Metaanalyse mit aufnehmen, dafür 1-2 Einzelstudien raus -->, recent investigations have also looked at NFC as a personal resource in academic and work contexts.
 Individuals high in NFC have more positive emotions at the end of the work day [@Rosen2020], higher work motivation, perceive their roles as less ambiguous [@Nowlin2017], are less likely to drop out of college [@Grass2017; @Klaczynski1996], and have less anxiety regarding their course work [@Karagiannopoulou2020].
-These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical [@Dragano2017; @Steptoe2013] to psychological [@Madsen2017; @Maslach2016; @Wiesner2005].
+These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical [@Dragano2017; @Steptoe2013] to psychological [@Madsen2017; @Maslach2016; @Wiesner2005] consequences.
 
 One of these psychological consequences is burnout, a state of exhaustion and cynicism caused by long-term overstimulation in the workplace, which results in employees being dissatisfied, being sick more often, and performing poorly [@Schaufeli2014].
 Burnout is especially prevalent in social jobs such as healthcare or teaching because the worker is always in conflict between advocating for their client and meeting the goals set by the employer [@GrayStanley2011; @Lloyd2002].
