@@ -204,10 +204,10 @@ At this point, schools had been switching between digital and hybrid forms of te
 
 ## Material
 All questionnaires were used in their German form.
-Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) [@Buessing1992], NFC using the 16-item Need for Cognition Scale (NCS) [@Bless1994], self-control using the 13-item Self-Control Scale (SCS) [@Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire (ERQ) [@Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire [@Fischer2014].
+Burnout was assessed using the 21-item Maslach Burnout Inventory [MBI, @Buessing1992], NFC using the 16-item Need for Cognition Scale [NCS, @Bless1994], self-control using the 13-item Self-Control Scale [SCS, @Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire [ERQ, @Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire [@Fischer2014].
 Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently had a higher workload.
 The translated Covid-19 items can be found in the *Supplementary Material S1*.
-The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.
+The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.<!-- warum eigentlich nicht? -->
 Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] could not be used, so we could not replicate the mediation of NFC and burnout by active and passive coping.
 
 ## Procedure
