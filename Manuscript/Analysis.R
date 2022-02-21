@@ -42,7 +42,7 @@
   
   # Load the data file
   
-  load(here("Data", "data.Rda"))
+  base::load(here("Data", "data.Rda"))
   
   # Load the internal consistencies (bootstrapping has been suppressed to save time on knitting)
   consistencies <- read_rds(here("Data", "consistencies.rds"))
@@ -264,18 +264,6 @@
   
   desc_met[ ,c("Mean","SD","Skewness","Kurtosis")] <- round(desc_met[ ,c("Mean","SD","Skewness","Kurtosis")], digits = 2)
   
-  # Put the information in a table
-  
-  desc_table <-
-    kbl(desc_met,
-        caption = "Descriptive statistics of the questionnaire scores.",
-        booktabs = T, # no vertical lines
-        escape = F, # correctly print special characters
-        align = c("l",rep("r",7))) %>% # right aligns the text in every column except for the first
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
-             escape = F, # correctly print special characters
-             threeparttable = T) # line breaks in the footnote
   
 ##### Tests for internal consistency ###########################################
   
@@ -433,7 +421,7 @@
     
     # run correlation analysis using Hmisc package
     correlation_matrix <- Hmisc::rcorr(x, type = type)
-    R <- correlation_matrix$r # Matrix of correlation coeficients
+    R <- correlation_matrix$r # Matrix of correlation coefficients
     p <- correlation_matrix$P # Matrix of p-value 
     
     # transform correlations to specific character format
@@ -481,7 +469,8 @@
                                                   "scs","ncs","dth","dtl","drf","covb")],
                                      type = "spearman",
                                      use = "lower",
-                                     show_significance = FALSE,
+                                     digits = 2,
+                                     show_significance = TRUE,
                                      replace_diagonal = TRUE,
                                      replacement = "")
   
@@ -498,27 +487,15 @@
   # add previously assembled diagonal with alpha and omega values
   diag(correlations) <- consist_diag
   
+  # remove all leading zeros
+  correlations <- data.frame(apply(correlations, 2, function(x) {x <- gsub("0.", ".", x, fixed = TRUE)}))
+  
   # set row and column names for better table printing
   row.names(correlations) <- c("1. MBI","2. MBI EE","3. MBI DP","4. MBI RPE","5. ERQ","6. ERQ S","7. ERQ R",
                                "8. SCS","9. NFC","10. DTH","11. DTL","12. DRF","13. COV")
   colnames(correlations) <- c("1","2","3","4","5","6","7","8","9","10","11","12","13")
   
-  # create array with p-values of correlation coefficients
-  corr_pvalues <- rcorr(as.matrix(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
-                                               "scs","ncs","dth","dtl","drf","covb")]), type = "spearman")$P
-  # replace upper triangle with NA
-  corr_pvalues[upper.tri(corr_pvalues, diag = TRUE)] <- NA
-  
-  # replace p-values with asterisks depending on significance level
-  corr_pvalues <- ifelse(is.na(corr_pvalues), "", ifelse(corr_pvalues < .001, "***", ifelse(corr_pvalues < .01, "**", ifelse(corr_pvalues < .05, "*", ""))))
-  
-  # convert to matrix for the paste()-function
-  correlations <- as.matrix(correlations)
-  corr_pvalues <- as.matrix(corr_pvalues)
-  
-  # paste correlations and asterisks together
-  correlations <- matrix(paste(correlations, corr_pvalues, sep = ""),
-                         nrow = nrow(correlations), dimnames = dimnames(correlations))
+  names(correlations) <- paste("{", names(correlations), "}")
 
 ##### Replication of Grass et al. (2018) #######################################
   
@@ -1008,50 +985,38 @@
   
   # correlate variables
   outliercorrelations <- correlation_matrix(score_data_no_outlier[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
-                                                                    "scs","ncs","dth","dtl","drf","covb")],
-                                            type = "spearman",
-                                            use = "lower",
-                                            show_significance = FALSE,
-                                            replace_diagonal = TRUE,
-                                            replacement = "")
+                                                  "scs","ncs","dth","dtl","drf","covb")],
+                                     type = "spearman",
+                                     use = "lower",
+                                     digits = 2,
+                                     show_significance = TRUE,
+                                     replace_diagonal = TRUE,
+                                     replacement = "")
   
   # reorder the columns of the consistencies data frame to match the correlation columns
-  outlierconsist_diag <- outlierconsistencies[c(colnames(outliercorrelations))]
+  outlier_consist_diag <- outlierconsistencies[c(colnames(outliercorrelations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  outlierconsist_diag <- cbind(format(round(t(outlierconsist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
-                               format(round(t(outlierconsist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
+  outlier_consist_diag <- cbind(format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+                        format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
-  outlierconsist_diag <- apply(outlierconsist_diag[,c(1:4)], 1 ,paste, collapse = "")
+  outlier_consist_diag <- apply(outlier_consist_diag[,c(1:4)], 1 ,paste, collapse = "")
   
   # add previously assembled diagonal with alpha and omega values
-  diag(outliercorrelations) <- outlierconsist_diag
+  diag(outliercorrelations) <- outlier_consist_diag
+  
+  # remove all leading zeros
+  outliercorrelations <- data.frame(apply(outliercorrelations, 2, function(x) {x <- gsub("0.", ".", x, fixed = TRUE)}))
   
   # set row and column names for better table printing
   row.names(outliercorrelations) <- c("1. MBI","2. MBI EE","3. MBI DP","4. MBI RPE","5. ERQ","6. ERQ S","7. ERQ R",
-                                      "8. SCS","9. NFC","10. DTH","11. DTL","12. DRF","13. COV")
+                               "8. SCS","9. NFC","10. DTH","11. DTL","12. DRF","13. COV")
   colnames(outliercorrelations) <- c("1","2","3","4","5","6","7","8","9","10","11","12","13")
   
-  # create array with p-values of correlation coefficients
-  outliercorr_pvalues <- rcorr(as.matrix(score_data_no_outlier[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
-                                                                 "scs","ncs","dth","dtl","drf","covb")]), type = "spearman")$P
-  # replace upper triangle with NA
-  outliercorr_pvalues[upper.tri(outliercorr_pvalues, diag = TRUE)] <- NA
+  names(outliercorrelations) <- paste("{", names(outliercorrelations), "}")
   
-  # replace p-values with asterisks depending on significance level
-  outliercorr_pvalues <- ifelse(is.na(outliercorr_pvalues), "",
-                                ifelse(outliercorr_pvalues < .001, "***", ifelse(outliercorr_pvalues < .01, "**", ifelse(outliercorr_pvalues < .05, "*", ""))))
   
-  # convert to matrix for the paste()-function
-  outliercorrelations <- as.matrix(outliercorrelations)
-  outliercorr_pvalues <- as.matrix(outliercorr_pvalues)
-  
-  # paste correlations and asterisks together
-  outliercorrelations <- matrix(paste(outliercorrelations, outliercorr_pvalues, sep = ""),
-                                nrow = nrow(outliercorrelations), dimnames = dimnames(outliercorrelations))
-  
-
   # Replication of Grass et al. (2018)
   
   outlierrepli_model <- '
