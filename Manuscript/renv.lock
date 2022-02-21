@@ -1,0 +1,110 @@
+{
+  "R": {
+    "Version": "4.0.3",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cran.rstudio.com"
+      }
+    ]
+  },
+  "Packages": {
+    "MASS": {
+      "Package": "MASS",
+      "Version": "7.3-53",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d1bc1c8e9c0ace57ec9ffea01021d45f",
+      "Requirements": []
+    },
+    "Matrix": {
+      "Package": "Matrix",
+      "Version": "1.2-18",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "08588806cba69f04797dab50627428ed",
+      "Requirements": [
+        "lattice"
+      ]
+    },
+    "cluster": {
+      "Package": "cluster",
+      "Version": "2.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "db63a44aab5aadcb6bf2f129751d129a",
+      "Requirements": []
+    },
+    "foreign": {
+      "Package": "foreign",
+      "Version": "0.8-80",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ae1b1e15cc6ccb2bc61c0ac33e86d35f",
+      "Requirements": []
+    },
+    "lattice": {
+      "Package": "lattice",
+      "Version": "0.20-41",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "fbd9285028b0263d76d18c95ae51a53d",
+      "Requirements": []
+    },
+    "mgcv": {
+      "Package": "mgcv",
+      "Version": "1.8-33",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "eb7b6439bc6d812eed2cddba5edc6be3",
+      "Requirements": [
+        "Matrix",
+        "nlme"
+      ]
+    },
+    "nlme": {
+      "Package": "nlme",
+      "Version": "3.1-149",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7c24ab3a1e3afe50388eb2d893aab255",
+      "Requirements": [
+        "lattice"
+      ]
+    },
+    "nnet": {
+      "Package": "nnet",
+      "Version": "7.3-14",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0d87e50e11394a7151a28873637d799a",
+      "Requirements": []
+    },
+    "renv": {
+      "Package": "renv",
+      "Version": "0.15.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "206c4ef8b7ad6fb1060d69aa7b9dfe69",
+      "Requirements": []
+    },
+    "rpart": {
+      "Package": "rpart",
+      "Version": "4.1-15",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9787c1fcb680e655d062e7611cadf78e",
+      "Requirements": []
+    },
+    "survival": {
+      "Package": "survival",
+      "Version": "3.2-7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "39c4ac6d22dad33db0ee37b40810ea12",
+      "Requirements": [
+        "Matrix"
+      ]
+    }
+  }
+}
