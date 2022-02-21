@@ -130,10 +130,10 @@ header-includes   :
 
 Need for Cognition (NFC) is a stable intrinsic motivation to seek out and especially to enjoy effortful cognitive activities [@Cacioppo1982].
 As it bridges the gap between cognition and motivation, NFC is considered to be an investment trait [@Stumm2013], and has come to the fore of psychological research in the last years.
-NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items [@Cacioppo1982; @Cacioppo1984].
-While many studies have found positive associations of NFC with academic performance [@Cazan2014; @Elias2002; @Grass2017; @Lavrijsen2021; @Zheng2020], recent investigations have also looked at NFC as a personal resource in academic and work contexts.
+NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items [@Cacioppo1982; @Cacioppo1984]. <!-- den Satz würde ich entweder weglassen oder noch die deutsche NFC Skala mit referenzieren -->
+While many studies have found positive associations of NFC with academic performance [@Cazan2014; @Elias2002; @Grass2017; @Lavrijsen2021; @Zheng2020]<!-- von Stumm & Ackerman, 2013 als Metaanalyse mit aufnehmen, dafür 1-2 Einzelstudien raus -->, recent investigations have also looked at NFC as a personal resource in academic and work contexts.
 Individuals high in NFC have more positive emotions at the end of the work day [@Rosen2020], higher work motivation, perceive their roles as less ambiguous [@Nowlin2017], are less likely to drop out of college [@Grass2017; @Klaczynski1996], and have less anxiety regarding their course work [@Karagiannopoulou2020].
-These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical [@Dragano2017; @Steptoe2013] to psychological [@Madsen2017; @Maslach2016; @Wiesner2005].
+These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical [@Dragano2017; @Steptoe2013] to psychological [@Madsen2017; @Maslach2016; @Wiesner2005] consequences.
 
 One of these psychological consequences is burnout, a state of exhaustion and cynicism caused by long-term overstimulation in the workplace, which results in employees being dissatisfied, being sick more often, and performing poorly [@Schaufeli2014].
 Burnout is especially prevalent in social jobs such as healthcare or teaching because the worker is always in conflict between advocating for their client and meeting the goals set by the employer [@GrayStanley2011; @Lloyd2002].
@@ -204,10 +204,10 @@ At this point, schools had been switching between digital and hybrid forms of te
 
 ## Material
 All questionnaires were used in their German form.
-Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) [@Buessing1992], NFC using the 16-item Need for Cognition Scale (NCS) [@Bless1994], self-control using the 13-item Self-Control Scale (SCS) [@Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire (ERQ) [@Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire [@Fischer2014].
+Burnout was assessed using the 21-item Maslach Burnout Inventory [MBI, @Buessing1992], NFC using the 16-item Need for Cognition Scale [NCS, @Bless1994], self-control using the 13-item Self-Control Scale [SCS, @Bertrams2009a], reappraisal and suppression using the 10-item Emotion Regulation Questionnaire [ERQ, @Abler2009], and work satisfaction using the Allgemeine Arbeitszufriedenheit questionnaire [@Fischer2014].
 Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently had a higher workload.
 The translated Covid-19 items can be found in the *Supplementary Material S1*.
-The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.
+The survey also included the Subjective Wellbeing Index of the World Health Organization [@Braehler2007], which we will not analyze.<!-- warum eigentlich nicht? -->
 Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] could not be used, so we could not replicate the mediation of NFC and burnout by active and passive coping.
 
 ## Procedure
@@ -1022,7 +1022,7 @@ The parcelling procedure for the indicators of the latent factor NFC resulted in
 The first parcel contained item `r ncs_parcels$items[1,1]`, `r ncs_parcels$items[2,1]`, `r ncs_parcels$items[3,1]`, and `r ncs_parcels$items[4,1]`, the second parcel item `r ncs_parcels$items[1,2]`, `r ncs_parcels$items[2,2]`, `r ncs_parcels$items[3,2]`, and `r ncs_parcels$items[4,2]`, the third parcel item `r ncs_parcels$items[1,3]`, `r ncs_parcels$items[2,3]`, `r ncs_parcels$items[3,3]`, and `r ncs_parcels$items[4,3]`, and the fourth parcel item `r ncs_parcels$items[1,4]`, `r ncs_parcels$items[2,4]`, `r ncs_parcels$items[3,4]`, and `r ncs_parcels$items[4,4]`.
 Standardized path coefficients of the demand-resource model are illustrated in Figure 2, total, direct, and indirect effects are listed in Table 4.
 The robust Chi-square statistic of $\chi^2=$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$) did not indicate good model fit.
-However, since it was in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)` $*df<\chi^2<$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)+1` $*df$ the lack of good fit might have been due to the underlying assumption of multivariate normality [@Hu1999; @Schumacker2012], which was violated here.
+However, since it was in the range of `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)` $df<\chi^2>$ `r round(fit2@test[["yuan.bentler.mplus"]]$stat/fit2@test[["yuan.bentler.mplus"]]$df, digits = 0)+1` $df$ the lack of good fit might have been due to the underlying assumption of multivariate normality [@Hu1999; @Schumacker2012], which was violated here.
 This also held true for the CFI of `r round(fit2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, the SRMR of `r round(fit2_summ[["FIT"]][["srmr"]], digits = 2)`, and the RMSEA of `r round(fit2_summ[["FIT"]][["rmsea.robust"]], digits = 2)`, 95% $CI$ [`r round(fit2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`].
 Overall, the fit indices did not support the proposed model, and not all proposed paths were significant.
 NFC showed no direct association with the MBI score ($\beta=$ `r round(fit2_summ$PE$std.all[fit2_summ$PE$label == "c"], digits = 2)`, $p=$ `r round(fit2_summ$PE$pvalue[fit2_summ$PE$label == "c"], digits = 3)`), even though it was negatively correlated with the sum score and all subscales.
