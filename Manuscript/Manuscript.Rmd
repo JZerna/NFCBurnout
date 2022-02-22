@@ -169,17 +169,20 @@ To sum up, this study had three aims: Replicating findings of mediation between 
 # Methods
 
 We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study [@Simmons2012].
-Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript, using the *R* package *papaja* [@Aust2020], are available at [https://osf.io/36ep9/](https://osf.io/36ep9/).
+Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript, using the R package *papaja* [@Aust2020], are available at [https://osf.io/36ep9/](https://osf.io/36ep9/).
 The procedure was evaluated and approved by the Ethics Committee of the Chemnitz University of Technology (reference number: V-389-15-AS-Burnout-08062020).
 It was not considered to require further ethical approvals and hence, as uncritical concerning ethical aspects according to the criteria used by the Ethics Committee, which includes aspects of the sample of healthy adults, voluntary attendance, noninvasive measures, no deception, and appropriate physical and mental demands on the subject.
 
 ## Participants
-Teachers were recruited via social media, emails to colleagues of N.E., and to Saxon schools with the request to pass on the information.
+We set out to recruit a sample of $N\ge287$ teachers as determined using the R package *pwr* [@Champely2020], assuming a small to medium correlation of $r=.20$ between the measures of interest and targeting at a power of $1-\beta=.80$ at  $\alpha=.01$.
+Teachers were recruited via social media, personal contacts to teachers, and to Saxon schools with the request to pass on the information.
 All teachers were eligible, no payment was issued.
 Of the $N=$ 278 participants, who started filling out the online survey, $N =$ `r nrow(data)` (`r round((table(data$gender)[1]/nrow(data))*100, digits = 1)`% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
 All of them were currently teaching at a primary, secondary, comprehensive, or vocational school.
 Data was collected between the 12th of June and the 24th of July 2020.
 At this point, schools had been switching between digital and hybrid forms of teaching for at least three months due to the Covid-19 pandemic, causing additional stress for many teachers.
+This may have also be one reason why we did not reach our estimated sample size.
+Using the smallest standardized indirect effect from the mediation in Grass et al. [-@Grass2018] in a post hoc power analysis with *G\*Power* [@Faul2007;@Faul2009] yielded a power of $1-\beta=.85$ for linear multiple regression, given $\alpha=.05$, $N=180$, and $f^2=.05$.
 
 ## Material
 All questionnaires were used in their German form.
