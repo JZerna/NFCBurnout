@@ -160,15 +160,18 @@ In the case of NFC, resources are from the categories personality and energies: 
 These personal resources matter with regard to stress assessment (how the situation is appraised) and with regard to both coping and recovery [@Salanova2006].
 We therefore investigated whether the association of NFC and burnout was mediated by different ratios of demands and resources; demands that are too high to be dealt with using one’s personal resources (*demands too high*), demands that are too low for one’s personal resources (*demands too low*), and a balanced fit of demands and resources (*demand-resource-fit*).
 Using the same data as for the replication, we computed a structural equation model (SEM) to assess the influence of these mediators.
-Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorbani2004; @Heppner1983; @Klaczynski1996], we expected NFC to be negatively associated with *demands too high*, positively associated with *demands too low*, and positively associated with *demand-resource-fit*.
+Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorbani2004; @Heppner1983; @Klaczynski1996], we expected NFC to be negatively associated with *demands too high*, and positively associated with *demands too low* and *demand-resource-fit*.
 And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with *demands too high* and negatively associated with *demand-resource-fit*.
 However, we had no hypothesis regarding the association of *demands too low* and burnout, because even though *demands too low* is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
 It has already been shown that the Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021], so we incorporated the degree of feeling burdened by the pandemic in an exploratory approach.
+To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the pandemic.
 
 # Methods
 
 We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study [@Simmons2012].
-Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript are available at [https://osf.io/36ep9/](https://osf.io/36ep9/).
+Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript, using the *R* package *papaja* [@Aust2020], are available at [https://osf.io/36ep9/](https://osf.io/36ep9/).
+The procedure was evaluated and approved by the Ethics Committee of the Chemnitz University of Technology (reference number: V-389-15-AS-Burnout-08062020).
+It was not considered to require further ethical approvals and hence, as uncritical concerning ethical aspects according to the criteria used by the Ethics Committee, which includes aspects of the sample of healthy adults, voluntary attendance, noninvasive measures, no deception, and appropriate physical and mental demands on the subject.
 
 ## Participants
 Teachers were recruited via social media, emails to colleagues of N.E., and to Saxon schools with the request to pass on the information.
