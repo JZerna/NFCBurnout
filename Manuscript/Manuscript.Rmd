@@ -545,7 +545,8 @@ Covid burden was not associated with *demand-resource-fit* or *reduced personal 
 
 # Discussion
 
-The present study aimed to replicate findings of mediators between Need for Cognition and burnout in teachers, as well as to extend the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
+The present study aimed to investigate the role of Need for Cognition, the stable preference for and enjoyment of cognitive effort, in the context of burnout in teachers.
+To achieve this, we replicated findings of mediators between Need for Cognition and burnout, and extended the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
 Previous studies have indicated a protective effect of NFC against burnout, but the associations with the burnout subscales were inconsistent, suggesting that there are more variables influencing this relationship.
 
