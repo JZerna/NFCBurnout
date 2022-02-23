@@ -4,7 +4,7 @@
 %
 \documentclass[
   english,
-  man]{apa6}
+  man,floatsintext]{apa6}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{ifxetex,ifluatex}
@@ -85,9 +85,9 @@
 
 % Create new environments so endfloat can handle them
 % \newenvironment{ltable}
-%   {\begin{landscape}\begin{center}\begin{threeparttable}}
-%   {\end{threeparttable}\end{center}\end{landscape}}
-\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
 
 % Enables adjusting longtable caption width to table width
 % Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
@@ -99,20 +99,6 @@
 
 % \setlength{\parindent}{0.5in}
 % \setlength{\parskip}{0pt plus 0pt minus 0pt}
-
-% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
-% See https://github.com/crsh/papaja/issues/292
-\makeatletter
-\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
-  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
-  {-1em}%
-  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
-
-\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
-  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
-  {-\z@\relax}%
-  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
-\makeatother
 
 % \usepackage{etoolbox}
 \makeatletter
@@ -126,17 +112,27 @@
   {}{\typeout{Failed to patch title.}}
 \makeatother
 \shorttitle{NFC and burnout in teachers}
-\keywords{mediation, resources, demands, structural equation modelling, Covid-19\newline\indent Word count: X}
-\DeclareDelayedFloatFlavor{ThreePartTable}{table}
-\DeclareDelayedFloatFlavor{lltable}{table}
-\DeclareDelayedFloatFlavor*{longtable}{table}
-\makeatletter
-\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
-\makeatother
+\keywords{mediation, resources, demands, structural equation modelling, Covid-19\newline\indent Word count: ~ 5600}
 \usepackage{lineno}
 
 \linenumbers
 \usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{setspace}\doublespacing
+\usepackage{chngcntr}
 \ifxetex
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
@@ -176,34 +172,17 @@
 \date{}
 
 
-\authornote{
-
-Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-Enter author note here.
-
-The authors made the following contributions. Josephine Zerna: Conceptualization, Methodology, Formal analysis, Writing - original draft preparation, Writing - review \& editing; Nicole Engelmann: Conceptualization, Investigation, Writing - review \& editing; Anja Strobel: Conceptualization, Supervision, Methodology, Writing - review \& editing; Alexander Strobel: Conceptualization, Supervision, Methodology, Writing - review \& editing.
-
-Correspondence concerning this article should be addressed to Josephine Zerna, Zellescher Weg 17, 01069 Dresden, Germany. E-mail: \href{mailto:josephine.zerna@tu-dresden.de}{\nolinkurl{josephine.zerna@tu-dresden.de}}
-
-}
-
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Faculty of Psychology, Technische Universität Dresden\\\textsuperscript{2} Faculty of Education, Technische Universität Dresden\\\textsuperscript{3} Institute of Psychology, Chemnitz University of Technology}
 
 \abstract{
-One or two sentences providing a \textbf{basic introduction} to the field, comprehensible to a scientist in any discipline.
-
-Two to three sentences of \textbf{more detailed background}, comprehensible to scientists in related disciplines.
-
-One sentence clearly stating the \textbf{general problem} being addressed by this particular study.
-
-One sentence summarizing the main result (with the words ``\textbf{here we show}'' or their equivalent).
-
-Two or three sentences explaining what the \textbf{main result} reveals in direct comparison to what was thought to be the case previously, or how the main result adds to previous knowledge.
-
-One or two sentences to put the results into a more \textbf{general context}.
-
-Two or three sentences to provide a \textbf{broader perspective}, readily comprehensible to a scientist in any discipline.
+The prevalence of burnout has been rising for years, not just due to the increasing demands during the Covid-19 pandemic.
+While it is known that burnout primarily affects employees in social jobs, less is known about the personality traits that promote or protect against burnout.
+One of these traits is Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
+In the present study, we analyzed questionnaire data of N = 180 teachers that had been collected in spring of 2020.
+Firstly, we aimed to replicate results by Grass et al.~(2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
+With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
+Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources, and included other variables in an exploratory approach.
+The results indicated that teachers with higher NFC and more self-control have lower burnout because they experience their resources as fitting to their demands.
 }
 
 
@@ -211,71 +190,91 @@ Two or three sentences to provide a \textbf{broader perspective}, readily compre
 \begin{document}
 \maketitle
 
+\renewcommand\thesection{\Alph{section}}
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
 Need for Cognition (NFC) is a stable intrinsic motivation to seek out and especially to enjoy effortful cognitive activities (Cacioppo \& Petty, 1982).
 As it bridges the gap between cognition and motivation, NFC is considered to be an investment trait (Stumm \& Ackerman, 2013), and has come to the fore of psychological research in the last years.
-NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items (Cacioppo et al., 1984; Cacioppo \& Petty, 1982).
-While many studies have found positive associations of NFC with academic performance (Cazan \& Indreica, 2014; Elias \& Loomis, 2002; Grass et al., 2017; Lavrijsen et al., 2021; Zheng et al., 2020), recent investigations have also looked at NFC as a personal resource in academic and work contexts.
-Individuals high in NFC have more positive emotions at the end of the work day (Rosen et al., 2020), higher work motivation, perceive their roles as less ambiguous (Nowlin et al., 2017), are less likely to drop out of college (Grass et al., 2017; Klaczynski \& Fauth, 1996), and have less anxiety regarding their course work (Karagiannopoulou et al., 2020).
-These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical (Dragano et al., 2017; Steptoe \& Kivimäki, 2013) to psychological (Madsen et al., 2017; Maslach \& Leiter, 2016; Wiesner et al., 2005).
+NFC can easily be assessed using the Need for Cognition Scale (NCS), a self-report questionnaire with 18 to 34 items (Cacioppo et al., 1984; Cacioppo \& Petty, 1982; German form: Bless et al., 1994).
+While many studies have found medium sized positive associations of NFC with academic performance (Cazan \& Indreica, 2014; Grass et al., 2017; Lavrijsen et al., 2021; Stumm \& Ackerman, 2013; Zheng et al., 2020), recent investigations have also looked at NFC as a personal resource in academic and work contexts.
+Individuals high in NFC have more positive emotions at the end of the work day (Rosen et al., 2020), higher work motivation, perceive their roles as less ambiguous (Nowlin et al., 2017), are less likely to drop out of college (Grass et al., 2017; Klaczynski \& Fauth, 1996), and have less anxiety regarding their course work (Karagiannopoulou et al., 2020), with these associations being small to medium sized by and large.
+These findings suggest that individuals high in NFC might be less prone to experience adverse effects of work stress, which range from physical (Dragano et al., 2017; Steptoe \& Kivimäki, 2013) to psychological consequences (Madsen et al., 2017; Maslach \& Leiter, 2016; Wiesner et al., 2005).
 
 One of these psychological consequences is burnout, a state of exhaustion and cynicism caused by long-term overstimulation in the workplace, which results in employees being dissatisfied, being sick more often, and performing poorly (Schaufeli \& Salanova, 2014).
 Burnout is especially prevalent in social jobs such as healthcare or teaching because the worker is always in conflict between advocating for their client and meeting the goals set by the employer (Gray-Stanley \& Muramatsu, 2011; Lloyd et al., 2002).
 Lackritz (2004) found that university teachers' burnout scores were higher the more students they had, the higher their teaching load was, and the more time they spent grading students' work.
-Burnout is most often assessed using the Maslach Burnout Inventory (MBI) (Maslach et al., 1997), a self-report questionnaire with three subscales: Emotional exhaustion, depersonalisation, and reduced self-efficacy.
+Burnout is most often assessed using the Maslach Burnout Inventory (MBI) (Maslach et al., 1997), a self-report questionnaire with three subscales: \emph{Emotional exhaustion}, a sense of fatigue and depletion, \emph{depersonalisation}, a negative attitude towards clients, along with a loss of idealism, and \emph{reduced personal efficacy}, a decline of capability and coping skills.
 
 Individuals with high burnout scores are often passive copers, high in neuroticism, low in self-esteem, and have an external locus of control (Schaufeli \& Salanova, 2014).
 NFC on the other hand is negatively associated with those variables (Double \& Birney, 2016; Fleischhauer et al., 2019; Ghorbani et al., 2004; Grass et al., 2018; Osberg, 1987), suggesting that people high in NFC are less prone to experience burnout.
-This is supported by the findings that NFC is negatively associated with burnout scores in adults (Fleischhauer et al., 2019), students (Fleischhauer et al., 2019; Naderi et al., 2018), and teacher trainees (Grass et al., 2018).
+This is supported by findings that NFC showed moderate to large negative associations with burnout scores in adults (Fleischhauer et al., 2019), students (Fleischhauer et al., 2019; Naderi et al., 2018), and teacher trainees (Grass et al., 2018).
 However, the associations of NFC with the sum score and the subscales of the MBI are not always consistent between these studies.
-This is likely not caused by inaccurate measurement, since the validity of both NCS (Bless et al., 1994; Osberg, 1987; Tolentino et al., 1990) and MBI (Kantas \& Vassilaki, 1997; Schaufeli et al., 2001; Valdivia Vázquez et al., 2021; \textbf{Brady?}) has been demonstrated in multiple studies.
+This is likely not caused by inaccurate measurement, since the validity of both NCS (Bless et al., 1994; Osberg, 1987; Tolentino et al., 1990) and MBI (Brady et al., 2021; Kantas \& Vassilaki, 1997; Schaufeli et al., 2001; Valdivia Vázquez et al., 2021) has been demonstrated in multiple studies.
 What is more likely is the influence of one or more other variables, moderating or mediating the association of NFC and burnout.
-Grass et al. (2018) investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by reappraisal, active and passive coping, but not by suppression or self-control.
+Grass et al. (2018) investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by higher habitual use of reappraisal, more active coping, and less passive coping, but not by habitual use of suppression or self-control.
 Reappraisal and suppression are two emotion regulation strategies, which refer to the cognitive reassessment of a stressor and the inhibition of emotional reactions, respectively (Gross, 1998).
-The findings by Grass et al. (2018) suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor.
-One goal of this paper is to replicate the findings of Grass et al. (2018) using a multiple mediation model on cross-sectional self-report data of teachers.
-We expect NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
+The findings by Grass et al. (2018) suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor (Strobel et al., 2017).
+One goal of this paper was to replicate the findings of Grass et al. (2018) using a multiple mediation model on cross-sectional self-report data of teachers.
+We expected NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
 
-Furthermore, we would like to extend the analysis to other possible mediators.
-These mediators are motivated by our own recent survey of the literature on NFC and wellbeing, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree (Zerna et al., 2021).
-Only a balance of resources and demands results in personal wellbeing, while an imbalance threatens wellbeing, regardless of whether this imbalance is in favour of resources or demands (Dodge et al., 2012).
+Furthermore, we extended the analysis to other possible mediators.
+These mediators were motivated by our own recent survey of the literature on NFC and well-being, which suggested that individuals high in NFC might not only have a high level of personal resources but also overestimate their own resources to a certain degree (Zerna et al., 2021).
+This can take the form of patients with higher NFC having lower intentions to consult their physician (Latimer et al., 2007) or adults with higher NFC having higher intentions to consume high calorie beverages (Gallivan, 2020) after detailed message interventions designed to promote consultations and healthier beverage choices, respectively.
+Only a balance of resources and demands results in personal well-being, while an imbalance threatens well-being, regardless of whether this imbalance is in favour of resources or demands (Dodge et al., 2012).
 Following the framework of Hobfoll (1989), resources can be objects with practical or status purpose, conditions like marriage or tenure, personality aspects like coping style, and energies such as time, money, or knowledge.
 In the case of NFC, resources are from the categories personality and energies: Personality, because NFC is a trait, encompassing a curious, analytic, and passionate approach to challenges, and energies, because individuals high in NFC have been coping actively all their life, which enriches their level of experience and knowledge in approaching challenges (Cacioppo et al., 1996).
-These personal resources matter with regards to stress assessment (how the situation is appraised) and with regards to both coping and recovery (Salanova et al., 2006).
-We would therefore like to investigate whether the association of NFC and burnout is mediated by different ratios of demands and resources; demands that are too high to be dealt with using one's personal resources (DTH), demands that are too low for one's personal resources (DTL), and a balanced fit of demands and resources (DRF).
-Using the same data as for the replication, we compute a structural equation model (SEM) to assess the influence of these mediators.
-Since individuals high in NFC are confident in their abilities (Bye \& Pushkar, 2009; Ghorbani et al., 2004; Heppner et al., 1983; Klaczynski \& Fauth, 1996), we expect NFC to be negatively associated with DTH, positively associated with DTL, and positively associated with DRF.
-And since burnout results from constant unpleasant activation by high demands, we expect it to be positively associated with DTH and negatively associated with DRF.
-However, we have no hypothesis regarding the association of DTL and burnout, because even though DTL is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom (Schaufeli \& Salanova, 2014).
-
-\emph{The Covid-19 pandemic has exacerbated the rising prevalence of burnout (Fröbe \& Franco, 2021).}
+These personal resources matter with regard to stress assessment (how the situation is appraised) and with regard to both coping and recovery (Salanova et al., 2006).
+We therefore investigated whether the association of NFC and burnout was mediated by different ratios of demands and resources; demands that are too high to be dealt with using one's personal resources (\emph{demands too high}), demands that are too low for one's personal resources (\emph{demands too low}), and a balanced fit of demands and resources (\emph{demand-resource-fit}).
+Using the same data as for the replication, we computed a structural equation model (SEM) to assess the influence of these mediators.
+Since individuals high in NFC are confident in their abilities (Bye \& Pushkar, 2009; Ghorbani et al., 2004; Heppner et al., 1983; Klaczynski \& Fauth, 1996), we expected NFC to be negatively associated with \emph{demands too high}, and positively associated with \emph{demands too low} and \emph{demand-resource-fit}.
+And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with \emph{demands too high} and negatively associated with \emph{demand-resource-fit}.
+However, we had no hypothesis regarding the association of \emph{demands too low} and burnout, because even though \emph{demands too low} is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom (Schaufeli \& Salanova, 2014).
+It has already been shown that the Covid-19 pandemic has exacerbated the rising prevalence of burnout (Fröbe \& Franco, 2021), so we incorporated the degree of feeling burdened by the pandemic in an exploratory approach.
+To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the pandemic.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
 We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study (Simmons et al., 2012).
-Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript are available at \url{https://osf.io/36ep9/}.
+Our preregistration, the data, and the R Markdown document used to analyze the data and write this manuscript, using the R package \emph{papaja} (Aust \& Barth, 2020), are available at \url{https://osf.io/36ep9/}.
+The procedure was evaluated and approved by the Ethics Committee of the Chemnitz University of Technology (reference number: V-389-15-AS-Burnout-08062020).
+It was not considered to require further ethical approvals and hence, as uncritical concerning ethical aspects according to the criteria used by the Ethics Committee, which includes aspects of the sample of healthy adults, voluntary attendance, noninvasive measures, no deception, and appropriate physical and mental demands on the subject.
 
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
 
-Teachers were recruited via social media, emails to colleagues of N.E. and to Saxon schools with the request to pass on the information.
+We set out to recruit a sample of \(N\ge287\) teachers as determined using the R package \emph{pwr} (Champely, 2020), assuming a small to medium correlation of \(r=.20\) between the measures of interest and targeting at a power of \(1-\beta=.80\) at \(\alpha=.01\).
+Teachers were recruited via social media, personal contacts to teachers, and to Saxon schools with the request to pass on the information.
 All teachers were eligible, no payment was issued.
-Of the \(N=\) 278 participants, who started filling out the online survey, \(N=\) 180 (72.20\% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
+Of the \(N=\) 278 participants, who started filling out the online survey, \(N =\) 180 (72.20\% female, aged 20 to 67 years) data sets were complete and those participants indicated to have answered truthfully.
 All of them were currently teaching at a primary, secondary, comprehensive, or vocational school.
 Data was collected between the 12th of June and the 24th of July 2020.
 At this point, schools had been switching between digital and hybrid forms of teaching for at least three months due to the Covid-19 pandemic, causing additional stress for many teachers.
+This may have also be one reason why we did not reach our estimated sample size.
+Using the smallest standardized indirect effect from the mediation in Grass et al. (2018) in a post hoc power analysis with \emph{G*Power} (Faul et al., 2007, 2009) yielded a power of \(1-\beta=.85\) for linear multiple regression, given \(\alpha=.05\), \(N=180\), and \(f^2=.05\).
 
 \hypertarget{material}{%
 \subsection{Material}\label{material}}
 
-All questionnaires were used in their German form. Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI) (Büssing \& Perrar, 1992), NFC was assessed using the 16-item Need for Cognition Scale (NCS) (Bless et al., 1994), self-control was assessed using the 13-item Self-Control Scale (SCS) (Bertrams \& Dickhäuser, 2009), reappraisal and suppression were assessed using the 10-item Emotion Regulation Questionnaire (ERQ) (Abler \& Kessler, 2009), work satisfaction was assessed using the Allgemeine Arbeitszufriedenheit questionnaire (AAZ) (Fischer \& Lück, 2014).
-Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently have a higher workload.
-The Covid-19 items can be found in the \textbf{Supplementary Material}.
-The survey also included the Subjective Wellbeing Index of the World Health Organization (Brähler et al., 2007), which we will not analyze.
-Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar (Böhm-Kasper et al., 2001) cannot be used, so we cannot replicate the mediation of NFC and burnout by active and passive coping.
+All questionnaires were used in their German form.
+Burnout was assessed using the 21-item Maslach Burnout Inventory (MBI, Büssing \& Perrar, 1992), with items such as ``I don't really care what happens to some recipients'' and responses on a 7-point Likert scale from 0 (never) to 6 (every day).
+Its subscales \emph{emotional exhaustion}, \emph{depersonalization}, and \emph{reduced personal efficacy} showed acceptable internal consistency (Cronbach's \(\alpha>.70\)) and low retest reliabilities of \(r_{tt}=.60\), \(r_{tt}=.54\), and \(r_{tt}=.57\), respectively, over the span of one year in teachers (Maslach et al., 1997).
+NFC was assessed with the 16-item short version of the German NFC scale (NCS) (Bless et al., 1994), consisting of items (e.g., ``Thinking is not my idea of fun,'' recoded) that are answered on a 7-point Likert scale ranging from -3 (completely disagree) to +3 (completely agree).
+The scale shows comparably high internal consistency (Cronbach's \(\alpha>.80\)) (Bless et al., 1994; Fleischhauer et al., 2010) and a retest reliability of \(r_{tt}=.83\) across 8 to 18 weeks (Fleischhauer et al., 2015).
+Self-control was measured using the short form of the German Self-Control Scale {[}SCS-K-D; Bertrams and Dickhäuser (2009){]} that comprises 13 items (e.g., ``I am able to work effectively toward long-term goals'') with a 5-point Likert scale ranging from -2 (completely disagree) to +2 (completely agree), with comparably high reliability (Cronbach's \(\alpha>.80\), 7-week retest reliability \(r_{tt}=.82\)) (Bertrams \& Dickhäuser, 2009).
+Reappraisal and suppression was measured using the 10-item Emotion Regulation Questionnaire (ERQ) (Abler \& Kessler, 2009).
+The scale has items such as ``When I'm faced with a stressful situation, I make myself think about it in a way that helps me stay calm'' (reappraisal) and ``I keep my emotions to myself'' (suppression), which are answered on a 7-point Likert scale ranging from 1 (strongly disagree) to 7 (strongly agree), and has acceptable to high internal consistency (Cronbach's \(\alpha>.75\)) (Preece et al., 2019).
+Work satisfaction was assessed using the Allgemeine Arbeitszufriedenheit questionnaire (Fischer \& Lück, 2014) with items such as ``Sometimes I feel like my work doesn't really matter in my firm,'' which are answered on a 5-point Likert scale from 1 to 5 and different anchors depending on the item.
+The scale has a split-half reliability of \(r_{tt}=.95\) (Fischer \& Lück, 2014).
+Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently had a higher workload.
+The translated Covid-19 items can be found in the \emph{Supplementary Material S1}.
+Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar (Böhm-Kasper et al., 2001) could not be used, so we could not replicate the mediation of NFC and burnout by active and passive coping.
 
 \hypertarget{procedure}{%
 \subsection{Procedure}\label{procedure}}
@@ -287,816 +286,373 @@ Participants were informed about aims and duration of the study and data securit
 \subsection{Data analysis}\label{data-analysis}}
 
 We used \emph{R Studio} (R Core Team, 2020; RStudio Team, 2020) with the main packages \emph{lavaan} (Rosseel, 2012) and \emph{psych} (Revelle, 2021) for all our analyses.
+Data were checked for multivariate normality using Mardia's coefficient.
+To account for non-linear relationships, correlations were computed using Spearman's rank coefficient rather than Pearson's product moment correlation.
+Internal consistencies were assessed with Cronbach's Alpha and MacDonald's Omega.
+Since Cronbach's Alpha has been criticized for being insensitive to violations of internal consistency (Dunn et al., 2014; Taber, 2018), the additional computation of MacDonald's Omega has the purpose of ensuring a more reliable estimation.
+Correlations between variables were classified according the scheme by Gignac and Szodorai (2016), which recommends .10, .20, and .30 to be considered small, typical, and relatively large, respectively.
 
-\hypertarget{multiple-mediation-model}{%
-\subsubsection{\texorpdfstring{\emph{Multiple mediation model}}{Multiple mediation model}}\label{multiple-mediation-model}}
+\hypertarget{replication-of-grass-et-al.-2018}{%
+\subsubsection{Replication of Grass et al.~(2018)}\label{replication-of-grass-et-al.-2018}}
 
 Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
-Reduced personal efficacy was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
+\emph{Reduced personal efficacy} was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
+NFC was entered as the independent variable, having a direct and multiple indirect effects on MBI via self-control, reappraisal, and suppression as mediators.
+Following Grass et al. (2018), bootstrapped confidence with \(N=2,000\) replicates were computed to account for deviations from normality.
+Multiple indices were used to evaluate model fit as recommended by Hu and Bentler (1999): the Chi-square test statistic, which measures the fit compared to a saturated model (small values indicate better fit of predicted and observed covariances), the Comparative Fit Index (CFI), which compares the fit to the baseline model (\(CFI>.95\) indicates good fit, but \(CFI>.90\) is also commonly used), the Standardized Root Mean Square Residual (SRMR), which compares the residuals of the observed and predicted covariance matrix (\(SRMR<.08\) indicates fair fit, \(SRMR<.05\) good fit), and the Root Mean Square Error of Approximation (RMSEA), which does the same as the latter but takes degrees of freedom and model complexity into account (\(RMSEA<.08\) indicates acceptable fit, \(RMSEA<.05\) good fit, \(RMSEA<.01\) excellent fit).
 
-\hypertarget{structural-equation-model}{%
-\subsubsection{\texorpdfstring{\emph{Structural equation model}}{Structural equation model}}\label{structural-equation-model}}
+\hypertarget{demand-resource-ratio-model}{%
+\subsubsection{Demand-resource-ratio model}\label{demand-resource-ratio-model}}
 
-Items were reverse coded according to the scale manuals.
-The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure following Grass et al. (2019), a method that is used in SEM when only relations between but not within constructs are of interest.
+All items, apart from those making up the demand-resource-ratios, were reverse coded according to the scale manuals.
+The latent factor NFC was computed by subjecting the NCS items to a parcelling procedure (Little et al., 2002), a method that is used in SEM when only relations between but not within constructs are of interest.
 Principal component analysis was used to determine the factor loadings of each NCS item onto the first component.
 Then, the items were randomly divided into four parcels and the average item loading per parcel was computed.
 This was repeated 10,000 times to find the parcelling choice with the smallest difference in average item loadings between parcels.
 The latent factor MBI was computed using the three subscales as indicators.
-For the demand-resource-ratios, we used three items from the work satisfaction scale each, without reverse coding them.
-The latent factor DTH was indicated by items 4, 8, and 9, DTL by items 12, 26, and 27, and DRF by items 17, 22, and 24.
+For the demand-resource-ratios, we used three items from the work satisfaction scale each.
+The latent factor \emph{demands too high} was indicated by items 4, 8, and 9, \emph{demands too low} by the recoded items 12, 26, and 27, and \emph{demand-resource-fit} by items 17, 22, and 24.
+The items can be translated as follows: 4) ``There is too much pressure on me.'' 8) ``There is often too much being demanded of us at work.'' 9) ``I often feel tired and weary because of my work.'' 12) ``I can realize my ideas here.'' 17) ``I take pleasure in my work.'' 22) ``Does your place of work give you the opportunity to do what you do best?'' 24) ``Does your place of work give you enough opportunities to use your skills?'' 26) ``Are you happy with your promotion prospects?'' and 27) ``Are you happy with your position when comparing it to your skills?''
+Model parameters were estimated using the maximum likelihood method with robust standard errors.
+Model fit was evaluated by looking at the Chi-square test statistic, CFI, SRMR, and RMSEA.
 
-\hypertarget{exploratory-analysis}{%
-\subsubsection{\texorpdfstring{\emph{Exploratory analysis}}{Exploratory analysis}}\label{exploratory-analysis}}
+\hypertarget{exploratory-analyses}{%
+\subsubsection{Exploratory analyses}\label{exploratory-analyses}}
 
 We preregistered two exploratory analyses.
-Firstly, we repeated the SEM with the subscale reduced personal efficacy in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales (Grass et al., 2018; Naderi et al., 2018).
+Firstly, we repeated the SEM with the subscale \emph{reduced personal efficacy} in place of the MBI score, since this subscale has shown higher correlations with NFC than the other subscales (Grass et al., 2018; Naderi et al., 2018).
 And secondly, we included a Covid-19 burden score into the SEM, computed as the sum of the Covid-19 items.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\begingroup\fontsize{10}{12}\selectfont
+During visual inspection of correlation plots we noticed an unexpected outlier with very high MBI scores and very low NFC scores.
+A Q-Q-plot contrasting Mahalanobis \emph{D\textsuperscript{2}} against expected Chi Square values confirmed the outlier.
+To adhere to the preregistration, we report the results containing the outlier in this section and the results excluding the outlier in the \emph{Supplementary Material S2}.
 
-\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}>{\raggedleft\arraybackslash}p{1.5cm}}
+\hypertarget{descriptive-statistics}{%
+\subsection{Descriptive statistics}\label{descriptive-statistics}}
+
+Basic metric descriptives of the questionnaire scores and subscales are listed in Table 1.
+Only the ERQ sum score and its reappraisal subscale followed a normal distribution, so the results of the models should be interpreted with some caution and with a focus on indices that are robust against violation of normality, such as the Satorra-Bentler or Yuan-Bentler-scaled test statistics (Rosseel, 2012).
+
+\begin{table}
+
+\caption{\label{tab:cdescriptivestable}Descriptive statistics of the questionnaire scores.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrrrr}
 \toprule
-  & MBI & MBI EE & MBI DP & MBI RPE & ERQ & ERQ S & ERQ R & SCS & NFC & COV\\
+Variable & Minimum & Maximum & Mean & SD & Normality & Skewness & Kurtosis\\
 \midrule
-\cellcolor{gray!6}{MBI Score} & \cellcolor{gray!6}{0.90(0.91)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
-MBI EE & \textbf{0.925} & 0.91(0.92) &  &  &  &  &  &  &  & \\
-\cellcolor{gray!6}{MBI DP} & \textbf{\cellcolor{gray!6}{0.748}} & \textbf{\cellcolor{gray!6}{0.535}} & \cellcolor{gray!6}{0.68(0.69)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
-MBI RPE & \textbf{0.669} & \textbf{0.434} & \textbf{0.480} & 0.79(0.79) &  &  &  &  &  & \\
-\cellcolor{gray!6}{ERQ} & \cellcolor{gray!6}{-0.058} & \cellcolor{gray!6}{-0.059} & \cellcolor{gray!6}{0.043} & \cellcolor{gray!6}{-0.099} & \cellcolor{gray!6}{0.73(0.62)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\cellcolor{gray!6}{MBI} & \cellcolor{gray!6}{27} & \cellcolor{gray!6}{101} & \cellcolor{gray!6}{52.93} & \cellcolor{gray!6}{13.06} & \cellcolor{gray!6}{No} & \cellcolor{gray!6}{0.35} & \cellcolor{gray!6}{0.02}\\
+MBI EE & 12 & 52 & 27.99 & 8.87 & No & 0.19 & -0.59\\
+\cellcolor{gray!6}{MBI DP} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{24} & \cellcolor{gray!6}{9.72} & \cellcolor{gray!6}{3.26} & \cellcolor{gray!6}{No} & \cellcolor{gray!6}{0.82} & \cellcolor{gray!6}{0.86}\\
+MBI RPE & 7 & 28 & 15.22 & 3.43 & No & 0.42 & 1.11\\
+\cellcolor{gray!6}{ERQ} & \cellcolor{gray!6}{16} & \cellcolor{gray!6}{63} & \cellcolor{gray!6}{39.18} & \cellcolor{gray!6}{7.82} & \cellcolor{gray!6}{Yes} & \cellcolor{gray!6}{-0.16} & \cellcolor{gray!6}{0.45}\\
 \addlinespace
-ERQ Suppression & 0.053 & -0.000 & \em{0.166} & 0.076 & \textbf{0.592} & 0.75(0.79) &  &  &  & \\
-\cellcolor{gray!6}{ERQ Reappraisal} & \cellcolor{gray!6}{-0.101} & \cellcolor{gray!6}{-0.058} & \cellcolor{gray!6}{-0.061} & \em{\textbf{\cellcolor{gray!6}{-0.197}}} & \textbf{\cellcolor{gray!6}{0.715}} & \cellcolor{gray!6}{-0.075} & \cellcolor{gray!6}{0.84(0.84)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
-Self Control & \textbf{-0.342} & \textbf{-0.283} & \textbf{-0.368} & \em{-0.185} & -0.034 & -0.121 & 0.050 & 0.85(0.86) &  & \\
-\cellcolor{gray!6}{NFC} & \textbf{\cellcolor{gray!6}{-0.248}} & \em{\textbf{\cellcolor{gray!6}{-0.196}}} & \em{\textbf{\cellcolor{gray!6}{-0.219}}} & \em{\textbf{\cellcolor{gray!6}{-0.213}}} & \cellcolor{gray!6}{-0.008} & \em{\cellcolor{gray!6}{-0.176}} & \em{\cellcolor{gray!6}{0.158}} & \em{\textbf{\cellcolor{gray!6}{0.216}}} & \cellcolor{gray!6}{0.89(0.89)} & \cellcolor{gray!6}{}\\
-Covid-19 Burden & \em{\textbf{0.241}} & \textbf{0.324} & 0.083 & 0.016 & -0.028 & 0.019 & -0.065 & -0.040 & 0.125 & 0.77(0.81)\\
+ERQ S & 4 & 26 & 12.59 & 4.85 & No & 0.14 & -0.73\\
+\cellcolor{gray!6}{ERQ R} & \cellcolor{gray!6}{9} & \cellcolor{gray!6}{42} & \cellcolor{gray!6}{26.59} & \cellcolor{gray!6}{6.29} & \cellcolor{gray!6}{Yes} & \cellcolor{gray!6}{-0.05} & \cellcolor{gray!6}{0.01}\\
+SCS & -19 & 23 & 7.79 & 8.42 & No & -0.39 & -0.22\\
+\cellcolor{gray!6}{NFC} & \cellcolor{gray!6}{-34} & \cellcolor{gray!6}{48} & \cellcolor{gray!6}{20.37} & \cellcolor{gray!6}{14.04} & \cellcolor{gray!6}{No} & \cellcolor{gray!6}{-0.59} & \cellcolor{gray!6}{0.56}\\
+DTH & -6 & 6 & 0.49 & 2.65 & No & -0.15 & -0.56\\
+\addlinespace
+\cellcolor{gray!6}{DTL} & \cellcolor{gray!6}{-6} & \cellcolor{gray!6}{6} & \cellcolor{gray!6}{-2.22} & \cellcolor{gray!6}{2.24} & \cellcolor{gray!6}{No} & \cellcolor{gray!6}{0.46} & \cellcolor{gray!6}{0.28}\\
+DRF & -4 & 6 & 3.63 & 1.79 & No & -0.91 & 1.75\\
+\cellcolor{gray!6}{COV} & \cellcolor{gray!6}{14} & \cellcolor{gray!6}{33} & \cellcolor{gray!6}{24.53} & \cellcolor{gray!6}{4.28} & \cellcolor{gray!6}{No} & \cellcolor{gray!6}{-0.14} & \cellcolor{gray!6}{-0.70}\\
 \bottomrule
-\multicolumn{11}{l}{\rule{0pt}{1em}\textit{Note: }}\\
-\multicolumn{11}{l}{\rule{0pt}{1em}MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, COV = Covid-19 Burden. \textbackslash{}\textbackslash{}textit\{N\} = 180. Italics indicate \textbackslash{}\textbackslash{}textit\{p\} < .05, italics and bold indicate \textbackslash{}\textbackslash{}textit\{p\} < .01, bold indicates \textbackslash{}\textbackslash{}textit\{p\} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.}\\
-\end{tabu}
-\endgroup{}
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \textit{N} = 180.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
 
-\begin{verbatim}
-## lavaan 0.6-9 ended normally after 60 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        14
-##                                                       
-##   Number of observations                           180
-##                                                       
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 0.000
-##   Degrees of freedom                                 0
-## 
-## Model Test Baseline Model:
-## 
-##   Test statistic                                49.640
-##   Degrees of freedom                                10
-##   P-value                                        0.000
-## 
-## User Model versus Baseline Model:
-## 
-##   Comparative Fit Index (CFI)                    1.000
-##   Tucker-Lewis Index (TLI)                       1.000
-## 
-## Loglikelihood and Information Criteria:
-## 
-##   Loglikelihood user model (H0)              -2215.454
-##   Loglikelihood unrestricted model (H1)      -2215.454
-##                                                       
-##   Akaike (AIC)                                4458.908
-##   Bayesian (BIC)                              4503.609
-##   Sample-size adjusted Bayesian (BIC)         4459.271
-## 
-## Root Mean Square Error of Approximation:
-## 
-##   RMSEA                                          0.000
-##   90 Percent confidence interval - lower         0.000
-##   90 Percent confidence interval - upper         0.000
-##   P-value RMSEA <= 0.05                             NA
-## 
-## Standardized Root Mean Square Residual:
-## 
-##   SRMR                                           0.000
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                            Bootstrap
-##   Number of requested bootstrap draws             2000
-##   Number of successful bootstrap draws            2000
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   scs ~                                                                 
-##     ncs       (a1)    0.162    0.051    3.154    0.002    0.055    0.258
-##   erq_reap ~                                                            
-##     ncs       (a2)    0.055    0.034    1.619    0.105   -0.011    0.120
-##   erq_supp ~                                                            
-##     ncs       (a3)   -0.063    0.025   -2.524    0.012   -0.113   -0.017
-##   mbi_rpe ~                                                             
-##     scs       (b1)   -0.069    0.030   -2.318    0.020   -0.126   -0.009
-##     erq_reap  (b2)   -0.094    0.036   -2.652    0.008   -0.159   -0.023
-##     erq_supp  (b3)    0.002    0.051    0.043    0.966   -0.094    0.106
-##     ncs        (c)   -0.051    0.021   -2.473    0.013   -0.089   -0.008
-##    Std.lv  Std.all
-##                   
-##     0.162    0.271
-##                   
-##     0.055    0.123
-##                   
-##    -0.063   -0.182
-##                   
-##    -0.069   -0.169
-##    -0.094   -0.173
-##     0.002    0.003
-##    -0.051   -0.208
-## 
-## Covariances:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##  .scs ~~                                                                
-##    .erq_reap          1.393    3.526    0.395    0.693   -5.236    8.427
-##    .erq_supp         -3.166    2.802   -1.130    0.258   -8.806    2.383
-##  .erq_reap ~~                                                           
-##    .erq_supp         -0.257    2.351   -0.109    0.913   -4.838    4.416
-##    Std.lv  Std.all
-##                   
-##     1.393    0.028
-##    -3.166   -0.082
-##                   
-##    -0.257   -0.009
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##    .scs              65.382    6.206   10.536    0.000   52.369   76.607
-##    .erq_reap         38.748    4.220    9.182    0.000   30.312   47.219
-##    .erq_supp         22.604    1.897   11.914    0.000   18.685   26.236
-##    .mbi_rpe          10.143    1.297    7.821    0.000    7.457   12.428
-##    Std.lv  Std.all
-##    65.382    0.927
-##    38.748    0.985
-##    22.604    0.967
-##    10.143    0.866
-## 
-## R-Square:
-##                    Estimate
-##     scs               0.073
-##     erq_reap          0.015
-##     erq_supp          0.033
-##     mbi_rpe           0.134
-## 
-## Defined Parameters:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##     Indirect1        -0.011    0.007   -1.695    0.090   -0.026   -0.001
-##     Indirect2        -0.005    0.004   -1.429    0.153   -0.013    0.001
-##     Indirect3        -0.000    0.004   -0.039    0.969   -0.008    0.006
-##     Contrast         -0.006    0.009   -0.653    0.514   -0.024    0.011
-##     Total            -0.067    0.023   -2.957    0.003   -0.111   -0.021
-##    Std.lv  Std.all
-##    -0.011   -0.046
-##    -0.005   -0.021
-##    -0.000   -0.001
-##    -0.006   -0.024
-##    -0.067   -0.276
-\end{verbatim}
+Correlations and internal consistencies are displayed in Table 2.
+For this descriptive analysis, the variables \emph{demands too high}, \emph{demands too low}, and \emph{demand-resource-fit} were computed as a sum of their item scores, not weighted as in the structural equation model.
+Using traditional cut-off values (Nunnally \& Bernstein, 1994), the Cronbach's Alpha of the three demand-resource-ratios can be considered \emph{acceptable}.
+The more robust MacDonald's Omega (Dunn et al., 2014) did not deviate much from Cronbach's Alpha and indicated \emph{acceptable} to \emph{good} internal consistency.
+As expected, the MBI score showed a large positive correlation with \emph{demands too high} (\(r_s\) = .67, \emph{p} \textless{} .001) and a large negatve one with \emph{demand-resource-fit} (\(r_s\) = -.55, \emph{p} \textless{} .001).
+Surprisingly, the correlation between the MBI score and \emph{demands too low} was positive and also large (\(r_s\) = .44, \emph{p} \textless{} .001).
+The NFC score correlated negatively with the MBI sum score and about equally with all subscales, contrary to some previous observations in other studies.
 
-\begin{verbatim}
-## lavaan 0.6-9 ended normally after 100 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        39
-##                                                       
-##   Number of observations                           180
-##                                                       
-## Model Test User Model:
-##                                                Standard      Robust
-##   Test Statistic                                395.419     399.077
-##   Degrees of freedom                                 97          97
-##   P-value (Chi-square)                            0.000       0.000
-##   Scaling correction factor                                   0.991
-##        Yuan-Bentler correction (Mplus variant)                     
-## 
-## Model Test Baseline Model:
-## 
-##   Test statistic                              1504.484    1461.750
-##   Degrees of freedom                               120         120
-##   P-value                                        0.000       0.000
-##   Scaling correction factor                                  1.029
-## 
-## User Model versus Baseline Model:
-## 
-##   Comparative Fit Index (CFI)                    0.784       0.775
-##   Tucker-Lewis Index (TLI)                       0.733       0.721
-##                                                                   
-##   Robust Comparative Fit Index (CFI)                         0.783
-##   Robust Tucker-Lewis Index (TLI)                            0.732
-## 
-## Loglikelihood and Information Criteria:
-## 
-##   Loglikelihood user model (H0)              -5189.293   -5189.293
-##   Scaling correction factor                                  1.231
-##       for the MLR correction                                      
-##   Loglikelihood unrestricted model (H1)      -4991.583   -4991.583
-##   Scaling correction factor                                  1.060
-##       for the MLR correction                                      
-##                                                                   
-##   Akaike (AIC)                               10456.585   10456.585
-##   Bayesian (BIC)                             10581.111   10581.111
-##   Sample-size adjusted Bayesian (BIC)        10457.597   10457.597
-## 
-## Root Mean Square Error of Approximation:
-## 
-##   RMSEA                                          0.131       0.132
-##   90 Percent confidence interval - lower         0.117       0.118
-##   90 Percent confidence interval - upper         0.144       0.145
-##   P-value RMSEA <= 0.05                          0.000       0.000
-##                                                                   
-##   Robust RMSEA                                               0.131
-##   90 Percent confidence interval - lower                     0.118
-##   90 Percent confidence interval - upper                     0.144
-## 
-## Standardized Root Mean Square Residual:
-## 
-##   SRMR                                           0.173       0.173
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Sandwich
-##   Information bread                           Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   NFC =~                                                                
-##     nfc1              1.000                               1.000    1.000
-##     nfc2              1.002    0.112    8.931    0.000    0.782    1.222
-##     nfc3              1.059    0.087   12.235    0.000    0.889    1.228
-##     nfc4              1.035    0.103   10.004    0.000    0.833    1.238
-##   DTH =~                                                                
-##     dth1              1.000                               1.000    1.000
-##     dth2              0.916    0.119    7.672    0.000    0.682    1.150
-##     dth3              1.668    0.280    5.967    0.000    1.120    2.216
-##   DTL =~                                                                
-##     dtl1              1.000                               1.000    1.000
-##     dtl2              1.755    0.318    5.525    0.000    1.132    2.377
-##     dtl3              1.987    0.425    4.672    0.000    1.154    2.821
-##   DRF =~                                                                
-##     drf1              1.000                               1.000    1.000
-##     drf2              0.886    0.144    6.151    0.000    0.604    1.168
-##     drf3              0.790    0.130    6.061    0.000    0.534    1.045
-##   MBI =~                                                                
-##     mbi_ee            1.000                               1.000    1.000
-##     mbi_dp            0.231    0.042    5.516    0.000    0.149    0.314
-##     mbi_rpe           0.249    0.049    5.047    0.000    0.152    0.345
-##    Std.lv  Std.all
-##                   
-##     3.213    0.759
-##     3.220    0.771
-##     3.402    0.869
-##     3.327    0.838
-##                   
-##     0.598    0.541
-##     0.548    0.553
-##     0.998    0.848
-##                   
-##     0.409    0.483
-##     0.717    0.711
-##     0.813    0.883
-##                   
-##     0.586    0.791
-##     0.519    0.820
-##     0.463    0.597
-##                   
-##     7.122    0.873
-##     1.648    0.523
-##     1.771    0.534
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   DTH ~                                                                 
-##     NFC               0.042    0.020    2.154    0.031    0.004    0.081
-##   DTL ~                                                                 
-##     NFC               0.023    0.015    1.522    0.128   -0.007    0.052
-##   DRF ~                                                                 
-##     NFC              -0.070    0.020   -3.488    0.000   -0.110   -0.031
-##   MBI ~                                                                 
-##     NFC               0.002    0.144    0.014    0.989   -0.281    0.285
-##     DTH             -10.624    2.229   -4.767    0.000  -14.991   -6.256
-##     DTL              -1.838    1.428   -1.287    0.198   -4.637    0.960
-##     DRF               4.036    1.080    3.736    0.000    1.918    6.153
-##    Std.lv  Std.all
-##                   
-##     0.228    0.228
-##                   
-##     0.180    0.180
-##                   
-##    -0.386   -0.386
-##                   
-##     0.001    0.001
-##    -0.892   -0.892
-##    -0.106   -0.106
-##     0.332    0.332
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##    .nfc1              7.596    1.125    6.753    0.000    5.391    9.801
-##    .nfc2              7.079    0.940    7.530    0.000    5.237    8.922
-##    .nfc3              3.748    0.729    5.139    0.000    2.319    5.178
-##    .nfc4              4.674    0.967    4.834    0.000    2.779    6.569
-##    .dth1              0.866    0.107    8.079    0.000    0.656    1.077
-##    .dth2              0.681    0.092    7.425    0.000    0.501    0.860
-##    .dth3              0.390    0.089    4.365    0.000    0.215    0.565
-##    .dtl1              0.549    0.093    5.884    0.000    0.366    0.732
-##    .dtl2              0.504    0.087    5.820    0.000    0.334    0.674
-##    .dtl3              0.186    0.097    1.911    0.056   -0.005    0.377
-##    .drf1              0.206    0.048    4.276    0.000    0.112    0.300
-##    .drf2              0.132    0.036    3.649    0.000    0.061    0.203
-##    .drf3              0.387    0.057    6.835    0.000    0.276    0.498
-##    .mbi_ee           15.839    5.619    2.819    0.005    4.826   26.852
-##    .mbi_dp            7.207    0.920    7.835    0.000    5.404    9.010
-##    .mbi_rpe           7.851    1.017    7.722    0.000    5.858    9.843
-##     NFC              10.323    2.212    4.666    0.000    5.987   14.659
-##    .DTH               0.339    0.100    3.397    0.001    0.143    0.535
-##    .DTL               0.162    0.058    2.779    0.005    0.048    0.276
-##    .DRF               0.293    0.083    3.522    0.000    0.130    0.455
-##    .MBI               0.949    4.185    0.227    0.821   -7.253    9.152
-##    Std.lv  Std.all
-##     7.596    0.424
-##     7.079    0.406
-##     3.748    0.245
-##     4.674    0.297
-##     0.866    0.708
-##     0.681    0.694
-##     0.390    0.281
-##     0.549    0.767
-##     0.504    0.495
-##     0.186    0.220
-##     0.206    0.375
-##     0.132    0.328
-##     0.387    0.643
-##    15.839    0.238
-##     7.207    0.726
-##     7.851    0.715
-##     1.000    1.000
-##     0.948    0.948
-##     0.968    0.968
-##     0.851    0.851
-##     0.019    0.019
-## 
-## R-Square:
-##                    Estimate
-##     nfc1              0.576
-##     nfc2              0.594
-##     nfc3              0.755
-##     nfc4              0.703
-##     dth1              0.292
-##     dth2              0.306
-##     dth3              0.719
-##     dtl1              0.233
-##     dtl2              0.505
-##     dtl3              0.780
-##     drf1              0.625
-##     drf2              0.672
-##     drf3              0.357
-##     mbi_ee            0.762
-##     mbi_dp            0.274
-##     mbi_rpe           0.285
-##     DTH               0.052
-##     DTL               0.032
-##     DRF               0.149
-##     MBI               0.981
-\end{verbatim}
+\begin{landscape}\begin{table}
 
-\begin{verbatim}
-## lavaan 0.6-9 ended normally after 125 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        34
-##                                                       
-##   Number of observations                           180
-##                                                       
-## Model Test User Model:
-##                                                Standard      Robust
-##   Test Statistic                                250.937     247.820
-##   Degrees of freedom                                 71          71
-##   P-value (Chi-square)                            0.000       0.000
-##   Scaling correction factor                                   1.013
-##        Yuan-Bentler correction (Mplus variant)                     
-## 
-## Model Test Baseline Model:
-## 
-##   Test statistic                              1161.800    1112.062
-##   Degrees of freedom                                91          91
-##   P-value                                        0.000       0.000
-##   Scaling correction factor                                  1.045
-## 
-## User Model versus Baseline Model:
-## 
-##   Comparative Fit Index (CFI)                    0.832       0.827
-##   Tucker-Lewis Index (TLI)                       0.785       0.778
-##                                                                   
-##   Robust Comparative Fit Index (CFI)                         0.832
-##   Robust Tucker-Lewis Index (TLI)                            0.785
-## 
-## Loglikelihood and Information Criteria:
-## 
-##   Loglikelihood user model (H0)              -4173.205   -4173.205
-##   Scaling correction factor                                  1.224
-##       for the MLR correction                                      
-##   Loglikelihood unrestricted model (H1)      -4047.737   -4047.737
-##   Scaling correction factor                                  1.081
-##       for the MLR correction                                      
-##                                                                   
-##   Akaike (AIC)                                8414.410    8414.410
-##   Bayesian (BIC)                              8522.971    8522.971
-##   Sample-size adjusted Bayesian (BIC)         8415.293    8415.293
-## 
-## Root Mean Square Error of Approximation:
-## 
-##   RMSEA                                          0.119       0.118
-##   90 Percent confidence interval - lower         0.103       0.102
-##   90 Percent confidence interval - upper         0.135       0.134
-##   P-value RMSEA <= 0.05                          0.000       0.000
-##                                                                   
-##   Robust RMSEA                                               0.118
-##   90 Percent confidence interval - lower                     0.103
-##   90 Percent confidence interval - upper                     0.135
-## 
-## Standardized Root Mean Square Residual:
-## 
-##   SRMR                                           0.165       0.165
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Sandwich
-##   Information bread                           Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   NFC =~                                                                
-##     nfc1              1.000                               1.000    1.000
-##     nfc2              1.013    0.112    9.043    0.000    0.793    1.232
-##     nfc3              1.062    0.087   12.179    0.000    0.891    1.232
-##     nfc4              1.045    0.104   10.045    0.000    0.841    1.249
-##   DTH =~                                                                
-##     dth1              1.000                               1.000    1.000
-##     dth2              1.016    0.159    6.405    0.000    0.705    1.326
-##     dth3              0.857    0.132    6.511    0.000    0.599    1.115
-##   DTL =~                                                                
-##     dtl1              1.000                               1.000    1.000
-##     dtl2              1.759    0.327    5.377    0.000    1.118    2.401
-##     dtl3              1.836    0.333    5.514    0.000    1.183    2.488
-##   DRF =~                                                                
-##     drf1              1.000                               1.000    1.000
-##     drf2              0.878    0.126    6.987    0.000    0.632    1.124
-##     drf3              0.776    0.124    6.243    0.000    0.532    1.020
-##   RPE =~                                                                
-##     mbi_rpe           1.000                               1.000    1.000
-##    Std.lv  Std.all
-##                   
-##     3.195    0.755
-##     3.236    0.775
-##     3.392    0.867
-##     3.338    0.841
-##                   
-##     0.785    0.709
-##     0.797    0.805
-##     0.672    0.571
-##                   
-##     0.424    0.500
-##     0.745    0.738
-##     0.778    0.845
-##                   
-##     0.590    0.796
-##     0.518    0.817
-##     0.458    0.591
-##                   
-##     3.297    1.000
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   DTH ~                                                                 
-##     NFC               0.054    0.024    2.245    0.025    0.007    0.101
-##   DTL ~                                                                 
-##     NFC               0.025    0.015    1.637    0.102   -0.005    0.055
-##   DRF ~                                                                 
-##     NFC              -0.071    0.020   -3.564    0.000   -0.110   -0.032
-##   RPE ~                                                                 
-##     NFC              -0.051    0.085   -0.597    0.551   -0.218    0.116
-##     DTH              -0.497    0.366   -1.357    0.175   -1.214    0.221
-##     DTL              -0.845    0.653   -1.293    0.196   -2.125    0.436
-##     DRF               3.161    0.439    7.196    0.000    2.300    4.022
-##    Std.lv  Std.all
-##                   
-##     0.220    0.220
-##                   
-##     0.189    0.189
-##                   
-##    -0.385   -0.385
-##                   
-##    -0.049   -0.049
-##    -0.118   -0.118
-##    -0.109   -0.109
-##     0.566    0.566
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##    .nfc1              7.709    1.135    6.793    0.000    5.485    9.934
-##    .nfc2              6.974    0.930    7.498    0.000    5.151    8.797
-##    .nfc3              3.815    0.741    5.148    0.000    2.363    5.268
-##    .nfc4              4.597    0.973    4.723    0.000    2.689    6.504
-##    .dth1              0.608    0.113    5.374    0.000    0.386    0.830
-##    .dth2              0.345    0.105    3.289    0.001    0.140    0.551
-##    .dth3              0.933    0.123    7.613    0.000    0.693    1.174
-##    .dtl1              0.537    0.092    5.845    0.000    0.357    0.717
-##    .dtl2              0.464    0.077    5.990    0.000    0.312    0.615
-##    .dtl3              0.242    0.075    3.241    0.001    0.096    0.388
-##    .drf1              0.201    0.040    5.021    0.000    0.123    0.280
-##    .drf2              0.133    0.032    4.209    0.000    0.071    0.195
-##    .drf3              0.391    0.059    6.605    0.000    0.275    0.508
-##    .mbi_rpe           0.000                               0.000    0.000
-##     NFC              10.210    2.189    4.665    0.000    5.920   14.500
-##    .DTH               0.586    0.128    4.583    0.000    0.336    0.837
-##    .DTL               0.173    0.058    2.998    0.003    0.060    0.286
-##    .DRF               0.297    0.077    3.868    0.000    0.146    0.447
-##    .RPE               6.568    0.876    7.498    0.000    4.852    8.285
-##    Std.lv  Std.all
-##     7.709    0.430
-##     6.974    0.400
-##     3.815    0.249
-##     4.597    0.292
-##     0.608    0.497
-##     0.345    0.352
-##     0.933    0.674
-##     0.537    0.750
-##     0.464    0.455
-##     0.242    0.286
-##     0.201    0.366
-##     0.133    0.332
-##     0.391    0.651
-##     0.000    0.000
-##     1.000    1.000
-##     0.952    0.952
-##     0.964    0.964
-##     0.852    0.852
-##     0.604    0.604
-## 
-## R-Square:
-##                    Estimate
-##     nfc1              0.570
-##     nfc2              0.600
-##     nfc3              0.751
-##     nfc4              0.708
-##     dth1              0.503
-##     dth2              0.648
-##     dth3              0.326
-##     dtl1              0.250
-##     dtl2              0.545
-##     dtl3              0.714
-##     drf1              0.634
-##     drf2              0.668
-##     drf3              0.349
-##     mbi_rpe           1.000
-##     DTH               0.048
-##     DTL               0.036
-##     DRF               0.148
-##     RPE               0.396
-\end{verbatim}
+\caption{\label{tab:correlationstable}Spearman correlations and internal consistencies of the questionnaire scores.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{llllllllllllll}
+\toprule
+  & { 1 } & { 2 } & { 3 } & { 4 } & { 5 } & { 6 } & { 7 } & { 8 } & { 9 } & { 10 } & { 11 } & { 12 } & { 13 }\\
+\midrule
+\cellcolor{gray!6}{1. MBI} & \cellcolor{gray!6}{\&nbsp; .90(.91)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+2. MBI EE & \&nbsp; .92*** & \&nbsp; .91(.92) &  &  &  &  &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{3. MBI DP} & \cellcolor{gray!6}{\&nbsp; .75***} & \cellcolor{gray!6}{\&nbsp; .54***} & \cellcolor{gray!6}{\&nbsp; .68(.69)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+4. MBI RPE & \&nbsp; .67*** & \&nbsp; .43*** & \&nbsp; .48*** & \&nbsp; .79(.79) &  &  &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{5. ERQ} & \cellcolor{gray!6}{-.06} & \cellcolor{gray!6}{-.06} & \cellcolor{gray!6}{\&nbsp; .04} & \cellcolor{gray!6}{-.10} & \cellcolor{gray!6}{\&nbsp; .73(.62)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\addlinespace
+6. ERQ S & \&nbsp; .05 & -.00 & \&nbsp; .17* & \&nbsp; .08 & \&nbsp; .59*** & \&nbsp; .75(.79) &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{7. ERQ R} & \cellcolor{gray!6}{-.10} & \cellcolor{gray!6}{-.06} & \cellcolor{gray!6}{-.06} & \cellcolor{gray!6}{-.20**} & \cellcolor{gray!6}{\&nbsp; .71***} & \cellcolor{gray!6}{-.07} & \cellcolor{gray!6}{\&nbsp; .84(.84)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+8. SCS & -.34*** & -.28*** & -.37*** & -.19* & -.03 & -.12 & \&nbsp; .05 & \&nbsp; .85(.86) &  &  &  &  & \\
+\cellcolor{gray!6}{9. NFC} & \cellcolor{gray!6}{-.25***} & \cellcolor{gray!6}{-.20**} & \cellcolor{gray!6}{-.22**} & \cellcolor{gray!6}{-.21**} & \cellcolor{gray!6}{-.01} & \cellcolor{gray!6}{-.18*} & \cellcolor{gray!6}{\&nbsp; .16*} & \cellcolor{gray!6}{\&nbsp; .22**} & \cellcolor{gray!6}{\&nbsp; .89(.89)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+10. DTH & \&nbsp; .67*** & \&nbsp; .72*** & \&nbsp; .35*** & \&nbsp; .36*** & \&nbsp; .03 & \&nbsp; .05 & -.01 & -.21** & -.15* & \&nbsp; .73(.73) &  &  & \\
+\addlinespace
+\cellcolor{gray!6}{11. DTL} & \cellcolor{gray!6}{\&nbsp; .44***} & \cellcolor{gray!6}{\&nbsp; .36***} & \cellcolor{gray!6}{\&nbsp; .38***} & \cellcolor{gray!6}{\&nbsp; .43***} & \cellcolor{gray!6}{\&nbsp; .01} & \cellcolor{gray!6}{\&nbsp; .16*} & \cellcolor{gray!6}{-.14} & \cellcolor{gray!6}{-.19*} & \cellcolor{gray!6}{-.16*} & \cellcolor{gray!6}{\&nbsp; .41***} & \cellcolor{gray!6}{\&nbsp; .73(.75)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+12. DRF & -.55*** & -.46*** & -.41*** & -.53*** & -.00 & -.10 & \&nbsp; .10 & \&nbsp; .18* & \&nbsp; .24** & -.42*** & -.56*** & \&nbsp; .77(.77) & \\
+\cellcolor{gray!6}{13. COV} & \cellcolor{gray!6}{\&nbsp; .24**} & \cellcolor{gray!6}{\&nbsp; .32***} & \cellcolor{gray!6}{\&nbsp; .08} & \cellcolor{gray!6}{\&nbsp; .02} & \cellcolor{gray!6}{-.03} & \cellcolor{gray!6}{\&nbsp; .02} & \cellcolor{gray!6}{-.07} & \cellcolor{gray!6}{-.04} & \cellcolor{gray!6}{\&nbsp; .13} & \cellcolor{gray!6}{\&nbsp; .45***} & \cellcolor{gray!6}{\&nbsp; .10} & \cellcolor{gray!6}{-.13} & \cellcolor{gray!6}{\&nbsp; .77(.81)}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \textit{N} = 180. * \textit{p} < .05. ** \textit{p} < .01. *** \textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+\end{landscape}
 
-\begin{verbatim}
-## lavaan 0.6-9 ended normally after 154 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        42
-##                                                       
-##   Number of observations                           180
-##                                                       
-## Model Test User Model:
-##                                                Standard      Robust
-##   Test Statistic                                430.369     430.449
-##   Degrees of freedom                                111         111
-##   P-value (Chi-square)                            0.000       0.000
-##   Scaling correction factor                                   1.000
-##        Yuan-Bentler correction (Mplus variant)                     
-## 
-## Model Test Baseline Model:
-## 
-##   Test statistic                              1568.311    1513.167
-##   Degrees of freedom                               136         136
-##   P-value                                        0.000       0.000
-##   Scaling correction factor                                  1.036
-## 
-## User Model versus Baseline Model:
-## 
-##   Comparative Fit Index (CFI)                    0.777       0.768
-##   Tucker-Lewis Index (TLI)                       0.727       0.716
-##                                                                   
-##   Robust Comparative Fit Index (CFI)                         0.776
-##   Robust Tucker-Lewis Index (TLI)                            0.726
-## 
-## Loglikelihood and Information Criteria:
-## 
-##   Loglikelihood user model (H0)              -5691.634   -5691.634
-##   Scaling correction factor                                  1.220
-##       for the MLR correction                                      
-##   Loglikelihood unrestricted model (H1)      -5476.449   -5476.449
-##   Scaling correction factor                                  1.060
-##       for the MLR correction                                      
-##                                                                   
-##   Akaike (AIC)                               11467.268   11467.268
-##   Bayesian (BIC)                             11601.372   11601.372
-##   Sample-size adjusted Bayesian (BIC)        11468.358   11468.358
-## 
-## Root Mean Square Error of Approximation:
-## 
-##   RMSEA                                          0.126       0.126
-##   90 Percent confidence interval - lower         0.114       0.114
-##   90 Percent confidence interval - upper         0.139       0.139
-##   P-value RMSEA <= 0.05                          0.000       0.000
-##                                                                   
-##   Robust RMSEA                                               0.126
-##   90 Percent confidence interval - lower                     0.114
-##   90 Percent confidence interval - upper                     0.139
-## 
-## Standardized Root Mean Square Residual:
-## 
-##   SRMR                                           0.170       0.170
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Sandwich
-##   Information bread                           Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   NFC =~                                                                
-##     nfc1              1.000                               1.000    1.000
-##     nfc2              1.003    0.113    8.909    0.000    0.783    1.224
-##     nfc3              1.060    0.087   12.195    0.000    0.889    1.230
-##     nfc4              1.036    0.104    9.982    0.000    0.833    1.239
-##   DTH =~                                                                
-##     dth1              1.000                               1.000    1.000
-##     dth2              0.886    0.108    8.217    0.000    0.675    1.097
-##     dth3              1.500    0.254    5.909    0.000    1.003    1.998
-##   DTL =~                                                                
-##     dtl1              1.000                               1.000    1.000
-##     dtl2              1.756    0.318    5.521    0.000    1.133    2.380
-##     dtl3              1.980    0.421    4.700    0.000    1.154    2.806
-##   DRF =~                                                                
-##     drf1              1.000                               1.000    1.000
-##     drf2              0.882    0.143    6.170    0.000    0.602    1.162
-##     drf3              0.785    0.131    5.983    0.000    0.528    1.042
-##   MBI =~                                                                
-##     mbi_ee            1.000                               1.000    1.000
-##     mbi_dp            0.237    0.046    5.115    0.000    0.146    0.328
-##     mbi_rpe           0.255    0.054    4.728    0.000    0.149    0.361
-##   COVB =~                                                               
-##     covb              1.000                               1.000    1.000
-##    Std.lv  Std.all
-##                   
-##     3.211    0.759
-##     3.222    0.771
-##     3.403    0.870
-##     3.327    0.839
-##                   
-##     0.643    0.582
-##     0.570    0.576
-##     0.965    0.820
-##                   
-##     0.409    0.484
-##     0.719    0.712
-##     0.811    0.881
-##                   
-##     0.588    0.793
-##     0.519    0.818
-##     0.462    0.595
-##                   
-##     6.987    0.860
-##     1.656    0.527
-##     1.781    0.539
-##                   
-##     4.272    1.000
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##   DTH ~                                                                 
-##     NFC               0.037    0.022    1.729    0.084   -0.005    0.080
-##   DTL ~                                                                 
-##     NFC               0.023    0.015    1.515    0.130   -0.007    0.052
-##   DRF ~                                                                 
-##     NFC              -0.070    0.020   -3.479    0.001   -0.110   -0.031
-##   COVB ~                                                                
-##     DTH              -3.001    0.544   -5.518    0.000   -4.067   -1.935
-##   MBI ~                                                                 
-##     NFC              -0.009    0.149   -0.058    0.954   -0.301    0.284
-##     DTH             -10.345    2.372   -4.362    0.000  -14.994   -5.696
-##     DTL              -1.733    1.436   -1.206    0.228   -4.547    1.082
-##     DRF               4.266    1.160    3.678    0.000    1.992    6.539
-##     COVB             -0.224    0.130   -1.727    0.084   -0.478    0.030
-##    Std.lv  Std.all
-##                   
-##     0.187    0.187
-##                   
-##     0.179    0.179
-##                   
-##    -0.384   -0.384
-##                   
-##    -0.452   -0.452
-##                   
-##    -0.004   -0.004
-##    -0.953   -0.953
-##    -0.102   -0.102
-##     0.359    0.359
-##    -0.137   -0.137
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
-##    .nfc1              7.608    1.127    6.751    0.000    5.399    9.816
-##    .nfc2              7.066    0.943    7.494    0.000    5.218    8.915
-##    .nfc3              3.738    0.729    5.125    0.000    2.308    5.167
-##    .nfc4              4.673    0.966    4.835    0.000    2.779    6.567
-##    .dth1              0.810    0.103    7.839    0.000    0.608    1.013
-##    .dth2              0.656    0.094    7.005    0.000    0.472    0.839
-##    .dth3              0.454    0.103    4.421    0.000    0.252    0.655
-##    .dtl1              0.549    0.093    5.892    0.000    0.366    0.731
-##    .dtl2              0.502    0.086    5.825    0.000    0.333    0.671
-##    .dtl3              0.189    0.096    1.961    0.050    0.000    0.378
-##    .drf1              0.204    0.048    4.231    0.000    0.109    0.298
-##    .drf2              0.133    0.036    3.686    0.000    0.062    0.204
-##    .drf3              0.388    0.057    6.825    0.000    0.277    0.500
-##    .mbi_ee           17.173    6.430    2.671    0.008    4.570   29.776
-##    .mbi_dp            7.119    0.925    7.697    0.000    5.306    8.932
-##    .mbi_rpe           7.740    1.033    7.494    0.000    5.716    9.764
-##    .covb              0.000                               0.000    0.000
-##     NFC              10.312    2.212    4.661    0.000    5.975   14.648
-##    .DTH               0.400    0.111    3.584    0.000    0.181    0.618
-##    .DTL               0.162    0.058    2.784    0.005    0.048    0.276
-##    .DRF               0.295    0.084    3.508    0.000    0.130    0.460
-##    .MBI              -0.334    4.157   -0.080    0.936   -8.481    7.813
-##    .COVB             14.522    1.668    8.706    0.000   11.252   17.791
-##    Std.lv  Std.all
-##     7.608    0.425
-##     7.066    0.405
-##     3.738    0.244
-##     4.673    0.297
-##     0.810    0.662
-##     0.656    0.669
-##     0.454    0.327
-##     0.549    0.766
-##     0.502    0.493
-##     0.189    0.224
-##     0.204    0.371
-##     0.133    0.331
-##     0.388    0.645
-##    17.173    0.260
-##     7.119    0.722
-##     7.740    0.709
-##     0.000    0.000
-##     1.000    1.000
-##     0.965    0.965
-##     0.968    0.968
-##     0.853    0.853
-##    -0.007   -0.007
-##     0.796    0.796
-## 
-## R-Square:
-##                    Estimate
-##     nfc1              0.575
-##     nfc2              0.595
-##     nfc3              0.756
-##     nfc4              0.703
-##     dth1              0.338
-##     dth2              0.331
-##     dth3              0.673
-##     dtl1              0.234
-##     dtl2              0.507
-##     dtl3              0.776
-##     drf1              0.629
-##     drf2              0.669
-##     drf3              0.355
-##     mbi_ee            0.740
-##     mbi_dp            0.278
-##     mbi_rpe           0.291
-##     covb              1.000
-##     DTH               0.035
-##     DTL               0.032
-##     DRF               0.147
-##     MBI                  NA
-##     COVB              0.204
-\end{verbatim}
+\hypertarget{replication-of-grass-et-al.-2018-1}{%
+\subsection{Replication of Grass et al.~(2018)}\label{replication-of-grass-et-al.-2018-1}}
+
+In order to replicate findings by Grass et al. (2018) we computed a multiple mediation model to investigate whether the association of NFC and \emph{reduced personal efficacy} was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
+The baseline model did not fit the data (\(\chi\)\textsuperscript{2}(10, \(N=\) 180) = 49.64, \(p < .001\)).
+Applying the cutoffs by Hu and Bentler (1999) to the fit indices of \(CFI=\) 1, \(TLI=\) 1.14, \(SRMR=\) 0.02, and \(RMSEA=\) 0.00, 95\% \(CI\) {[}0,0.09{]}, suggested good fit of the proposed model throughout all indices.
+Standardized estimates are displayed in Figure 1, total, direct, and indirect effects are listed in Table 3.
+We could replicate a positive association of NFC and self control (\(\beta=\) 0.27, \(p=.002\)), and a negative association of habitual reappraisal and \emph{reduced personal efficacy} (\(\beta=\) -0.17, \(p=.008\)).
+However, we could neither replicate the effect of NFC on reappraisal (\(\beta=\) 0.12, \(p=.105\)), nor the indirect effect of NFC on \emph{reduced personal efficacy} via reappraisal (\(\beta=\) -0.02, \(p=.153\)).
+Furthermore, even though NFC and \emph{reduced personal efficacy} were both associated with self-control, the indirect effect of NFC on \emph{reduced personal efficacy} via self control did not reach significance (\(\beta=\) -0.05, \(p=.090\)).
+Additionally, NFC was negatively associated with habitual use of suppression (\(\beta=\) -0.18, \(p=.012\)), which was not the case in the study by Grass et al. (2018).
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Manuscript_files/figure-latex/objective1plot-1} \caption{Standardized regression coefficients in the replication of Grass et al. (2018). * $p<.05$, ** $p<.01$.}\label{fig:objective1plot}
+\end{figure}
+
+\begin{table}
+
+\caption{\label{tab:objective1table}Results of the replication of Grass et al. (2018).}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrrrr}
+\toprule
+Path & $B$ & $SE$ & $z$-value & $p$-value & CI Lower & CI Upper & $\beta$\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Direct Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC on Self Control} & \cellcolor{gray!6}{0.162} & \cellcolor{gray!6}{0.051} & \cellcolor{gray!6}{3.154} & \cellcolor{gray!6}{0.002} & \cellcolor{gray!6}{0.055} & \cellcolor{gray!6}{0.258} & \cellcolor{gray!6}{0.271}\\
+\hspace{1em}NFC on Reappraisal & 0.055 & 0.034 & 1.619 & 0.105 & -0.011 & 0.120 & 0.123\\
+\hspace{1em}\cellcolor{gray!6}{NFC on Suppression} & \cellcolor{gray!6}{-0.063} & \cellcolor{gray!6}{0.025} & \cellcolor{gray!6}{-2.524} & \cellcolor{gray!6}{0.012} & \cellcolor{gray!6}{-0.113} & \cellcolor{gray!6}{-0.017} & \cellcolor{gray!6}{-0.182}\\
+\hspace{1em}Self Control on RPE & -0.069 & 0.030 & -2.318 & 0.020 & -0.126 & -0.009 & -0.169\\
+\hspace{1em}\cellcolor{gray!6}{Reappraisal on RPE} & \cellcolor{gray!6}{-0.094} & \cellcolor{gray!6}{0.036} & \cellcolor{gray!6}{-2.652} & \cellcolor{gray!6}{0.008} & \cellcolor{gray!6}{-0.159} & \cellcolor{gray!6}{-0.023} & \cellcolor{gray!6}{-0.173}\\
+\hspace{1em}Suppression on RPE & 0.002 & 0.051 & 0.043 & 0.966 & -0.094 & 0.106 & 0.003\\
+\hspace{1em}\cellcolor{gray!6}{NFC on RPE} & \cellcolor{gray!6}{-0.051} & \cellcolor{gray!6}{0.021} & \cellcolor{gray!6}{-2.473} & \cellcolor{gray!6}{0.013} & \cellcolor{gray!6}{-0.089} & \cellcolor{gray!6}{-0.008} & \cellcolor{gray!6}{-0.208}\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Indirect Effects}}\\
+\hspace{1em}NFC on RPE via Self Control & -0.011 & 0.007 & -1.695 & 0.090 & -0.026 & -0.001 & -0.046\\
+\hspace{1em}\cellcolor{gray!6}{NFC on RPE via Reappraisal} & \cellcolor{gray!6}{-0.005} & \cellcolor{gray!6}{0.004} & \cellcolor{gray!6}{-1.429} & \cellcolor{gray!6}{0.153} & \cellcolor{gray!6}{-0.013} & \cellcolor{gray!6}{0.001} & \cellcolor{gray!6}{-0.021}\\
+\hspace{1em}NFC on RPE via Suppression & 0.000 & 0.004 & -0.039 & 0.969 & -0.008 & 0.006 & -0.001\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Total Effect}}\\
+\hspace{1em}\cellcolor{gray!6}{Total Effect} & \cellcolor{gray!6}{-0.067} & \cellcolor{gray!6}{0.023} & \cellcolor{gray!6}{-2.957} & \cellcolor{gray!6}{0.003} & \cellcolor{gray!6}{-0.111} & \cellcolor{gray!6}{-0.021} & \cellcolor{gray!6}{-0.276}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item $B$ = unstandardized regression coefficient, beta = standardized regression coefficient, $CI$ = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+
+Grass et al. (2018) controlled for age and a-level grade in their analysis, which we did not consider when preregistering this analysis.
+Since grade was not assessed in this sample, and age was assessed as a categorical variable, we instead incorporated how many years each participant had spent teaching at the point of assessment.
+We placed this variable as an independent variable influencing self control, as the latter was the only variable in the model that showed a partial correlation with years spent teaching.
+As it was not preregistered, this was an exploratory analysis.
+Again, the baseline model did not fit the data (\(\chi\)\textsuperscript{2}(14, \(N=\) 180) = 60.41, \(p < .001\)), and the fit indices of \(CFI=\) 1, \(TLI=\) 1.19, \(SRMR=\) 0.02, and \(RMSEA=\) 0.00, 95\% \(CI\) {[}0,0.04{]}, suggested good fit of the proposed model throughout all indices.
+Standardized estimates, total, direct, and indirect effects are displayed and listed in \emph{Supplementary Material S3}.
+The associations between NFC, self control, reappraisal, suppression, and \emph{reduced personal efficacy} were almost identical to the first model.
+However, because of the positive association of years spent teaching and self control (\(\beta=\) 0.22, \(p.001\)), the indirect path leading from NFC and years spent teaching via self control to \emph{reduced personal efficacy} reached significance in this model (\(\beta=\) -0.09, \(p=.049\)).
+Therefore, the total effect also increased slightly, compared to the first model (\(\beta=\) -0.32, \(p=.002\)).
+
+\hypertarget{demand-resource-model}{%
+\subsection{Demand-Resource Model}\label{demand-resource-model}}
+
+Next we looked at how different ratios of subjective demands and resources affect the association of NFC and burnout.
+The parcelling procedure for the indicators of the latent factor NFC resulted in four parcels with a summed difference in average loadings of 0.00.
+The first parcel contained item 4, 6, 8, and 9, the second parcel item 2, 14, 15, and 16, the third parcel item 7, 11, 12, and 13, and the fourth parcel item 1, 3, 5, and 10.
+Standardized path coefficients of the demand-resource model are illustrated in Figure 2, total, direct, and indirect effects are listed in Table 4.
+The robust Chi-square statistic of \(\chi^2=\) 399.08 (\(p < .001\)) did not indicate good model fit.
+However, since it was in the range of 4 \(df<\chi^2>\) 5 \(df\) the lack of good fit might have been due to the underlying assumption of multivariate normality (Hu \& Bentler, 1999; Schumacker \& Lomax, 2012), which was violated here.
+This also held true for the CFI of 0.78, the SRMR of 0.17, and the RMSEA of 0.13, 95\% \(CI\) {[}0.12,0.14{]}.
+Overall, the fit indices did not support the proposed model, and not all proposed paths were significant.
+NFC showed no direct association with the MBI score (\(\beta=\) 0, \(p=.989\)), even though it was negatively correlated with the sum score and all subscales.
+Instead, NFC showed indirect negative associations with the MBI score via lower scores in the latent variable \emph{demands too high} (\(\beta=\) -0.20, \(p=.026\)) and via higher scores in the latent variable \emph{demand-resource-fit} (\(\beta=\) -0.13, \(p=.025\)).
+The latent variable \emph{demands too low} was neither related to NFC (\(\beta=\) -0.18, \(p=.128\)) nor to the MBI score (\(\beta=\) 0.11, \(p=.198\)).
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Manuscript_files/figure-latex/objective2plot-1} \caption{Standardized path coefficients in the mediation of NFC and burnout by demand-resource-ratios. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, MBI = Maslach Burnout Inventory, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, ee = emotional exhaustion, dp = depersonalisation, rpe = reduced personal efficacy.}\label{fig:objective2plot}
+\end{figure}
+
+\begin{table}
+
+\caption{\label{tab:objective2table}Results of the demand-resource-ratio model.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrrrr}
+\toprule
+Path & $B$ & $SE$ & $z$-value & $p$-value & CI Lower & CI Upper & $\beta$\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Direct Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC on DTH} & \cellcolor{gray!6}{-0.042} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{-2.154} & \cellcolor{gray!6}{0.031} & \cellcolor{gray!6}{-0.081} & \cellcolor{gray!6}{-0.004} & \cellcolor{gray!6}{-0.228}\\
+\hspace{1em}NFC on DTL & -0.023 & 0.015 & -1.522 & 0.128 & -0.052 & 0.007 & -0.180\\
+\hspace{1em}\cellcolor{gray!6}{NFC on DRF} & \cellcolor{gray!6}{0.070} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{3.488} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{0.031} & \cellcolor{gray!6}{0.110} & \cellcolor{gray!6}{0.386}\\
+\hspace{1em}NFC on MBI & 0.002 & 0.144 & 0.014 & 0.989 & -0.281 & 0.285 & 0.001\\
+\hspace{1em}\cellcolor{gray!6}{DTH on MBI} & \cellcolor{gray!6}{10.624} & \cellcolor{gray!6}{2.229} & \cellcolor{gray!6}{4.767} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{6.256} & \cellcolor{gray!6}{14.991} & \cellcolor{gray!6}{0.892}\\
+\hspace{1em}DTL on MBI & 1.838 & 1.428 & 1.287 & 0.198 & -0.960 & 4.637 & 0.106\\
+\hspace{1em}\cellcolor{gray!6}{DRF on MBI} & \cellcolor{gray!6}{-4.036} & \cellcolor{gray!6}{1.080} & \cellcolor{gray!6}{-3.736} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{-6.153} & \cellcolor{gray!6}{-1.918} & \cellcolor{gray!6}{-0.332}\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Indirect Effects}}\\
+\hspace{1em}NFC on MBI via DTH & -0.451 & 0.203 & -2.221 & 0.026 & -0.848 & -0.053 & -0.203\\
+\hspace{1em}\cellcolor{gray!6}{NFC on MBI via DTL} & \cellcolor{gray!6}{-0.042} & \cellcolor{gray!6}{0.033} & \cellcolor{gray!6}{-1.270} & \cellcolor{gray!6}{0.204} & \cellcolor{gray!6}{-0.107} & \cellcolor{gray!6}{0.023} & \cellcolor{gray!6}{-0.019}\\
+\hspace{1em}NFC on MBI via DRF & -0.284 & 0.127 & -2.236 & 0.025 & -0.533 & -0.035 & -0.128\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Total Effect}}\\
+\hspace{1em}\cellcolor{gray!6}{Total Effect} & \cellcolor{gray!6}{-0.775} & \cellcolor{gray!6}{0.258} & \cellcolor{gray!6}{-3.003} & \cellcolor{gray!6}{0.003} & \cellcolor{gray!6}{-1.280} & \cellcolor{gray!6}{-0.269} & \cellcolor{gray!6}{-0.349}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item $B$ = unstandardized regression coefficient, $beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+
+\hypertarget{exploratory-analyses-1}{%
+\subsection{Exploratory analyses}\label{exploratory-analyses-1}}
+
+The first exploratory analysis concerned a modification of the demand-resource-model in which the subscale \emph{reduced personal efficacy} would be used in place of the MBI sum score.
+Path coefficients, total, direct, and indirect effects are displayed and listed in \emph{Supplementary Material S4}.
+Similar to the previous model, this model's indices did not indicate good fit, with a Chi-square statistic of \(\chi^2=\) 247.82 (\(p < .001\)), a CFI of 0.83, a SRMR of 0.17, and a RMSEA of 0.12, 95\% \(CI\) {[}0.10,0.13{]}.
+NFC showed no direct association with \emph{reduced personal efficacy} (\(\beta=\) -0.05, \(p=.551\)), but an indirect one via higher scores in the latent variable \emph{demand-resource-fit} (\(\beta=\) -0.22, \(p=.002\)).
+And again, NFC was associated with lower scores in the latent variable \emph{demands too high} (\(\beta=\) -0.22, \(p=.025\)), but the latter did not mediate the relationship between NFC and \emph{reduced personal efficacy} (\(\beta=\) -0.03, \(p=.243\)) as it did with the MBI score in the previous model.
+The latent variable \emph{demands too low} was neither related to NFC (\(\beta=\) -0.19, \(p=.102\)) nor to the MBI score (\(\beta=\) 0.11, \(p=.196\)).
+
+The second exploratory analysis concerned the incorporation of the Covid burden score into the model.
+We based the development of this model on the partial correlations of all variables, which provide an indication of how closely or remotely related variables might be in a path model.
+Then we modified the structure of the model using the \emph{modincides()}-function in \emph{lavaan} in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
+The final model is illustrated in Figure 3, the total, direct, and indirect effects are listed in \emph{Supplementary Material S5}.
+All fit indices suggested that the proposed model had good fit while the baseline model did not (\(\chi^2=\) 130.13 (\(p < .001\)), \(CFI=\) 0.95, \(RMSEA=\) 0.07 (95\% \(CI\) {[}0.05,0.08{]}), \(SRMR=\) 0.06).
+Neither the ERQ sum score, nor its subscales, nor the \emph{depersonalisation} subscale of the MBI contributed significantly to the explained variance and were therefore not included in the final model.
+Years spent teaching was associated with higher self control (\(\beta=\) 0.21, \(p=.002\)) and higher Covid burden (\(\beta=\) 0.17, \(p=.020\)) but not with NFC.
+NFC covaried with self control (\(\sigma_{NFC,scs}=\) 0.31, \(p=.008\)) and Covid burden (\(\sigma_{NFC,covb}=\) 0.19, \(p=.018\)), but not with years spent teaching (\(p=.722\)).
+In turn, NFC was associated with higher \emph{demand-resource-fit} scores (\(\beta=\) 0.34, \(p=.002\)) and lower \emph{demands too high} scores (\(\beta=\) -0.21, \(p=.008\)) but not directly with any of the two MBI subscales.
+\emph{Demand-resource-fit} scores fully mediated the negative association of NFC and self control with \emph{reduced personal efficacy} (indirect effect \(\beta=\) -0.29, \(p.001\)), which was also true for \emph{demands too high} scores and \emph{emotional exhaustion}, but \emph{demands too high} also partially mediated between Covid burden and \emph{emotional exhaustion} (indirect effect \(\beta=\) -0.18, \(p=.008\)).
+Covid burden was not associated with \emph{demand-resource-fit} or \emph{reduced personal efficacy}.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Manuscript_files/figure-latex/explor2plot-1} \caption{Standardized path coefficients in the exploratory analysis of variable relations. * $p<.05$, ** $p<.01$, *** $p<.001$. Years = years spent teaching, SCS = Self-Control Scale, COVB = Covid burden, NFC = Need for Cognition, DTH = demands too high, DRF = demand resource fit, nfc1-4 = item parcels, dth/drf1-3 = item indicators, EE = emotional exhaustion, RPE = reduced personal efficacy.}\label{fig:explor2plot}
+\end{figure}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+The present study aimed to investigate the role of Need for Cognition, the stable preference for and enjoyment of cognitive effort, in the context of burnout in teachers.
+To achieve this, we replicated findings of mediators between Need for Cognition and burnout, and extended the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
+In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
+Previous studies have indicated a protective effect of NFC against burnout, but the associations with the burnout subscales were inconsistent, suggesting that there are more variables influencing this relationship.
+
+\hypertarget{replication-of-grass-et-al.-2018-2}{%
+\subsection{Replication of Grass et al.~(2018)}\label{replication-of-grass-et-al.-2018-2}}
+
+While the mediation model had good fit, not all patterns were similar to the original study: NFC and self-control had a medium positive association, and reappraisal and \emph{reduced personal efficacy} had a small negative association, but NFC and reappraisal were not associated.
+There was, however, a small negative association between self-control and \emph{reduced personal efficacy}, and between NFC and suppression.
+
+NFC had a direct, medium negative effect on \emph{reduced personal efficacy}, but this relationship was not mediated by any other variable.
+Only when the amount of teaching experience was included as a predictor of self-control next to NFC, a very small indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower \emph{reduced personal efficacy}.
+The higher self-control that comes with more teaching experience is in line with findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 (Oliva et al., 2019).
+The participants in the study by Grass et al. (2018) were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
+Therefore, it is likely that not only the teaching experience itself but also higher age might be associated with higher self-control.
+However, one could argue that more experience provides the teacher with a bigger repertoire of coping strategies to enable an efficient exertion of self-control, especially for teachers high in NFC who are intrinsically motivated to find and apply such strategies.
+
+We could replicate the relation between the two emotion regulation strategies reappraisal and suppression with \emph{reduced personal efficacy}, but not their association with NFC.
+There is ample evidence that reappraisal is associated with positive outcomes for students (Haga et al., 2007; Levine et al., 2012; Schmidt et al., 2010) and teachers alike (Jiang et al., 2016; Moè \& Katz, 2020; Tsouloupas et al., 2010), so it is suprising that reappraisal did not mediate between NFC and \emph{reduced personal efficacy}.
+Reappraisal did correlate with NFC, as it should appease the preference for cognitive effort in individuals with high NFC, but it was not a mediator in this model.
+One possible explanation could be that the ways by which reappraisal can be achieved, such as taking the role of an uninvolved observer, are less feasible for teachers in retaining their sense of efficacy in the classroom than the self-control needed to structurally manage students and situations.
+Hence, the mediation of NFC and \emph{reduced personal efficacy} by self-control when taking the years spent teaching into account.
+
+\hypertarget{demand-resource-ratio-model-1}{%
+\subsection{Demand-resource-ratio model}\label{demand-resource-ratio-model-1}}
+
+Despite not having good fit indices, the model suggested a complete mediation of NFC and burnout via \emph{demands too high} and \emph{demand-resource-fit} but not \emph{demands too low}.
+Specifically, individuals with higher NFC had lower burnout scores through perceiving demands as fitting to and not exceeding their own resources.
+Interestingly, the medium correlation between NFC and burnout disappeared in the context of the demand-resource-ratios as mediators.
+The mediator that did not reach significance was the perception of own resources exceeding the job demands.
+As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. (2013.).
+The fact that the items that made up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
+This individual appraisal has been emphasized as the cause for the ambiguous impact of demands on psychological well-being before, in the form of challenge demands and hindrance demands (Lazarus \& Folkman, 1984; Lepine et al., 2005; Podsakoff et al., 2007).
+Challenge demands such as time pressure, responsibility, and workload (Podsakoff et al., 2007) are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping (Lepine et al., 2005).
+In contrast, hindrance demands such as inadequate resources, role conflict, and organisational politics (Podsakoff et al., 2007) are perceived as negative because they harm personal growth, trigger negative emotions, and increase passive coping (Lepine et al., 2005).
+Ventura et al. (2015) found that hindrance but not challenge demands were positively related to burnout in teachers, and teachers who reported high challenge and low hindrance demands also reported higher engagement.
+Whether and to what extent a circumstance is perceived as a challenge or hindrance demand is highly influenced by a person's level of self-efficacy (Bandura, 1997), so much so that a reduction in self-efficacy is considered to be a precurser of burnout, not necessarily a symptom (Cherniss, 1993; M. Vera et al., 2012).
+Self-efficacy and self-control are closely entwined (Przepiórka et al., 2019; E. M. Vera et al., 2004; Yang et al., 2019) and both are positively associated with NFC (Bertrams \& Dickhäuser, 2012; Holch \& Marwood, 2020; Naderi et al., 2018; Xu \& Cheng, 2021).
+Cacioppo et al. (1996) even proposed that higher levels of NFC might develop as a result of a high need for structure or control in those who have the skill, ability, and inclination to do so.
+These associations would imply that teachers with high levels of NFC report lower levels of burnout because their higher (desire for) self-control motivates them to appraise demands as a chance for personal growth, thereby meeting their passion for thinking and problem-solving.
+Nevertheless, appraisal is no universal remedy for circumstances that threaten well-being, as there certainly are circumstances that one cannot get any benefit out of.
+It remains an open question whether a high desire for control and high NFC might cloud one's judgement in this case, by encouraging to invest one's own insufficient resources in order to meet these high external demands.
+Such behavioural tendencies would threaten personal well-being in the long term, as the demands cannot be met, self-efficacy declines, and stress increases.
+
+\hypertarget{exploratory-analyses-2}{%
+\subsection{Exploratory analyses}\label{exploratory-analyses-2}}
+
+\hypertarget{demand-resource-ratio-model-with-subscale-reduced-personal-efficacy}{%
+\subsubsection{Demand-resource-ratio model with subscale reduced personal efficacy}\label{demand-resource-ratio-model-with-subscale-reduced-personal-efficacy}}
+
+The demand-resource-ratio model with the subscale \emph{reduced personal efficacy} in place of the MBI score did not have good fit indices.
+Compared to the confirmatory demand-resource-ratio model, the mediation of NFC and \emph{reduced personal efficacy} via \emph{demands too high} did not reach significance, but both the mediation via \emph{demand-resource-fit} and the total effect remained significant.
+Overall, this pattern did not resemble those from previous studies in which NFC had the strongest relation with this subscale of the MBI (Grass et al., 2018; Naderi et al., 2018).
+Teachers with high NFC appear to retain their sense of personal efficacy to a higher degree, because they experience a fit of demands and resources, which allows them to complete tasks and reinforce their self-efficacy in return.
+However, while this association was similar in the confirmatory and the exploratory demand-resource-ratio model, the mediation via \emph{demands too high} was not significant with this subscale, suggesting that the large association of \emph{demands too high} and MBI in the confirmatory model was driven by a different subscale.
+To explore this, we built a second exploratory model.
+
+\hypertarget{exploratory-model-with-covid-burden}{%
+\subsubsection{Exploratory model with Covid burden}\label{exploratory-model-with-covid-burden}}
+
+Due to the complete freedom in setting up the structure of this model, it had good fit indices.
+Interestingly, the third MBI subscale \emph{depersonalisation} and the latent variable \emph{demands too low} did not explain any variance in the model, so they were removed.
+Once again, NFC and self-control were positively related, but NFC was also positively related to Covid burden.
+One possible explanation is that teachers with higher NFC show higher consideration of the consequences and progression of the pandemic, thereby anticipating that it will take a long time until normal teaching can resume, which heightens their feeling of being burdened.
+Although NFC has been shown to be related to more reflective thinking and unrelated to rumination, which are considered healthy and unhealthy thinking styles, respectively (Nishiguchi et al., 2018; Vannucci \& Chiorri, 2018), a higher perceived Covid burden itself cannot indicate whether it stems from a realistic view on the pandemic or a feeling of being overwhelmed.
+Teachers with more years of experience also reported higher Covid burden, presumably because older people are less comfortable with technology (Hauk et al., 2018) and therefore stressed by the prospect of online teaching.
+Teachers with higher self-control and higher NFC reported a stronger fit of demands and resources, which was associated with a strong decrease in \emph{reduced personal efficacy}.
+Higher self-control, higher NFC, and lower Covid burden was in turn associated with a lower \emph{demands too high} score, so teachers with those characteristics felt less overwhelmed and consequently less emotionally exhausted.
+The degree of association between \emph{demands too high} and \emph{emotional exhaustion} indeed suggested a congruence between the two, indicating that \emph{emotional exhaustion} in burnout is caused by excessive demands that cannot be met with one's resources, while \emph{reduced personal efficacy} in burnout is caused by a lack of opportunities to utilize one's resources at work.
+Curiously, higher Covid burden also showed a small negative association with \emph{emotional exhaustion}.
+It could be that for some teachers, remote teaching was experienced as a relief from the strain of dealing with a group of over twenty students each day, who are more likely to misbehave in a classroom setting than when they are studying at home.
+So while those teachers did feel the pandemic burden, they also felt less emotionally exhausted.
+However, as this part of the study was exploratory, the results should be interpreted with some caution and examined with new data in a confirmatory approach.
+
+\hypertarget{limitations-and-future-implications}{%
+\subsection{Limitations and future implications}\label{limitations-and-future-implications}}
+
+The data used in this study had been collected with a focus on emotion regulation and burnout, so there were several aspects that would have improved the investigation of our research questions but were not feasible.
+Firstly, collecting coping style data would have enabled a full replication of the mediation model of Grass et al. (2018).
+Secondly, longitudinal data would have facilitated more definitive conclusions about causal relations, as well as about inter-individual differences in the perception of demands and resources as the pandemic progresses.
+Furthermore, the latent variables for the demand-resource-ratios were item groups chosen from the work satisfaction questionnaire and had not been validated for this use before.
+However, as two of them showed meaningful relations with self-control, NFC, and two of the three MBI subscales, pursuing this concept further seems promising.
+Especially because we worked with pre-existing data, we preregistered all analyses and clearly differentiated between confirmatory and exploratory models in order to make the results as reliable as possible.
+
+\hypertarget{conclusions}{%
+\subsection{Conclusions}\label{conclusions}}
+
+Our study showed that self-control mediated between NFC and burnout when teaching experience was being taken into account.
+Contrary to prior studies, neither habitual use of reappraisal nor use of suppression mediated between NFC and burnout.
+However, a crucial role in the relation of NFC and burnout seemed to be the perceived ratio of personal resources and demands, specifically, a resource-demand-fit was associated with lower and excessive demands were associated with higher burnout scores.
+Applied to real-life teaching practise, our results suggest that a healthy work environment should offer ample opportunities to make use of one's abilities, without creating demands that are too high.
+As a consequence, experiences and sense of self-efficacy will increase, which in turn heightens confidence in one's skills to deal with future demands that are higher, preventing loss of personal efficacy and burnout in the long term.
 
 \newpage
 
@@ -1112,8 +668,17 @@ Covid-19 Burden & \em{\textbf{0.241}} & \textbf{0.324} & 0.083 & 0.016 & -0.028 
 \leavevmode\hypertarget{ref-Abler2009}{}%
 Abler, B., \& Kessler, H. (2009). Emotion {Regulation} {Questionnaire} -- {Eine} deutschsprachige {Fassung} des {ERQ} von {Gross} und {John}. \emph{Diagnostica}, \emph{55}(3), 144--152. \url{https://doi.org/10.1026/0012-1924.55.3.144}
 
+\leavevmode\hypertarget{ref-Aust2020}{}%
+Aust, F., \& Barth, M. (2020). \emph{{papaja}: {Create} {APA} manuscripts with {R Markdown}}. \url{https://github.com/crsh/papaja}
+
+\leavevmode\hypertarget{ref-Bandura1997}{}%
+Bandura, A. (1997). \emph{Self-{Efficacy}: {The} exercise of control}. Worth Publishers.
+
 \leavevmode\hypertarget{ref-Bertrams2009a}{}%
 Bertrams, A., \& Dickhäuser, O. (2009). Messung dispositioneller {Selbstkontroll}-{Kapazität}. \emph{Diagnostica}, \emph{55}(1), 2--10. \url{https://doi.org/10.1026/0012-1924.55.1.2}
+
+\leavevmode\hypertarget{ref-Bertrams2012}{}%
+Bertrams, A., \& Dickhäuser, O. (2012). Passionate thinkers feel better. \emph{Journal of Individual Differences}, \emph{33}(2), 69--75. \url{https://doi.org/10.1027/1614-0001/a000081}
 
 \leavevmode\hypertarget{ref-Bless1994}{}%
 Bless, H., Wänke, M., Bohner, G., Fellhauer, R. F., \& Schwarz, N. (1994). Need for {Cognition}: {Eine} {Skala} zur {Erfassung} von {Engagement} und {Freude} bei {Denkaufgaben}. \emph{Zeitschrift für Sozialpsychologie}, \emph{25}. \url{https://doi.org/1779110}
@@ -1121,8 +686,8 @@ Bless, H., Wänke, M., Bohner, G., Fellhauer, R. F., \& Schwarz, N. (1994). Need
 \leavevmode\hypertarget{ref-BoehmKasper2001}{}%
 Böhm-Kasper, O., Bos, O., Körner, S. C., \& Weishaupt, H. (2001). {EBI}. {Das} {Erfurter} {Belastungsinventar} zur {Erfassung} von {Belastung} und {Beanspruchung} von {Lehrern} und {Schülern} am {Gymnasium}. \emph{Schulforschung Und Schulentwicklung. Aktuelle Forschungsbeiträge}, \emph{14}, 35--66. \url{https://pub.uni-bielefeld.de/record/1858836}
 
-\leavevmode\hypertarget{ref-Braehler2007}{}%
-Brähler, E., Mühlan, H., Albani, C., \& Schmidt, S. (2007). Teststatistische {Prüfung} und {Normierung} der deutschen {Versionen} des {EUROHIS}-{QOL} {Lebensqualität}-{Index} und des {WHO}-5 {Wohlbefindens}-{Index}. \emph{Diagnostica}, \emph{53}(2), 83--96. \url{https://doi.org/10.1026/0012-1924.53.2.83}
+\leavevmode\hypertarget{ref-Brady2021}{}%
+Brady, K. J. S., Sheldrick, R. C., Ni, P., Trockel, M. T., Shanafelt, T. D., Rowe, S. G., \& Kazis, L. E. (2021). Examining the measurement equivalence of the {Maslach} {Burnout} {Inventory} across age, gender, and specialty groups in {US} physicians. \emph{Journal of Patient-Reported Outcomes}, \emph{5}(1), 43. \url{https://doi.org/10.1186/s41687-021-00312-2}
 
 \leavevmode\hypertarget{ref-Buessing1992}{}%
 Büssing, A., \& Perrar, K.-M. (1992). Die {Messung} von {Burnout}. {Untersuchung} einer deutschen {Fassung} des {Maslach} {Burnout} {Inventory} ({MBI}-{D}). {[}{Measuring} burnout: {A} study of a {German} version of the {Maslach} {Burnout} {Inventory} ({MBI}-{D}).{]}. \emph{Diagnostica}, \emph{38}(4), 328--353.
@@ -1142,6 +707,12 @@ Cacioppo, J. T., Petty, R. E., \& Kao, C. F. (1984). The {Efficient} {Assessment
 \leavevmode\hypertarget{ref-Cazan2014}{}%
 Cazan, A.-M., \& Indreica, S. E. (2014). Need for {Cognition} and {Approaches} to {Learning} among {University} {Students}. \emph{Procedia - Social and Behavioral Sciences}, \emph{127}, 134--138. \url{https://doi.org/10.1016/j.sbspro.2014.03.227}
 
+\leavevmode\hypertarget{ref-Champely2020}{}%
+Champely, S. (2020). \emph{Pwr: Basic functions for power analysis}. \url{https://CRAN.R-project.org/package=pwr}
+
+\leavevmode\hypertarget{ref-Cherniss1993}{}%
+Cherniss, C. (1993). \emph{Professional burnout: Recent developments in theory and research} (W. B. Schaufeli, C. Maslach, \& T. Marek, Eds.; pp. 135--149). Taylor \& Francis.
+
 \leavevmode\hypertarget{ref-Dodge2012}{}%
 Dodge, R., Daly, A. P., Huyton, J., \& Sanders, L. D. (2012). The challenge of defining wellbeing. \emph{International Journal of Wellbeing}, \emph{2}(3). \url{https://www.internationaljournalofwellbeing.org/index.php/ijow/article/view/89}
 
@@ -1151,26 +722,41 @@ Double, K. S., \& Birney, D. P. (2016). The effects of personality and metacogni
 \leavevmode\hypertarget{ref-Dragano2017}{}%
 Dragano, N., Siegrist, J., Nyberg, S. T., Lunau, T., Fransson, E. I., Alfredsson, L., Bjorner, J. B., Borritz, M., Burr, H., Erbel, R., Fahlén, G., Goldberg, M., Hamer, M., Heikkilä, K., Jöckel, K.-H., Knutsson, A., Madsen, I. E. H., Nielsen, M. L., Nordin, M., \ldots{} Kivimäki, M. (2017). Effort{{}}reward imbalance at work and incident coronary heart disease. \emph{Epidemiology}, \emph{28}(4), 619--626. \url{https://doi.org/10.1097/ede.0000000000000666}
 
-\leavevmode\hypertarget{ref-Elias2002}{}%
-Elias, S. M., \& Loomis, R. J. (2002). Utilizing {Need} for {Cognition} and {Perceived} {Self}-{Efficacy} to {Predict} {Academic} {Performance1}. \emph{Journal of Applied Social Psychology}, \emph{32}(8), 1687--1702. \url{https://doi.org/10.1111/j.1559-1816.2002.tb02770.x}
+\leavevmode\hypertarget{ref-Dunn2014}{}%
+Dunn, T. J., Baguley, T., \& Brunsden, V. (2014). From alpha to omega: {A} practical solution to the pervasive problem of internal consistency estimation. \emph{British Journal of Psychology}, \emph{105}(3), 399--412. \url{https://doi.org/10.1111/bjop.12046}
+
+\leavevmode\hypertarget{ref-Faul2009}{}%
+Faul, F., Erdfelder, E., Buchner, A., \& Lang, A.-G. (2009). Statistical power analyses using {G}*{Power} 3.1: {Tests} for correlation and regression analyses. \emph{Behavior Research Methods}, \emph{41}(4), 1149--1160. \url{https://doi.org/10.3758/BRM.41.4.1149}
+
+\leavevmode\hypertarget{ref-Faul2007}{}%
+Faul, F., Erdfelder, E., Lang, A.-G., \& Buchner, A. (2007). G*{Power} 3: {A} flexible statistical power analysis program for the social, behavioral, and biomedical sciences. \emph{Behavior Research Methods}, \emph{39}(2), 175--191. \url{https://doi.org/10.3758/BF03193146}
 
 \leavevmode\hypertarget{ref-Fischer2014}{}%
 Fischer, L., \& Lück, H. E. (2014). Allgemeine {Arbeitszufriedenheit}. \emph{Zusammenstellung Sozialwissenschaftlicher Items Und Skalen (ZIS)}. \url{https://doi.org/10.6102/ZIS1}
 
+\leavevmode\hypertarget{ref-Fleischhauer2010}{}%
+Fleischhauer, M., Enge, S., Brocke, B., Ullrich, J., Strobel, A., \& Strobel, A. (2010). Same or different? {Clarifying} the relationship of need for cognition to personality and intelligence. \emph{Personality \& Social Psychology Bulletin}, \emph{36}(1), 82--96. \url{https://doi.org/10.1177/0146167209351886}
+
 \leavevmode\hypertarget{ref-Fleischhauer2019}{}%
 Fleischhauer, M., Miller, R., Wekenborg, M. K., Penz, M., Kirschbaum, C., \& Enge, S. (2019). Thinking against burnout? {An} individual's tendency to engage in and enjoy thinking as a potential resilience factor of burnout symptoms and burnout-related impairment in executive functioning. \emph{Frontiers in Psychology}, \emph{10}, 420. \url{https://doi.org/10.3389/fpsyg.2019.00420}
+
+\leavevmode\hypertarget{ref-Fleischhauer2015}{}%
+Fleischhauer, M., Strobel, A., \& Strobel, A. (2015). Directly and indirectly assessed {Need for Cognition} differentially predict spontaneous and reflective information processing behavior. \emph{Journal of Individual Differences}, \emph{36}(2), 101--109. \url{https://doi.org/10.1027/1614-0001/a000161}
 
 \leavevmode\hypertarget{ref-Froebe2021}{}%
 Fröbe, A., \& Franco, P. (2021). Burnout among health care professionals in {COVID19} pandemic. \emph{Libri Oncologici}, 40--42. \url{https://pesquisa.bvsalud.org/global-literature-on-novel-coronavirus-2019-ncov/resource/pt/covidwho-1282947?lang=en}
 
+\leavevmode\hypertarget{ref-Gallivan2020}{}%
+Gallivan, N. (2020). \emph{Behavior feedback and {Need} for {Cognition}: {Factors} affecting coffee beverage consumption} {[}Thesis{]}. \url{https://krex.k-state.edu/dspace/handle/2097/40878}
+
 \leavevmode\hypertarget{ref-Ghorbani2004}{}%
 Ghorbani, N., Davison, H. K., Bing, M. N., Watson, P. J., \& Krauss, S. W. (2004). Private {Self}-{Consciousness} factors: {Relationships} {With} {Need} for {Cognition}, locus of control, and obsessive thinking in {Iran} and the {United} {States}. \emph{Journal of Social Psychology}, \emph{144}(4), 359--372. \url{http://search.ebscohost.com/login.aspx?direct=true\&db=a9h\&AN=14015824\&site=ehost-live}
 
-\leavevmode\hypertarget{ref-Grass2018}{}%
-Grass, J., John, N., \& Strobel, A. (2018). The joy of thinking as the key to success? {The} importance of {Need} for {Cognition} for subjective experience and achievement in academic studies. \emph{Zeitschrift Fur Padagogische Psychologie}, \emph{32}(3), 145--154. \url{https://doi.org/10.1024/1010-0652/a000222}
+\leavevmode\hypertarget{ref-Gignac2016}{}%
+Gignac, G. E., \& Szodorai, E. T. (2016). Effect size guidelines for individual differences researchers. \emph{Personality and Individual Differences}, \emph{102}, 74--78. \url{https://doi.org/10.1016/j.paid.2016.06.069}
 
-\leavevmode\hypertarget{ref-Grass2019}{}%
-Grass, J., Krieger, F., Paulus, P., Greiff, S., Strobel, A., \& Strobel, A. (2019). Thinking in action: {Need} for {Cognition} predicts {Self}-{Control} together with {Action} {Orientation}. \emph{PLOS ONE}, \emph{14}(8), e0220282. \url{https://doi.org/10.1371/journal.pone.0220282}
+\leavevmode\hypertarget{ref-Grass2018}{}%
+Grass, J., John, N., \& Strobel, A. (2018). The joy of thinking as the key to success? {The} importance of {Need} for {Cognition} for subjective experience and achievement in academic studies. \emph{Zeitschrift für Padagogische Psychologie}, \emph{32}(3), 145--154. \url{https://doi.org/10.1024/1010-0652/a000222}
 
 \leavevmode\hypertarget{ref-Grass2017}{}%
 Grass, J., Strobel, A., \& Strobel, A. (2017). Cognitive investments in academic success: {The} role of {Need} for {Cognition} at university. \emph{Frontiers in Psychology}, \emph{8}. \url{https://doi.org/10.3389/fpsyg.2017.00790}
@@ -1181,11 +767,26 @@ Gray-Stanley, J. A., \& Muramatsu, N. (2011). Work stress, burnout, and social a
 \leavevmode\hypertarget{ref-Gross1998a}{}%
 Gross, J. J. (1998). Antecedent- and response-focused emotion regulation: {Divergent} consequences for experience, expression, and physiology. \emph{Journal of Personality and Social Psychology}, \emph{74}(1), 224--237. \url{https://doi.org/10.1037//0022-3514.74.1.224}
 
+\leavevmode\hypertarget{ref-Haga2007}{}%
+Haga, S. M., Kraft, P., \& Corby, E.-K. (2007). Emotion regulation: Antecedents and well-being outcomes of cognitive reappraisal and expressive suppression in cross-cultural samples. \emph{Journal of Happiness Studies}, \emph{10}(3), 271--291. \url{https://doi.org/10.1007/s10902-007-9080-3}
+
+\leavevmode\hypertarget{ref-Hauk2018}{}%
+Hauk, N., Hüffmeier, J., \& Krumm, S. (2018). Ready to be a {Silver Surfer}? {A} meta-analysis on the relationship between chronological age and technology acceptance. \emph{Computers in Human Behavior}, \emph{84}, 304--319. \url{https://doi.org/10.1016/j.chb.2018.01.020}
+
 \leavevmode\hypertarget{ref-Heppner1983}{}%
 Heppner, P. P., Reeder, B. L., \& Larson, L. M. (1983). Cognitive variables associated with personal problem-solving appraisal: {Implications} for counseling. \emph{Journal of Counseling Psychology}, \emph{30}(4), 537--545. \url{https://doi.org/10.1037/0022-0167.30.4.537}
 
 \leavevmode\hypertarget{ref-Hobfoll1989}{}%
 Hobfoll, S. E. (1989). Conservation of resources: {A} new attempt at conceptualizing stress. \emph{American Psychologist}, \emph{44}(3), 513--524. \url{https://doi.org/10.1037/0003-066X.44.3.513}
+
+\leavevmode\hypertarget{ref-Holch2020}{}%
+Holch, P., \& Marwood, J. R. (2020). {EHealth} literacy in {UK} teenagers and young adults: {Exploration} of predictors and factor structure of the {eHealth} {Literacy} {Scale} ({eHEALS}). \emph{JMIR Formative Research}, \emph{4}(9), e14450. \url{https://doi.org/10.2196/14450}
+
+\leavevmode\hypertarget{ref-Hu1999}{}%
+Hu, L., \& Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: {Conventional} criteria versus new alternatives. \emph{Structural Equation Modeling: A Multidisciplinary Journal}, \emph{6}(1), 1--55. \url{https://doi.org/10.1080/10705519909540118}
+
+\leavevmode\hypertarget{ref-Jiang2016}{}%
+Jiang, J., Vauras, M., Volet, S., \& Wang, Y. (2016). Teachers{{}} emotions and emotion regulation strategies: Self- and students{{}} perceptions. \emph{Teaching and Teacher Education}, \emph{54}, 22--31. \url{https://doi.org/10.1016/j.tate.2015.11.008}
 
 \leavevmode\hypertarget{ref-Kantas1997}{}%
 Kantas, A., \& Vassilaki, E. (1997). Burnout in {Greek} teachers: {Main} findings and validity of the {Maslach} {Burnout} {Inventory}. \emph{Work \& Stress}, \emph{11}(1), 94--100. \url{https://doi.org/10.1080/02678379708256826}
@@ -1199,11 +800,26 @@ Klaczynski, P. A., \& Fauth, J. M. (1996). Intellectual ability, rationality, an
 \leavevmode\hypertarget{ref-Lackritz2004}{}%
 Lackritz, J. R. (2004). Exploring burnout among university faculty: Incidence, performance, and demographic issues. \emph{Teaching and Teacher Education}, \emph{20}(7), 713--729. \url{https://doi.org/10.1016/j.tate.2004.07.002}
 
+\leavevmode\hypertarget{ref-Latimer2007}{}%
+Latimer, A. E., Williams‐Piehota, P., Cox, A., Katulak, N. A., Salovey, P., \& Mowad, L. (2007). Encouraging {Cancer} {Patients} to {Talk} to {Their} {Physicians} {About} {Clinical} {Trials}: {Considering} {Patients}' {Information} {Needs1}. \emph{Journal of Applied Biobehavioral Research}, \emph{12}(3-4), 178--195. \url{https://doi.org/10.1111/j.1751-9861.2008.00020.x}
+
 \leavevmode\hypertarget{ref-Lavrijsen2021}{}%
 Lavrijsen, J., Preckel, F., Verachtert, P., Vansteenkiste, M., \& Verschueren, K. (2021). Are motivational benefits of adequately challenging schoolwork related to students' need for cognition, cognitive ability, or both? \emph{Personality and Individual Differences}, \emph{171}, 110558. \url{https://doi.org/10.1016/j.paid.2020.110558}
 
+\leavevmode\hypertarget{ref-Lazarus1984}{}%
+Lazarus, R. S., \& Folkman, S. (1984). \emph{Stress, {Appraisal}, and {Coping}}. Springer Publsihing Company.
+
 \leavevmode\hypertarget{ref-Leiner2019}{}%
 Leiner, D. J. (2019). \emph{{SoSci} {Survey}}. \url{https://www.soscisurvey.de}
+
+\leavevmode\hypertarget{ref-Lepine2005}{}%
+Lepine, J. A., Podsakoff, N. P., \& Lepine, M. A. (2005). A meta-analytic test of the {C}hallenge {S}tressor{{}}{H}indrance {S}tressor {F}ramework: {A}n explanation for inconsistent relationships among stressors and performance. \emph{Academy of Management Journal}, \emph{48}(5), 764--775. \url{https://doi.org/10.5465/amj.2005.18803921}
+
+\leavevmode\hypertarget{ref-Levine2012}{}%
+Levine, L. J., Schmidt, S., Kang, H. S., \& Tinti, C. (2012). Remembering the silver lining: Reappraisal and positive bias in memory for emotion. \emph{Cognition {\&} Emotion}, \emph{26}(5), 871--884. \url{https://doi.org/10.1080/02699931.2011.625403}
+
+\leavevmode\hypertarget{ref-Little2002}{}%
+Little, T. D., Cunningham, W. A., Shahar, G., \& Widaman, K. F. (2002). To {Parcel} or {Not} to {Parcel}: {Exploring} the {Question}, {Weighing} the {Merits}. \emph{Structural Equation Modeling: A Multidisciplinary Journal}, \emph{9}(2), 151--173. \url{https://doi.org/10.1207/S15328007SEM0902_1}
 
 \leavevmode\hypertarget{ref-Lloyd2002}{}%
 Lloyd, C., King, R., \& Chenoweth, L. (2002). Social work, stress and burnout: A review. \emph{Journal of Mental Health}, \emph{11}(3), 255--265. \url{https://doi.org/10.1080/09638230020023642}
@@ -1217,17 +833,41 @@ Maslach, C., Jackson, S. E., \& Leiter, M. P. (1997). Maslach {Burnout} {Invento
 \leavevmode\hypertarget{ref-Maslach2016}{}%
 Maslach, C., \& Leiter, M. (2016). Burnout. In \emph{Stress: Concepts, cognition, emotion, and behavior} (pp. 351--357). Elsevier. \url{https://doi.org/10.1016/b978-0-12-800951-2.00044-3}
 
+\leavevmode\hypertarget{ref-Moe2020}{}%
+Moè, A., \& Katz, I. (2020). Emotion regulation and need satisfaction shape a motivating teaching style. \emph{Teachers and Teaching}, \emph{27}(5), 370--387. \url{https://doi.org/10.1080/13540602.2020.1777960}
+
 \leavevmode\hypertarget{ref-Naderi2018}{}%
 Naderi, Z., Bakhtiari, S., Momennasab, M., Abootalebi, M., \& Mirzaei, T. (2018). Prediction of academic burnout and academic performance based on the need for cognition and general self-efficacy: {A} cross-sectional analytical study. \emph{Latinoamericana de Hipertensión}, \emph{13}(6). \url{http://saber.ucv.ve/ojs/index.php/rev_lh/article/view/15958}
+
+\leavevmode\hypertarget{ref-Nishiguchi2018}{}%
+Nishiguchi, Y., Mori, M., \& Tanno, Y. (2018). Need for {Cognition} promotes adaptive style of self-focusing with the mediation of {Effortful} {Control}. \emph{Japanese Psychological Research}, \emph{60}(1), 54--61. \url{https://doi.org/10.1111/jpr.12167}
 
 \leavevmode\hypertarget{ref-Nowlin2017}{}%
 Nowlin, E., Walker, D., Deeter-Schmelz, D. R., \& Haas, A. (2017). Emotion in sales performance: Affective orientation and {Need} for {Cognition} and the mediating role of motivation to work. \emph{Journal of Business \& Industrial Marketing}, \emph{33}(1), 107--116. \url{https://doi.org/10.1108/JBIM-06-2016-0136}
 
+\leavevmode\hypertarget{ref-Nunnally1994}{}%
+Nunnally, J., \& Bernstein, I. (1994). \emph{Psychometric {Theory}}. McGraw-Hill Companies,Incorporated.
+
+\leavevmode\hypertarget{ref-Oliva2019}{}%
+Oliva, A., Antolín-Suárez, L., \& Rodríguez-Meirinhos, A. (2019). Uncovering the link between self-control, age, and psychological maladjustment among {Spanish} adolescents and young adults. \emph{Psychosocial Intervention}, \emph{28}(1), 49--55. \url{https://doi.org/10.5093/pi2019a1}
+
 \leavevmode\hypertarget{ref-Osberg1987}{}%
 Osberg, T. M. (1987). The convergent and discriminant validity of the {Need} for {Cognition} {Scale}. \emph{Journal of Personality Assessment}, \emph{51}(3), 441--450. \url{https://doi.org/10.1207/s15327752jpa5103_11}
 
+\leavevmode\hypertarget{ref-Podsakoff2007}{}%
+Podsakoff, N. P., LePine, J. A., \& LePine, M. A. (2007). Differential {Challenge Stressor-Hindrance Stressor} relationships with job attitudes, turnover intentions, turnover, and withdrawal behavior: A meta-analysis. \emph{Journal of Applied Psychology}, \emph{92}(2), 438--454. \url{https://doi.org/10.1037/0021-9010.92.2.438}
+
+\leavevmode\hypertarget{ref-Preece2019}{}%
+Preece, D. A., Becerra, R., Robinson, K., \& Gross, J. J. (2019). {The Emotion Regulation Questionnaire: Psychometric} properties in general community samples. \emph{Journal of Personality Assessment}, \emph{102}(3), 348--356. \url{https://doi.org/10.1080/00223891.2018.1564319}
+
+\leavevmode\hypertarget{ref-Przepiorka2019}{}%
+Przepiórka, A., Błachnio, A., \& Siu, N. Y.-F. (2019). The relationships between self-efficacy, self-control, chronotype, procrastination and sleep problems in young adults. \emph{Chronobiology International}, \emph{36}(8), 1025--1035. \url{https://doi.org/10.1080/07420528.2019.1607370}
+
 \leavevmode\hypertarget{ref-RCT2020}{}%
 R Core Team. (2020). \emph{R: {A} language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.R-project.org/}
+
+\leavevmode\hypertarget{ref-Reijseger2013}{}%
+Reijseger, G., Schaufeli, W. B., Peeters, M. C. W., Taris, T. W., Beek, I. van, \& Ouweneel, E. (2013). Watching the paint dry at work: Psychometric examination of the {Dutch} {Boredom} {Scale}. \emph{Anxiety, Stress, \& Coping}, \emph{26}(5), 508--525. \url{https://doi.org/10.1080/10615806.2012.720676}
 
 \leavevmode\hypertarget{ref-Revelle2021}{}%
 Revelle, W. (2021). \emph{Psych: {P}rocedures for psychological, psychometric, and personality research}. Northwestern University. \url{https://CRAN.R-project.org/package=psych}
@@ -1250,23 +890,56 @@ Schaufeli, W., Bakker, A. B., Hoogduin, K., Schaap, C., \& Kladler, A. (2001). O
 \leavevmode\hypertarget{ref-Schaufeli2014}{}%
 Schaufeli, W., \& Salanova, M. (2014). Burnout, boredom and engagement at the workplace. In M. Peeters, J. de Jonge, \& T. Taris (Eds.), \emph{People at work: {An} {Introduction} to {Contemporary} {Work} {Psychology}} (pp. 293--320). Wiley Blackwell; Chichester. \url{https://lirias.kuleuven.be/retrieve/307889}
 
+\leavevmode\hypertarget{ref-Schmidt2010}{}%
+Schmidt, S., Tinti, C., Levine, L. J., \& Testa, S. (2010). Appraisals, emotions and emotion regulation: An integrative approach. \emph{Motivation and Emotion}, \emph{34}(1), 63--72. \url{https://doi.org/10.1007/s11031-010-9155-z}
+
+\leavevmode\hypertarget{ref-Schumacker2012}{}%
+Schumacker, R. E., \& Lomax, R. G. (2012). \emph{A {Beginner}'s {Guide} to {Structural} {Equation} {Modeling}: {Third} {Edition}}. Routledge.
+
 \leavevmode\hypertarget{ref-Simmons2012}{}%
 Simmons, J. P., Nelson, L. D., \& Simonsohn, U. (2012). \emph{A 21 word solution} (\{SSRN\} \{Scholarly\} \{Paper\} ID 2160588). Social Science Research Network. \url{https://doi.org/10.2139/ssrn.2160588}
 
 \leavevmode\hypertarget{ref-Steptoe2013}{}%
 Steptoe, A., \& Kivimäki, M. (2013). Stress and cardiovascular disease: An update on current knowledge. \emph{Annual Review of Public Health}, \emph{34}(1), 337--354. \url{https://doi.org/10.1146/annurev-publhealth-031912-114452}
 
+\leavevmode\hypertarget{ref-Strobel2017}{}%
+Strobel, A., Anacker, K., \& Strobel, A. (2017). Cognitive engagement mediates the relationship between positive life events and positive emotionality. \emph{Frontiers in Psychology}, \emph{8}. \url{https://doi.org/10.3389/fpsyg.2017.01861}
+
 \leavevmode\hypertarget{ref-Stumm2013}{}%
 Stumm, S. von, \& Ackerman, P. L. (2013). Investment and intellect: A review and meta-analysis. \emph{Psychological Bulletin}, \emph{139}(4), 841--869. \url{https://doi.org/10.1037/a0030746}
+
+\leavevmode\hypertarget{ref-Taber2018}{}%
+Taber, K. S. (2018). The use of {Cronbach}'s {Alpha} when developing and reporting research instruments in science education. \emph{Research in Science Education}, \emph{48}(6), 1273--1296. \url{https://doi.org/10.1007/s11165-016-9602-2}
 
 \leavevmode\hypertarget{ref-Tolentino1990}{}%
 Tolentino, E., Curry, L., \& Leak, G. (1990). Further validation of the short form of the {Need} for {Cognition} {Scale}. \emph{Psychological Reports}, \emph{66}(1), 321--322. \url{https://doi.org/10.2466/pr0.1990.66.1.321}
 
+\leavevmode\hypertarget{ref-Tsouloupas2010}{}%
+Tsouloupas, C. N., Carson, R. L., Matthews, R., Grawitch, M. J., \& Barber, L. K. (2010). Exploring the association between teachers' perceived student misbehaviour and emotional exhaustion: The importance of teacher efficacy beliefs and emotion regulation. \emph{Educational Psychology}, \emph{30}(2), 173--189. \url{https://doi.org/10.1080/01443410903494460}
+
 \leavevmode\hypertarget{ref-ValdiviaVazquez2021}{}%
 Valdivia Vázquez, J. A., Hernández Castillo, G. D., \& Maiz García, S. I. (2021). Burnout in {Police} {Officers} from {Northern} {Mexico}: {A} validity study of the {Maslach} {Burnout} {Inventory}. \emph{Journal of Police and Criminal Psychology}. \url{https://doi.org/10.1007/s11896-021-09452-z}
 
+\leavevmode\hypertarget{ref-Vannucci2018}{}%
+Vannucci, M., \& Chiorri, C. (2018). Individual differences in self-consciousness and mind wandering: {Further} evidence for a dissociation between spontaneous and deliberate mind wandering. \emph{Personality and Individual Differences}, \emph{121}, 57--61. \url{https://doi.org/10.1016/j.paid.2017.09.022}
+
+\leavevmode\hypertarget{ref-Ventura2015}{}%
+Ventura, M., Salanova, M., \& Llorens, S. (2015). Professional {Self}-{Efficacy} as a {Predictor} of {Burnout} and {Engagement}: {The} {Role} of {Challenge} and {Hindrance} {Demands}. \emph{The Journal of Psychology}, \emph{149}(3), 277--302. \url{https://doi.org/10.1080/00223980.2013.876380}
+
+\leavevmode\hypertarget{ref-Vera2004}{}%
+Vera, E. M., Shin, R. Q., Montgomery, G. P., Mildner, C., \& Speight, S. L. (2004). Conflict resolution styles, self-efficacy, self-control, and future orientation of urban adolescents. \emph{Professional School Counseling}, \emph{8}(1), 73--80.
+
+\leavevmode\hypertarget{ref-Vera2012}{}%
+Vera, M., Salanova, M., \& Lorente, L. (2012). The predicting role of self-efficacyin the {Job} {Demands}-{Resources} {Model}: {A} longitudinal study. \emph{Studies in Psychology}, \emph{33}(2), 167--178. \url{https://doi.org/10.1174/021093912800676439}
+
 \leavevmode\hypertarget{ref-Wiesner2005}{}%
 Wiesner, M., Windle, M., \& Freeman, A. (2005). Work stress, substance use, and depression among young adult workers: An examination of main and moderator effect model. \emph{Journal of Occupational Health Psychology}, \emph{10}(2), 83--96. \url{https://doi.org/10.1037/1076-8998.10.2.83}
+
+\leavevmode\hypertarget{ref-Xu2021}{}%
+Xu, P., \& Cheng, J. (2021). Individual differences in social distancing and mask-wearing in the pandemic of {COVID}-19: {The} role of need for cognition, self-control and risk attitude. \emph{Personality and Individual Differences}, \emph{175}, 110706. \url{https://doi.org/10.1016/j.paid.2021.110706}
+
+\leavevmode\hypertarget{ref-Yang2019}{}%
+Yang, C., Zhou, Y., Cao, Q., Xia, M., \& An, J. (2019). The relationship between self-control and self-efficacy among patients with substance use sisorders: {R}esilience and self-esteem as mediators. \emph{Frontiers in Psychiatry}, \emph{10}. \url{https://doi.org/10.3389/fpsyt.2019.00388}
 
 \leavevmode\hypertarget{ref-Zerna2021}{}%
 Zerna, J., Strobel, A., \& Strobel, A. (2021). \emph{The role of {Need} for {Cognition} in wellbeing -- {A} review of associations and potential underlying mechanisms}. \url{https://doi.org/10.31234/osf.io/p6gwh}
@@ -1277,6 +950,258 @@ Zheng, A., Briley, D., Jacobucci, R., Harden, K. P., \& Tucker-Drob, E. (2020). 
 \end{CSLReferences}
 
 \endgroup
+
+\newpage
+
+\hypertarget{supplementary-material}{%
+\section{Supplementary Material}\label{supplementary-material}}
+
+\hypertarget{s1-items-used-to-assess-covid-burden}{%
+\subsection{S1: Items used to assess Covid burden}\label{s1-items-used-to-assess-covid-burden}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  How burdened do you currently feel by the measures associated with Covid-19?
+\item
+  Are you in a Covid-19 risk group?
+\item
+  Do you have or have you had a Covid-19 infection?
+\item
+  Are or were family members or other people close to you infected with Covid-19?
+\item
+  Do you feel more burdened at work?
+\item
+  Are your worried more?
+\item
+  Do you feel restricted in your current day-to-day life?
+\item
+  Do you currently have additional responsibilities?
+\item
+  How much time do you currently spend on leisure activities?
+\item
+  Do you currently spend more/less time on work-related activities (e.g.~preparing lessons, reading literature, attending trainings for digital teaching)?
+\item
+  Did the current demands within your job change?
+\end{enumerate}
+
+For each response scale, please refer to Excel file with the full list of items and response types on OSF \url{https://osf.io/36ep9/}.
+
+\newpage
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\setcounter{section}{19}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\hypertarget{s2-results-when-excluding-the-outlier-with-very-high-mbi-scores-and-very-low-nfc-scores}{%
+\subsection{S2: Results when excluding the outlier with very high MBI scores and very low NFC scores}\label{s2-results-when-excluding-the-outlier-with-very-high-mbi-scores-and-very-low-nfc-scores}}
+
+\begin{landscape}\begin{table}
+
+\caption{\label{tab:outliercorrelationstable}Spearman correlations and internal consistencies of the questionnaire scores.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{llllllllllllll}
+\toprule
+  & { 1 } & { 2 } & { 3 } & { 4 } & { 5 } & { 6 } & { 7 } & { 8 } & { 9 } & { 10 } & { 11 } & { 12 } & { 13 }\\
+\midrule
+\cellcolor{gray!6}{1. MBI} & \cellcolor{gray!6}{\&nbsp; .90(.91)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+2. MBI EE & \&nbsp; .92*** & \&nbsp; .91(.91) &  &  &  &  &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{3. MBI DP} & \cellcolor{gray!6}{\&nbsp; .74***} & \cellcolor{gray!6}{\&nbsp; .53***} & \cellcolor{gray!6}{\&nbsp; .68(.66)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+4. MBI RPE & \&nbsp; .66*** & \&nbsp; .42*** & \&nbsp; .47*** & \&nbsp; .79(.78) &  &  &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{5. ERQ} & \cellcolor{gray!6}{-.05} & \cellcolor{gray!6}{-.05} & \cellcolor{gray!6}{\&nbsp; .05} & \cellcolor{gray!6}{-.09} & \cellcolor{gray!6}{\&nbsp; .73(.62)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+\addlinespace
+6. ERQ S & \&nbsp; .05 & -.00 & \&nbsp; .17* & \&nbsp; .08 & \&nbsp; .59*** & \&nbsp; .75(.79) &  &  &  &  &  &  & \\
+\cellcolor{gray!6}{7. ERQ R} & \cellcolor{gray!6}{-.09} & \cellcolor{gray!6}{-.05} & \cellcolor{gray!6}{-.05} & \cellcolor{gray!6}{-.19*} & \cellcolor{gray!6}{\&nbsp; .71***} & \cellcolor{gray!6}{-.07} & \cellcolor{gray!6}{\&nbsp; .84(.84)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+8. SCS & -.33*** & -.27*** & -.36*** & -.17* & -.04 & -.12 & \&nbsp; .04 & \&nbsp; .85(.85) &  &  &  &  & \\
+\cellcolor{gray!6}{9. NFC} & \cellcolor{gray!6}{-.24**} & \cellcolor{gray!6}{-.18*} & \cellcolor{gray!6}{-.21**} & \cellcolor{gray!6}{-.20**} & \cellcolor{gray!6}{-.02} & \cellcolor{gray!6}{-.18*} & \cellcolor{gray!6}{\&nbsp; .15*} & \cellcolor{gray!6}{\&nbsp; .20**} & \cellcolor{gray!6}{\&nbsp; .89(.88)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+10. DTH & \&nbsp; .66*** & \&nbsp; .72*** & \&nbsp; .34*** & \&nbsp; .35*** & \&nbsp; .04 & \&nbsp; .05 & \&nbsp; .00 & -.19** & -.13 & \&nbsp; .73(.72) &  &  & \\
+\addlinespace
+\cellcolor{gray!6}{11. DTL} & \cellcolor{gray!6}{\&nbsp; .44***} & \cellcolor{gray!6}{\&nbsp; .35***} & \cellcolor{gray!6}{\&nbsp; .37***} & \cellcolor{gray!6}{\&nbsp; .42***} & \cellcolor{gray!6}{\&nbsp; .01} & \cellcolor{gray!6}{\&nbsp; .16*} & \cellcolor{gray!6}{-.13} & \cellcolor{gray!6}{-.18*} & \cellcolor{gray!6}{-.15*} & \cellcolor{gray!6}{\&nbsp; .40***} & \cellcolor{gray!6}{\&nbsp; .73(.76)} & \cellcolor{gray!6}{} & \cellcolor{gray!6}{}\\
+12. DRF & -.54*** & -.45*** & -.40*** & -.52*** & -.01 & -.10 & \&nbsp; .09 & \&nbsp; .16* & \&nbsp; .23** & -.41*** & -.55*** & \&nbsp; .77(.75) & \\
+\cellcolor{gray!6}{13. COV} & \cellcolor{gray!6}{\&nbsp; .23**} & \cellcolor{gray!6}{\&nbsp; .32***} & \cellcolor{gray!6}{\&nbsp; .07} & \cellcolor{gray!6}{\&nbsp; .00} & \cellcolor{gray!6}{-.02} & \cellcolor{gray!6}{\&nbsp; .02} & \cellcolor{gray!6}{-.06} & \cellcolor{gray!6}{-.03} & \cellcolor{gray!6}{\&nbsp; .14} & \cellcolor{gray!6}{\&nbsp; .44***} & \cellcolor{gray!6}{\&nbsp; .08} & \cellcolor{gray!6}{-.12} & \cellcolor{gray!6}{\&nbsp; .77(.81)}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \textit{N} = 179. * \textit{p} < .05. ** \textit{p} < .01. *** \textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+\end{landscape}
+
+\begin{table}
+
+\caption{\label{tab:outlierobjective1table}Results of the replication of Grass et al. (2018).}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrrrr}
+\toprule
+Path & $B$ & $SE$ & $z$-value & $p$-value & CI Lower & CI Upper & $\beta$\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Direct Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC on Self Control} & \cellcolor{gray!6}{0.132} & \cellcolor{gray!6}{0.047} & \cellcolor{gray!6}{2.804} & \cellcolor{gray!6}{0.005} & \cellcolor{gray!6}{0.042} & \cellcolor{gray!6}{0.226} & \cellcolor{gray!6}{0.217}\\
+\hspace{1em}NFC on Reappraisal & 0.052 & 0.039 & 1.353 & 0.176 & -0.021 & 0.127 & 0.112\\
+\hspace{1em}\cellcolor{gray!6}{NFC on Suppression} & \cellcolor{gray!6}{-0.068} & \cellcolor{gray!6}{0.027} & \cellcolor{gray!6}{-2.519} & \cellcolor{gray!6}{0.012} & \cellcolor{gray!6}{-0.121} & \cellcolor{gray!6}{-0.016} & \cellcolor{gray!6}{-0.188}\\
+\hspace{1em}Self Control on RPE & -0.055 & 0.029 & -1.910 & 0.056 & -0.112 & 0.001 & -0.137\\
+\hspace{1em}\cellcolor{gray!6}{Reappraisal on RPE} & \cellcolor{gray!6}{-0.093} & \cellcolor{gray!6}{0.034} & \cellcolor{gray!6}{-2.707} & \cellcolor{gray!6}{0.007} & \cellcolor{gray!6}{-0.156} & \cellcolor{gray!6}{-0.020} & \cellcolor{gray!6}{-0.177}\\
+\hspace{1em}Suppression on RPE & 0.011 & 0.051 & 0.209 & 0.834 & -0.089 & 0.111 & 0.016\\
+\hspace{1em}\cellcolor{gray!6}{NFC on RPE} & \cellcolor{gray!6}{-0.039} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{-1.994} & \cellcolor{gray!6}{0.046} & \cellcolor{gray!6}{-0.076} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{-0.160}\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Indirect Effects}}\\
+\hspace{1em}NFC on RPE via Self Control & -0.007 & 0.005 & -1.403 & 0.161 & -0.019 & 0.000 & -0.030\\
+\hspace{1em}\cellcolor{gray!6}{NFC on RPE via Reappraisal} & \cellcolor{gray!6}{-0.005} & \cellcolor{gray!6}{0.004} & \cellcolor{gray!6}{-1.217} & \cellcolor{gray!6}{0.224} & \cellcolor{gray!6}{-0.014} & \cellcolor{gray!6}{0.002} & \cellcolor{gray!6}{-0.020}\\
+\hspace{1em}NFC on RPE via Suppression & -0.001 & 0.004 & -0.191 & 0.848 & -0.009 & 0.006 & -0.003\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Total Effect}}\\
+\hspace{1em}\cellcolor{gray!6}{Total Effect} & \cellcolor{gray!6}{-0.052} & \cellcolor{gray!6}{0.021} & \cellcolor{gray!6}{-2.518} & \cellcolor{gray!6}{0.012} & \cellcolor{gray!6}{-0.090} & \cellcolor{gray!6}{-0.010} & \cellcolor{gray!6}{-0.212}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item $B$ = unstandardized regression coefficient, $beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=179$.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:outlierobjective2table}Results of the demand-resource-ratio model.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrrrr}
+\toprule
+Path & $B$ & $SE$ & $z$-value & $p$-value & CI Lower & CI Upper & $\beta$\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Direct Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC on DTH} & \cellcolor{gray!6}{-0.035} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{-1.789} & \cellcolor{gray!6}{0.074} & \cellcolor{gray!6}{-0.074} & \cellcolor{gray!6}{0.003} & \cellcolor{gray!6}{-0.183}\\
+\hspace{1em}NFC on DTL & -0.020 & 0.015 & -1.287 & 0.198 & -0.050 & 0.010 & -0.152\\
+\hspace{1em}\cellcolor{gray!6}{NFC on DRF} & \cellcolor{gray!6}{0.060} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{2.942} & \cellcolor{gray!6}{0.003} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{0.100} & \cellcolor{gray!6}{0.318}\\
+\hspace{1em}NFC on MBI & 0.024 & 0.151 & 0.161 & 0.872 & -0.272 & 0.320 & 0.010\\
+\hspace{1em}\cellcolor{gray!6}{DTH on MBI} & \cellcolor{gray!6}{11.464} & \cellcolor{gray!6}{2.117} & \cellcolor{gray!6}{5.416} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{7.316} & \cellcolor{gray!6}{15.612} & \cellcolor{gray!6}{0.912}\\
+\hspace{1em}DTL on MBI & 1.951 & 1.565 & 1.247 & 0.212 & -1.115 & 5.018 & 0.106\\
+\hspace{1em}\cellcolor{gray!6}{DRF on MBI} & \cellcolor{gray!6}{-3.565} & \cellcolor{gray!6}{1.020} & \cellcolor{gray!6}{-3.495} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{-5.564} & \cellcolor{gray!6}{-1.566} & \cellcolor{gray!6}{-0.280}\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Indirect Effects}}\\
+\hspace{1em}NFC on MBI via DTH & -0.403 & 0.230 & -1.754 & 0.079 & -0.853 & 0.047 & -0.167\\
+\hspace{1em}\cellcolor{gray!6}{NFC on MBI via DTL} & \cellcolor{gray!6}{-0.039} & \cellcolor{gray!6}{0.034} & \cellcolor{gray!6}{-1.134} & \cellcolor{gray!6}{0.257} & \cellcolor{gray!6}{-0.106} & \cellcolor{gray!6}{0.028} & \cellcolor{gray!6}{-0.016}\\
+\hspace{1em}NFC on MBI via DRF & -0.215 & 0.104 & -2.070 & 0.038 & -0.418 & -0.011 & -0.089\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Total Effect}}\\
+\hspace{1em}\cellcolor{gray!6}{Total Effect} & \cellcolor{gray!6}{-0.632} & \cellcolor{gray!6}{0.253} & \cellcolor{gray!6}{-2.498} & \cellcolor{gray!6}{0.012} & \cellcolor{gray!6}{-1.128} & \cellcolor{gray!6}{-0.136} & \cellcolor{gray!6}{-0.262}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item $B$ = unstandardized regression coefficient, $beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error, $N=179$.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+
+\newpage
+
+\hypertarget{s3-replication-of-grass-et-al.-2018-when-including-years-spent-teaching}{%
+\subsection{S3: Replication of Grass et al.~(2018) when including years spent teaching}\label{s3-replication-of-grass-et-al.-2018-when-including-years-spent-teaching}}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Manuscript_files/figure-latex/objective1yearsplot-1} \caption{Standardized regression coefficients in the replication of Grass et al. (2018) when including years spent teaching. * $p<.05$, ** $p<.01$, $N=180$.}\label{fig:objective1yearsplot}
+\end{figure}
+
+\begin{table}
+
+\caption{\label{tab:objective1yearstable}Results of the replication of Grass et al. (2018) when including years spent teaching.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{threeparttable}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5cm}rrrrrrr}
+\toprule
+Path & $B$ & $SE$ & $z$-value & $p$-value & CI Lower & CI Upper & $\beta$\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Direct Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC on Self Control} & \cellcolor{gray!6}{0.168} & \cellcolor{gray!6}{0.052} & \cellcolor{gray!6}{3.258} & \cellcolor{gray!6}{0.001} & \cellcolor{gray!6}{0.064} & \cellcolor{gray!6}{0.267} & \cellcolor{gray!6}{0.280}\\
+\hspace{1em}Years spent teaching on Self Control & 0.145 & 0.044 & 3.299 & 0.001 & 0.054 & 0.230 & 0.223\\
+\hspace{1em}\cellcolor{gray!6}{NFC on Reappraisal} & \cellcolor{gray!6}{0.055} & \cellcolor{gray!6}{0.036} & \cellcolor{gray!6}{1.519} & \cellcolor{gray!6}{0.129} & \cellcolor{gray!6}{-0.016} & \cellcolor{gray!6}{0.125} & \cellcolor{gray!6}{0.123}\\
+\hspace{1em}NFC on Suppression & -0.063 & 0.024 & -2.602 & 0.009 & -0.109 & -0.014 & -0.182\\
+\hspace{1em}\cellcolor{gray!6}{Self Control on RPE} & \cellcolor{gray!6}{-0.069} & \cellcolor{gray!6}{0.030} & \cellcolor{gray!6}{-2.271} & \cellcolor{gray!6}{0.023} & \cellcolor{gray!6}{-0.127} & \cellcolor{gray!6}{-0.010} & \cellcolor{gray!6}{-0.169}\\
+\hspace{1em}Reappraisal on RPE & -0.094 & 0.036 & -2.618 & 0.009 & -0.164 & -0.022 & -0.173\\
+\hspace{1em}\cellcolor{gray!6}{Suppression on RPE} & \cellcolor{gray!6}{0.002} & \cellcolor{gray!6}{0.049} & \cellcolor{gray!6}{0.044} & \cellcolor{gray!6}{0.965} & \cellcolor{gray!6}{-0.093} & \cellcolor{gray!6}{0.101} & \cellcolor{gray!6}{0.003}\\
+\hspace{1em}NFC on RPE & -0.051 & 0.020 & -2.491 & 0.013 & -0.089 & -0.010 & -0.208\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Indirect Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC and years spent teaching on RPE via Self Control} & \cellcolor{gray!6}{-0.021} & \cellcolor{gray!6}{0.011} & \cellcolor{gray!6}{-1.965} & \cellcolor{gray!6}{0.049} & \cellcolor{gray!6}{-0.045} & \cellcolor{gray!6}{-0.002} & \cellcolor{gray!6}{-0.085}\\
+\hspace{1em}NFC on RPE via Reappraisal & -0.005 & 0.004 & -1.325 & 0.185 & -0.014 & 0.002 & -0.021\\
+\hspace{1em}\cellcolor{gray!6}{NFC on RPE via Suppression} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{0.003} & \cellcolor{gray!6}{-0.041} & \cellcolor{gray!6}{0.968} & \cellcolor{gray!6}{-0.008} & \cellcolor{gray!6}{0.006} & \cellcolor{gray!6}{-0.001}\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Total Effect}}\\
+\hspace{1em}Total Effect & -0.078 & 0.025 & -3.164 & 0.002 & -0.124 & -0.027 & -0.315\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item $B$ = unstandardized regression coefficient, $beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=180$.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+
+\newpage
+
+\hypertarget{s4-demand-resource-ratio-model-with-the-mbi-subscale-reduced-personal-efficacy}{%
+\subsection{S4: Demand-resource-ratio model with the MBI subscale reduced personal efficacy}\label{s4-demand-resource-ratio-model-with-the-mbi-subscale-reduced-personal-efficacy}}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{Manuscript_files/figure-latex/exploratory1plot-1} \caption{Standardized path coefficients of the demand-resource-ratio model with the MBI subscale reduced personal efficacy. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, RPE = reduced personal efficacy, $N=180$.}\label{fig:exploratory1plot}
+\end{figure}
+
+\newpage
+
+\hypertarget{s5-exploratory-model-with-all-relevant-variables}{%
+\subsection{S5: Exploratory model with all relevant variables}\label{s5-exploratory-model-with-all-relevant-variables}}
+
+\begin{table}
+
+\caption{\label{tab:explor2table}Results of the exploratory model with Covid burden.}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{11}{13}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5cm}rrrrrrr}
+\toprule
+Path & $B$ & $SE$ & $z$-value & $p$-value & CI Lower & CI Upper & $\beta$\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Direct Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{Years on COVB} & \cellcolor{gray!6}{0.055} & \cellcolor{gray!6}{0.024} & \cellcolor{gray!6}{2.327} & \cellcolor{gray!6}{0.020} & \cellcolor{gray!6}{0.009} & \cellcolor{gray!6}{0.102} & \cellcolor{gray!6}{0.168}\\
+\hspace{1em}Years on SCS & 0.137 & 0.045 & 3.037 & 0.002 & 0.049 & 0.226 & 0.212\\
+\hspace{1em}\cellcolor{gray!6}{COVB on DTH} & \cellcolor{gray!6}{0.061} & \cellcolor{gray!6}{0.014} & \cellcolor{gray!6}{4.352} & \cellcolor{gray!6}{0.000} & \cellcolor{gray!6}{0.034} & \cellcolor{gray!6}{0.089} & \cellcolor{gray!6}{0.449}\\
+\hspace{1em}SCS on DTH & -0.015 & 0.005 & -3.069 & 0.002 & -0.025 & -0.005 & -0.217\\
+\hspace{1em}\cellcolor{gray!6}{NFC on DTH} & \cellcolor{gray!6}{-0.038} & \cellcolor{gray!6}{0.014} & \cellcolor{gray!6}{-2.646} & \cellcolor{gray!6}{0.008} & \cellcolor{gray!6}{-0.065} & \cellcolor{gray!6}{-0.010} & \cellcolor{gray!6}{-0.210}\\
+\hspace{1em}SCS on DRF & 0.015 & 0.006 & 2.540 & 0.011 & 0.003 & 0.026 & 0.223\\
+\hspace{1em}\cellcolor{gray!6}{NFC on DRF} & \cellcolor{gray!6}{0.057} & \cellcolor{gray!6}{0.018} & \cellcolor{gray!6}{3.162} & \cellcolor{gray!6}{0.002} & \cellcolor{gray!6}{0.022} & \cellcolor{gray!6}{0.093} & \cellcolor{gray!6}{0.336}\\
+\hspace{1em}DTH on EE & 14.985 & 2.111 & 7.098 & 0.000 & 10.847 & 19.124 & 1.004\\
+\hspace{1em}\cellcolor{gray!6}{COVB on EE} & \cellcolor{gray!6}{-0.294} & \cellcolor{gray!6}{0.136} & \cellcolor{gray!6}{-2.161} & \cellcolor{gray!6}{0.031} & \cellcolor{gray!6}{-0.560} & \cellcolor{gray!6}{-0.027} & \cellcolor{gray!6}{-0.144}\\
+\hspace{1em}DRF on RPE & -4.686 & 0.634 & -7.387 & 0.000 & -5.930 & -3.443 & -0.760\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Indirect Effects}}\\
+\hspace{1em}\cellcolor{gray!6}{NFC and Years on RPE via SCS and DRF} & \cellcolor{gray!6}{-0.279} & \cellcolor{gray!6}{0.084} & \cellcolor{gray!6}{-3.319} & \cellcolor{gray!6}{0.001} & \cellcolor{gray!6}{-0.443} & \cellcolor{gray!6}{-0.114} & \cellcolor{gray!6}{-0.291}\\
+\hspace{1em}NFC and Years on EE via SCS, COVB, and DTH & -0.543 & 0.206 & -2.633 & 0.008 & -0.947 & -0.139 & -0.181\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{Total Effect}}\\
+\hspace{1em}\cellcolor{gray!6}{Total Effect} & \cellcolor{gray!6}{-0.821} & \cellcolor{gray!6}{0.256} & \cellcolor{gray!6}{-3.212} & \cellcolor{gray!6}{0.001} & \cellcolor{gray!6}{-1.322} & \cellcolor{gray!6}{-0.320} & \cellcolor{gray!6}{-0.472}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item $B$ = unstandardized regression coefficient, $beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching, $N=180$.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
 
 
 \end{document}

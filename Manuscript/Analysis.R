@@ -25,9 +25,7 @@
   
   library(renv)
   source(here("Manuscript", "renv", "activate.R"))
-  #renv::activate(here("Manuscript"))
-  #renv::restore(here("Manuscript"))
-  
+
   # the required packages are:
   # "bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
   # "kableExtra", "Hmisc", "semPlot", "ggplot2", "knitr", "ppcor", "stats", "apa", "GGally"
@@ -386,7 +384,7 @@
 
 ##### Correlations #############################################################
   
-  # The following function for nicely formatted correlation output was taken from
+  # The following function for nicely formatted correlation output was (modified and) taken from
   # https://paulvanderlaken.com/2020/07/28/publication-ready-correlation-matrix-significance-r/
   # on the 5th of August 2021
   
@@ -428,9 +426,9 @@
     # transform correlations to specific character format
     Rformatted = formatC(R, format = 'f', digits = digits, decimal.mark = decimal.mark)
     
-    # if there are any negative numbers, we want to put a space before the positives to align all
+    # if there are any negative numbers, we want to put a html space before the positives to align all
     if (sum(!is.na(R) & R < 0) > 0) {
-      Rformatted = ifelse(!is.na(R) & R > 0, paste0(" ", Rformatted), Rformatted)
+      Rformatted = ifelse(!is.na(R) & R > 0, paste0("\\&nbsp; ", Rformatted), Rformatted)
     }
     
     # add significance levels if desired
@@ -479,11 +477,11 @@
   consist_diag <- consistencies[c(colnames(correlations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  consist_diag <- cbind(format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+  consist_diag <- cbind(rep("\\&nbsp; ",10), format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
                         format(round(t(consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
-  consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
+  consist_diag <- apply(consist_diag[,c(1:5)], 1 ,paste, collapse = "")
   
   # add previously assembled diagonal with alpha and omega values
   diag(correlations) <- consist_diag
@@ -998,11 +996,11 @@
   outlier_consist_diag <- outlierconsistencies[c(colnames(outliercorrelations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  outlier_consist_diag <- cbind(format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
-                        format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
+  outlier_consist_diag <- cbind(rep("\\&nbsp; ",10), format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+                                format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
-  outlier_consist_diag <- apply(outlier_consist_diag[,c(1:4)], 1 ,paste, collapse = "")
+  outlier_consist_diag <- apply(outlier_consist_diag[,c(1:5)], 1 ,paste, collapse = "")
   
   # add previously assembled diagonal with alpha and omega values
   diag(outliercorrelations) <- outlier_consist_diag

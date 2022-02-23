@@ -87,8 +87,6 @@ header-includes   :
     - \usepackage{xcolor}
     - \usepackage{setspace}\doublespacing
     - \usepackage{chngcntr}
-    - \usepackage{siunitx}
-    - \newcolumntype{d}{S[table-format=3.2]}
 ---
 \renewcommand\thesection{\Alph{section}}
 \counterwithout{figure}{section}
@@ -272,13 +270,13 @@ To adhere to the preregistration, we report the results containing the outlier i
 ```{r cdescriptivestable, echo=FALSE, message=FALSE, warning=FALSE, caption="Descriptive statistics of the questionnaire scores."}
   
   desc_table <-
-      kbl(desc_met,
+      knitr::kable(desc_met,
           caption = "Descriptive statistics of the questionnaire scores.",
           booktabs = T, # no vertical lines
           escape = F, # correctly print special characters
           align = c("l",rep("r",7))) %>% # right aligns the text in every column except for the first
-      kable_styling(latex_options = c("striped", "scale_down")) %>%
-      footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
+      kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+      kableExtra::footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden, SD = Standard deviation. \\\\textit{N} = 180.",
                escape = F, # correctly print special characters
                threeparttable = T) # line breaks in the footnote
 ```
@@ -286,15 +284,15 @@ To adhere to the preregistration, we report the results containing the outlier i
 ```{r correlationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
 
   corr_table <-
-  kable(correlations,
+  knitr::kable(correlations,
       caption = "Spearman correlations and internal consistencies of the questionnaire scores.",
       booktabs = TRUE, # no vertical lines
       escape = FALSE, # correctly print special characters
-      align = c("l",rep("d",13))) %>% # left aligns the text in every column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 180. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+      align = rep("l",14)) %>% # left aligns the text in every column
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 180. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
              escape = FALSE, # correctly print special characters
-             threeparttable = TRUE) %>% # line breaks in the footnote
+             threeparttable = T) %>% # line breaks in the footnote
   kableExtra::landscape() # make the table horizontal 
 
 ```
@@ -319,16 +317,16 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 ```{r objective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
 
   replic_table <-
-    kbl(replic_table,
+    knitr::kable(replic_table,
         caption = "Results of the replication of Grass et al. (2018).",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 8, 10) %>%
-    pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, \\beta = standardized regression coefficient, $CI$ = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 8, 10) %>%
+    kableExtra::pack_rows("Total Effect", 11, 11) %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, \\beta = standardized regression coefficient, $CI$ = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
   
@@ -389,16 +387,16 @@ Therefore, the total effect also increased slightly, compared to the first model
 ```{r objective2table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the demand-resource-ratio model."}
 
   drrmodel_table <-
-    kbl(drr_table,
+    knitr::kable(drr_table,
         caption = "Results of the demand-resource-ratio model.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 8, 10) %>%
-    pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 8, 10) %>%
+    kableExtra::pack_rows("Total Effect", 11, 11) %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
@@ -453,16 +451,16 @@ The latent variable *demands too low* was neither related to NFC ($\beta=$ `r ro
 ```{r exploratory1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the demand-resource-ratio model with reduced personal efficacy in place of the MBI score."}
   
   drr_rpe_table <-
-    kbl(drr_rpe_table,
+    knitr::kable(drr_rpe_table,
         caption = "Results of the demand-resource-ratio model with reduced personal efficacy in place of the MBI score.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 8, 10) %>%
-    pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, *demand-resource-fit* = Demand Resource Fit, RPE = Reduced Personal Efficacy subscale of the Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 8, 10) %>%
+    kableExtra::pack_rows("Total Effect", 11, 11) %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, *demand-resource-fit* = Demand Resource Fit, RPE = Reduced Personal Efficacy subscale of the Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
@@ -685,13 +683,13 @@ For each response scale, please refer to Excel file with the full list of items 
 ```{r outliercorrelationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
 
   outliercorr_table <-
-  kbl(outliercorrelations,
+  knitr::kable(outliercorrelations,
       caption = "Spearman correlations and internal consistencies of the questionnaire scores.",
       booktabs = TRUE, # no vertical lines
       escape = FALSE, # correctly print special characters
-      align = c("l",rep("d",14))) %>% # left aligns the text in every column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 179. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
+      align = rep("l",14)) %>% # left aligns the text in every column
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::footnote(general = "MBI = Maslach Burnout Inventory, MBI EE = Emotional exhaustion subscale, MBI DP = Depersonalisation subscale, MBI RPE = Reduced personal efficacy subscale, ERQ = Emotion Regulation Questionnaire, ERQ S = Suppression subscale, ERQ R = Reappraisal subscale, SCS = Self-Control Scale, NFC = Need for Cognition, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand-Resource-Fit, COV = Covid-19 Burden. \\\\textit{N} = 179. * \\\\textit{p} < .05. ** \\\\textit{p} < .01. *** \\\\textit{p} < .001. Diagonal is Cronbach's Alpha and (in brackets) MacDonald's Omega.",
              escape = FALSE, # correctly print special characters
              threeparttable = TRUE) %>% # line breaks in the footnote
   kableExtra::landscape() # make the table horizontal 
@@ -703,16 +701,16 @@ For each response scale, please refer to Excel file with the full list of items 
 ```{r outlierobjective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
 
   outlierreplic_table <-
-    kbl(outlierreplic_table,
+    knitr::kable(outlierreplic_table,
         caption = "Results of the replication of Grass et al. (2018).",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 8, 10) %>%
-    pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=179$.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 8, 10) %>%
+    kableExtra::pack_rows("Total Effect", 11, 11) %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=179$.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
   
@@ -723,16 +721,16 @@ For each response scale, please refer to Excel file with the full list of items 
 ```{r outlierobjective2table, echo=FALSE, message=FALSE, warning=FALSE, caption = "Results of the demand-resource-ratio model."}
   
   outlierdrrmodel_table <-
-    kbl(outlierdrr_table,
+    knitr::kable(outlierdrr_table,
         caption = "Results of the demand-resource-ratio model.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 8, 10) %>%
-    pack_rows("Total Effect", 11, 11) %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error, $N=179$.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 7) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 8, 10) %>%
+    kableExtra::pack_rows("Total Effect", 11, 11) %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, DTH = Demands Too High, DTL = Demands Too Low, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, $SE$ = standard error, $N=179$.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
@@ -776,17 +774,17 @@ For each response scale, please refer to Excel file with the full list of items 
 ```{r objective1yearstable, echo=FALSE, message=FALSE, warning=FALSE, caption = "Results of the replication of Grass et al. (2018) when including years spent teaching."}
 
   replic_years_table <-
-    kbl(replic_years_table,
+    knitr::kable(replic_years_table,
         caption = "Results of the replication of Grass et al. (2018) when including years spent teaching.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down")) %>%
-    pack_rows("Direct Effects", 1, 8) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 9, 11) %>%
-    pack_rows("Total Effect", 12, 12) %>%
-    column_spec(1, width = "5cm") %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=180$.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down")) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 8) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 9, 11) %>%
+    kableExtra::pack_rows("Total Effect", 12, 12) %>%
+    kableExtra::column_spec(1, width = "5cm") %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=180$.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
@@ -835,17 +833,17 @@ For each response scale, please refer to Excel file with the full list of items 
 ```{r explor2table, echo=FALSE, message=FALSE, warning=FALSE, caption = "Results of the exploratory model with Covid burden."}
 
   explor2_table <-
-    kbl(explor2_table,
+    knitr::kable(explor2_table,
         caption = "Results of the exploratory model with Covid burden.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
-    kable_styling(latex_options = c("striped", "scale_down"), font_size = 11) %>%
-    pack_rows("Direct Effects", 1, 10) %>% # group the rows and add a header in between
-    pack_rows("Indirect Effects", 11, 12) %>%
-    pack_rows("Total Effect", 13, 13) %>%
-    column_spec(1, width = "5cm") %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching, $N=180$.",
+    kableExtra::kable_styling(latex_options = c("striped", "scale_down"), font_size = 11) %>%
+    kableExtra::pack_rows("Direct Effects", 1, 10) %>% # group the rows and add a header in between
+    kableExtra::pack_rows("Indirect Effects", 11, 12) %>%
+    kableExtra::pack_rows("Total Effect", 13, 13) %>%
+    kableExtra::column_spec(1, width = "5cm") %>%
+    kableExtra::footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching, $N=180$.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
