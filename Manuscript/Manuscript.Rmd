@@ -552,11 +552,11 @@ Previous studies have indicated a protective effect of NFC against burnout, but 
 
 ## Replication of Grass et al. (2018)
 
-While the mediation model had good fit, not all patterns were similar to the original study: NFC and self-control were positively associated, and reappraisal and *reduced personal efficacy* were negatively related, but there was no association between NFC and reappraisal.
-There was, however, a positive association between self-control and *reduced personal efficacy*, and a negative one between NFC and suppression.
+While the mediation model had good fit, not all patterns were similar to the original study: NFC and self-control had a medium positive association, and reappraisal and *reduced personal efficacy* had a small negative association, but NFC and reappraisal were not associated.
+There was, however, a small negative association between self-control and *reduced personal efficacy*, and between NFC and suppression.
 
-NFC had a direct and negative effect on *reduced personal efficacy*, but this relationship was not mediated by any other variable.
-Only when the amount of teaching experience was included as a predictor of self-control next to NFC, an indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower *reduced personal efficacy*.
+NFC had a direct, medium negative effect on *reduced personal efficacy*, but this relationship was not mediated by any other variable.
+Only when the amount of teaching experience was included as a predictor of self-control next to NFC, a very small indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower *reduced personal efficacy*.
 The higher self-control that comes with more teaching experience is in line with findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Oliva2019].
 The participants in the study by Grass et al. [-@Grass2018] were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
 Therefore, it is likely that not only the teaching experience itself but also higher age might be associated with higher self-control.
@@ -736,7 +736,7 @@ For each response scale, please refer to Excel file with the full list of items 
 
 ## S3: Replication of Grass et al. (2018) when including years spent teaching
 
-```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018) when including years spent teaching. * $p<.05$, ** $p<.01$."}
+```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018) when including years spent teaching. * $p<.05$, ** $p<.01$, $N=180$."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -779,7 +779,7 @@ For each response scale, please refer to Excel file with the full list of items 
     pack_rows("Indirect Effects", 9, 11) %>%
     pack_rows("Total Effect", 12, 12) %>%
     column_spec(1, width = "5cm") %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error.",
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, NFC = Need for Cognition, RPE = reduced personal efficacy subscale of the Maslach Burnout Inventory, $SE$ = standard error, $N=180$.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
@@ -790,7 +790,7 @@ For each response scale, please refer to Excel file with the full list of items 
 
 ## S4: Demand-resource-ratio model with the MBI subscale reduced personal efficacy
 
-```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized path coefficients of the demand-resource-ratio model with the MBI subscale reduced personal efficacy. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, RPE = reduced personal efficacy."}
+```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized path coefficients of the demand-resource-ratio model with the MBI subscale reduced personal efficacy. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, RPE = reduced personal efficacy, $N=180$."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -838,7 +838,7 @@ For each response scale, please refer to Excel file with the full list of items 
     pack_rows("Indirect Effects", 11, 12) %>%
     pack_rows("Total Effect", 13, 13) %>%
     column_spec(1, width = "5cm") %>%
-    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching.",
+    footnote(general = "$B$ = unstandardized regression coefficient, $\\beta$ = standardized regression coefficient, CI = confidence interval, COVB = Covid Burden, DTH = Demands Too High, DRF = Demand Resource Fit, MBI = Maslach Burnout Inventory, NFC = Need for Cognition, SCS = Self Control Scale, $SE$ = standard error, Years = Years spent teaching, $N=180$.",
              escape = F, # correctly print special characters
              threeparttable = T)# line breaks in the footnote
 ```
