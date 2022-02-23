@@ -24,8 +24,9 @@
   # install renv by calling install.packages("renv") if necessary
   
   library(renv)
-  renv::activate(here("Manuscript"))
-  renv::restore(here("Manuscript"))
+  source(here("Manuscript", "renv", "activate.R"))
+  #renv::activate(here("Manuscript"))
+  #renv::restore(here("Manuscript"))
   
   # the required packages are:
   # "bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
@@ -45,8 +46,8 @@
   base::load(here("Data", "data.Rda"))
   
   # Load the internal consistencies (bootstrapping has been suppressed to save time on knitting)
-  consistencies <- read_rds(here("Data", "consistencies.rds"))
-  outlierconsistencies <- read_rds(here("Data", "outlierconsistencies.rds"))
+  consistencies <- readRDS(here("Data", "consistencies.rds"))
+  outlierconsistencies <- readRDS(here("Data", "outlierconsistencies.rds"))
   
   # create a vector of consistencies to be used as the diagonal in a table later
   consist_diag <- cbind(format(round(t(consistencies[2,2:11]), digits = 2), nsmall = 2), rep("(",10),
@@ -210,12 +211,12 @@
   }
   
   # Plot a big correlational matrix to check for non-linear associations and unexpected outliers
-  multicorrplot <- ggpairs(score_data[,c("years","mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
+  multicorrplot <- GGally::ggpairs(score_data[,c("years","mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap",
                                          "scs","ncs","dth","dtl","drf","covb")], lower = list(continuous = my_fn))
   
   # It looked like there was an outlier in the data, especially visible in the MBI data
   # Check for the outlier in particular, using the data involved in the mediation
-  outlierplot <- outlier(score_data[ ,c(6,8:11)], plot = TRUE)
+  outlierplot <- psych::outlier(score_data[ ,c(6,8:11)], plot = TRUE)
   
   # Remove participant 161 in a second version of the data frame (for the supplementary material analysis)
   score_data_no_outlier <- score_data[score_data$mbi < 100, ]
@@ -227,7 +228,7 @@
   # using Mardia's test for multivariate normal distribution
   # results will be fed into the desc_met data frame in the next step
   
-  isnorm_test <- mvn(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","dth","dtl","drf","covb")],
+  isnorm_test <- MVN::mvn(score_data[c("mbi","mbi_ee","mbi_dp","mbi_rpe","erq","erq_supp","erq_reap","scs","ncs","dth","dtl","drf","covb")],
                      mvnTest = "mardia", covariance = TRUE, desc = TRUE, univariateTest = "SW")  
   
   # Descriptive statistics
@@ -522,7 +523,7 @@
   
   # Determine the model fit
   
-  fit <- sem(
+  fit <- lavaan::sem(
     model = repli_model,
     data  = score_data,
     se = "bootstrap",
@@ -531,7 +532,7 @@
   
   # Get summary
   
-  fit_summ <- summary(fit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  fit_summ <- lavaan::summary(fit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                       estimates = TRUE, ci = TRUE)
   
 ##### Prepare table ############################################################
@@ -583,7 +584,7 @@
   
   # Determine the model fit
   
-  fityears <- sem(
+  fityears <- lavaan::sem(
     model = repli_model_years,
     data  = score_data,
     se = "bootstrap",
@@ -592,7 +593,7 @@
   
   # Get summary
   
-  fityears_summ <- summary(fityears, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  fityears_summ <- lavaan::summary(fityears, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                            estimates = TRUE, ci = TRUE)
   
 ##### Prepare table ############################################################
@@ -651,7 +652,7 @@
   
   # Determine the model fit
   
-  fit2 <- sem(
+  fit2 <- lavaan::sem(
     model = sem_model,
     data  = score_data,
     estimator = "MLR"
@@ -659,7 +660,7 @@
   
   # Get summary
   
-  fit2_summ <- summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  fit2_summ <- lavaan::summary(fit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                        estimates = TRUE, ci = TRUE)
   
 ##### Prepare table ############################################################
@@ -745,7 +746,7 @@
   
   # Determine the model fit
   
-  fit_explor1 <- sem(
+  fit_explor1 <- lavaan::sem(
     model = explor1_model,
     data  = score_data,
     estimator = "MLR"
@@ -753,7 +754,7 @@
   
   # Get summary
   
-  fit_explor1_summ <- summary(fit_explor1, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  fit_explor1_summ <- lavaan::summary(fit_explor1, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                               estimates = TRUE, ci = TRUE)
 
 ##### Prepare table ############################################################
@@ -824,7 +825,7 @@
   
   # Determine the model fit
   
-  fit_explor2 <- sem(
+  fit_explor2 <- lavaan::sem(
     model = explor2_model,
     data  = score_data,
     estimator = "MLR"
@@ -832,7 +833,7 @@
   
   # Get summary
   
-  fit_explor2_summ <- summary(fit_explor2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  fit_explor2_summ <- lavaan::summary(fit_explor2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                               estimates = TRUE, ci = TRUE)
   
 ##### Prepare table ############################################################
@@ -1040,7 +1041,7 @@
   
   # Determine the model fit
   
-  outlierfit <- sem(
+  outlierfit <- lavaan::sem(
     model = outlierrepli_model,
     data  = score_data_no_outlier,
     se = "bootstrap",
@@ -1049,7 +1050,7 @@
   
   # Get summary
   
-  outlierfit_summ <- summary(outlierfit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  outlierfit_summ <- lavaan::summary(outlierfit, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                              estimates = TRUE, ci = TRUE)
   
   
@@ -1104,7 +1105,7 @@
   
   # Determine the model fit
   
-  outlierfit2 <- sem(
+  outlierfit2 <- lavaan::sem(
     model = outliersem_model,
     data  = score_data_no_outlier,
     estimator = "MLR"
@@ -1112,7 +1113,7 @@
   
   # Get summary
   
-  outlierfit2_summ <- summary(outlierfit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+  outlierfit2_summ <- lavaan::summary(outlierfit2, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                               estimates = TRUE, ci = TRUE)
   
   
