@@ -572,7 +572,7 @@ Hence, the mediation of NFC and *reduced personal efficacy* by self-control when
 
 Despite not having good fit indices, the model suggested a complete mediation of NFC and burnout via *demands too high* and *demand-resource-fit* but not *demands too low*.
 Specifically, individuals with higher NFC had lower burnout scores through perceiving demands as fitting to and not exceeding their own resources.
-Interestingly, the correlation between NFC and burnout, which can be classified as medium according to Gignac and Szodorai [-@Gignac2016], disappeared in the context of the demand-resource-ratios as mediators.
+Interestingly, the medium correlation between NFC and burnout disappeared in the context of the demand-resource-ratios as mediators.
 The mediator that did not reach significance was the perception of own resources exceeding the job demands.
 As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. [-@Reijseger2013.].
 The fact that the items that made up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
@@ -589,7 +589,7 @@ It remains an open question whether a high desire for control and high NFC might
 Such behavioural tendencies would threaten personal well-being in the long term, as the demands cannot be met, self-efficacy declines, and stress increases.
 
 ## Exploratory analyses
-### Demand-resource-ratio model with subscale
+### Demand-resource-ratio model with subscale reduced personal efficacy
 
 The demand-resource-ratio model with the subscale *reduced personal efficacy* in place of the MBI score did not have good fit indices.
 Compared to the confirmatory demand-resource-ratio model, the mediation of NFC and *reduced personal efficacy* via *demands too high* did not reach significance, but both the mediation via *demand-resource-fit* and the total effect remained significant.
@@ -612,15 +612,22 @@ The degree of association between *demands too high* and *emotional exhaustion* 
 Curiously, higher Covid burden also showed a small negative association with *emotional exhaustion*.
 It could be that for some teachers, remote teaching was experienced as a relief from the strain of dealing with a group of over twenty students each day, who are more likely to misbehave in a classroom setting than when they are studying at home.
 So while those teachers did feel the pandemic burden, they also felt less emotionally exhausted.
+However, as this part of the study was exploratory, the results should be interpreted with some caution and examined with new data in a confirmatory approach.
 
 ## Limitations and future implications
 
-The data used in this study had been collected for another purpose, so there were several aspects that would have improved the investigation of our research questions but were not feasible.
+The data used in this study had been collected with a focus on emotion regulation and burnout, so there were several aspects that would have improved the investigation of our research questions but were not feasible.
 Firstly, collecting coping style data would have enabled a full replication of the mediation model of Grass et al. [-@Grass2018].
 Secondly, longitudinal data would have facilitated more definitive conclusions about causal relations, as well as about inter-individual differences in the perception of demands and resources as the pandemic progresses.
 Furthermore, the latent variables for the demand-resource-ratios were item groups chosen from the work satisfaction questionnaire and had not been validated for this use before.
 However, as two of them showed meaningful relations with self-control, NFC, and two of the three MBI subscales, pursuing this concept further seems promising.
 Especially because we worked with pre-existing data, we preregistered all analyses and clearly differentiated between confirmatory and exploratory models in order to make the results as reliable as possible.
+
+## Conclusions
+
+Our study showed that self-control mediated between NFC and burnout when teaching experience was being taken into account.
+Contrary to prior studies, neither habitual use of reappraisal nor use of suppression mediated between NFC and burnout.
+However, a crucial role in the relation of NFC and burnout seemed to be the perceived ratio of personal resources and demands, specifically, a resource-demand-fit was associated with lower and excessive demands were associated with higher burnout scores.
 Applied to real-life teaching practise, our results suggest that a healthy work environment should offer ample opportunities to make use of one's abilities, without creating demands that are too high.
 As a consequence, experiences and sense of self-efficacy will increase, which in turn heightens confidence in one's skills to deal with future demands that are higher, preventing loss of personal efficacy and burnout in the long term.
 
