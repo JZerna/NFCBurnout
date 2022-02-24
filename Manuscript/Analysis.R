@@ -428,7 +428,7 @@
     
     # if there are any negative numbers, we want to put a html space before the positives to align all
     if (sum(!is.na(R) & R < 0) > 0) {
-      Rformatted = ifelse(!is.na(R) & R > 0, paste0("\\&nbsp; ", Rformatted), Rformatted)
+      Rformatted = ifelse(!is.na(R) & R > 0, paste0(" ", Rformatted), Rformatted)
     }
     
     # add significance levels if desired
@@ -477,7 +477,7 @@
   consist_diag <- consistencies[c(colnames(correlations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  consist_diag <- cbind(rep("\\&nbsp; ",10), format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+  consist_diag <- cbind(format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
                         format(round(t(consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
@@ -996,7 +996,7 @@
   outlier_consist_diag <- outlierconsistencies[c(colnames(outliercorrelations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  outlier_consist_diag <- cbind(rep("\\&nbsp; ",10), format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
+  outlier_consist_diag <- cbind(format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
                                 format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
