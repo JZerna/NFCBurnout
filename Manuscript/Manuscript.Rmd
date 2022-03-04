@@ -55,7 +55,7 @@ abstract: |
   Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources, and included other variables in an exploratory approach.
   The results indicated that teachers with higher NFC and more self-control have lower burnout because they experience their resources as fitting to their demands.
   
-keywords          : "mediation, resources, demands, structural equation modelling, Covid-19"
+keywords          : "behaviour, resources, demands, education, Covid-19"
 wordcount         : "~ 5600"
 bibliography      : NFC_Burnout.bib
 floatsintext      : yes
@@ -69,7 +69,7 @@ draft             : no
 documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
-csl               : apa.csl
+csl               : sage-harvard.csl
 header-includes   :
     - \usepackage{booktabs}
     - \usepackage{longtable}
