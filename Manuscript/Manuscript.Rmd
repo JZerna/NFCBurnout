@@ -61,7 +61,7 @@ figsintext        : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
-linenumbers       : yes
+linenumbers       : no
 mask              : no
 draft             : no
 documentclass     : "apa6"
