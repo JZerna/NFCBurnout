@@ -46,14 +46,12 @@ affiliation:
     institution   : "Institute of Psychology, Chemnitz University of Technology"
 
 abstract: |
-  The prevalence of burnout has been rising for years, not just due to the increasing demands during the Covid-19 pandemic.
-  While it is known that burnout primarily affects employees in social jobs, less is known about the personality traits that promote or protect against burnout.
+  Burnout has become more prevalent, mainly in social jobs, but little is known about the personality traits that promote or protect against burnout.
   One of these traits is Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
-  In the present study, we analyzed questionnaire data of N = 180 teachers that had been collected in spring of 2020.
-  Firstly, we aimed to replicate results by Grass et al. (2018), who showed that the association of NFC and the burnout aspect of reduced personal efficacy was mediated by habitual use of reappraisal, but not by habitual suppression or self-control.
-  With our data, self-control became a significant mediator when teaching experience was being taken into account, but neither reappraisal nor suppression mediated between NFC and reduced personal efficacy.
-  Secondly, we computed a structural equation model to investigate whether NFC and burnout were associated via different ratios of demands and personal resources, and included other variables in an exploratory approach.
-  The results indicated that teachers with higher NFC and more self-control have lower burnout because they experience their resources as fitting to their demands.
+  We analyzed data of N = 180 teachers to replicate results by Grass et al. (2018), who reported a mediation of NFC and the burnout subscale reduced personal efficacy by habitual reappraisal, but not by habitual suppression or self-control.
+  With our data, self-control became a significant mediator when taking teaching experience into account, but neither reappraisal nor suppression did.
+  We also investigated whether NFC and burnout were associated via different ratios of demands and resources, and included other variables in an exploratory approach.
+  The results indicated that teachers with higher NFC and self-control have lower burnout because they experience their resources as fitting to the demands.
   
 keywords          : "behaviour, resources, demands, education, Covid-19"
 wordcount         : "~ 5600"
