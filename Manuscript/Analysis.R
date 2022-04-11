@@ -24,7 +24,6 @@
   # install renv by calling install.packages("renv") if necessary
   
   library(renv)
-  source(here("Manuscript", "renv", "activate.R"))
 
   # the required packages are:
   # "bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
@@ -481,7 +480,7 @@
                         format(round(t(consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
-  consist_diag <- apply(consist_diag[,c(1:5)], 1 ,paste, collapse = "")
+  consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
   
   # add previously assembled diagonal with alpha and omega values
   diag(correlations) <- consist_diag
@@ -1000,7 +999,7 @@
                                 format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
   
   # paste together to create the output "alpha(omega)"
-  outlier_consist_diag <- apply(outlier_consist_diag[,c(1:5)], 1 ,paste, collapse = "")
+  outlier_consist_diag <- apply(outlier_consist_diag[,c(1:4)], 1 ,paste, collapse = "")
   
   # add previously assembled diagonal with alpha and omega values
   diag(outliercorrelations) <- outlier_consist_diag
