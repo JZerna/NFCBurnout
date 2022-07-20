@@ -186,7 +186,7 @@ Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorb
 And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with *demands too high* and negatively associated with *demand-resource-fit*.
 However, we had no hypothesis regarding the association of *demands too low* and burnout, because even though *demands too low* is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
 It has already been shown that the Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021], so we incorporated the degree of feeling burdened by the pandemic in an exploratory approach.
-To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the pandemic.
+To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the Covid-19 pandemic.
 
 # Methods
 
