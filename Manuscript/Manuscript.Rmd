@@ -571,6 +571,7 @@ Specifically, individuals with higher NFC had lower burnout scores through perce
 Interestingly, the medium correlation between NFC and burnout disappeared in the context of the demand-resource-ratios as mediators.
 The mediator that did not reach significance was the perception of own resources exceeding the job demands.
 As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. [-@Reijseger2013.].
+<!--Here we apparently need a source saying that teachers are less likely to be bored-->
 The fact that the items that made up the demand-resource-ratios were about the subjective perception and not about objective measures, supports the idea that the individual appraisal of one's own circumstances plays a crucial role in the development of burnout.
 This individual appraisal has been emphasized as the cause for the ambiguous impact of demands on psychological well-being before, in the form of challenge demands and hindrance demands [@Lepine2005;@Podsakoff2007;@Lazarus1984].
 Challenge demands such as time pressure, responsibility, and workload [@Podsakoff2007] are being positively valued due to their potential to increase personal growth, positive affect, and problem-focused coping [@Lepine2005].
