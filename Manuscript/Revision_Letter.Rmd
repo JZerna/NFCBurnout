@@ -26,9 +26,9 @@ This includes considering question like “Are there difference in how personal 
 }
 
 
-This is our response
+This is our response.
 
-\Assignment{First Author}
+\Assignment{JZ}
 \WorkInProgress
 \Easy
 
@@ -46,12 +46,11 @@ This means that further analyses of the two other subscales would increase relev
 When using the term “burnout”, the manuscript should carefully distinguish between burnout characteristic RPE and burnout as the commonly used concept including EE and DP. Mostly, this is accomplished successfully, but not in the discussion (p.19: “we replicated findings of mediators between Need for Cognition and burnout” when only mediations between NFC and RPE were investigated), and conclusion (first two sentences p.25), for example.
 }
 
-
 This is our response.
 
 > This is a section quoted from the revised manuscript to illustrate the change.
 
-\Assignment{Which Author?}
+\Assignment{JZ}
 \AlmostDone
 \Medium
 
@@ -60,13 +59,12 @@ This is our response.
 
 - This phrase is unfortunate. The readers might doubt whether the authors are aware of, for example, the more than a thousand times cited meta-analyses that exist on this topic and the literature they themselves cite later that elucidates this issue. If promoting and protecting in the narrowed sense of having shown predictive validity in longitudinal studies is meant, then, the presented study does not add insights because it is cross-sectional. Please clarify what was meant.}
 
-This is our response
+We acknowledge that this sentence was unfortunate. We changed it accordingly and now write in the abstract: 
 
-\Assignment{First Author}
-\WorkInProgress
-\TimeConsuming
-\Hard
-\NotEstimated
+> While there is evidence that certain personality traits promote or protect against burnout, the role of dispositional cognitive motivation has been investigated only recently.
+
+\Assignment{AS}
+\Done
 
 \RC{p.17 typo: the lavaan function should be spelled modindices(), not modincides()}
 
@@ -80,11 +78,19 @@ Thank you for noticing this typo. We have corrected it.
 
 This is our response.
 
-\RC{p.21 “The mediator that did not reach significance was the perception of own resources exceeding the job demands. As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. (2013.)”
+\Assignment{JZ}
+\WorkInProgress
+\Easy
+
+\RC{p. 21 “The mediator that did not reach significance was the perception of own resources exceeding the job demands. As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. (2013.)”
 
 - The authors might want to deepen the discussion with the possible explanation that boredom is less prevalent in the teaching profession (including a suitable reference) than in professions where you can “watch the paint dry” as Reijseger et al. describe. For some readers it might be counterintuitive that teachers experience boredom in the form of resources exceeding demands at all. Teaching appears to be an activity that could always address more individual needs and a class of app. 20 students seems to always have the potential to keep their teachers busy.}
 
 This is our response.
+
+\Assignment{JZ}
+\WorkInProgress
+\Easy
 
 \RC{supplementary material S2
 
@@ -92,8 +98,9 @@ For me, the numbering of supplementary material headings, table and figure numbe
 
 This is our response.
 
-\Assignment{First or Last Author}
+\Assignment{JZ}
 \WorkInProgress
+\Easy
 
 # Reviewer \#2
 
@@ -108,7 +115,7 @@ The results have also been presented in detail and clearly according to the appr
 The only weak point of the study is the use of self-reports, which limits taking causal conclusions. However, this point along with others has been presented in the limitation of the study and nothing can be done now. 
 Overall, I found the study interesting with significant results to share and enjoy good quality. Therefore, I suggest acceptance.}
 
-We like to thank the reviewer very much for this positive assessment of our manuscript. In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see p.XX.
+We like to thank the reviewer very much for this positive assessment of our manuscript. In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see p. XX.
 
 \Assignment{JZ}
 
