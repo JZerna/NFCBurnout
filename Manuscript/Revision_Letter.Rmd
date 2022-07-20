@@ -228,7 +228,7 @@ How is the RSMEA computed? My computation with RMSEA=SQRT((chisq-df)/(df(n-1))) 
 \RC{Pages 15-16. 
 
 please provide the DF of the model alongside the Chi-square. The model doesn’t fit very well and it is not clear that non-normality accounts for this as the authors are using robust chi-square. Please consider potential model revisions of the model in figure 2 using modification indices and clearly report these as an exploratory analysis. My expectation is that much of the misfit is created by additional covariances between the DTH, DTL, and DRF factors.}
-
+  
 This is our response.
 
 \Assignment{JZ}
