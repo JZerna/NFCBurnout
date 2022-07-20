@@ -163,7 +163,7 @@ Burnout is most often assessed using the Maslach Burnout Inventory (MBI) [@Masla
 
 Individuals with high burnout scores are often passive copers, high in neuroticism, low in self-esteem, and have an external locus of control [@Schaufeli2014].
 NFC on the other hand is negatively associated with those variables [@Double2016; @Fleischhauer2019; @Ghorbani2004; @Grass2018; @Osberg1987], suggesting that people high in NFC are less prone to experience burnout.
-This is supported by findings that NFC showed moderate to large negative associations with burnout scores in adults [@Fleischhauer2019], students [@Fleischhauer2019; @Naderi2018], and teacher trainees [@Grass2018].
+This is supported by findings that NFC showed moderate to large negative associations with burnout scores in adults [@Fleischhauer2019], students [@Fleischhauer2019; @Naderi2018], and student teachers [@Grass2018].
 However, the associations of NFC with the sum score and the subscales of the MBI are not always consistent between these studies.
 This is likely not caused by inaccurate measurement, since the validity of both NCS [@Bless1994; @Osberg1987; @Tolentino1990] and MBI [@Brady2021; @Kantas1997; @Schaufeli2001; @ValdiviaVazquez2021] has been demonstrated in multiple studies.
 What is more likely is the influence of one or more other variables, moderating or mediating the association of NFC and burnout.
@@ -554,7 +554,7 @@ There was, however, a small negative association between self-control and *reduc
 NFC had a direct, medium negative effect on *reduced personal efficacy*, but this relationship was not mediated by any other variable.
 Only when the amount of teaching experience was included as a predictor of self-control next to NFC, a very small indirect effect via self-control reached significance, indicating that teachers with high NFC and more years of teaching experience have higher self-control and, consequently, lower *reduced personal efficacy*.
 The higher self-control that comes with more teaching experience is in line with findings of fluctuations in self-control in young adults, reaching a low point between the age of 15 and 19 [@Oliva2019].
-The participants in the study by Grass et al. [-@Grass2018] were teacher trainees with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
+The participants in the study by Grass et al. [-@Grass2018] were student teachers with a mean age of 25.5 years, while the majority of the current sample was between 40 and 59 years old.
 Therefore, it is likely that not only the teaching experience itself but also higher age might be associated with higher self-control.
 However, one could argue that more experience provides the teacher with a bigger repertoire of coping strategies to enable an efficient exertion of self-control, especially for teachers high in NFC who are intrinsically motivated to find and apply such strategies.
 
