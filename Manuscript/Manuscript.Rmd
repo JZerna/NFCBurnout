@@ -238,7 +238,7 @@ Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
 *Reduced personal efficacy* was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
 NFC was entered as the independent variable, having a direct and multiple indirect effects on MBI via self-control, reappraisal, and suppression as mediators.
-Following Grass et al. [-@Grass2018], bootstrapped confidence with $N=2,000$ replicates were computed to account for deviations from normality.
+Following Grass et al. [-@Grass2018], bootstrapped confidence intervals with $N=2,000$ replicates <!-- add seed and RNG (likely "Mersenne-Twister" -->w ere computed to account for deviations from normality.
 Multiple indices were used to evaluate model fit as recommended by Hu and Bentler [-@Hu1999]: the Chi-square test statistic, which measures the fit compared to a saturated model (small values indicate better fit of predicted and observed covariances), the Comparative Fit Index (CFI), which compares the fit to the baseline model ($CFI>.95$ indicates good fit, but $CFI>.90$ is also commonly used), the Standardized Root Mean Square Residual (SRMR), which compares the residuals of the observed and predicted covariance matrix ($SRMR<.08$ indicates fair fit, $SRMR<.05$ good fit), and the Root Mean Square Error of Approximation (RMSEA), which does the same as the latter but takes degrees of freedom and model complexity into account ($RMSEA<.08$ indicates acceptable fit, $RMSEA<.05$ good fit, $RMSEA<.01$ excellent fit).
 
 ### Demand-resource-ratio model
@@ -304,7 +304,7 @@ Only the ERQ sum score and its reappraisal subscale followed a normal distributi
 
 Correlations and internal consistencies are displayed in Table 2.
 For this descriptive analysis, the variables *demands too high*, *demands too low*, and *demand-resource-fit* were computed as a sum of their item scores, not weighted as in the structural equation model.
-Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha of the three demand-resource-ratios can be considered *acceptable*.
+Using traditional cut-off values [@Nunnally1994], the Cronbach's Alpha of the three demand-resource-ratios in this sample were *acceptable*.
 The more robust MacDonald's Omega [@Dunn2014] did not deviate much from Cronbach's Alpha and indicated *acceptable* to *good* internal consistency.
 As expected, the MBI score showed a large positive correlation with *demands too high* (`r cor_apa(cor.test(score_data$mbi, score_data$dth, method = "spearman", exact = FALSE), format = "rmarkdown", print = FALSE)`) and a large negatve one with *demand-resource-fit* (`r cor_apa(cor.test(score_data$mbi, score_data$drf, method = "spearman", exact = FALSE), format = "rmarkdown", print = FALSE)`).
 Surprisingly, the correlation between the MBI score and *demands too low* was positive and also large (`r cor_apa(cor.test(score_data$mbi, score_data$dtl, method = "spearman", exact = FALSE), format = "rmarkdown", print = FALSE)`).
