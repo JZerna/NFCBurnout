@@ -121,11 +121,19 @@ We like to thank the reviewer very much for this positive assessment of our manu
 
 # Reviewer \#3
 
-\RC{Page 1.
-
-The abstract needs to be rewritten as it does not clearly present the variables of interest and their relations  (“we analysed…” fails to delineate the outcome variabel, predictor, mediator). Also the Grass et al. study should be fully references in the abstract.}
+\RC{... the goals of the study and the theoretical framework it uses switch multiple times as the manuscript progresses. Notably, the different models presented on the same dataset are clearly different (in terms of structure, predictors, and outcome variables) and are not clearly related to each other. So the theoretical focus needs to be improved to increase readability and clarity. Specifically, the different models need to be related to other in a theoretical and empirical manner. Also, the main model in figure 2 did not fit well possibly because it assumed conditional independence between three main DTH, DTL, and DRF factors that are expected to covary even after controlling for NFC.}
 
 This is our response.
+
+\Assignment{JZ}
+\WorkInProgress
+\TimeConsuming
+
+\RC{Page 1.
+
+The abstract needs to be rewritten as it does not clearly present the variables of interest and their relations (“we analysed…” fails to delineate the outcome variabel, predictor, mediator). Also the Grass et al. study should be fully references in the abstract.}
+
+[address frist sentence] We deleted the reference to Grass et al. because referencing it fully would have exceeded the word limit for the abstract.
 
 \RC{Page 2. 
 
