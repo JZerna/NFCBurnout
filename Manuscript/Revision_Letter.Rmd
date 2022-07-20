@@ -59,12 +59,8 @@ Furthermore, when constructing the exploratory model it became clear that NFC wa
 Since we have not preregistered any analysis of the association between NFC and DP or EE, and we do not have theory-driven hypotheses regarding these associations,  we do not believe that such analyses would contribute to the goals of the paper.
 A change that we will gladly implement is the more specific distinction between the terms "burnout" and "RPE subscale" in the manuscript, thank you for this advice.
 
-> This is a section quoted from the revised manuscript to illustrate the change.
-
 \Assignment{JZ}
-\AlmostDone
-\Medium
-
+\Done
 
 \RC{Abstract: “little is known about the personality traits that promote or protect against burnout”
 
@@ -87,11 +83,13 @@ Thank you for noticing this typo. We have corrected it.
 \RC{p.19/23 somewhere it should be conceded that the positive relation Covid burden and years of experience is influenced or confounded by item number 2 of the Covid burden questionnaire (“Are you in a Covid-19 risk group?”). Persons that do not belong to the risk group of old people (50+) can by default not have the highest years of experience.
 }
 
-This is our response.
+We do not agree that this item justifies claims for a confounding of Covid burden and years of experience.
+Firstly, years of experience cannot be equated with age, as some teachers are lateral entry employees.
+Secondly, age itself is not the only risk factor for Covid, but one of a long list of risk factors according to the Center for Disease Control and Prevention, such as disability, asthma, cancer, chronic heart disease, diabetes, HIV, weak immune function, obesity, mental disorders, pregnancy, physical inactivity, etc.
+Since the item does not specify the kind of risk factor, there is no need to correct for any confound between Covid burden and years of experience.
 
 \Assignment{JZ}
-\WorkInProgress
-\Easy
+\Done
 
 \RC{p. 21 “The mediator that did not reach significance was the perception of own resources exceeding the job demands. As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. (2013.)”
 
