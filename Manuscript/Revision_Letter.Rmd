@@ -133,7 +133,7 @@ This is our response.
 
 The abstract needs to be rewritten as it does not clearly present the variables of interest and their relations (“we analysed…” fails to delineate the outcome variabel, predictor, mediator). Also the Grass et al. study should be fully references in the abstract.}
 
-[address frist sentence] We deleted the reference to Grass et al. because referencing it fully would have exceeded the word limit for the abstract.
+[address frist sentence] We deleted the reference to Grass et al. because referencing it in full would have exceeded the word limit for the abstract.
 
 \RC{Page 2. 
 
