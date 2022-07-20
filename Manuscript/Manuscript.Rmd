@@ -186,7 +186,7 @@ Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorb
 And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with *demands too high* and negatively associated with *demand-resource-fit*.
 However, we had no hypothesis regarding the association of *demands too low* and burnout, because even though *demands too low* is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
 It has already been shown that the Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021], so we incorporated the degree of feeling burdened by the pandemic in an exploratory approach.
-To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout in a teacher sample, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the Covid-19 pandemic.
+To sum up, this study had three aims: Replicating findings of mediation between NFC and reduced personal efficacy in a teacher sample, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the Covid-19 pandemic.
 
 # Methods
 
@@ -219,7 +219,7 @@ Work satisfaction was assessed using the Allgemeine Arbeitszufriedenheit questio
 The scale has a split-half reliability of $r_{tt}=.95$ [@Fischer2014].
 Eleven items were created to assess each participant's current burden by the Covid-19 pandemic, such as whether they belong to a risk group or whether they currently had a higher workload.
 The translated Covid-19 items can be found in the *Supplementary Material S1*.
-Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] could not be used, so we could not replicate the mediation of NFC and burnout by active and passive coping.
+Due to a technical error during survey setup, the coping style data of the Erfurter Belastungsinventar [@BoehmKasper2001] could not be used, so we could not replicate the mediation of NFC and reduced personal efficacy by active and passive coping.
 
 ## Procedure
 The questionnaires were provided online using SoSci Survey [@Leiner2019].
@@ -542,7 +542,7 @@ Covid burden was not associated with *demand-resource-fit* or *reduced personal 
 # Discussion
 
 The present study aimed to investigate the role of Need for Cognition, the stable preference for and enjoyment of cognitive effort, in the context of burnout in teachers.
-To achieve this, we replicated findings of mediators between Need for Cognition and burnout in a teacher sample, and extended the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
+To achieve this, we replicated findings of mediators between Need for Cognition and reduced personal efficacy in a teacher sample, and extended the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
 Previous studies have indicated a protective effect of NFC against burnout, but the associations with the burnout subscales were inconsistent, suggesting that there are more variables influencing this relationship.
 
@@ -621,8 +621,8 @@ Especially because we worked with pre-existing data, we preregistered all analys
 
 ## Conclusions
 
-Our study showed that self-control mediated between NFC and burnout when teaching experience was being taken into account.
-Contrary to prior studies, neither habitual use of reappraisal nor use of suppression mediated between NFC and burnout.
+Our study showed that self-control mediated between NFC and reduced personal efficacy when teaching experience was being taken into account.
+Contrary to prior studies, neither habitual use of reappraisal nor use of suppression mediated between NFC and reduced personal efficacy.
 However, a crucial role in the relation of NFC and burnout seemed to be the perceived ratio of personal resources and demands, specifically, a resource-demand-fit was associated with lower and excessive demands were associated with higher burnout scores.
 Applied to real-life teaching practise, our results suggest that a healthy work environment should offer ample opportunities to make use of one's abilities, without creating demands that are too high.
 As a consequence, experiences and sense of self-efficacy will increase, which in turn heightens confidence in one's skills to deal with future demands that are higher, preventing loss of personal efficacy and burnout in the long term.
