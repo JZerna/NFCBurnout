@@ -474,7 +474,7 @@ The latent variable *demands too low* was neither related to NFC ($\beta=$ `r ro
 
 The second exploratory analysis concerned the incorporation of the Covid burden score into the model.
 We based the development of this model on the partial correlations of all variables, which provide an indication of how closely or remotely related variables might be in a path model.
-Then we modified the structure of the model using the *modincides()*-function in *lavaan* in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
+Then we modified the structure of the model using the *modindices()*-function in *lavaan* in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
 The final model is illustrated in Figure 3, the total, direct, and indirect effects are listed in *Supplementary Material S5*.
 All fit indices suggested that the proposed model had good fit while the baseline model did not ($\chi^2=$ `r round(fit_explor2@test[["yuan.bentler.mplus"]]$stat, digits = 2)` ($p < .001$), $CFI=$ `r round(fit_explor2_summ[["FIT"]][["cfi.robust"]], digits = 2)`, $RMSEA=$ `r round(fit_explor2_summ[["FIT"]][["rmsea.robust"]], digits = 2)` (95% $CI$ [`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.lower.robust"]], digits = 2)`,`r round(fit_explor2_summ[["FIT"]][["rmsea.ci.upper.robust"]], digits = 2)`]), $SRMR=$ `r round(fit_explor2_summ[["FIT"]][["srmr"]], digits = 2)`).
 Neither the ERQ sum score, nor its subscales, nor the *depersonalisation* subscale of the MBI contributed significantly to the explained variance and were therefore not included in the final model.
