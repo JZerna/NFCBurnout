@@ -170,7 +170,7 @@ What is more likely is the influence of one or more other variables, moderating 
 Grass et al. [-@Grass2018] investigated such a mediation and found that the relation of NFC and the MBI subscale reduced personal-efficacy was fully mediated by higher habitual use of reappraisal, more active coping, and less passive coping, but not by habitual use of suppression or self-control.
 Reappraisal and suppression are two emotion regulation strategies, which refer to the cognitive reassessment of a stressor and the inhibition of emotional reactions, respectively [@Gross1998a].
 The findings by Grass et al. [-@Grass2018] suggest that individuals high in NFC experience a weaker decline in personal efficacy in response to long-term stress because they actively reassess the situation in a way that reinforces their sense of self-efficacy and don't avoid dealing with the stressor [@Strobel2017].
-One goal of this paper was to replicate the findings of Grass et al. [-@Grass2018] using a multiple mediation model on cross-sectional self-report data of teachers.
+One goal of this paper was to replicate the findings of Grass et al. [-@Grass2018] in a teacher sample using a multiple mediation model on cross-sectional self-report data of teachers.
 We expected NFC to be negatively associated with reduced personal efficacy via higher reappraisal scores, but not via suppression, via self-control, or directly.
 
 Furthermore, we extended the analysis to other possible mediators.
@@ -186,7 +186,7 @@ Since individuals high in NFC are confident in their abilities [@Bye2009; @Ghorb
 And since burnout results from constant unpleasant activation by high demands, we expected it to be positively associated with *demands too high* and negatively associated with *demand-resource-fit*.
 However, we had no hypothesis regarding the association of *demands too low* and burnout, because even though *demands too low* is akin to the concept of boredom and the consequences of boredom and burnout are very similar, burnout is a state with even lower activation and even more negative affect than boredom [@Schaufeli2014].
 It has already been shown that the Covid-19 pandemic has exacerbated the rising prevalence of burnout [@Froebe2021], so we incorporated the degree of feeling burdened by the pandemic in an exploratory approach.
-To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the Covid-19 pandemic.
+To sum up, this study had three aims: Replicating findings of mediation between NFC and burnout in a teacher sample, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout, and exploring the impact of other variables such as perceived burden by the Covid-19 pandemic.
 
 # Methods
 
@@ -233,7 +233,7 @@ Internal consistencies were assessed with Cronbach's Alpha and MacDonald's Omega
 Since Cronbach's Alpha has been criticized for being insensitive to violations of internal consistency [@Dunn2014; @Taber2018], the additional computation of MacDonald's Omega has the purpose of ensuring a more reliable estimation.
 Correlations between variables were classified according the scheme by Gignac and Szodorai [-@Gignac2016], which recommends .10, .20, and .30 to be considered small, typical, and relatively large, respectively.
 
-### Replication of Grass et al. (2018)
+### Replication of Grass et al. (2018) in a teacher sample
 Items were reverse coded according to the scale manuals.
 NFC and self-control were computed as the sum scores of the NCS and the SCS, respectively.
 *Reduced personal efficacy* was computed using the sum of the MBI subscale, and reappraisal and suppression were computed using the sum of each ERQ subscale.
@@ -312,11 +312,11 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
 
 `r corr_table`
 
-```{r objective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
+```{r objective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018) in a teacher sample"}
 
   replic_table <-
     knitr::kable(replic_table,
-        caption = "Results of the replication of Grass et al. (2018).",
+        caption = "Results of the replication of Grass et al. (2018) in a teacher sample.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
@@ -330,7 +330,7 @@ The NFC score correlated negatively with the MBI sum score and about equally wit
   
 ```
 
-## Replication of Grass et al. (2018)
+## Replication of Grass et al. (2018) in a teacher sample
 
 In order to replicate findings by Grass et al. [-@Grass2018] we computed a multiple mediation model to investigate whether the association of NFC and *reduced personal efficacy* was partially mediated by self-control and habitual use of reappraisal and suppression, respectively.
 The baseline model did not fit the data ($\chi$^2^(`r round(fit_summ$FIT[["baseline.df"]], digits = 0)`, $N=$ `r nrow(data)`) = `r round(fit_summ$FIT[["baseline.chisq"]], digits = 2)`, $p < .001$).
@@ -341,7 +341,7 @@ However, we could neither replicate the effect of NFC on reappraisal ($\beta=$ `
 Furthermore, even though NFC and *reduced personal efficacy* were both associated with self-control, the indirect effect of NFC on *reduced personal efficacy* via self control did not reach significance ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "Indirect1"], digits = 2)`, `r rp(fit_summ$PE$pvalue[fit_summ$PE$label == "Indirect1"])`).
 Additionally, NFC was negatively associated with habitual use of suppression ($\beta=$ `r round(fit_summ$PE$std.all[fit_summ$PE$label == "a3"], digits = 2)`, `r rp(fit_summ$PE$pvalue[fit_summ$PE$label == "a3"])`), which was not the case in the study by Grass et al. [-@Grass2018].
 
-```{r objective1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018). * $p<.05$, ** $p<.01$."}
+```{r objective1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018) in a teacher sample. * $p<.05$, ** $p<.01$."}
 
   # create an array of standardized parameters and an array of significances
   
@@ -542,11 +542,11 @@ Covid burden was not associated with *demand-resource-fit* or *reduced personal 
 # Discussion
 
 The present study aimed to investigate the role of Need for Cognition, the stable preference for and enjoyment of cognitive effort, in the context of burnout in teachers.
-To achieve this, we replicated findings of mediators between Need for Cognition and burnout, and extended the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
+To achieve this, we replicated findings of mediators between Need for Cognition and burnout in a teacher sample, and extended the analysis to the role of different ratios of demands and resources in burnout using latent variable models.
 In an exploratory approach, we investigated the influence of the burden that the Covid-19 pandemic has placed on teachers.
 Previous studies have indicated a protective effect of NFC against burnout, but the associations with the burnout subscales were inconsistent, suggesting that there are more variables influencing this relationship.
 
-## Replication of Grass et al. (2018)
+## Replication of Grass et al. (2018) in a teacher sample
 
 While the mediation model had good fit, not all patterns were similar to the original study: NFC and self-control had a medium positive association, and reappraisal and *reduced personal efficacy* had a small negative association, but NFC and reappraisal were not associated.
 There was, however, a small negative association between self-control and *reduced personal efficacy*, and between NFC and suppression.
@@ -696,11 +696,11 @@ For each response scale, please refer to Excel file with the full list of items 
 
 `r outliercorr_table`
 
-```{r outlierobjective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018)"}
+```{r outlierobjective1table, echo=FALSE, message=FALSE, warning=FALSE, caption="Results of the replication of Grass et al. (2018) in a teacher sample"}
 
   outlierreplic_table <-
     knitr::kable(outlierreplic_table,
-        caption = "Results of the replication of Grass et al. (2018).",
+        caption = "Results of the replication of Grass et al. (2018) in a teacher sample.",
         booktabs = T, # no vertical lines
         escape = F, # correctly print special characters)
         align = c("l",rep("r",7))) %>% # right aligns the text in every numerical column
