@@ -95,7 +95,10 @@ Since the item does not specify the kind of risk factor, there is no need to cor
 
 - The authors might want to deepen the discussion with the possible explanation that boredom is less prevalent in the teaching profession (including a suitable reference) than in professions where you can “watch the paint dry” as Reijseger et al. describe. For some readers it might be counterintuitive that teachers experience boredom in the form of resources exceeding demands at all. Teaching appears to be an activity that could always address more individual needs and a class of app. 20 students seems to always have the potential to keep their teachers busy.}
 
-This is our response.
+Thank you for addressing this.
+We do not consider "being busy" to be the same as "not being bored", because while an employee might have a high workload, the tasks in question might not be interesting or stimulating at all.
+In the case of teachers it might be grading essays on a topic they have read about many times, or staying at work until the late evening for parent-teacher conferences.
+We looked into the literature on boredom in teachers and found that boredom was one of the main reasons for leaving the job (Tye & O'Brien 2022, https://doi.org/10.1177/003172170208400108), teachers were just as bored during class as their students (Tam et al. 2019, https://doi.org/10.1111/bjep.12309), and teachers have a strong feeling of mission and responsibility but lack the opportunities to implement these priorities (Tuisk 2007, https://doi.org/10.2478/v10099-009-0011-8).
 
 \Assignment{JZ}
 \WorkInProgress
