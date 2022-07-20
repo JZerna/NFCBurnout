@@ -11,7 +11,8 @@ output      : papaja::revision_letter_pdf
 Dear Dr. McParland,
 
 thank you very much for taking the time to consider our manuscript for publication at _`r rmarkdown::metadata$journal`_.
-We would like to thank the reviewers for their efforts to thoughly assess our manuscript. In the following we address your and each reviewers' concerns point-by-point. We hope that we could adequately address all the issues raised.
+We would like to thank the reviewers for their efforts to thoroughly assess our manuscript. In the following we address your and each reviewer's concerns point-by-point.
+We hope that we could adequately address all the issues raised.
 
 
 # Reviewer \#1
@@ -26,11 +27,12 @@ This includes considering question like “Are there difference in how personal 
 }
 
 
-This is our response.
+Thank you for pointing this out.
+We changed the term "teacher trainees" to "student teachers" to make clear that the participants in the Grass et al. sample were still attending university.
+We also emphasized that the replication was done in a teacher sample in the respective parts of the manuscript.
 
 \Assignment{JZ}
 \WorkInProgress
-\Easy
 
 \RC{Focus on the burnout characteristic reduced personal efficacy (RPE), cf. Table 3
 
@@ -46,7 +48,16 @@ This means that further analyses of the two other subscales would increase relev
 When using the term “burnout”, the manuscript should carefully distinguish between burnout characteristic RPE and burnout as the commonly used concept including EE and DP. Mostly, this is accomplished successfully, but not in the discussion (p.19: “we replicated findings of mediators between Need for Cognition and burnout” when only mediations between NFC and RPE were investigated), and conclusion (first two sentences p.25), for example.
 }
 
-This is our response.
+Thank you for this suggestion.
+Our intention was not to focus on the significant mediations of Grass et al. (2018), but to deepen the understanding of the role of NFC in burnout.
+Therefore, we focussed on RPE, because it is likely the most relevant subscale of the MBI scale in the context of NFC (as Grass et al. also argued).
+While Grass et al. (2018) did not find significant correlations between NFC and the subscales DP and EE, Naderi et al. (2018, http://saber.ucv.ve/ojs/index.php/rev_lh/article/view/15958) showed that in students, NFC was significantly correlated with DP and EE, but less so than with RPE.
+It has been shown that NFC is positively associated with higher self-efficacy (Rooij et al. (2017), https://doi.org/10.1080/13596748.2017.1381301, and Tan et al. (2020), https://doi.org/10.1007/s12528-019-09239-6), so we also expected NFC to be more strongly associated with the RPE subscale than with DP or EE.
+As can be seen in the correlation table (Table 2), NFC was equally related to all MBI subscales in our teacher sample.
+We had preregistered the exploratory analysis of the Demand-Resource-Ratio model with RPE in place of the MBI score, but this model did not have better fit indices than the initial model, which might be attributed to the evenly distributed associations between NFC and the subscales.
+Furthermore, when constructing the exploratory model it became clear that NFC was indeed associated with RPE and EE via DRF and DTH, respectively, but the DP subscale did not have any meaningful paths within the model.
+Since we have not preregistered any analysis of the association between NFC and DP or EE, and we do not have theory-driven hypotheses regarding these associations,  we do not believe that such analyses would contribute to the goals of the paper.
+A change that we will gladly implement is the more specific distinction between the terms "burnout" and "RPE subscale" in the manuscript, thank you for this advice.
 
 > This is a section quoted from the revised manuscript to illustrate the change.
 
