@@ -1,0 +1,241 @@
+% Taken from https://github.com/mschroen/review_response_letter
+% GNU General Public License v3.0
+
+\documentclass[draft]{article}
+
+\usepackage[includeheadfoot,top=20mm, bottom=20mm, footskip=2.5cm]{geometry}
+
+% Typography
+\usepackage[T1]{fontenc}
+\usepackage{times}
+%\usepackage{mathptmx} % math also in times font
+\usepackage{amssymb,amsmath}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+
+% Misc
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref} %textopdfstring from pandoc
+\usepackage{soul} % Highlight using \hl{}
+
+% Table
+
+\usepackage{adjustbox} % center large tables across textwidth by surrounding tabular with \begin{adjustbox}{center}
+\renewcommand{\arraystretch}{1.5} % enlarge spacing between rows
+\usepackage{caption}
+\captionsetup[table]{skip=10pt} % enlarge spacing between caption and table
+
+% Section styles
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large}{\makebox[0pt][r]{\bf \thesection.\hspace{4mm}}}{0em}{\bfseries}
+\titleformat{\subsection}{\normalfont}{\makebox[0pt][r]{\bf \thesubsection.\hspace{4mm}}}{0em}{\bfseries}
+\titlespacing{\subsection}{0em}{1em}{-0.3em} % left before after
+
+% Paragraph styles
+
+\setlength{\parskip}{0.6\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+% Quotation styles
+
+\usepackage{framed}
+\let\oldquote=\quote
+\let\endoldquote=\endquote
+\renewenvironment{quote}{\begin{fquote}\advance\leftmargini -2.4em\begin{oldquote}}{\end{oldquote}\end{fquote}}
+
+% \usepackage{xcolor}
+\newenvironment{fquote}
+  {\def\FrameCommand{
+	\fboxsep=0.6em % box to text padding
+	\fcolorbox{black}{white}}%
+	% the "2" can be changed to make the box smaller
+    \MakeFramed {\advance\hsize-2\width \FrameRestore}
+    \begin{minipage}{\linewidth}
+  }
+  {\end{minipage}\endMakeFramed}
+
+% Table styles
+
+\let\oldtabular=\tabular
+\let\endoldtabular=\endtabular
+\renewenvironment{tabular}[1]{\begin{adjustbox}{center}\begin{oldtabular}{#1}}{\end{oldtabular}\end{adjustbox}}
+
+
+% Shortcuts
+
+%% Let textbf be both, bold and italic
+%\DeclareTextFontCommand{\textbf}{\bfseries\em}
+
+%% Add RC and AR to the left of a paragraph
+%\def\RC{\makebox[0pt][r]{\bf RC:\hspace{4mm}}}
+%\def\AR{\makebox[0pt][r]{AR:\hspace{4mm}}}
+
+%% Define that \RC and \AR should start and format the whole paragraph
+\usepackage{suffix}
+\long\def\RC#1\par{\makebox[0pt][r]{\bf RC:\hspace{4mm}}{\bf #1}\par\makebox[0pt][r]{AR:\hspace{10pt}}} %\RC
+\WithSuffix\long\def\RC*#1\par{{\bf #1}\par} %\RC*
+% \long\def\AR#1\par{\makebox[0pt][r]{AR:\hspace{10pt}}#1\par} %\AR
+\WithSuffix\long\def\AR*#1\par{#1\par} %\AR*
+
+
+%%%
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\definecolor{offred}{rgb}{0.867, 0.153, 0.153} %DIF PREAMBLE
+\definecolor{offblue}{rgb}{0.0705882352941176, 0.168627450980392, 0.717647058823529} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{offred}\sout{#1}}} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{offblue}\uwave{#1}}} %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+% Fix pandoc related tight-list error
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Add task difficulty and assignment commands from https://github.com/cdc08x/letter-2-reviewers-LaTeX-template
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{ifdraft}
+
+\newcommand{\TaskEstimationBox}[2]{%
+\ifoptiondraft{\parbox{1.0\linewidth}{\hfill \hfill {\colorbox{#2}{\color{White} \textbf{#1}}}}}%
+{}%
+}
+%
+\def\WorkInProgress {\TaskEstimationBox{Work in progress}{Cyan}}
+\def\AlmostDone {\TaskEstimationBox{Almost there}{NavyBlue}}
+\def\Done {\TaskEstimationBox{Done}{Blue}}
+%
+\def\NotEstimated {\TaskEstimationBox{Effort not estimated}{Gray}}
+\def\Easy {\TaskEstimationBox{Feasible}{ForestGreen}}
+\def\Medium {\TaskEstimationBox{Medium effort}{Orange}}
+\def\TimeConsuming {\TaskEstimationBox{Time-consuming}{Bittersweet}}
+\def\Hard {\TaskEstimationBox{Infeasible}{Black}}
+%
+\newcommand{\Assignment}[1]{
+%
+\ifoptiondraft{%
+\vspace{.25\baselineskip} \parbox{1.0\linewidth}{\hfill \hfill \vspace{.25\baselineskip} \normalfont{Assignment:} \normalfont{\textbf{#1}}}%
+}{}%
+}
+
+
+
+
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\begin{document}
+
+{\Large\bf Author response to reviews of}\\[1em]
+Manuscript HPO-22-0057\\ \\
+{\Large NFC and burnout in teachers - A replication and extension study}\\[1em]
+{Josephine Zerna, Nicole ENgelmann, Anja Strobel \& Alexander Strobel}\\
+{submitted to \it Health Psychology Open }\\
+\hrule
+
+\hfill {\bfseries RC:} \textbf{\textit{Reviewer Comment}}\(\quad\) AR: Author Response \(\quad\square\) Manuscript text
+
+\vspace{2em}
+
+Dear Dr.~McParland,
+
+thank you very much for taking the time to consider our manuscript for publication at \emph{Health Psychology Open}.
+In the following we address your and each reviewers' concerns point-by-point.
+
+\hypertarget{reviewer-1}{%
+\section{Reviewer \#1}\label{reviewer-1}}
+
+\RC{Difference between the samples of Grass et al. (2018) and this study
+
+- The authors should clearly mark the difference between their teacher sample and Grass et al.’s (2018) student teacher sample.
+This includes designating Grass et al.’s sample as “student teachers” (on p.3 and p.20), not “teacher trainees”. This is more precise (the latter could easily be confounded with 2nd teacher education phase, called “Referendariat”) and corresponds to Grass et al.’s own use. Additionally, “replication/replicated” should be qualified as “replication/replicated in a teacher sample” throughout the manuscript. This would also mark the novelty of this paper.
+
+- Furthermore, the authors should consider and discuss implications of the different professional situations of the two samples.
+This includes considering question like “Are there difference in how personal efficacy is perceived among students compared with in-service teachers?”, “What are the implications for burnout, need for cognition and other key concepts/variables with reference to the difference between academic learning and working in a school?” Literature dealing with these questions should be included.
+}
+
+This is our response
+
+\Assignment{First Author}
+\WorkInProgress
+\Easy
+
+\RC{Focus on the burnout characteristic reduced personal efficacy (RPE), cf. Table 3
+
+I don’t see the point of focusing only on the significant correlations and mediations from Grass et al. (2018). Non-significant results are also findings. In Grass et al. (2018), they analyzed the other two characteristics emotional exhaustion and depersonalization, too. There, they focused on RPE in further mediation analysis apparently because it was more strongly related to NFC and Self-control. Obviously, correlations and mediations are different in this study (which might be due to investigating a different population). This justifies analyses of all assessed variables. Therefore, analyses of associations of the two other burnout characteristics (emotional exhaustion and depersonalization) should be included.
+
+Furthermore, RPE can not the most important burnout characteristic. On the contrary, it frequently has the lowest correlation with burnout (MBI score) among the three subscales. Additionally, it is the subscale that receives less attention in research on teachers’ health, in the sense that if only certain burnout subscales are investigated, then those are usually emotional exhaustion and depersonalization (e.g.,
+
+- Bermejo-Toro, L., Prieto-Ursúa, M., \& Hernández, V. (2016). Towards a model of teacher well-being: Personal and job resources involved in teacher burnout and engagement. *Educational Psychology, 36*(3), 481–501. https://doi.org/10.1080/01443410.2015.1005006
+- Dicke, T., Parker, P. D., Marsh, H. W., Kunter, M., Schmeck, A., \& Leutner, D. (2014). Self-efficacy in classroom management, classroom disturbances, and emotional exhaustion: A moderated mediation analysis of teacher candidates. *Journal of Educational Psychology, 106(2)*, 569–583. https://doi.org/10.1037/a0035504)
+
+This means that further analyses of the two other subscales would increase relevance of this paper in the scientific field.
+
+When using the term “burnout”, the manuscript should carefully distinguish between burnout characteristic RPE and burnout as the commonly used concept including EE and DP. Mostly, this is accomplished successfully, but not in the discussion (p.19: “we replicated findings of mediators between Need for Cognition and burnout” when only mediations between NFC and RPE were investigated), and conclusion (first two sentences p.25), for example.
+}
+
+This is our response.
+
+\begin{quote}
+This is a section quoted from the revised manuscript to illustrate the change.
+\end{quote}
+
+\Assignment{Second Author}
+\AlmostDone
+\Medium
+
+\RC
+
+This is a reviewer comment
+
+This is our response
+
+\Assignment{First Author}
+\Done
+\TimeConsuming
+\Hard
+\NotEstimated
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
+
+
+\end{document}\grid

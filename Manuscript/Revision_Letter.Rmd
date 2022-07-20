@@ -1,0 +1,76 @@
+---
+title       : "NFC and burnout in teachers - A replication and extension study"
+authors     : "Josephine Zerna, Nicole ENgelmann, Anja Strobel & Alexander Strobel"
+journal     : "Health Psychology Open"
+manuscript  : "HPO-22-0057"
+
+class       : "draft"
+output      : papaja::revision_letter_pdf
+---
+
+Dear Dr. McParland,
+
+thank you very much for taking the time to consider our manuscript for publication at _`r rmarkdown::metadata$journal`_.
+In the following we address your and each reviewers' concerns point-by-point.
+
+
+# Reviewer \#1
+
+\RC{Difference between the samples of Grass et al. (2018) and this study
+
+- The authors should clearly mark the difference between their teacher sample and Grass et al.’s (2018) student teacher sample.
+This includes designating Grass et al.’s sample as “student teachers” (on p.3 and p.20), not “teacher trainees”. This is more precise (the latter could easily be confounded with 2nd teacher education phase, called “Referendariat”) and corresponds to Grass et al.’s own use. Additionally, “replication/replicated” should be qualified as “replication/replicated in a teacher sample” throughout the manuscript. This would also mark the novelty of this paper.
+
+- Furthermore, the authors should consider and discuss implications of the different professional situations of the two samples.
+This includes considering question like “Are there difference in how personal efficacy is perceived among students compared with in-service teachers?”, “What are the implications for burnout, need for cognition and other key concepts/variables with reference to the difference between academic learning and working in a school?” Literature dealing with these questions should be included.
+}
+
+
+This is our response
+
+\Assignment{First Author}
+\WorkInProgress
+\Easy
+
+\RC{Focus on the burnout characteristic reduced personal efficacy (RPE), cf. Table 3
+
+I don’t see the point of focusing only on the significant correlations and mediations from Grass et al. (2018). Non-significant results are also findings. In Grass et al. (2018), they analyzed the other two characteristics emotional exhaustion and depersonalization, too. There, they focused on RPE in further mediation analysis apparently because it was more strongly related to NFC and Self-control. Obviously, correlations and mediations are different in this study (which might be due to investigating a different population). This justifies analyses of all assessed variables. Therefore, analyses of associations of the two other burnout characteristics (emotional exhaustion and depersonalization) should be included.
+
+Furthermore, RPE can not the most important burnout characteristic. On the contrary, it frequently has the lowest correlation with burnout (MBI score) among the three subscales. Additionally, it is the subscale that receives less attention in research on teachers’ health, in the sense that if only certain burnout subscales are investigated, then those are usually emotional exhaustion and depersonalization (e.g.,
+
+- Bermejo-Toro, L., Prieto-Ursúa, M., \& Hernández, V. (2016). Towards a model of teacher well-being: Personal and job resources involved in teacher burnout and engagement. *Educational Psychology, 36*(3), 481–501. https://doi.org/10.1080/01443410.2015.1005006
+- Dicke, T., Parker, P. D., Marsh, H. W., Kunter, M., Schmeck, A., \& Leutner, D. (2014). Self-efficacy in classroom management, classroom disturbances, and emotional exhaustion: A moderated mediation analysis of teacher candidates. *Journal of Educational Psychology, 106(2)*, 569–583. https://doi.org/10.1037/a0035504)
+
+This means that further analyses of the two other subscales would increase relevance of this paper in the scientific field.
+
+When using the term “burnout”, the manuscript should carefully distinguish between burnout characteristic RPE and burnout as the commonly used concept including EE and DP. Mostly, this is accomplished successfully, but not in the discussion (p.19: “we replicated findings of mediators between Need for Cognition and burnout” when only mediations between NFC and RPE were investigated), and conclusion (first two sentences p.25), for example.
+}
+
+
+This is our response.
+
+> This is a section quoted from the revised manuscript to illustrate the change.
+
+\Assignment{Second Author}
+\AlmostDone
+\Medium
+
+
+\RC
+This is a reviewer comment
+
+This is our response
+
+\Assignment{First Author}
+\Done
+\TimeConsuming
+\Hard
+\NotEstimated
+
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
