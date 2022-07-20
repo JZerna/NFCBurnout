@@ -140,10 +140,15 @@ The abstract needs to be rewritten as it does not clearly present the variables 
 - “small to large” implies that the effect sizes vary. 
 - “always in conflict” often?}
 
-This is our response.
+We rewrote the respective sentences as the phrasing obviously was misleading. The respective sentences now read:
+
+> "with these associations being in a small to medium range."
+
+> "... because the worker is often in conflict ..."
 
 \RC{Page 3. 
 How is NFC related to other constructs like neuroticism, self-esteem, and locus of control? And would NFC provide incremental validity in predicting burnout?
+
 “adults” in which context?
 
 please provide more information on the Grass et al. study in terms of sample, context, and sample size. Why was this study the focus of a replication?
@@ -151,11 +156,16 @@ please provide more information on the Grass et al. study in terms of sample, co
 
 This is our response.
 
-\RC{Page 4
+\Assignment{JZ}
+# Comment: see Table 2 in Fleischhauer et al. (2019)
+
+\RC{Page 4.
 
 how are demands too high, demands too low, and demand-resources fit related to each other?}
 
 This is our response.
+
+\Assignment{JZ}
 
 \RC{Page 5.
 
@@ -163,13 +173,15 @@ Are data also shared openly for further research?
 
 Note that I couldn’t assess the preregistration, but that the OSF offers a way to anonymise preregistrations for peer review.}
 
-This is our response.
+We are aware that the double-blind review process somewhat interferes with Open Science issues. We learned how OSF projects can be anonymized only after submission of our manuscript. We apologize that we did not give the reviewer the opportunity to check our preregistration/data/code. Of course, we share our data and code openly on OSF and also provide a license for re-use (CC-4.0-BY).    
 
 \RC{Page 6. 
 
 Which nominal Alpha level is used? .01 or .05? Please explicate all deviations from the preregistration.}
 
 This is our response.
+
+\Assignment{JZ}
 
 \RC{Page 7. 
 
