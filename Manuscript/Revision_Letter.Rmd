@@ -26,7 +26,6 @@ This includes designating Grass et al.’s sample as “student teachers” (on 
 This includes considering question like “Are there difference in how personal efficacy is perceived among students compared with in-service teachers?”, “What are the implications for burnout, need for cognition and other key concepts/variables with reference to the difference between academic learning and working in a school?” Literature dealing with these questions should be included.
 }
 
-
 Thank you for pointing this out.
 We changed the term "teacher trainees" to "student teachers" to make clear that the participants in the Grass et al. sample were still attending university.
 We also emphasized that the replication was done in a teacher sample in the respective parts of the manuscript.
@@ -68,7 +67,7 @@ A change that we will gladly implement is the more specific distinction between 
 
 We acknowledge that this sentence was unfortunate. We changed it accordingly and now write in the abstract: 
 
-> While there is evidence that certain personality traits promote or protect against burnout, the role of dispositional cognitive motivation has been investigated only recently.
+> Burnout has become more prevalent, mainly in social jobs, and there is evidence that certain personality traits promote or protect against burnout. Only recently, studies have focused on investment traits like Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
 
 \Assignment{AS}
 \Done
@@ -113,11 +112,11 @@ Both of these variables were correlated with higher MBI scores, but in this mode
 
 For me, the numbering of supplementary material headings, table and figure numbers was confusing. I would find a system that links supplemental topic and table/figure numbering with each other much more intuitive and easier to navigate, e.g., heading S2, table S2a, table S2b,… or heading S2, table S2.1, table S2.2,….}
 
-This is our response.
+Thank you for this suggestion.
+We have changed the numbering of the supplementary material into a S2.1, S2.2, ... notation.
 
 \Assignment{JZ}
-\WorkInProgress
-\Easy
+\Done
 
 # Reviewer \#2
 
@@ -132,9 +131,12 @@ The results have also been presented in detail and clearly according to the appr
 The only weak point of the study is the use of self-reports, which limits taking causal conclusions. However, this point along with others has been presented in the limitation of the study and nothing can be done now. 
 Overall, I found the study interesting with significant results to share and enjoy good quality. Therefore, I suggest acceptance.}
 
-We like to thank the reviewer very much for this positive assessment of our manuscript. In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see p. XX.
+We like to thank the reviewer very much for this positive assessment of our manuscript.
+In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see p. XX.
+In our initial submission, there was an error in the code creating the table, so the diagonal with Cronbach's $\alpha$ and MacDonald's $\omega$ was missing.
 
 \Assignment{JZ}
+\Done
 
 # Reviewer \#3
 
@@ -150,7 +152,12 @@ This is our response.
 
 The abstract needs to be rewritten as it does not clearly present the variables of interest and their relations (“we analysed…” fails to delineate the outcome variabel, predictor, mediator). Also the Grass et al. study should be fully references in the abstract.}
 
-[address frist sentence] We deleted the reference to Grass et al. because referencing it in full would have exceeded the word limit for the abstract.
+Thank you for pointing this out.
+We deleted the reference to Grass et al. because referencing it in full would have exceeded the word limit for the abstract.
+In fact, the limit of 150 words is so small that we cannot include all variable names, so we rewrote the abstract to better explain the three aims of the study.
+It now reads as follows:
+
+> Burnout has become more prevalent, mainly in social jobs, and there is evidence that certain personality traits promote or protect against burnout. Only recently, studies have focused on investment traits like Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities. This study had three aims: First, replicating findings of NFC and the burnout subscale reduced personal efficacy in student teachers in a sample of N = 180 teachers, second, investigating the role of perceived ratios of demands and resources in the context of NFC and burnout, and finally, creating an exploratory model as a starting point for future research. The results indicated that unlike the student sample, the teachers’ association of NFC and reduced personal efficacy was mediated by self-control but not reappraisal. Teachers with higher NFC and self-control also had lower burnout because they experienced their resources as fitting to the demands.
 
 \RC{Page 2. 
 
