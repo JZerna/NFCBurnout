@@ -87,6 +87,7 @@ header-includes   :
     - \usepackage{chngcntr}
 ---
 \renewcommand\thesection{\Alph{section}}
+\renewcommand\thesubsection{\arabic{subsection}}
 \counterwithout{figure}{section}
 \counterwithout{table}{section}
 \setcounter{figure}{0}
@@ -643,10 +644,16 @@ As a consequence, experiences and sense of self-efficacy will increase, which in
 \endgroup
 
 \newpage
+\setcounter{section}{19}
+\counterwithin{subsection}{section}
+\setcounter{subsection}{0}
+\counterwithin{figure}{subsection}
+\counterwithin{table}{subsection}
+\setcounter{figure}{0}
+\setcounter{table}{0}
 
-# Supplementary Material
-
-## S1: Items used to assess Covid burden
+\section{Supplementary Material}
+\subsection{Items used to assess Covid burden}
 
 1. How burdened do you currently feel by the measures associated with Covid-19?
 
@@ -673,13 +680,8 @@ As a consequence, experiences and sense of self-efficacy will increase, which in
 For each response scale, please refer to Excel file with the full list of items and response types on OSF [https://osf.io/36ep9/](https://osf.io/36ep9/).
 
 \newpage
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\setcounter{section}{19}
-\setcounter{figure}{0}
-\setcounter{table}{0}
 
-## S2: Results when excluding the outlier with very high MBI scores and very low NFC scores
+\subsection{Results when excluding the outlier with very high MBI scores and very low NFC scores}
 
 ```{r outliercorrelationstable, echo=FALSE, message=FALSE, warning=FALSE, caption="Correlations and internal consistencies"}
 
@@ -740,7 +742,7 @@ For each response scale, please refer to Excel file with the full list of items 
 
 \newpage
 
-## S3: Replication of Grass et al. (2018) when including years spent teaching
+\subsection{Replication of Grass et al. (2018) when including years spent teaching}
 
 ```{r objective1yearsplot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized regression coefficients in the replication of Grass et al. (2018) when including years spent teaching. * $p<.05$, ** $p<.01$, $N=180$."}
 
@@ -794,7 +796,7 @@ For each response scale, please refer to Excel file with the full list of items 
 
 \newpage
 
-## S4: Demand-resource-ratio model with the MBI subscale reduced personal efficacy
+\subsection{Demand-resource-ratio model with the MBI subscale reduced personal efficacy}
 
 ```{r exploratory1plot, echo=FALSE, message=FALSE, warning=FALSE, fig.pos="H", fig.cap="Standardized path coefficients of the demand-resource-ratio model with the MBI subscale reduced personal efficacy. * $p<.05$, ** $p<.01$, *** $p<.001$. NFC = Need for Cognition, DTH = demands too high, DTL = demands too low, DRF = demand resource fit, nfc1-4 = item parcels, dth/dtl/drf1-3 = item indicators, RPE = reduced personal efficacy, $N=180$."}
 
@@ -829,7 +831,7 @@ For each response scale, please refer to Excel file with the full list of items 
 
 \newpage
 
-## S5: Exploratory model with all relevant variables
+\subsection{Exploratory model with all relevant variables}
 
 ```{r explor2table, echo=FALSE, message=FALSE, warning=FALSE, caption = "Results of the exploratory model with Covid burden."}
 
