@@ -58,9 +58,6 @@ Furthermore, when constructing the exploratory model it became clear that NFC wa
 Since we have not preregistered any analysis of the association between NFC and DP or EE, and we do not have any theory-driven hypotheses regarding these associations, we do not believe that such analyses would contribute to the goals of the paper.
 A change that we will gladly implement is the more specific distinction between the terms "burnout" and "RPE subscale" in the manuscript, thank you for this advice.
 
-\Assignment{JZ}
-\Done
-
 \RC{Abstract: “little is known about the personality traits that promote or protect against burnout”
 
 - This phrase is unfortunate. The readers might doubt whether the authors are aware of, for example, the more than a thousand times cited meta-analyses that exist on this topic and the literature they themselves cite later that elucidates this issue. If promoting and protecting in the narrowed sense of having shown predictive validity in longitudinal studies is meant, then, the presented study does not add insights because it is cross-sectional. Please clarify what was meant.}
@@ -69,15 +66,9 @@ We acknowledge that this sentence was unfortunate. We changed it accordingly and
 
 > Burnout has become more prevalent, mainly in social jobs, and there is evidence that certain personality traits promote or protect against burnout. Only recently, studies have focused on investment traits like Need for Cognition (NFC), the stable intrinsic motivation to seek out and enjoy effortful cognitive activities.
 
-\Assignment{AS}
-\Done
-
 \RC{p.17 typo: the lavaan function should be spelled modindices(), not modincides()}
 
 Thank you for noticing this typo. We have corrected it.
-
-\Assignment{AS}
-\Done
 
 \RC{p.19/23 somewhere it should be conceded that the positive relation Covid burden and years of experience is influenced or confounded by item number 2 of the Covid burden questionnaire (“Are you in a Covid-19 risk group?”). Persons that do not belong to the risk group of old people (50+) can by default not have the highest years of experience.
 }
@@ -86,9 +77,6 @@ We do not agree that this item justifies claims for a confounding of Covid burde
 Firstly, years of experience cannot be equated with age, as some teachers are lateral entry employees.
 Secondly, age itself is not the only risk factor for Covid, but one of a long list of risk factors according to the Center for Disease Control and Prevention, such as disability, asthma, cancer, chronic heart disease, diabetes, HIV, weak immune function, obesity, mental disorders, pregnancy, physical inactivity, etc.
 Since the item does not specify the kind of risk factor, there is no need to correct for any confound between Covid burden and years of experience.
-
-\Assignment{JZ}
-\Done
 
 \RC{p. 21 “The mediator that did not reach significance was the perception of own resources exceeding the job demands. As this latent variable was conceptualized as boredom at work, we could not confirm the positive association of boredom and burnout found by Reijseger et al. (2013.)”
 
@@ -105,18 +93,12 @@ As the distinction between "being busy" and "not being bored" is reflected in th
 A teacher can have a very high workload, which is reflected in an elevated *demands too high* score, but the work in question might not be intellectually stimulating at all or might not appeal to their ideals and goals, which increases their *demands too low* score.
 Both of these variables were correlated with higher MBI scores, but in this model, high demands appear to have contributed more to explaining variance in MBI scores than low demands, suggesting that the perceived workload is more important in the burnout context than how stimulating the work is.
 
-\Assignment{JZ}
-\Done
-
 \RC{supplementary material S2
 
 For me, the numbering of supplementary material headings, table and figure numbers was confusing. I would find a system that links supplemental topic and table/figure numbering with each other much more intuitive and easier to navigate, e.g., heading S2, table S2a, table S2b,… or heading S2, table S2.1, table S2.2,….}
 
 Thank you for this suggestion.
 We have changed the numbering of the supplementary material into a S2.1, S2.2, ... notation.
-
-\Assignment{JZ}
-\Done
 
 # Reviewer \#2
 
@@ -134,9 +116,6 @@ Overall, I found the study interesting with significant results to share and enj
 We like to thank the reviewer very much for this positive assessment of our manuscript.
 In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see p. XX.
 In our initial submission, there was an error in the code creating the table, so the diagonal with Cronbach's $\alpha$ and MacDonald's $\omega$ was missing.
-
-\Assignment{JZ}
-\Done
 
 # Reviewer \#3
 
@@ -178,18 +157,37 @@ How is NFC related to other constructs like neuroticism, self-esteem, and locus 
 please provide more information on the Grass et al. study in terms of sample, context, and sample size. Why was this study the focus of a replication?
 }
 
-This is our response.
+We have added the correlations of NFC with neuroticism, self-esteem, and locus of control in the manuscript:
 
-\Assignment{JZ}
-# Comment: see Table 2 in Fleischhauer et al. (2019)
+> NFC on the other hand shows opposite associations with those variables (r = -.19 with passive coping (Grass et al., 2018), r = -.19–-.33 with neuroticism (Fleischhauer et al., 2019), r = .42 with self-esteem (Osberg, 1987), r = .32 with internal locus of control (Fletcher et al. 1986)), suggesting that people high in NFC are less prone to experience burnout.
+
+In the study done by Fleischhauer et al. (2019, https://doi.org/10.3389/fpsyg.2019.00420, Table 2), NFC could provide incremental validity in predicting the MBI score and its subscales over and above the Five Factor model.
+The adults in this study were a population-based sample of over 4,100 participants from different work backgrounds.
+
+Thank you for suggesting to provide more information on the characteristics of the Grass et al. sample.
+We have added the following information to the manuscript:
+
+> Grass et al. (2018) investigated such a mediation in a sample of 167 students, who were studying to become teachers in primary, secondary, special needs, or vocational schools, and who had been studying for M ± SD = 5.13 ± 2.63 semesters.
+
+We wanted to replicate the findings of Grass et al. (2018) in a sample of teachers to investigate the different mechanisms that influence the development of burnout in different life/career stages within the same profession.
+As burnout mostly affects social jobs and theories of person-environment fit have been discussed for quite some time, it begs the question whether the structure of social jobs causes burnout or whether the type of employee in social jobs is more prone to burnout.
+Studying the same profession in different stages can shed light on this issue.
 
 \RC{Page 4.
 
 how are demands too high, demands too low, and demand-resources fit related to each other?}
 
-This is our response.
+We did not have specific hypotheses about the relations of the demand-resource-ratios to each other.
+Initially it would stand to reason that they are not substantially correlated at all, since each participant might have a unique level of demands and resources, so they should score high in one of the variables and rather low in the other two.
+However, as they correlation table (Table 2) shows, this is not the case.
+DTH and DTL are positively correlated, and both are negatively correlated with DRF.
+Although initially counterintuitive, these associations are quite likely in practise: A teacher can have a very high workload in a strict time frame (high DTH) but the work itself might not be interesting or cognitively stimulating at all (high DTL), such as teaching the same material year after year, not being able to influence the syllabus, teaching at a much lower standard than what the teacher learned at university, keeping notorious troublemakers under control, having parent-teacher conferences until the late evening, etc.
+So a surplus of demands and a surplus of resources can co-exist, but not together with a demand-resource-fit.
+We have added the following section to the discussion:
 
-\Assignment{JZ}
+> However, the positive association of *demands too high* and *demands too low* in the correlation analysis suggests that boredom and burnout are not mutually exclusive.
+A teacher can have a very high workload, which is reflected in an elevated *demands too high* score, but the work in question might not be intellectually stimulating at all or might not appeal to their ideals and goals, which increases their *demands too low* score.
+Both of these variables were correlated with higher MBI scores, but in this model, high demands appear to have contributed more to explaining variance in MBI scores than low demands, suggesting that the perceived workload is more important in the burnout context than how stimulating the work is.
 
 \RC{Page 5.
 
@@ -197,7 +195,10 @@ Are data also shared openly for further research?
 
 Note that I couldn’t assess the preregistration, but that the OSF offers a way to anonymise preregistrations for peer review.}
 
-We are aware that the double-blind review process somewhat interferes with Open Science issues. We learned how OSF projects can be anonymized only after submission of our manuscript. We apologize that we did not give the reviewer the opportunity to check our preregistration/data/code. Of course, we share our data and code openly on OSF and also provide a license for re-use (CC-4.0-BY).    
+We are aware that the double-blind review process somewhat interferes with Open Science issues.
+We learned how OSF projects can be anonymized only after submission of our manuscript.
+We apologize that we did not give the reviewer the opportunity to check our preregistration/data/code.
+Of course, we share our data and code openly on OSF and also provide a license for re-use (CC-4.0-BY). 
 
 \RC{Page 6. 
 
