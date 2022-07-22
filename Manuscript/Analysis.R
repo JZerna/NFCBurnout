@@ -859,7 +859,78 @@
   
   explor2_table[2:ncol(explor2_table)] <- format(round(explor2_table[2:ncol(explor2_table)], digits = 3), nsmall = 2)
   
+#### Fully saturated model #####################################################
+  
+  fullysat_model <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DRF =~ drf1 + drf2 + drf3
+    DTL =~ dtl1 + dtl2 + dtl3
+    MBI =~ mbi_ee + mbi_dp + mbi_rpe
+    SC =~ scs
+    COV =~ covb
+    YST =~ years
 
+  # structural model
+    
+    DTH ~ hnfc * NFC + hsc * SC + hcov * COV + hyst * YST
+    DTL ~ lnfc * NFC + lsc * SC + lcov * COV + lyst * YST
+    DRF ~ fnfc * NFC + fsc * SC + fcov * COV + fyst * YST
+    MBI ~ mdth * DTH + mdtl * DTL + mdrf * DRF
+    
+    mbi_ee ~~ mbi_rpe
+    mbi_ee ~~ mbi_dp
+    mbi_dp ~~ mbi_rpe
+    
+    NFC ~~ YST
+    NFC ~~ SC
+    NFC ~~ COV
+    SC ~~ COV
+    SC ~~ YST
+    YST ~~ COV
+
+    DTH ~~ DTL
+    DTH ~~ DRF
+    DRF ~~ DTL
+    
+    dth1 ~~ dth2
+    dth1 ~~ dth3
+    dth2 ~~ dth3
+
+    drf1 ~~ drf2
+    drf1 ~~ drf3
+    drf2 ~~ drf3
+    
+    dtl1 ~~ dtl2
+    dtl1 ~~ dtl3
+    dtl2 ~~ dtl3
+    
+  # Indirect effects
+    Indirect1 := hnfc * mdth + hsc * mdth + hcov * mdth + hyst * mdth
+    Indirect2 := lnfc * mdtl + lsc * mdtl + lcov * mdtl + lyst * mdtl
+    Indirect3 := fnfc * mdrf + fsc * mdrf + fcov * mdrf + fyst * mdrf
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := Indirect1 + Indirect2 + Indirect3
+'
+  
+  # Determine the model fit
+  
+  fit_fullysat <- lavaan::sem(
+    model = fullysat_model,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit_fullysat_summ <- lavaan::summary(fit_fullysat, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                                      estimates = TRUE, ci = TRUE)
+  
 ##### Additional analyses without the outlier
   
   # Again, this part should be left out if you want to go home within the next hour
