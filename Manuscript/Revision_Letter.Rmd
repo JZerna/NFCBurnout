@@ -246,6 +246,7 @@ To make our procedure more transparent, we now also provide the seed and the ran
 > Following Grass et al. (2018), bootstrapped confidence with *N* = 2,000 replicates and the seed 13 were computed with the Bollen-Stine bootstrapping of *lavaan()* to account for deviations from normality.
 
 \Assignment{JZ}
+\Done
 
 \RC{Page 9. 
 
@@ -253,15 +254,17 @@ How are the three demand factors related to each other? shouldn’t they be allo
 
 This is our response.
 
-\Assignment{JZ}
+\Assignment{JZ \& AS}
 
 \RC{Page 10. 
 
 Unfortunately, the appendix does not present fit measures of the model without the outlier.} 
 
-This is our response.
+That is right, thank you for pointing it out.
+We have added the fit measures of the replication of Grass et al. (2018) and of the demand-resource-ratio model without the outlier in the supplementary material below Table S2.2 and Table S2.3, respectively.
 
 \Assignment{JZ}
+\Done
 
 \RC{Page 13. 
 
@@ -273,7 +276,7 @@ How is the RSMEA computed? My computation with RMSEA=SQRT((chisq-df)/(df(n-1))) 
 
 please provide the DF of the model alongside the Chi-square. The model doesn’t fit very well and it is not clear that non-normality accounts for this as the authors are using robust chi-square. Please consider potential model revisions of the model in figure 2 using modification indices and clearly report these as an exploratory analysis. My expectation is that much of the misfit is created by additional covariances between the DTH, DTL, and DRF factors.}
   
-This is our response.
+That was an oversight on our part, we have added the degrees of freedom to the Chi Square test statistic.
 
 \Assignment{JZ}
 
