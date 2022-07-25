@@ -289,17 +289,74 @@ Therefore, we would like to refrain from including this model as yet another exp
 
 Here the authors do present another exploratory model that did consider ad hoc revisions using the modification indices, but they also added additional variables to the model instead of choosing to revise the original model in Figure 2. Actually, in the new model the authors changed the entire outcome variable from burnout to a study of EE and RPE (but without DP). For this reason, the text and study loose much of their focus: wouldn’t it be better to focus on an overarching model that incorporates all relevant prior expectation and/or compares different (nested) models to pit ideas against each other?}
 
-This is our response.
+We did start the exploratory model with the intention of using a full model, but lavaan was not able to compute it.
+For transparency, we have added the intended code of the full model into our *Analyis.R* script:
+
+> fullysat_model <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DRF =~ drf1 + drf2 + drf3
+    DTL =~ dtl1 + dtl2 + dtl3
+    MBI =~ ee + dp + rpe
+    SC =~ scs
+    COV =~ covb
+    YST =~ years
+
+  # structural model
+    
+    DTH ~ hnfc * NFC + hsc * SC + hcov * COV + hyst * YST
+    DTL ~ lnfc * NFC + lsc * SC + lcov * COV + lyst * YST
+    DRF ~ fnfc * NFC + fsc * SC + fcov * COV + fyst * YST
+    MBI ~ mdth * DTH + mdtl * DTL + mdrf * DRF
+    
+    ee ~~ rpe
+    ee ~~ dp
+    dp ~~ rpe
+    
+    NFC ~~ YST
+    NFC ~~ SC
+    NFC ~~ COV
+    SC ~~ COV
+    SC ~~ YST
+    YST ~~ COV
+
+    DTH ~~ DTL
+    DTH ~~ DRF
+    DRF ~~ DTL
+    
+    dth1 ~~ dth2
+    dth1 ~~ dth3
+    dth2 ~~ dth3
+
+    drf1 ~~ drf2
+    drf1 ~~ drf3
+    drf2 ~~ drf3
+    
+    dtl1 ~~ dtl2
+    dtl1 ~~ dtl3
+    dtl2 ~~ dtl3
+    
+  # Indirect effects
+    Indirect1 := hnfc * mdth + hsc * mdth + hcov * mdth + hyst * mdth
+    Indirect2 := lnfc * mdtl + lsc * mdtl + lcov * mdtl + lyst * mdtl
+    Indirect3 := fnfc * mdrf + fsc * mdrf + fcov * mdrf + fyst * mdrf
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := Indirect1 + Indirect2 + Indirect3
+'
+However, this code yielded multiple error messages: *lavaan* was not able to compute standard errors as the model might not be identified, it could not invert the information matrix, and estimated some latent variables with negative variances.
+In short, the model could not be computed, so we used the *modindices()* function to modify it step by step, starting with the modifications with the biggest impact on model fit, but implementing only those that were contentually meaningful.
+We did not document this process, which would have been a good choice in hindsight.
+We adapted the explanation in the results section as follows:
+
+> We started with a full model with all variables except for the ERQ and its subscales as they had hardly any correlations with the other variables. This model could not be computed by *lavaan*, so we modified the structure using the *modindices()*-function in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
 
 \RC{Pages 20-24.
 
 In their discussion, the  authors also focus on different aspects, namely the replication of Grass et al, the demand-resource ratio model, and the exploratory analyses with personal efficacy and covid burden. A more general framework would probably work much better in interpreting the results and relating them to the wider literature.}
 
 This is our response.
-
-\newpage
-
-# References
-
-::: {#refs custom-style="Bibliography"}
-:::
