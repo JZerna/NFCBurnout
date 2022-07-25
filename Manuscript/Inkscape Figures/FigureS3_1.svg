@@ -7,7 +7,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    sodipodi:docname="FigureS3_1.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -23,15 +23,17 @@
      inkscape:pagecheckerboard="1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.8756036"
-     inkscape:cx="388.94146"
-     inkscape:cy="254.58471"
-     inkscape:window-width="2400"
-     inkscape:window-height="1261"
+     inkscape:zoom="1.4182101"
+     inkscape:cx="391.69089"
+     inkscape:cy="246.43738"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
      inkscape:window-x="-9"
-     inkscape:window-y="-6"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#505050" />
   <defs
      id="defs2">
     <marker
@@ -207,7 +209,7 @@
        height="13.074547"
        x="83.634369"
        y="19.076433"
-       inkscape:export-filename="C:\Users\josep\Documents\01_Promotion\05_NFC Burnout\NFCBurnout\Manuscript\Inkscape Figures\FigureS3_1.png"
+       inkscape:export-filename="FigureS3_1.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300" />
     <rect
@@ -324,7 +326,7 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="57.553959"
+       x="56.495625"
        y="32.782059"
        id="text2704-9-8"
        inkscape:export-filename="C:\Users\josep\Documents\01_Promotion\05_NFC Burnout\NFCBurnout\Manuscript\Inkscape Figures\FigureS3_1.png"
@@ -332,8 +334,8 @@
        inkscape:export-ydpi="300"><tspan
          sodipodi:role="line"
          id="tspan18711"
-         x="57.553959"
-         y="32.782059">.27*</tspan></text>
+         x="56.495625"
+         y="32.782059">.27**</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -346,7 +348,7 @@
          sodipodi:role="line"
          id="tspan1244"
          x="57.185143"
-         y="17.213957">.22**</tspan></text>
+         y="17.213957">.22***</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -363,7 +365,7 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="56.174034"
+       x="53.528198"
        y="71.125999"
        id="text2704-9-8-4-6"
        inkscape:export-filename="C:\Users\josep\Documents\01_Promotion\05_NFC Burnout\NFCBurnout\Manuscript\Inkscape Figures\FigureS3_1.png"
@@ -371,8 +373,8 @@
        inkscape:export-ydpi="300"><tspan
          sodipodi:role="line"
          id="tspan18805"
-         x="56.174034"
-         y="71.125999">-.18*</tspan></text>
+         x="53.528198"
+         y="71.125999">-.18**</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -385,7 +387,7 @@
          sodipodi:role="line"
          id="tspan18842"
          x="143.97444"
-         y="31.548719">-.17</tspan></text>
+         y="31.548719">-.17*</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -398,7 +400,7 @@
          sodipodi:role="line"
          id="tspan18879"
          x="134.71701"
-         y="53.96146">-.17*</tspan></text>
+         y="53.96146">-.17**</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Ebrima;-inkscape-font-specification:'Ebrima, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
