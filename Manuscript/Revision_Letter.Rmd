@@ -355,8 +355,16 @@ We adapted the explanation in the results section as follows:
 
 > We started with a full model with all variables except for the ERQ and its subscales as they had hardly any correlations with the other variables. This model could not be computed by *lavaan*, so we modified the structure using the *modindices()*-function in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
 
+\Assignment{JZ}
+\Done
+
 \RC{Pages 20-24.
 
 In their discussion, the  authors also focus on different aspects, namely the replication of Grass et al, the demand-resource ratio model, and the exploratory analyses with personal efficacy and covid burden. A more general framework would probably work much better in interpreting the results and relating them to the wider literature.}
 
-This is our response.
+Thank you for this suggestion.
+The three-part-structure was exactly what we intended with this manuscript; a replication in a different sample, an analysis based on our own previous research, and an exploratory analysis to serve as a starting point for future research.
+Each part is relevant but not "long enough" to warrant its own paper.
+
+\Assignment{JZ \& AS \& AS}
+\WorkInProgress
