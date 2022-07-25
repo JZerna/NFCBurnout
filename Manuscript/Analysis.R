@@ -23,7 +23,7 @@
   # load reproducible environment library to get all packages with correct versions form the renv.lock file
   # install renv by calling install.packages("renv") if necessary
   
-  library(renv)
+  #library(renv)
 
   # the required packages are:
   # "bibtex", "here", "tidyverse", "bayestestR", "papaja", "lavaan", "psych", "MVN", "MBESS",
@@ -476,8 +476,8 @@
   consist_diag <- consistencies[c(colnames(correlations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  consist_diag <- cbind(format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
-                        format(round(t(consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
+  consist_diag <- cbind(format(round(t(consist_diag[2,]), digits = 2), nsmall = 2), rep("(",13),
+                        format(round(t(consist_diag[5,]), digits = 2), nsmall = 2), rep(")",13))
   
   # paste together to create the output "alpha(omega)"
   consist_diag <- apply(consist_diag[,c(1:4)], 1 ,paste, collapse = "")
@@ -1066,8 +1066,8 @@
   outlier_consist_diag <- outlierconsistencies[c(colnames(outliercorrelations))]
   
   # create a vector of consistencies to be used as the diagonal in a table later
-  outlier_consist_diag <- cbind(format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",10),
-                                format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",10))
+  outlier_consist_diag <- cbind(format(round(t(outlier_consist_diag[2,]), digits = 2), nsmall = 2), rep("(",13),
+                                format(round(t(outlier_consist_diag[5,]), digits = 2), nsmall = 2), rep(")",13))
   
   # paste together to create the output "alpha(omega)"
   outlier_consist_diag <- apply(outlier_consist_diag[,c(1:4)], 1 ,paste, collapse = "")
