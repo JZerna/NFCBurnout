@@ -204,9 +204,20 @@ Of course, we share our data and code openly on OSF and also provide a license f
 
 Which nominal Alpha level is used? .01 or .05? Please explicate all deviations from the preregistration.}
 
-This is our response (resolve inconsistency in tables).
+Thank you for identifying this lack of clarity.
+The original data collection was done in the context of a thesis with different hypotheses than this study.
+Therefore, the sample size calculation of the original data collection reads as follows:
+
+> The initial study was aiming to recruit a sample of N ≥ 287 teachers as determined using the R package pwr (Champely, 2020), assuming a small to medium correlation of r = .20 between the measures of interest and targeting at a power of 1 − β = .80 at α = .01.
+
+And the post-hoc power analysis of the current study is presented at the end of the same paragraph:
+
+> Using the smallest standardized indirect effect from the mediation in Grass et al. (2018) in a post hoc power analysis with G*Power (Faul et al., 2007, 2009) yielded a power of 1 − β = .85 for linear multiple regression, given α = .05, N = 180, and f² = .05.
+
+This is the alpha-level we had preregistered and have adhered to in the manuscript.
 
 \Assignment{JZ}
+\Done
 
 \RC{Page 7. 
 
