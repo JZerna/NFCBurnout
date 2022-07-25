@@ -276,9 +276,14 @@ How is the RSMEA computed? My computation with RMSEA=SQRT((chisq-df)/(df(n-1))) 
 
 please provide the DF of the model alongside the Chi-square. The model doesn’t fit very well and it is not clear that non-normality accounts for this as the authors are using robust chi-square. Please consider potential model revisions of the model in figure 2 using modification indices and clearly report these as an exploratory analysis. My expectation is that much of the misfit is created by additional covariances between the DTH, DTL, and DRF factors.}
   
-That was an oversight on our part, we have added the degrees of freedom to the Chi Square test statistic.
+That was an oversight on our part, we have added the degrees of freedom to the Chi Square test statistic in the manuscript.
+We have also added the analysis code for the demand-resource-ratio model with covariance between DTH, DRL, and DRF to our *Analysis.R* script.
+The results indicate that the improvement in fit measures is very marginal: From CFI = .775, SRMR = .173, and RMSEA = .131 (model without covariance) to CFI = .831, SRMR = .091, and RMSEA = .114 (model with covariance).
+None of the fit measures indicate good fit.
+Therefore, we would like to refrain from including this model as yet another exploratory/supplementary analyis.
 
 \Assignment{JZ}
+\Done
 
 \RC{Page 18. 
 
