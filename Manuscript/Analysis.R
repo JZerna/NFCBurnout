@@ -1205,4 +1205,49 @@
   # format the numbers to three digits after the decimal point
   
   outlierdrr_table[2:ncol(outlierdrr_table)] <- format(round(outlierdrr_table[2:ncol(outlierdrr_table)], digits = 3), nsmall = 2)
+
+#### DRR model with covariance as suggested by reviewer ####################
+  
+  sem_cov_model <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    MBI =~ mbi_ee + mbi_dp + mbi_rpe
+
+  # structural model
+    DTH ~ a1 * NFC
+    DTL ~ a2 * NFC
+    DRF ~ a3 * NFC
+    MBI ~ c * NFC + b1 * DTH + b2 * DTL + b3 * DRF
+  
+  # covariances
+    DTH ~~ DTL
+    DTL ~~ DRF
+    DRF ~~ DTH
+
+  # indirect effects
+    Indirect1 := a1 * b1
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3)'
+  
+  # Determine the model fit
+  
+  fit2_cov <- lavaan::sem(
+    model = sem_cov_model,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit2_cov_summ <- lavaan::summary(fit2_cov, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                               estimates = TRUE, ci = TRUE)
   
