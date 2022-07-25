@@ -228,6 +228,7 @@ We revised the respective sentence that now reads:
 > "... the Cronbach's Alpha of the three demand-resource-ratios in this sample were *acceptable*."
 
 \Assignment{JZ}
+\Done
 
 \RC{Page 8.
 
@@ -235,7 +236,14 @@ Why did the authors choose (preregister?) to use parcels instead of the five and
 
 How were bootstrapped fit measures computed?}
 
-[add comment on parcelling]. We used the standard bootstrapping algorithm implemented in *lavaan*. To make our procedure more transparent, we now also provide the seed and the random number generator.
+Parcelling items for SEMs has been shown to increase goodness-of-fit, reduce bias, and alleviate the effects of non-normally distributed data (e.g. Bandalos (2009, https://doi.org/10.1207/S15328007SEM0901_5), Hall et al. (1999, https://doi.org/10.1177/109442819923002), Matsanuga (2008, https://doi.org/10.1080/19312450802458935)).
+To benefit from these effects and reduce the number of parameters, especially given the sample size of N = 180, we wanted to use item parcelling for the Need for Cognition Scale.
+Additionally, because the MBI was also modelled in a way similar to item parcels (i.e. the three subscales were used as indicators), modelling the NFC scale with item parcels gives in a more balanced model.
+
+We used the standard bootstrapping algorithm implemented in *lavaan*.
+To make our procedure more transparent, we now also provide the seed and the random number generator.
+
+> Following Grass et al. (2018), bootstrapped confidence with *N* = 2,000 replicates and the seed 13 were computed with the Bollen-Stine bootstrapping of *lavaan()* to account for deviations from normality.
 
 \Assignment{JZ}
 
