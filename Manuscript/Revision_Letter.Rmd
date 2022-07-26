@@ -30,8 +30,13 @@ Thank you for pointing this out.
 We changed the term "teacher trainees" to "student teachers" to make clear that the participants in the Grass et al. sample were still attending university.
 We also emphasized that the replication was done in a teacher sample in the respective parts of the manuscript.
 
+Thank you for suggesting a more elaborate consideration of sample differences.
+We have added the following paragraph to the discussion:
+
+> Overall, the differences between Grass et al. (2018) and the present analysis suggest that burnout is being mediated by different factors in student teachers than in teachers. In a classroom context, controlling oneself and one’s emotional expression might be more relevant in dealing with the workload than in a university context, where a person is responsible for themselves first and foremost. This could even imply a different interpretation of the concept of personal efficacy in these two samples – student teachers might focus on how well they can follow lectures, complete work on time, and schedule their tasks efficiently, while teachers might focus on how well they can manage their students and whether they get good grades. Therefore, the understanding of personal efficacy could change from one’s own success to one’s students’ success depending on the career stage.
+
 \Assignment{JZ}
-\WorkInProgress
+\Done
 
 \RC{Focus on the burnout characteristic reduced personal efficacy (RPE), cf. Table 3
 
