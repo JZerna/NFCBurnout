@@ -207,7 +207,8 @@ Note that I couldn’t assess the preregistration, but that the OSF offers a way
 We are aware that the double-blind review process somewhat interferes with Open Science issues.
 We learned how OSF projects can be anonymized only after submission of our manuscript.
 We apologize that we did not give the reviewer the opportunity to check our preregistration/data/code.
-Of course, we share our data and code openly on OSF and also provide a license for re-use (CC-4.0-BY). 
+Of course, we share our data and code openly on OSF and also provide a license for re-use (CC-4.0-BY).
+The anonymized link is: https://osf.io/36ep9/?view_only=5169a1624e6d40c193bdc96121266ea9.
 
 \RC{Page 6. 
 
