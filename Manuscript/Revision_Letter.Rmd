@@ -13,6 +13,8 @@ Dear Dr. McParland,
 thank you very much for taking the time to consider our manuscript for publication at _`r rmarkdown::metadata$journal`_.
 We would like to thank the reviewers for their efforts to thoroughly assess our manuscript. In the following we address your and each reviewer's concerns point-by-point.
 We hope that we could adequately address all the issues raised.
+In this revision, we have also updated the figures, they are now created with Inkscape rather than RStudio, which gives a more elegant result.
+The content of the figures did not change.
 
 
 # Reviewer \#1
@@ -132,6 +134,8 @@ We have added subheadings to the introduction and expanded the last paragraph be
 
 > To sum up, this study used one questionnaire data set to investigate three aims: Firstly, replicating findings of mediation between NFC and reduced personal efficacy in a teacher sample to identify possible differences between teachers and student teachers. Secondly, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout to see whether teachers with high NFC tend to overestimate their own resources or underestimate the current demands, respectively. And lastly, exploring the impact of other variables in the burnout context, such as the perceived burden by the pandemic, to create a starting point for future research.
 
+Regarding the covariation of DTH, DTL, and DRF, please see our response to your comment about pages 15-16 below.
+
 \RC{Page 1.
 
 The abstract needs to be rewritten as it does not clearly present the variables of interest and their relations (“we analysed…” fails to delineate the outcome variabel, predictor, mediator). Also the Grass et al. study should be fully references in the abstract.}
@@ -221,9 +225,6 @@ And the post-hoc power analysis of the current study is presented at the end of 
 
 This is the alpha-level we had preregistered and have adhered to in the manuscript.
 
-\Assignment{JZ}
-\Done
-
 \RC{Page 7. 
 
 Note that reliabilities are not characteristic of scales as they are also a function of variation of true scores in the samples.}
@@ -231,9 +232,6 @@ Note that reliabilities are not characteristic of scales as they are also a func
 We revised the respective sentence that now reads:
 
 > "... the Cronbach's Alpha of the three demand-resource-ratios in this sample were *acceptable*."
-
-\Assignment{JZ}
-\Done
 
 \RC{Page 8.
 
@@ -250,14 +248,12 @@ To make our procedure more transparent, we now also provide the seed and the ran
 
 > Following Grass et al. (2018), bootstrapped confidence with *N* = 2,000 replicates and the seed 13 were computed with the Bollen-Stine bootstrapping of *lavaan()* to account for deviations from normality.
 
-\Assignment{JZ}
-\Done
-
 \RC{Page 9. 
 
 How are the three demand factors related to each other? shouldn’t they be allowed to covary in the SEMs? why do the authors assume that NFC completely accounts for their covariation?}
 
-This is our response.
+We do not assume that NFC completely accounts for their covariation.
+We have computed an exploratory model which includes the covariation of the three factors as you suggested in the comment below, and it was not superior to the confirmatory model regarding fit measures (please see our response to your comment about pages 15-16).
 
 \Assignment{JZ \& AS}
 
@@ -268,14 +264,12 @@ Unfortunately, the appendix does not present fit measures of the model without t
 That is right, thank you for pointing it out.
 We have added the fit measures of the replication of Grass et al. (2018) and of the demand-resource-ratio model without the outlier in the supplementary material below Table S2.2 and Table S2.3, respectively.
 
-\Assignment{JZ}
-\Done
-
 \RC{Page 13. 
 
 How is the RSMEA computed? My computation with RMSEA=SQRT((chisq-df)/(df(n-1))) gives a value around .14 instead of .000}
 
-\Assignment{JZ \& AS}
+The *lavaan*-function *fitMeasures()* calls the function *lav_fit_measures()*, which uses the robust RMSEA formula by Broseau-Liard, Savalei, and Li(2012, doi: 10.1080/00273171.2012.715252, equation 8).
+It corrects for nonnormality of the data, which might be the reason why RMSEA=SQRT((chisq-df)/(df(n-1))) gives a slightly different result.
 
 \RC{Pages 15-16. 
 
@@ -286,9 +280,6 @@ We have also added the analysis code for the demand-resource-ratio model with co
 The results indicate that the improvement in fit measures is very marginal: From CFI = .775, SRMR = .173, and RMSEA = .131 (model without covariance) to CFI = .831, SRMR = .091, and RMSEA = .114 (model with covariance).
 None of the fit measures indicate good fit.
 Therefore, we would like to refrain from including this model as yet another exploratory/supplementary analyis.
-
-\Assignment{JZ}
-\Done
 
 \RC{Page 18. 
 
@@ -360,9 +351,6 @@ We adapted the explanation in the results section as follows:
 
 > We started with a full model with all variables except for the ERQ and its subscales as they had hardly any correlations with the other variables. This model could not be computed by *lavaan*, so we modified the structure using the *modindices()*-function in order to increase the goodness-of-fit indices within the framework of contentually meaningful variable relationships.
 
-\Assignment{JZ}
-\Done
-
 \RC{Pages 20-24.
 
 In their discussion, the  authors also focus on different aspects, namely the replication of Grass et al, the demand-resource ratio model, and the exploratory analyses with personal efficacy and covid burden. A more general framework would probably work much better in interpreting the results and relating them to the wider literature.}
@@ -370,6 +358,4 @@ In their discussion, the  authors also focus on different aspects, namely the re
 Thank you for this suggestion.
 The three-part-structure was exactly what we intended with this manuscript; a replication in a different sample, an analysis based on our own previous research, and an exploratory analysis to serve as a starting point for future research.
 Each part is relevant but not "long enough" to warrant its own paper.
-
-\Assignment{JZ \& AS \& AS}
-\WorkInProgress
+(As we have provided an answer to this issue in our response to your first comment, we would kindly refer to it here.)
