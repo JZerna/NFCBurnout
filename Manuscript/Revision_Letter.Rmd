@@ -123,11 +123,14 @@ In our initial submission, there was an error in the code creating the table, so
 
 \RC{... the goals of the study and the theoretical framework it uses switch multiple times as the manuscript progresses. Notably, the different models presented on the same dataset are clearly different (in terms of structure, predictors, and outcome variables) and are not clearly related to each other. So the theoretical focus needs to be improved to increase readability and clarity. Specifically, the different models need to be related to other in a theoretical and empirical manner. Also, the main model in figure 2 did not fit well possibly because it assumed conditional independence between three main DTH, DTL, and DRF factors that are expected to covary even after controlling for NFC.}
 
-This is our response.
+Thank you for this assessment.
+It is true that the theoretical framework shifts within the manuscript, but this is absolutely intentional.
+We wanted to use one data set to investigate multiple aims that each have a right to exist but are not "long" enough for papers of their own.
+And as the investigation of demands and resources in the context of Need for Cognition is very new, a smaller confirmatory model and a larger exploratory model likely contribute more to developing this approach than a highly complex and long paper with a theoretical framework that is still in its infancy.
+The overarching framework in this manuscript is the role of Need for Cognition in burnout or burnout subscales, and depending on which specific aim the reader is interested in, they may skim over the others.
+We have added subheadings to the introduction and expanded the last paragraph before the methods section to better convey these three aims:
 
-\Assignment{JZ}
-\WorkInProgress
-\TimeConsuming
+> To sum up, this study used one questionnaire data set to investigate three aims: Firstly, replicating findings of mediation between NFC and reduced personal efficacy in a teacher sample to identify possible differences between teachers and student teachers. Secondly, investigating the impact of different demand-resource-ratios on the relationship between NFC and burnout to see whether teachers with high NFC tend to overestimate their own resources or underestimate the current demands, respectively. And lastly, exploring the impact of other variables in the burnout context, such as the perceived burden by the pandemic, to create a starting point for future research.
 
 \RC{Page 1.
 
