@@ -35,9 +35,6 @@ We have added the following paragraph to the discussion:
 
 > Overall, the differences between Grass et al. (2018) and the present analysis suggest that burnout is being mediated by different factors in student teachers than in teachers. In a classroom context, controlling oneself and one’s emotional expression might be more relevant in dealing with the workload than in a university context, where a person is responsible for themselves first and foremost. This could even imply a different interpretation of the concept of personal efficacy in these two samples – student teachers might focus on how well they can follow lectures, complete work on time, and schedule their tasks efficiently, while teachers might focus on how well they can manage their students and whether they get good grades. Therefore, the understanding of personal efficacy could change from one’s own success to one’s students’ success depending on the career stage.
 
-\Assignment{JZ}
-\Done
-
 \RC{Focus on the burnout characteristic reduced personal efficacy (RPE), cf. Table 3
 
 I don’t see the point of focusing only on the significant correlations and mediations from Grass et al. (2018). Non-significant results are also findings. In Grass et al. (2018), they analyzed the other two characteristics emotional exhaustion and depersonalization, too. There, they focused on RPE in further mediation analysis apparently because it was more strongly related to NFC and Self-control. Obviously, correlations and mediations are different in this study (which might be due to investigating a different population). This justifies analyses of all assessed variables. Therefore, analyses of associations of the two other burnout characteristics (emotional exhaustion and depersonalization) should be included.
@@ -119,7 +116,7 @@ The only weak point of the study is the use of self-reports, which limits taking
 Overall, I found the study interesting with significant results to share and enjoy good quality. Therefore, I suggest acceptance.}
 
 We like to thank the reviewer very much for this positive assessment of our manuscript.
-In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see p. XX.
+In our revision, we now provide a reliability estimate (in terms of Cronbach's $\alpha$) of the scale used to assess Covid-19 burden, see Table 2.
 In our initial submission, there was an error in the code creating the table, so the diagonal with Cronbach's $\alpha$ and MacDonald's $\omega$ was missing.
 
 # Reviewer \#3
