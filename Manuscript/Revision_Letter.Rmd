@@ -5,7 +5,9 @@ journal     : "Health Psychology Open"
 manuscript  : "HPO-22-0057"
 
 class       : "draft"
-output      : papaja::revision_letter_pdf
+output:
+  papaja::revision_letter_pdf:
+    latex_engine: xelatex
 ---
 
 Dear Dr. McParland,
@@ -255,8 +257,6 @@ How are the three demand factors related to each other? shouldn’t they be allo
 
 We do not assume that NFC completely accounts for their covariation.
 We have computed an exploratory model which includes the covariation of the three factors as you suggested in the comment below, and it was not superior to the confirmatory model regarding fit measures (please see our response to your comment about pages 15-16).
-
-\Assignment{JZ \& AS}
 
 \RC{Page 10. 
 
