@@ -542,13 +542,13 @@
                                         "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
                                         "NFC on RPE via Self Control", "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
                                         "Total Effect"),
-                             "$B$" = c(fit_summ$PE$est[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
-                             "$SE$" = c(fit_summ$PE$se[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
-                             "$z$-value" = c(fit_summ$PE$z[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
-                             "$p$-value" = c(fit_summ$PE$pvalue[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
-                             "CI Lower" = c(fit_summ$PE$ci.lower[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
-                             "CI Upper" = c(fit_summ$PE$ci.upper[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
-                             "$\\beta$" = c(fit_summ$PE$std.all[fit_summ$PE$label != "" & fit_summ$PE$label != "Contrast"]),
+                             "$B$" = c(fit_summ$pe$est[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
+                             "$SE$" = c(fit_summ$pe$se[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
+                             "$z$-value" = c(fit_summ$pe$z[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
+                             "$p$-value" = c(fit_summ$pe$pvalue[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
+                             "CI Lower" = c(fit_summ$pe$ci.lower[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
+                             "CI Upper" = c(fit_summ$pe$ci.upper[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
+                             "$\\beta$" = c(fit_summ$pe$std.all[fit_summ$pe$label != "" & fit_summ$pe$label != "Contrast"]),
                              check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -605,13 +605,13 @@
                                               "NFC and years spent teaching on RPE via Self Control",
                                               "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
                                               "Total Effect"),
-                                   "$B$" = c(fityears_summ$PE$est[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                                   "$SE$" = c(fityears_summ$PE$se[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                                   "$z$-value" = c(fityears_summ$PE$z[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                                   "$p$-value" = c(fityears_summ$PE$pvalue[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                                   "CI Lower" = c(fityears_summ$PE$ci.lower[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                                   "CI Upper" = c(fityears_summ$PE$ci.upper[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
-                                   "$\\beta$" = c(fityears_summ$PE$std.all[fityears_summ$PE$label != "" & fityears_summ$PE$label != "Contrast"]),
+                                   "$B$" = c(fityears_summ$pe$est[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
+                                   "$SE$" = c(fityears_summ$pe$se[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
+                                   "$z$-value" = c(fityears_summ$pe$z[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
+                                   "$p$-value" = c(fityears_summ$pe$pvalue[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
+                                   "CI Lower" = c(fityears_summ$pe$ci.lower[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
+                                   "CI Upper" = c(fityears_summ$pe$ci.upper[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
+                                   "$\\beta$" = c(fityears_summ$pe$std.all[fityears_summ$pe$label != "" & fityears_summ$pe$label != "Contrast"]),
                                    check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -670,13 +670,13 @@
                                      "DTH on MBI", "DTL on MBI", "DRF on MBI",
                                      "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
                                      "Total Effect"),
-                          "$B$" = c(fit2_summ$PE$est[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$SE$" = c(fit2_summ$PE$se[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$z$-value" = c(fit2_summ$PE$z[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$p$-value" = c(fit2_summ$PE$pvalue[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "CI Lower" = c(fit2_summ$PE$ci.lower[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "CI Upper" = c(fit2_summ$PE$ci.upper[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
-                          "$\\beta$" = c(fit2_summ$PE$std.all[fit2_summ$PE$label != "" & fit2_summ$PE$label != "Contrast"]),
+                          "$B$" = c(fit2_summ$pe$est[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
+                          "$SE$" = c(fit2_summ$pe$se[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
+                          "$z$-value" = c(fit2_summ$pe$z[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
+                          "$p$-value" = c(fit2_summ$pe$pvalue[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
+                          "CI Lower" = c(fit2_summ$pe$ci.lower[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
+                          "CI Upper" = c(fit2_summ$pe$ci.upper[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
+                          "$\\beta$" = c(fit2_summ$pe$std.all[fit2_summ$pe$label != "" & fit2_summ$pe$label != "Contrast"]),
                           check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -764,13 +764,13 @@
                                          "DTH on RPE", "DTL on RPE", "DRF on RPE",
                                          "NFC on RPE via DTH", "NFC on RPE via DTL", "NFC on RPE via DRF",
                                          "Total Effect"),
-                              "$B$" = c(fit_explor1_summ$PE$est[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
-                              "$SE$" = c(fit_explor1_summ$PE$se[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
-                              "$z$-value" = c(fit_explor1_summ$PE$z[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
-                              "$p$-value" = c(fit_explor1_summ$PE$pvalue[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
-                              "CI Lower" = c(fit_explor1_summ$PE$ci.lower[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
-                              "CI Upper" = c(fit_explor1_summ$PE$ci.upper[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
-                              "$\\beta$" = c(fit_explor1_summ$PE$std.all[fit_explor1_summ$PE$label != "" & fit_explor1_summ$PE$label != "Contrast"]),
+                              "$B$" = c(fit_explor1_summ$pe$est[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
+                              "$SE$" = c(fit_explor1_summ$pe$se[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
+                              "$z$-value" = c(fit_explor1_summ$pe$z[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
+                              "$p$-value" = c(fit_explor1_summ$pe$pvalue[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
+                              "CI Lower" = c(fit_explor1_summ$pe$ci.lower[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
+                              "CI Upper" = c(fit_explor1_summ$pe$ci.upper[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
+                              "$\\beta$" = c(fit_explor1_summ$pe$std.all[fit_explor1_summ$pe$label != "" & fit_explor1_summ$pe$label != "Contrast"]),
                               check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -846,13 +846,13 @@
                                          "NFC and Years on RPE via SCS and DRF",
                                          "NFC and Years on EE via SCS, COVB, and DTH",
                                          "Total Effect"),
-                              "$B$" = c(fit_explor2_summ$PE$est[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                              "$SE$" = c(fit_explor2_summ$PE$se[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                              "$z$-value" = c(fit_explor2_summ$PE$z[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                              "$p$-value" = c(fit_explor2_summ$PE$pvalue[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                              "CI Lower" = c(fit_explor2_summ$PE$ci.lower[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                              "CI Upper" = c(fit_explor2_summ$PE$ci.upper[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
-                              "$\\beta$" = c(fit_explor2_summ$PE$std.all[fit_explor2_summ$PE$label != "" & fit_explor2_summ$PE$label != "Contrast"]),
+                              "$B$" = c(fit_explor2_summ$pe$est[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
+                              "$SE$" = c(fit_explor2_summ$pe$se[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
+                              "$z$-value" = c(fit_explor2_summ$pe$z[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
+                              "$p$-value" = c(fit_explor2_summ$pe$pvalue[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
+                              "CI Lower" = c(fit_explor2_summ$pe$ci.lower[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
+                              "CI Upper" = c(fit_explor2_summ$pe$ci.upper[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
+                              "$\\beta$" = c(fit_explor2_summ$pe$std.all[fit_explor2_summ$pe$label != "" & fit_explor2_summ$pe$label != "Contrast"]),
                               check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -1130,13 +1130,13 @@
                                                "Self Control on RPE", "Reappraisal on RPE", "Suppression on RPE", "NFC on RPE",
                                                "NFC on RPE via Self Control", "NFC on RPE via Reappraisal", "NFC on RPE via Suppression",
                                                "Total Effect"),
-                                    "$B$" = c(outlierfit_summ$PE$est[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
-                                    "$SE$" = c(outlierfit_summ$PE$se[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
-                                    "$z$-value" = c(outlierfit_summ$PE$z[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
-                                    "$p$-value" = c(outlierfit_summ$PE$pvalue[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
-                                    "CI Lower" = c(outlierfit_summ$PE$ci.lower[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
-                                    "CI Upper" = c(outlierfit_summ$PE$ci.upper[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
-                                    "$\\beta$" = c(outlierfit_summ$PE$std.all[outlierfit_summ$PE$label != "" & outlierfit_summ$PE$label != "Contrast"]),
+                                    "$B$" = c(outlierfit_summ$pe$est[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
+                                    "$SE$" = c(outlierfit_summ$pe$se[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
+                                    "$z$-value" = c(outlierfit_summ$pe$z[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
+                                    "$p$-value" = c(outlierfit_summ$pe$pvalue[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
+                                    "CI Lower" = c(outlierfit_summ$pe$ci.lower[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
+                                    "CI Upper" = c(outlierfit_summ$pe$ci.upper[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
+                                    "$\\beta$" = c(outlierfit_summ$pe$std.all[outlierfit_summ$pe$label != "" & outlierfit_summ$pe$label != "Contrast"]),
                                     check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -1193,13 +1193,13 @@
                                             "DTH on MBI", "DTL on MBI", "DRF on MBI",
                                             "NFC on MBI via DTH", "NFC on MBI via DTL", "NFC on MBI via DRF",
                                             "Total Effect"),
-                                 "$B$" = c(outlierfit2_summ$PE$est[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
-                                 "$SE$" = c(outlierfit2_summ$PE$se[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
-                                 "$z$-value" = c(outlierfit2_summ$PE$z[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
-                                 "$p$-value" = c(outlierfit2_summ$PE$pvalue[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
-                                 "CI Lower" = c(outlierfit2_summ$PE$ci.lower[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
-                                 "CI Upper" = c(outlierfit2_summ$PE$ci.upper[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
-                                 "$\\beta$" = c(outlierfit2_summ$PE$std.all[outlierfit2_summ$PE$label != "" & outlierfit2_summ$PE$label != "Contrast"]),
+                                 "$B$" = c(outlierfit2_summ$pe$est[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
+                                 "$SE$" = c(outlierfit2_summ$pe$se[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
+                                 "$z$-value" = c(outlierfit2_summ$pe$z[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
+                                 "$p$-value" = c(outlierfit2_summ$pe$pvalue[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
+                                 "CI Lower" = c(outlierfit2_summ$pe$ci.lower[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
+                                 "CI Upper" = c(outlierfit2_summ$pe$ci.upper[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
+                                 "$\\beta$" = c(outlierfit2_summ$pe$std.all[outlierfit2_summ$pe$label != "" & outlierfit2_summ$pe$label != "Contrast"]),
                                  check.names = FALSE)
   
   # format the numbers to three digits after the decimal point
@@ -1251,3 +1251,248 @@
   fit2_cov_summ <- lavaan::summary(fit2_cov, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
                                estimates = TRUE, ci = TRUE)
   
+##### Replication of Grass et al. (2018) with the EE subscale as suggested by reviewer ########
+  
+  repli_model_ee <- '
+  # direct paths
+    scs       ~   a1 * ncs + y * years
+    erq_reap  ~   a2 * ncs
+    erq_supp  ~   a3 * ncs
+    mbi_ee   ~   b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
+    
+  # indirect effects
+    Indirect1 := (a1 * b1) + (y * b1)
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3) + (y * b1)
+'
+  
+  # Determine the model fit
+  
+  fit_ee <- lavaan::sem(
+    model = repli_model_ee,
+    data  = score_data,
+    se = "bootstrap",
+    bootstrap = 2000
+  )
+  
+  # Get summary
+  
+  fit_ee_summ <- lavaan::summary(fit_ee, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                                   estimates = TRUE, ci = TRUE)
+  
+##### Prepare table ############################################################
+  
+  # put relevant data from the mediation into a table for reporting
+  
+  # put data into data frame
+  
+  replic_ee_table <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
+                                              "NFC on Reappraisal", "NFC on Suppression",
+                                              "Self Control on EE", "Reappraisal on EE", "Suppression on EE", "NFC on EE",
+                                              "NFC and years spent teaching on EE via Self Control",
+                                              "NFC on EE via Reappraisal", "NFC on EE via Suppression",
+                                              "Total Effect"),
+                                   "$B$" = c(fit_ee_summ$pe$est[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   "$SE$" = c(fit_ee_summ$pe$se[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   "$z$-value" = c(fit_ee_summ$pe$z[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   "$p$-value" = c(fit_ee_summ$pe$pvalue[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   "CI Lower" = c(fit_ee_summ$pe$ci.lower[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   "CI Upper" = c(fit_ee_summ$pe$ci.upper[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   "$\\beta$" = c(fit_ee_summ$pe$std.all[fit_ee_summ$pe$label != "" & fit_ee_summ$pe$label != "Contrast"]),
+                                   check.names = FALSE)
+  
+  # format the numbers to three digits after the decimal point
+  
+  replic_ee_table[2:ncol(replic_ee_table)] <- format(round(replic_ee_table[2:ncol(replic_ee_table)], digits = 3), nsmall = 2)
+
+##### Replication of Grass et al. (2018) with the DP subscale as suggested by reviewer ########
+  
+  repli_model_dp <- '
+  # direct paths
+    scs       ~   a1 * ncs + y * years
+    erq_reap  ~   a2 * ncs
+    erq_supp  ~   a3 * ncs
+    mbi_dp   ~   b1 * scs + b2 * erq_reap + b3 * erq_supp + c * ncs
+    
+  # indirect effects
+    Indirect1 := (a1 * b1) + (y * b1)
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3) + (y * b1)
+'
+  
+  # Determine the model fit
+  
+  fit_dp <- lavaan::sem(
+    model = repli_model_dp,
+    data  = score_data,
+    se = "bootstrap",
+    bootstrap = 2000
+  )
+  
+  # Get summary
+  
+  fit_dp_summ <- lavaan::summary(fit_dp, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                                 estimates = TRUE, ci = TRUE)
+  
+##### Prepare table ############################################################
+  
+  # put relevant data from the mediation into a table for reporting
+  
+  # put data into data frame
+  
+  replic_dp_table <- data.frame("Path" = c("NFC on Self Control", "Years spent teaching on Self Control",
+                                           "NFC on Reappraisal", "NFC on Suppression",
+                                           "Self Control on DP", "Reappraisal on DP", "Suppression on DP", "NFC on DP",
+                                           "NFC and years spent teaching on DP via Self Control",
+                                           "NFC on DP via Reappraisal", "NFC on DP via Suppression",
+                                           "Total Effect"),
+                                "$B$" = c(fit_dp_summ$pe$est[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                "$SE$" = c(fit_dp_summ$pe$se[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                "$z$-value" = c(fit_dp_summ$pe$z[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                "$p$-value" = c(fit_dp_summ$pe$pvalue[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                "CI Lower" = c(fit_dp_summ$pe$ci.lower[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                "CI Upper" = c(fit_dp_summ$pe$ci.upper[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                "$\\beta$" = c(fit_dp_summ$pe$std.all[fit_dp_summ$pe$label != "" & fit_dp_summ$pe$label != "Contrast"]),
+                                check.names = FALSE)
+  
+  # format the numbers to three digits after the decimal point
+  
+  replic_dp_table[2:ncol(replic_dp_table)] <- format(round(replic_dp_table[2:ncol(replic_dp_table)], digits = 3), nsmall = 2)
+  
+##### Exploratory model with EE subscale as suggested by reviewer ##############
+  
+  explor1_model_ee <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    EE =~ mbi_ee
+
+  # structural model
+    DTH ~ a1 * NFC
+    DTL ~ a2 * NFC
+    DRF ~ a3 * NFC
+    EE ~ c * NFC + b1 * DTH + b2 * DTL + b3 * DRF
+
+  # indirect effects
+    Indirect1 := a1 * b1
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3)'
+  
+  # Determine the model fit
+  
+  fit_explor1_ee <- lavaan::sem(
+    model = explor1_model_ee,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit_explor1_ee_summ <- lavaan::summary(fit_explor1_ee, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                                      estimates = TRUE, ci = TRUE)
+  
+##### Prepare table ############################################################
+  
+  # put relevant data from the mediation into a table for reporting
+  
+  # put data into data frame
+  
+  drr_ee_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on EE",
+                                         "DTH on EE", "DTL on EE", "DRF on EE",
+                                         "NFC on EE via DTH", "NFC on EE via DTL", "NFC on EE via DRF",
+                                         "Total Effect"),
+                              "$B$" = c(fit_explor1_ee_summ$pe$est[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              "$SE$" = c(fit_explor1_ee_summ$pe$se[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              "$z$-value" = c(fit_explor1_ee_summ$pe$z[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              "$p$-value" = c(fit_explor1_ee_summ$pe$pvalue[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              "CI Lower" = c(fit_explor1_ee_summ$pe$ci.lower[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              "CI Upper" = c(fit_explor1_ee_summ$pe$ci.upper[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              "$\\beta$" = c(fit_explor1_ee_summ$pe$std.all[fit_explor1_ee_summ$pe$label != "" & fit_explor1_ee_summ$pe$label != "Contrast"]),
+                              check.names = FALSE)
+  
+  # format the numbers to three digits after the decimal point
+  
+  drr_ee_table[2:ncol(drr_ee_table)] <- format(round(drr_ee_table[2:ncol(drr_ee_table)], digits = 3), nsmall = 2)
+
+##### Exploratory model with DP subscale as suggested by reviewer ##############
+  
+  explor1_model_dp <- '
+  # measurement model
+    NFC =~ nfc1 + nfc2 + nfc3 + nfc4
+    DTH =~ dth1 + dth2 + dth3
+    DTL =~ dtl1 + dtl2 + dtl3
+    DRF =~ drf1 + drf2 + drf3
+    DP =~ mbi_dp
+
+  # structural model
+    DTH ~ a1 * NFC
+    DTL ~ a2 * NFC
+    DRF ~ a3 * NFC
+    DP ~ c * NFC + b1 * DTH + b2 * DTL + b3 * DRF
+
+  # indirect effects
+    Indirect1 := a1 * b1
+    Indirect2 := a2 * b2
+    Indirect3 := a3 * b3
+
+  # contrast (if significant, the effects differ)
+    Contrast := Indirect1 - Indirect2 - Indirect3
+         
+  # total effect
+    Total := c + (a1 * b1) + (a2 * b2) + (a3 * b3)'
+  
+  # Determine the model fit
+  
+  fit_explor1_dp <- lavaan::sem(
+    model = explor1_model_dp,
+    data  = score_data,
+    estimator = "MLR"
+  )
+  
+  # Get summary
+  
+  fit_explor1_dp_summ <- lavaan::summary(fit_explor1_dp, fit.measures = TRUE, standardize = TRUE, rsquare = TRUE,
+                                         estimates = TRUE, ci = TRUE)
+  
+##### Prepare table ############################################################
+  
+  # put relevant data from the mediation into a table for reporting
+  
+  # put data into data frame
+  
+  drr_dp_table <- data.frame("Path" = c("NFC on DTH", "NFC on DTL", "NFC on DRF", "NFC on DP",
+                                        "DTH on DP", "DTL on DP", "DRF on DP",
+                                        "NFC on DP via DTH", "NFC on DP via DTL", "NFC on DP via DRF",
+                                        "Total Effect"),
+                             "$B$" = c(fit_explor1_dp_summ$pe$est[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             "$SE$" = c(fit_explor1_dp_summ$pe$se[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             "$z$-value" = c(fit_explor1_dp_summ$pe$z[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             "$p$-value" = c(fit_explor1_dp_summ$pe$pvalue[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             "CI Lower" = c(fit_explor1_dp_summ$pe$ci.lower[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             "CI Upper" = c(fit_explor1_dp_summ$pe$ci.upper[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             "$\\beta$" = c(fit_explor1_dp_summ$pe$std.all[fit_explor1_dp_summ$pe$label != "" & fit_explor1_dp_summ$pe$label != "Contrast"]),
+                             check.names = FALSE)
+  
+  # format the numbers to three digits after the decimal point
+  
+  drr_dp_table[2:ncol(drr_dp_table)] <- format(round(drr_dp_table[2:ncol(drr_dp_table)], digits = 3), nsmall = 2)
