@@ -5,7 +5,9 @@ journal     : "Health Psychology Open"
 manuscript  : "HPO-22-0057"
 
 class       : "draft"
-output      : papaja::revision_letter_pdf
+output:
+  papaja::revision_letter_pdf:
+    latex_engine: xelatex
 ---
 
 Dear Dr. McParland,
@@ -59,7 +61,7 @@ It has been shown that NFC is positively associated with higher self-efficacy (R
 And if the focus in burnout studies with teacher samples has been on the DP and EE subscales, it is all the more reason to also focus on the RPE subscale, especially because NFC was equally correlated with all MBI subscales in our teacher sample.
 We had preregistered the exploratory analysis of the Demand-Resource-Ratio model with RPE in place of the MBI score, but this model did not have better fit indices than the initial model, which might be attributed to the evenly distributed associations between NFC and the subscales.
 Furthermore, when constructing the exploratory model it became clear that NFC was indeed associated with RPE and EE via DRF and DTH, respectively, but the DP subscale did not have any meaningful paths within the model.
-Since we have not preregistered any analysis of the association between NFC and DP or EE, and we do not have any theory-driven hypotheses regarding these associations, we do not believe that such analyses would contribute to the goals of the paper.
+Since we have not preregistered any analysis of the association between NFC and DP or EE, and we do not have any theory-driven hypotheses regarding these associations, we would like to refrain from including these analyses in the paper in order not to report analyses that are less well-reasoned and not pre-registered.
 A change that we will gladly implement is the more specific distinction between the terms "burnout" and "RPE subscale" in the manuscript, thank you for this advice.
 
 \RC{Abstract: “little is known about the personality traits that promote or protect against burnout”
@@ -77,7 +79,7 @@ Thank you for noticing this typo. We have corrected it.
 \RC{p.19/23 somewhere it should be conceded that the positive relation Covid burden and years of experience is influenced or confounded by item number 2 of the Covid burden questionnaire (“Are you in a Covid-19 risk group?”). Persons that do not belong to the risk group of old people (50+) can by default not have the highest years of experience.
 }
 
-We do not agree that this item justifies claims for a confounding of Covid burden and years of experience.
+Although one can assume that Covid burden and years of experience are associated, there is a variety of factors that may also play a role.
 Firstly, years of experience cannot be equated with age, as some teachers are lateral entry employees.
 Secondly, age itself is not the only risk factor for Covid, but one of a long list of risk factors according to the Center for Disease Control and Prevention, such as disability, asthma, cancer, chronic heart disease, diabetes, HIV, weak immune function, obesity, mental disorders, pregnancy, physical inactivity, etc.
 Since the item does not specify the kind of risk factor, there is no need to correct for any confound between Covid burden and years of experience.
@@ -126,9 +128,9 @@ In our initial submission, there was an error in the code creating the table, so
 \RC{... the goals of the study and the theoretical framework it uses switch multiple times as the manuscript progresses. Notably, the different models presented on the same dataset are clearly different (in terms of structure, predictors, and outcome variables) and are not clearly related to each other. So the theoretical focus needs to be improved to increase readability and clarity. Specifically, the different models need to be related to other in a theoretical and empirical manner. Also, the main model in figure 2 did not fit well possibly because it assumed conditional independence between three main DTH, DTL, and DRF factors that are expected to covary even after controlling for NFC.}
 
 Thank you for this assessment.
-It is true that the theoretical framework shifts within the manuscript, but this is absolutely intentional.
-We wanted to use one data set to investigate multiple aims that each have a right to exist but are not "long" enough for papers of their own.
-And as the investigation of demands and resources in the context of Need for Cognition is very new, a smaller confirmatory model and a larger exploratory model likely contribute more to developing this approach than a highly complex and long paper with a theoretical framework that is still in its infancy.
+It is true that the theoretical framework shifts within the manuscript.
+This is motivated by the three different aims of the paper.
+As the investigation of demands and resources in the context of Need for Cognition is very new, a smaller confirmatory model and a larger exploratory model likely contribute more to developing this approach than a highly complex and long paper with a theoretical framework that is still in its infancy.
 The overarching framework in this manuscript is the role of Need for Cognition in burnout or burnout subscales, and depending on which specific aim the reader is interested in, they may skim over the others.
 We have added subheadings to the introduction and expanded the last paragraph before the methods section to better convey these three aims:
 
@@ -256,8 +258,6 @@ How are the three demand factors related to each other? shouldn’t they be allo
 We do not assume that NFC completely accounts for their covariation.
 We have computed an exploratory model which includes the covariation of the three factors as you suggested in the comment below, and it was not superior to the confirmatory model regarding fit measures (please see our response to your comment about pages 15-16).
 
-\Assignment{JZ \& AS}
-
 \RC{Page 10. 
 
 Unfortunately, the appendix does not present fit measures of the model without the outlier.} 
@@ -358,5 +358,4 @@ In their discussion, the  authors also focus on different aspects, namely the re
 
 Thank you for this suggestion.
 The three-part-structure was exactly what we intended with this manuscript; a replication in a different sample, an analysis based on our own previous research, and an exploratory analysis to serve as a starting point for future research.
-Each part is relevant but not "long enough" to warrant its own paper.
 (As we have provided an answer to this issue in our response to your first comment, we would kindly refer to it here.)
